@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Custom Counters - SQL Server" name="SQLCustomCounters">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqlcustomcounters</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="CounterName" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" reExecutionPropertyRegExp="CustomCounters" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">sqlcustomcounter</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="CounterName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CounterValue" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="CounterStringValue" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="CounterErrorMessage" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CounterError" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="CounterEnabled" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText>GetProperty(&quot;customCounters&quot;) != null and length(GetProperty(&quot;customCounters&quot;)) &gt; 0</guardExpressionText>
+                  <commandText><![CDATA[index = 0;
+try:
+	CustomCounter = split(getcustomcounters(getProperty("monitoredEntityName")), "~_0O0_~");
+	l = length(CustomCounter);
+
+
+	while (index < l):
+		# Each Custom counter is defined a triplet in the format name~enabled~query
+		CCPart = split(CustomCounter[index], "~");
+		if (length(CCPart) == 3):
+			CounterName = CCPart[0];
+			append(Result.CounterName, CounterName);
+			if (isequal(CCPart[1], 'true')):
+				append(Result.CounterEnabled, true);
+				customQuery = SQLCustomCounters.Execute({"queryName" : "runQuery", "_Query" : CCPart[2], "reset" : "true"});
+				if (length(customQuery._exit) > 0) and (customQuery._exit[0] != 0):
+					# sql execution returned an error
+					append(Result.CounterValue, null);
+					append(Result.CounterStringValue, null);
+					append(Result.CounterErrorMessage, customQuery._errortext);
+					append(Result.CounterError, customQuery._exit[0]);
+				else:
+					# actual results for sql execution
+					append(Result.CounterValue, customQuery.CounterValue);
+					append(Result.CounterStringValue, customQuery.CounterStringValue);
+					append(Result.CounterErrorMessage, null);
+					append(Result.CounterError,0.0);
+			else:
+				# return empty result with disabled flag
+				append(Result.CounterEnabled, false);
+				append(Result.CounterValue, null);
+				append(Result.CounterStringValue, null);
+				append(Result.CounterErrorMessage, null);
+				append(Result.CounterError, 0);
+		else:
+			if (length(CustomCounter[index]) > 0):
+				print "Invalid custom counter '" + CustomCounter[index] + "'";
+		index += 1;
+finally:
+	if (index > 0):
+		SQLCustomCounters.Execute({"queryName" : "ResetSession"});]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="CounterName">
+                        <expression><![CDATA[CounterName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterValue">
+                        <expression><![CDATA[CounterValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterStringValue">
+                        <expression><![CDATA[CounterStringValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterErrorMessage">
+                        <expression><![CDATA[CounterErrorMessage]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterError">
+                        <expression><![CDATA[CounterError]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterEnabled">
+                        <expression><![CDATA[CounterEnabled]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="CounterName" dataType="STRING"/>
+                     <columnDataType columnName="CounterValue" dataType="DOUBLE"/>
+                     <columnDataType columnName="CounterStringValue" dataType="STRING"/>
+                     <columnDataType columnName="CounterErrorMessage" dataType="STRING"/>
+                     <columnDataType columnName="CounterError" dataType="DOUBLE"/>
+                     <columnDataType columnName="CounterEnabled" dataType="BOOLEAN"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="runQuery" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{_Query}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="CounterName">
+                        <expression><![CDATA[null]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterValue">
+                        <expression><![CDATA[toDoubleOrZero(CounterStringValue)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterStringValue">
+                        <expression><![CDATA[CounterStringValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterErrorMessage">
+                        <expression><![CDATA[0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterError">
+                        <expression><![CDATA[null]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterEnabled">
+                        <expression><![CDATA[CounterEnabled]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="CounterStringValue" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="ResetSession" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[set transaction isolation level read committed
+set rowcount 0]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="CounterName">
+                        <expression><![CDATA[CounterName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterValue">
+                        <expression><![CDATA[CounterValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterStringValue">
+                        <expression><![CDATA[CounterStringValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterErrorMessage">
+                        <expression><![CDATA[CounterErrorMessage]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterError">
+                        <expression><![CDATA[CounterError]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterEnabled">
+                        <expression><![CDATA[CounterEnabled]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="CounterName" dataType="STRING"/>
+                     <columnDataType columnName="CounterValue" dataType="DOUBLE"/>
+                     <columnDataType columnName="CounterStringValue" dataType="STRING"/>
+                     <columnDataType columnName="CounterErrorMessage" dataType="STRING"/>
+                     <columnDataType columnName="CounterError" dataType="DOUBLE"/>
+                     <columnDataType columnName="CounterEnabled" dataType="BOOLEAN"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="7">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>customcounter</string>
+                  <property dataType="STRING" description="CustomCounter" displayName="CustomCounter" encryptStyle="NONE" hidden="false" name="CustomCounter">true</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

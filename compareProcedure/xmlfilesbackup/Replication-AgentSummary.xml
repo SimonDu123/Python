@@ -1,0 +1,175 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Replication Agent Summary" name="AgentSummary">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">agentsummary</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="AgentType" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="15">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">replication</fragment>
+              <fragment type="PROCEDURE">agents</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="AgentType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="AgentCount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivered_commands" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivered_transactions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="CmdDeliveryRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TxnDeliveryRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="pub_delivered_commands" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PubCmdDeliveryRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# todo: reimplement using arrays
+
+distributionAgents = 0;
+logReaderAgents = 0;
+mergeAgents = 0;
+miscJobs = 0;
+queueReaderAgents = 0;
+snapshotAgents = 0;
+
+distributionAgentCmdCount = 0;
+logReaderAgentCmdCount = 0;
+snapshotAgentCmdCount = 0;
+
+mergePubCmdCount = 0;
+mergeSubCmdCount = 0;
+
+distributionAgentTxnCount = 0;
+logReaderAgentTxnCount = 0;
+snapshotAgentTxnCount = 0;
+
+agentsTable = Agents.getOrExecute(15);
+i = 0;
+
+while (i < length(agentsTable.agent_type)):
+	agentType = agentsTable.agent_type[i];
+	if (agentType == "Distribution"):
+		distributionAgents += 1;
+		distributionAgentCmdCount += agentsTable.delivered_commands[i];
+		distributionAgentTxnCount += agentsTable.delivered_transactions[i];
+	elif (agentType == "LogReader"):
+		logReaderAgents += 1;
+		logReaderAgentCmdCount += agentsTable.delivered_commands[i];
+		logReaderAgentTxnCount += agentsTable.delivered_transactions[i];
+	elif (agentType == "Merge"):
+		mergeAgents += 1;
+		if (i < length(agentsTable.MergePubCmds)):
+			mergePubCmdCount += agentsTable.MergePubCmds[i];
+		if (i < length(agentsTable.MergeSubCmds)):
+			mergeSubCmdCount += agentsTable.MergeSubCmds[i];
+	elif (agentType == "Miscellaneous"):
+		miscJobs += 1;
+	elif (agentType == "QueueReader"):
+		queueReaderAgents += 1;
+	elif (agentType == "Snapshot"):
+		snapshotAgents += 1;
+		snapshotAgentCmdCount += agentsTable.delivered_commands[i];
+		snapshotAgentTxnCount += agentsTable.delivered_transactions[i];
+	else:
+		setError( 13, "Unknown agent type: {0}", agentType);
+	i += 1;
+
+append(Result.AgentType, "Distribution");
+append(Result.AgentType, "LogReader");
+append(Result.AgentType, "Snapshot");
+append(Result.AgentType, "Merge");
+append(Result.AgentType, "Miscellaneous");
+append(Result.AgentType, "QueueReader");
+
+append(Result.AgentCount, distributionAgents);
+append(Result.AgentCount, logReaderAgents);
+append(Result.AgentCount, snapshotAgents);
+append(Result.AgentCount, mergeAgents);
+append(Result.AgentCount, miscJobs);
+append(Result.AgentCount, queueReaderAgents);
+
+append(Result.delivered_commands, distributionAgentCmdCount);
+append(Result.delivered_commands, logReaderAgentCmdCount);
+append(Result.delivered_commands, snapshotAgentCmdCount);
+append(Result.delivered_commands, mergeSubCmdCount);
+
+append(Result.pub_delivered_commands, null);
+append(Result.pub_delivered_commands, null);
+append(Result.pub_delivered_commands, null);
+append(Result.pub_delivered_commands, mergePubCmdCount);
+
+append(Result.delivered_transactions, distributionAgentTxnCount);
+append(Result.delivered_transactions, logReaderAgentTxnCount);
+append(Result.delivered_transactions, snapshotAgentTxnCount);]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AgentType">
+                <expression><![CDATA[AgentType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AgentCount">
+                <expression><![CDATA[AgentCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivered_commands">
+                <expression><![CDATA[delivered_commands]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivered_transactions">
+                <expression><![CDATA[delivered_transactions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CmdDeliveryRate">
+                <expression><![CDATA[positiveRate(AgentSummary.delivered_commands)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TxnDeliveryRate">
+                <expression><![CDATA[positiveRate(AgentSummary.delivered_transactions)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="pub_delivered_commands">
+                <expression><![CDATA[pub_delivered_commands]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PubCmdDeliveryRate">
+                <expression><![CDATA[positiveRate(AgentSummary.pub_delivered_commands)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="AgentType" dataType="STRING" />
+              <columnDataType columnName="AgentCount" dataType="LONG" />
+              <columnDataType columnName="delivered_commands" dataType="LONG" />
+              <columnDataType columnName="delivered_transactions" dataType="LONG" />
+              <columnDataType columnName="pub_delivered_commands" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

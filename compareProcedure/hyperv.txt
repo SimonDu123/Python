@@ -1,0 +1,14 @@
+DynamicMemoryVM
+Hypervisor
+HypervisorLogicalProcessor
+HypervisorVirtualProcessor
+HyperVVersion
+LegacyNetworkAdapter
+UpdateHyperVVersion
+VirtualIDEControllerEmulated
+VirtualMachineHealthSummary
+VirtualMachines
+VirtualNetworkAdapter
+VirtualStorageDevice
+VirtualSwitch
+VirtualSwitchPort

@@ -1,0 +1,117 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Paging File Locations" name="PagingFileLocations">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">pagingfilelocations</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_PagingFileLocations" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Disk" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="300">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">windows</fragment>
+              <fragment type="PROCEDURE">pagingfiles</fragment>
+            </procedurePath>
+          </procedureDependency>
+          <procedureDependency recencyOfExecutionSeconds="300">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">windows</fragment>
+              <fragment type="PROCEDURE">physicaldisks</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">windows</fragment>
+            <fragment type="RULE">pagingfilecollision</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Disk" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PagingFileCount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="PagingFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# To identify the paging file locations, we get all the paging files
+# and try to correlate them with the disk names. We also need to
+# report multiple paging files on the same disk.
+#
+diskTable = PhysicalDisks.getOrExecute(300);
+pagingFileTable = PagingFiles.getOrExecute(300);
+for disk in diskTable.Name:
+	# disk = "0 C: D: E:"
+	# temp = ['0','C:','D:','E:']
+	temp = disk.split();
+	pagingFiles = "";
+	pagingFileCount = 0;
+	# ignore physical disk number - iterate associated logical disks
+	for i in range(1, len(temp)):
+		diskLetter = temp[i].lower();
+		for pagingFile in pagingFileTable.Name:
+			if pagingFile.lower().find( diskLetter ) >= 0:
+				if pagingFileCount > 0:
+					pagingFiles += ", ";
+				if substring(pagingFile, 0, 4) == "\\??\\":
+					pagingFiles += substring(pagingFile, 4);
+				else:
+					pagingFiles += pagingFile;
+				pagingFileCount += 1;
+
+	if pagingFileCount > 0:
+		result.Disk.append( disk );
+		result.PagingFiles.append( pagingFiles );
+		result.PagingFileCount.append( pagingFileCount );]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Disk">
+                <expression><![CDATA[Disk]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagingFileCount">
+                <expression><![CDATA[PagingFileCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagingFiles">
+                <expression><![CDATA[PagingFiles]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Disk" dataType="STRING" />
+              <columnDataType columnName="PagingFileCount" dataType="LONG" />
+              <columnDataType columnName="PagingFiles" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

@@ -1,0 +1,70 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="First Connection Version" name="FirstConnectionVersion">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">highavailability</fragment>
+    <fragment type="PROCEDURE">firstconnectionversion</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="ALWAYS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="86400000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="ProductVersion" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SQLVersion" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SQLBuild" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SET DEADLOCK_PRIORITY -10; 
+			exec master..xp_msver "ProductVersion"]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">highavailability</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ProductVersion">
+                <expression><![CDATA[Character_Value]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLVersion">
+                <expression><![CDATA[iff(length(ProductVersion)>0, iff(substring(ProductVersion, 1, 1)==".", substring(ProductVersion, 0, 1), substring(ProductVersion, 0, 2)), "")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLBuild">
+                <expression><![CDATA[iff(length(ProductVersion)>0, substring(ProductVersion, 5, 4), "")]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Index" dataType="LONG" />
+              <columnDataType columnName="Name" dataType="STRING" />
+              <columnDataType columnName="Internal_Value" dataType="LONG" />
+              <columnDataType columnName="Character_Value" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

@@ -1,0 +1,269 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Threads" name="AnalysisThreads">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisthreads</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Longparsingbusythreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Longparsingidlethreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Longparsingjobqueuelength" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="Longparsingjobrate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Processingpoolbusythreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Processingpoolidlethreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Processingpooljobqueuelength" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="Processingpooljobrate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Querypoolbusythreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Querypoolidlethreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Querypooljobqueuelength" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="Querypooljobrate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Shortparsingbusythreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Shortparsingidlethreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Shortparsingjobqueuelength" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="Shortparsingjobrate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalShortParsingJobRate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalLongParsingJobRate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalProcessingpooljobrate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalQuerypooljobrate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Longparsingbusythreads, Longparsingidlethreads, Longparsingjobqueuelength, Longparsingjobrate, 
+Processingpoolbusythreads, Processingpoolidlethreads, Processingpooljobqueuelength, Processingpooljobrate, 
+Querypoolbusythreads, Querypoolidlethreads, Querypooljobqueuelength, Querypooljobrate, Shortparsingbusythreads, 
+Shortparsingidlethreads, Shortparsingjobqueuelength, Shortparsingjobrate  
+FROM {{WMIClassName.Name}}Threads]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Longparsingbusythreads">
+                <expression><![CDATA[Longparsingbusythreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Longparsingidlethreads">
+                <expression><![CDATA[Longparsingidlethreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Longparsingjobqueuelength">
+                <expression><![CDATA[Longparsingjobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpoolbusythreads">
+                <expression><![CDATA[Processingpoolbusythreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpoolidlethreads">
+                <expression><![CDATA[Processingpoolidlethreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpooljobqueuelength">
+                <expression><![CDATA[Processingpooljobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypoolbusythreads">
+                <expression><![CDATA[Querypoolbusythreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypoolidlethreads">
+                <expression><![CDATA[Querypoolidlethreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypooljobqueuelength">
+                <expression><![CDATA[Querypooljobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingbusythreads">
+                <expression><![CDATA[Shortparsingbusythreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingidlethreads">
+                <expression><![CDATA[Shortparsingidlethreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingjobqueuelength">
+                <expression><![CDATA[Shortparsingjobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalShortParsingJobRate">
+                <expression><![CDATA[shortparsingjobrate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingjobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalShortParsingJobRate)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLongParsingJobRate">
+                <expression><![CDATA[Longparsingjobrate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Longparsingjobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalLongParsingJobRate)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalProcessingpooljobrate">
+                <expression><![CDATA[Processingpooljobrate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpooljobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalProcessingpooljobrate)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQuerypooljobrate">
+                <expression><![CDATA[Querypooljobrate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypooljobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalQuerypooljobrate)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Longparsingbusythreads" dataType="LONG" />
+              <columnDataType columnName="Longparsingidlethreads" dataType="LONG" />
+              <columnDataType columnName="Longparsingjobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Longparsingjobrate" dataType="LONG" />
+              <columnDataType columnName="Processingpoolbusythreads" dataType="LONG" />
+              <columnDataType columnName="Processingpoolidlethreads" dataType="LONG" />
+              <columnDataType columnName="Processingpooljobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Processingpooljobrate" dataType="LONG" />
+              <columnDataType columnName="Querypoolbusythreads" dataType="LONG" />
+              <columnDataType columnName="Querypoolidlethreads" dataType="LONG" />
+              <columnDataType columnName="Querypooljobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Querypooljobrate" dataType="LONG" />
+              <columnDataType columnName="Shortparsingbusythreads" dataType="LONG" />
+              <columnDataType columnName="Shortparsingidlethreads" dataType="LONG" />
+              <columnDataType columnName="Shortparsingjobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Shortparsingjobrate" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT 
+Longparsingbusythreads, 
+Longparsingidlethreads, 
+Longparsingjobqueuelength, 
+Longparsingjobrate, 
+ProcessingpoolbusyIOjobthreads, 
+ProcessingpoolbusynonIOthreads, 
+ProcessingpoolidleIOjobthreads, 
+ProcessingpoolidlenonIOthreads, 
+Processingpooljobqueuelength, 
+Processingpooljobrate, 
+Querypoolbusythreads, 
+Querypoolidlethreads, 
+Querypooljobqueuelength, 
+Querypooljobrate, 
+Shortparsingbusythreads, 
+Shortparsingidlethreads, 
+Shortparsingjobqueuelength, 
+Shortparsingjobrate  
+FROM {{WMIClassName.Name}}Threads]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2012</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Longparsingbusythreads">
+                <expression><![CDATA[Longparsingbusythreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Longparsingidlethreads">
+                <expression><![CDATA[Longparsingidlethreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Longparsingjobqueuelength">
+                <expression><![CDATA[Longparsingjobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpoolbusythreads">
+                <expression><![CDATA[ProcessingpoolbusyIOjobthreads + ProcessingpoolbusynonIOthreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpoolidlethreads">
+                <expression><![CDATA[ProcessingpoolidleIOjobthreads + ProcessingpoolidlenonIOthreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpooljobqueuelength">
+                <expression><![CDATA[Processingpooljobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypoolbusythreads">
+                <expression><![CDATA[Querypoolbusythreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypoolidlethreads">
+                <expression><![CDATA[Querypoolidlethreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypooljobqueuelength">
+                <expression><![CDATA[Querypooljobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingbusythreads">
+                <expression><![CDATA[Shortparsingbusythreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingidlethreads">
+                <expression><![CDATA[Shortparsingidlethreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingjobqueuelength">
+                <expression><![CDATA[Shortparsingjobqueuelength]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalShortParsingJobRate">
+                <expression><![CDATA[ShortParsingJobRate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLongParsingJobRate">
+                <expression><![CDATA[LongParsingJobRate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalProcessingpooljobrate">
+                <expression><![CDATA[Processingpooljobrate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQuerypooljobrate">
+                <expression><![CDATA[QueryPoolJobRate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Shortparsingjobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalShortParsingJobRate)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Longparsingjobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalLongParsingJobRate)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Processingpooljobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalProcessingpooljobrate)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Querypooljobrate">
+                <expression><![CDATA[positiveRate(AnalysisThreads.InternalQuerypooljobrate)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Longparsingbusythreads" dataType="LONG" />
+              <columnDataType columnName="Longparsingidlethreads" dataType="LONG" />
+              <columnDataType columnName="Longparsingjobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Longparsingjobrate" dataType="DOUBLE" />
+              <columnDataType columnName="ProcessingpoolbusyIOjobthreads" dataType="LONG" />
+              <columnDataType columnName="ProcessingpoolbusynonIOthreads" dataType="LONG" />
+              <columnDataType columnName="ProcessingpoolidleIOjobthreads" dataType="LONG" />
+              <columnDataType columnName="ProcessingpoolidlenonIOthreads" dataType="LONG" />
+              <columnDataType columnName="Processingpooljobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Processingpooljobrate" dataType="DOUBLE" />
+              <columnDataType columnName="Querypoolbusythreads" dataType="LONG" />
+              <columnDataType columnName="Querypoolidlethreads" dataType="LONG" />
+              <columnDataType columnName="Querypooljobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Querypooljobrate" dataType="DOUBLE" />
+              <columnDataType columnName="Shortparsingbusythreads" dataType="LONG" />
+              <columnDataType columnName="Shortparsingidlethreads" dataType="LONG" />
+              <columnDataType columnName="Shortparsingjobqueuelength" dataType="LONG" />
+              <columnDataType columnName="Shortparsingjobrate" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

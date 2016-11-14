@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="SQL Server Connections" name="SQLConnections">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqlconnections</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLConnections" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="SQLConnectionsKey" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">userconnectioncount</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="SQLConnectionsKey" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLConnectionCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLBlockCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLUserConnectionCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLSystemConnectionCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLActiveUserConnectionCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLInactiveConnectionCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLClientMachineCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLMaxWorkerThreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLAllActiveConnectionsCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLUserConnectionsParm" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLInternalConnectionsCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLeadBlockersCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DBCCSessionsCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLConnectionTally" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLActiveUserConnectionPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLActiveMaxWorkerPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_Connections.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="SQLConnectionsKey">
+                        <expression><![CDATA[1]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLConnectionCnt">
+                        <expression><![CDATA[SQLConnectionCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLBlockCnt">
+                        <expression><![CDATA[SQLBlockCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLUserConnectionCnt">
+                        <expression><![CDATA[SQLUserConnectionCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLSystemConnectionCnt">
+                        <expression><![CDATA[SQLSystemConnectionCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLActiveUserConnectionCnt">
+                        <expression><![CDATA[SQLActiveUserConnectionCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLInactiveConnectionCnt">
+                        <expression><![CDATA[SQLInactiveConnectionCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLClientMachineCnt">
+                        <expression><![CDATA[SQLClientMachineCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLUserConnectionsParm">
+                        <expression><![CDATA[SQLUserConnectionsParm]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLInternalConnectionsCnt">
+                        <expression><![CDATA[SQLInternalConnectionsCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLeadBlockersCnt">
+                        <expression><![CDATA[SQLLeadBlockersCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBCCSessionsCnt">
+                        <expression><![CDATA[DBCCSessionsCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLConnectionTally">
+                        <expression><![CDATA[SQLConnectionTally]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLMaxWorkerThreads">
+                        <expression><![CDATA[MaxWorkerThreads]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLAllActiveConnectionsCnt">
+                        <expression><![CDATA[AllActiveConnectionsCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLActiveUserConnectionPct">
+                        <expression><![CDATA[min(100, 100 * SQLActiveUserConnectionCnt / SQLUserConnectionCnt)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLActiveMaxWorkerPct">
+                        <expression><![CDATA[min(100, 100 * SQLAllActiveConnectionsCnt / SQLMaxWorkerThreads)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="SQLConnectionCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLBlockCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLUserConnectionCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLSystemConnectionCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLActiveUserConnectionCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLInactiveConnectionCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLClientMachineCnt" dataType="LONG"/>
+                     <columnDataType columnName="MaxWorkerThreads" dataType="LONG"/>
+                     <columnDataType columnName="AllActiveConnectionsCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLUserConnectionsParm" dataType="LONG"/>
+                     <columnDataType columnName="SQLInternalConnectionsCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLLeadBlockersCnt" dataType="LONG"/>
+                     <columnDataType columnName="DBCCSessionsCnt" dataType="LONG"/>
+                     <columnDataType columnName="SQLConnectionTally" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="30">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,115 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Session Details" name="SQLConnectionDetails">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlconnectiondetails</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLConnectionDetails" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="spid" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="0" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="spid" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="LastError" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="LastErrorText" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="LogicalReads" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PhysicalReads" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="BufferHitRate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="DBName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SQLStatement" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="LockTimeout" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="PlanHandle" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="QueryPlan" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>SelectedSPID</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="" isRequired="true" name="SelectedSPID" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_ConnectionDetails.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="spid">
+                <expression><![CDATA[spid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LastError">
+                <expression><![CDATA[LastError]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LastErrorText">
+                <expression><![CDATA[LastErrorText]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LogicalReads">
+                <expression><![CDATA[LogicalReads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PhysicalReads">
+                <expression><![CDATA[PhysicalReads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BufferHitRate">
+                <expression><![CDATA[BufferHitRate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DBName">
+                <expression><![CDATA[DBName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLStatement">
+                <expression><![CDATA[SQLStatement]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LockTimeout">
+                <expression><![CDATA[LockTimeout]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PlanHandle">
+                <expression><![CDATA[Plan_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueryPlan">
+                <expression><![CDATA[Query_Plan]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="spid" dataType="LONG" />
+              <columnDataType columnName="LastError" dataType="LONG" />
+              <columnDataType columnName="LastErrorText" dataType="STRING" />
+              <columnDataType columnName="RowCount" dataType="LONG" />
+              <columnDataType columnName="LogicalReads" dataType="LONG" />
+              <columnDataType columnName="PhysicalReads" dataType="LONG" />
+              <columnDataType columnName="BufferHitRate" dataType="DOUBLE" />
+              <columnDataType columnName="DBName" dataType="STRING" />
+              <columnDataType columnName="SQLStatement" dataType="STRING" />
+              <columnDataType columnName="CurrentLine" dataType="STRING" />
+              <columnDataType columnName="LockTimeout" dataType="STRING" />
+              <columnDataType columnName="Plan_handle" dataType="STRING" />
+              <columnDataType columnName="Query_Plan" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

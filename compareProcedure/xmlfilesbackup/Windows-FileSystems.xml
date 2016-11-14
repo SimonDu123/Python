@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="File Systems" name="FileSystems">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">filesystems</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_FileSystems" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">diskfreespace</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">diskpctfull</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="Name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FreeBytes" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FreeKB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FreeMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="UsedBytes" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="UsedKB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="UsedMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalBytes" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalKB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="UsedPct" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FreePct" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Volume" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Host" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Label" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT DeviceID, VolumeName, FreeSpace, Size 
+FROM   Win32_LogicalDisk 
+WHERE  DriveType = 3 
+AND    Size > 0]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[DeviceID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeBytes">
+                        <expression><![CDATA[FreeSpace]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytes">
+                        <expression><![CDATA[Size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeKB">
+                        <expression><![CDATA[FileSystems.FreeBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeMB">
+                        <expression><![CDATA[FileSystems.FreeKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKB">
+                        <expression><![CDATA[FileSystems.TotalBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalMB">
+                        <expression><![CDATA[FileSystems.TotalKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedBytes">
+                        <expression><![CDATA[FileSystems.TotalBytes - FileSystems.FreeBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedKB">
+                        <expression><![CDATA[FileSystems.TotalKB - FileSystems.FreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedMB">
+                        <expression><![CDATA[FileSystems.TotalMB - FileSystems.FreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreePct">
+                        <expression><![CDATA[FileSystems.FreeBytes / FileSystems.TotalBytes * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedPct">
+                        <expression><![CDATA[FileSystems.UsedBytes / FileSystems.TotalBytes * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Volume">
+                        <expression><![CDATA[""]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[createMEDisplayNameColumn(FileSystems.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Label">
+                        <expression><![CDATA[VolumeName]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="DeviceID" dataType="STRING"/>
+                     <columnDataType columnName="VolumeName" dataType="STRING"/>
+                     <columnDataType columnName="FreeSpace" dataType="LONG"/>
+                     <columnDataType columnName="Size" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[mountpoints = FileSystems.execute({"queryName" : "mountpoints", "reset" : "true"});
+volumes = FileSystems.execute({"queryName" : "volumes", "reset" : "true"});
+mountpointcount = length(mountpoints.Name);
+volumecount = length(volumes.Name);
+if (mountpointcount > 0) and (volumecount > 0):
+	# iterate the mountpoints table
+	currmountpointrow = 0;
+	while currmountpointrow < mountpointcount:
+		directory = mountpoints.Name[currmountpointrow];
+		directory = directory.replace("Win32_Directory.Name=","");
+		directory = directory.replace("\"","");
+		directory = directory.replace("\\\\","\\");
+		if directory.endswith("\\"):
+			directory = substring(directory, 0, length(directory)-1);
+		volume = mountpoints.Volume[currmountpointrow];
+		volume = volume.replace("Win32_Volume.DeviceID=","");
+		volume = volume.replace("\"","");
+		volume = volume.replace("\\\\","\\");
+		currmountpointrow += 1;
+		currvolumerow = 0;
+		while currvolumerow < volumecount:
+			if equals(volumes.Volume[currvolumerow],volume):
+				append(Result.Name,directory);
+				if currvolumerow < length(volumes.Label):
+					append(Result.Label,volumes.Label[currvolumerow]);
+				else:
+					append(Result.Label,null);
+				append(Result.Volume,volume);
+				if currvolumerow < length(volumes.freebytes):
+					append(Result.freebytes,volumes.freebytes[currvolumerow]);
+				else:
+					append(Result.freebytes,null);
+				if currvolumerow < length(volumes.totalbytes):
+					append(Result.totalbytes,volumes.totalbytes[currvolumerow]);
+				else:
+					append(Result.totalbytes, null);
+				# let's bail from the while loop
+				currvolumerow = volumecount;
+			currvolumerow += 1;
+elif (length(mountpoints._exit) == 0):
+	setError(-2, "Mount points Exit column not found");
+elif (length(volumes._exit) == 0):
+	setError(-2, "Volumes Exit column not found");
+elif (mountpoints._exit[0] != 0):
+	setError(mountpoints._errorCode[0], mountpoints._errorText[0]);
+elif (volumes._exit[0] != 0):
+	setError(volumes._errorCode[0], volumes._errorText[0]);]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                        <fragment type="TECHNOLOGY">2003</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeMB">
+                        <expression><![CDATA[FreeBytes / 1024 / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeKB">
+                        <expression><![CDATA[FreeBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeBytes">
+                        <expression><![CDATA[FreeBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalMB">
+                        <expression><![CDATA[FileSystems.TotalBytes / 1024 / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKB">
+                        <expression><![CDATA[FileSystems.TotalBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytes">
+                        <expression><![CDATA[TotalBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedMB">
+                        <expression><![CDATA[FileSystems.TotalMB - FileSystems.FreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreePct">
+                        <expression><![CDATA[FileSystems.FreeBytes / FileSystems.TotalBytes * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedBytes">
+                        <expression><![CDATA[FileSystems.TotalBytes - FileSystems.FreeBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedKB">
+                        <expression><![CDATA[FileSystems.TotalKB - FileSystems.FreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedPct">
+                        <expression><![CDATA[FileSystems.UsedBytes / FileSystems.TotalBytes * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Volume">
+                        <expression><![CDATA[Volume]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[createMEDisplayNameColumn(FileSystems.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Label">
+                        <expression><![CDATA[Label]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="FreeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FreeKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FreeBytes" dataType="DOUBLE"/>
+                     <columnDataType columnName="TotalMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="TotalKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="TotalBytes" dataType="DOUBLE"/>
+                     <columnDataType columnName="UsedMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FreePct" dataType="DOUBLE"/>
+                     <columnDataType columnName="UsedPct" dataType="DOUBLE"/>
+                     <columnDataType columnName="UsedKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="UsedBytes" dataType="DOUBLE"/>
+                     <columnDataType columnName="Volume" dataType="STRING"/>
+                     <columnDataType columnName="Label" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="mountpoints" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT Directory, Volume
+  FROM Win32_MountPoint]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Directory]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeBytes">
+                        <expression><![CDATA[0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytes">
+                        <expression><![CDATA[0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeKB">
+                        <expression><![CDATA[FileSystems.FreeBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeMB">
+                        <expression><![CDATA[FileSystems.FreeKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKB">
+                        <expression><![CDATA[FileSystems.TotalBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalMB">
+                        <expression><![CDATA[FileSystems.TotalKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedBytes">
+                        <expression><![CDATA[FileSystems.TotalBytes - FileSystems.FreeBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedKB">
+                        <expression><![CDATA[FileSystems.TotalKB - FileSystems.FreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedMB">
+                        <expression><![CDATA[FileSystems.TotalMB - FileSystems.FreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreePct">
+                        <expression><![CDATA[FileSystems.FreeBytes / FileSystems.TotalBytes * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedPct">
+                        <expression><![CDATA[100 - FileSystems.FreePct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Volume">
+                        <expression><![CDATA[Volume]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[""]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Label">
+                        <expression><![CDATA[""]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Directory" dataType="STRING"/>
+                     <columnDataType columnName="Volume" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="volumes" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT Capacity, DeviceID, Label, FreeSpace 
+FROM   Win32_Volume 
+WHERE  DriveType = 3 
+AND    Capacity > 0]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[DeviceID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeBytes">
+                        <expression><![CDATA[FreeSpace]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytes">
+                        <expression><![CDATA[Capacity]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeKB">
+                        <expression><![CDATA[FileSystems.FreeBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeMB">
+                        <expression><![CDATA[FileSystems.FreeKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKB">
+                        <expression><![CDATA[FileSystems.TotalBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalMB">
+                        <expression><![CDATA[FileSystems.TotalKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedBytes">
+                        <expression><![CDATA[FileSystems.TotalBytes - FileSystems.FreeBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedKB">
+                        <expression><![CDATA[FileSystems.TotalKB - FileSystems.FreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedMB">
+                        <expression><![CDATA[FileSystems.TotalMB - FileSystems.FreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreePct">
+                        <expression><![CDATA[FileSystems.FreeBytes / FileSystems.TotalBytes * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedPct">
+                        <expression><![CDATA[100 - FileSystems.FreePct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Volume">
+                        <expression><![CDATA[DeviceID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[""]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Label">
+                        <expression><![CDATA[Label]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Capacity" dataType="STRING"/>
+                     <columnDataType columnName="DeviceID" dataType="STRING"/>
+                     <columnDataType columnName="FreeSpace" dataType="LONG"/>
+                     <columnDataType columnName="Label" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

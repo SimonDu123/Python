@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="General DB Properties" name="GeneralDBProperties">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">generaldbproperties</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_GeneralDBProperties" dataRetentionMode="ALWAYS" keyColumnName="dbid" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="dbname" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="dbid" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="dbname" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AnsiNullDefault" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AnsiNulls" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AnsiPadding" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AnsiWarnings" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="ArithmeticAbort" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AutoClose" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AutoCreateStatistics" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AutoShrink" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="AutoUpdateStatistics" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="BulkCopy" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="CloseCursorsOnCommit" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Collation" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="FullText" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="LocalCursorsDefault" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="MergePublished" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="NullConcat" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="NumericRoundAbort" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="QuotedIdentifiers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Recovery" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="RecursiveTriggers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Status" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="Subscribed" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="TornPageDetection" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="TruncLog" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Updateability" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="UserAccess" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBNameAndID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Instance" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_DatabaseProperties.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="dbid">
+                        <expression><![CDATA[dbid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="dbname">
+                        <expression><![CDATA[dbname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AnsiNullDefault">
+                        <expression><![CDATA[AnsiNullDefault]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AnsiNulls">
+                        <expression><![CDATA[AnsiNulls]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AnsiPadding">
+                        <expression><![CDATA[AnsiPadding]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AnsiWarnings">
+                        <expression><![CDATA[AnsiWarnings]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ArithmeticAbort">
+                        <expression><![CDATA[ArithmeticAbort]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AutoClose">
+                        <expression><![CDATA[AutoClose]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AutoCreateStatistics">
+                        <expression><![CDATA[AutoCreateStatistics]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AutoShrink">
+                        <expression><![CDATA[AutoShrink]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AutoUpdateStatistics">
+                        <expression><![CDATA[AutoUpdateStatistics]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BulkCopy">
+                        <expression><![CDATA[BulkCopy]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Collation">
+                        <expression><![CDATA[Collation]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FullText">
+                        <expression><![CDATA[FullText]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LocalCursorsDefault">
+                        <expression><![CDATA[LocalCursorsDefault]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MergePublished">
+                        <expression><![CDATA[MergePublished]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NullConcat">
+                        <expression><![CDATA[NullConcat]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NumericRoundAbort">
+                        <expression><![CDATA[NumericRoundAbort]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="QuotedIdentifiers">
+                        <expression><![CDATA[QuotedIdentifiers]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Recovery">
+                        <expression><![CDATA[Recovery]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="RecursiveTriggers">
+                        <expression><![CDATA[RecursiveTriggers]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Status">
+                        <expression><![CDATA[Status]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Subscribed">
+                        <expression><![CDATA[Subscribed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TornPageDetection">
+                        <expression><![CDATA[TornPageDetection]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TruncLog">
+                        <expression><![CDATA[TruncLog]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Updateability">
+                        <expression><![CDATA[Updateability]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UserAccess">
+                        <expression><![CDATA[UserAccess]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CloseCursorsOnCommit">
+                        <expression><![CDATA[CloseCursorsOnCommit]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBNameAndID">
+                        <expression><![CDATA[concat(dbname, " [", dbid, "]")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Instance">
+                        <expression><![CDATA[createMEDisplayNameColumn(GeneralDBProperties.dbid)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(GeneralDBProperties.dbid)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="dbid" dataType="LONG"/>
+                     <columnDataType columnName="dbname" dataType="STRING"/>
+                     <columnDataType columnName="AnsiNullDefault" dataType="BOOLEAN"/>
+                     <columnDataType columnName="AnsiNulls" dataType="BOOLEAN"/>
+                     <columnDataType columnName="AnsiPadding" dataType="BOOLEAN"/>
+                     <columnDataType columnName="AnsiWarnings" dataType="BOOLEAN"/>
+                     <columnDataType columnName="ArithmeticAbort" dataType="BOOLEAN"/>
+                     <columnDataType columnName="AutoClose" dataType="BOOLEAN"/>
+                     <columnDataType columnName="AutoCreateStatistics" dataType="BOOLEAN"/>
+                     <columnDataType columnName="AutoShrink" dataType="BOOLEAN"/>
+                     <columnDataType columnName="AutoUpdateStatistics" dataType="BOOLEAN"/>
+                     <columnDataType columnName="BulkCopy" dataType="BOOLEAN"/>
+                     <columnDataType columnName="CloseCursorsOnCommit" dataType="BOOLEAN"/>
+                     <columnDataType columnName="Collation" dataType="STRING"/>
+                     <columnDataType columnName="FullText" dataType="BOOLEAN"/>
+                     <columnDataType columnName="LocalCursorsDefault" dataType="BOOLEAN"/>
+                     <columnDataType columnName="MergePublished" dataType="BOOLEAN"/>
+                     <columnDataType columnName="NullConcat" dataType="BOOLEAN"/>
+                     <columnDataType columnName="NumericRoundAbort" dataType="BOOLEAN"/>
+                     <columnDataType columnName="QuotedIdentifiers" dataType="BOOLEAN"/>
+                     <columnDataType columnName="Recovery" dataType="STRING"/>
+                     <columnDataType columnName="RecursiveTriggers" dataType="BOOLEAN"/>
+                     <columnDataType columnName="Status" dataType="STRING"/>
+                     <columnDataType columnName="Subscribed" dataType="BOOLEAN"/>
+                     <columnDataType columnName="TornPageDetection" dataType="BOOLEAN"/>
+                     <columnDataType columnName="TruncLog" dataType="BOOLEAN"/>
+                     <columnDataType columnName="Updateability" dataType="STRING"/>
+                     <columnDataType columnName="UserAccess" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectionName="SQLServer.V5.DB_Properties" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="true">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="90">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

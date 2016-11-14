@@ -1,0 +1,115 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Error Records" name="ErrorRecords">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">errorrecords</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="source_type_id" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="source_name" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="error_code" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="error_text" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="error_type_id" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="has_xact_seqno" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="command_id" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="time" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>error</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="" isRequired="true" name="error" />
+          </entry>
+          <entry>
+            <string>publisher</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="publisher" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="ReplicationConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[errorrecords
+publisher={{publisher}}
+error={{error}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="source_type_id">
+                <expression><![CDATA[source_type_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="source_name">
+                <expression><![CDATA[source_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="error_code">
+                <expression><![CDATA[error_code]]></expression>
+              </columnExpression>
+              <columnExpression columnName="error_text">
+                <expression><![CDATA[error_text]]></expression>
+              </columnExpression>
+              <columnExpression columnName="error_type_id">
+                <expression><![CDATA[error_type_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="has_xact_seqno">
+                <expression><![CDATA[has_xact_seqno]]></expression>
+              </columnExpression>
+              <columnExpression columnName="command_id">
+                <expression><![CDATA[command_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="time">
+                <expression><![CDATA[time]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="source_type_id" dataType="LONG" />
+              <columnDataType columnName="source_name" dataType="STRING" />
+              <columnDataType columnName="error_code" dataType="STRING" />
+              <columnDataType columnName="error_text" dataType="STRING" />
+              <columnDataType columnName="error_type_id" dataType="LONG" />
+              <columnDataType columnName="has_xact_seqno" dataType="BOOLEAN" />
+              <columnDataType columnName="command_id" dataType="LONG" />
+              <columnDataType columnName="time" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROPERTIES</componentType>
+      <component class="com.quest.adk.configuration.component.PropertiesComponent">
+        <properties>
+          <entry>
+            <string>rowlimit</string>
+            <property dataType="STRING" description="rowLimit" displayName="rowLimit" encryptStyle="NONE" hidden="true" name="rowLimit">50000</property>
+          </entry>
+        </properties>
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

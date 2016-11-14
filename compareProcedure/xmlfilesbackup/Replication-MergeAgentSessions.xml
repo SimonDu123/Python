@@ -1,0 +1,134 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Merge Agent Sessions" name="MergeAgentSessions">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">mergeagentsessions</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Session_id" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Session_id" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Status" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="StatusText" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="StartTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="EndTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Duration" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="UploadedCommands" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DownloadedCommands" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ErrorMessages" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ErrorID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PercentageDone" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TimeRemaining" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CurrentPhase" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="CurrentPhaseText" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="LastMessage" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>agent</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="agent" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="ReplicationConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[mergeagentsessions
+agent={{agent}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Session_id">
+                <expression><![CDATA[Session_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Status">
+                <expression><![CDATA[Status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StatusText">
+                <expression><![CDATA[choose(Status, 1, "Started", 2, "Completed", 3, "Running", 4, "Idle", 5, "Retrying", 6, "Error")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StartTime">
+                <expression><![CDATA[StartTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="EndTime">
+                <expression><![CDATA[EndTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Duration">
+                <expression><![CDATA[Duration]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UploadedCommands">
+                <expression><![CDATA[UploadedCommands]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DownloadedCommands">
+                <expression><![CDATA[DownloadedCommands]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ErrorMessages">
+                <expression><![CDATA[ErrorMessages]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ErrorID">
+                <expression><![CDATA[ErrorID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PercentageDone">
+                <expression><![CDATA[PercentageDone]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TimeRemaining">
+                <expression><![CDATA[TimeRemaining]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CurrentPhase">
+                <expression><![CDATA[CurrentPhase]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CurrentPhaseText">
+                <expression><![CDATA[choose(CurrentPhase, 1, "Upload", 2, "Download", 3, "3", 4, "4")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LastMessage">
+                <expression><![CDATA[LastMessage]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Session_id" dataType="LONG" />
+              <columnDataType columnName="Status" dataType="LONG" />
+              <columnDataType columnName="StatusText" dataType="STRING" />
+              <columnDataType columnName="StartTime" dataType="DATE" />
+              <columnDataType columnName="EndTime" dataType="DATE" />
+              <columnDataType columnName="Duration" dataType="LONG" />
+              <columnDataType columnName="UploadedCommands" dataType="LONG" />
+              <columnDataType columnName="DownloadedCommands" dataType="LONG" />
+              <columnDataType columnName="ErrorMessages" dataType="LONG" />
+              <columnDataType columnName="ErrorID" dataType="LONG" />
+              <columnDataType columnName="PercentageDone" dataType="DOUBLE" />
+              <columnDataType columnName="TimeRemaining" dataType="LONG" />
+              <columnDataType columnName="CurrentPhase" dataType="LONG" />
+              <columnDataType columnName="CurrentPhaseText" dataType="STRING" />
+              <columnDataType columnName="LastMessage" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

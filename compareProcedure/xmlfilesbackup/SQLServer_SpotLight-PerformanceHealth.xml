@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Performance Health" name="PerformanceHealth">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">performancehealth</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_PerformanceHealth" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="true" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="60">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">waitsbycategory</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">performancehealthalarm</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="DOUBLE" name="io_latency_score" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="cpu_io_score" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="io_latency" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="db_time" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="instantaneous_score" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="threshold" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="score" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="health" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="available_cpu_time" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="wait_rate" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="wait_versus_available_percent" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="cpu_metric_available" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="waiting_categories" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="more_waiting_categories" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="bad_io_latency" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="60000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[PERFORMANCE_HEALTH]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="io_latency_score">
+                        <expression><![CDATA[io_latency_score]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="cpu_io_score">
+                        <expression><![CDATA[cpu_io_score]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="io_latency">
+                        <expression><![CDATA[io_latency]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="db_time">
+                        <expression><![CDATA[db_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instantaneous_score">
+                        <expression><![CDATA[score]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="threshold">
+                        <expression><![CDATA[threshold]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="score">
+                        <expression><![CDATA[movingtimeaverage(PerformanceHealth.score, 1800)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="health">
+                        <expression><![CDATA[iff(score >= threshold, "Healthy", "Unhealthy")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="available_cpu_time">
+                        <expression><![CDATA[available_cpu_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_rate">
+                        <expression><![CDATA[wait_rate]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_versus_available_percent">
+                        <expression><![CDATA[wait_versus_available_percent]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="cpu_metric_available">
+                        <expression><![CDATA[cpu_metric_available]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="waiting_categories">
+                        <expression><![CDATA[waiting_categories]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="more_waiting_categories">
+                        <expression><![CDATA[more_waiting_categories]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="bad_io_latency">
+                        <expression><![CDATA[bad_io_latency]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="io_latency_score" dataType="DOUBLE"/>
+                     <columnDataType columnName="cpu_io_score" dataType="DOUBLE"/>
+                     <columnDataType columnName="io_latency" dataType="DOUBLE"/>
+                     <columnDataType columnName="db_time" dataType="DOUBLE"/>
+                     <columnDataType columnName="score" dataType="DOUBLE"/>
+                     <columnDataType columnName="threshold" dataType="DOUBLE"/>
+                     <columnDataType columnName="instantaneous_score" dataType="DOUBLE"/>
+                     <columnDataType columnName="health" dataType="STRING"/>
+                     <columnDataType columnName="available_cpu_time" dataType="LONG"/>
+                     <columnDataType columnName="interval" dataType="LONG"/>
+                     <columnDataType columnName="wait_rate" dataType="DOUBLE"/>
+                     <columnDataType columnName="wait_versus_available_precent" dataType="DOUBLE"/>
+                     <columnDataType columnName="wait_versus_available_percent" dataType="DOUBLE"/>
+                     <columnDataType columnName="cpu_metric_available" dataType="BOOLEAN"/>
+                     <columnDataType columnName="waiting_categories" dataType="STRING"/>
+                     <columnDataType columnName="more_waiting_categories" dataType="BOOLEAN"/>
+                     <columnDataType columnName="bad_io_latency" dataType="BOOLEAN"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="60000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

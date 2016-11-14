@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Fragmentation by Index" name="FragmentationByIndex">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">fragmentationbyindex</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="true" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Key" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="true" usingAuxiliaryConnection="true">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="IndexName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="OwnerName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="TableName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Type" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="AverageFragmentation" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PageCount" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="TypeEnum" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="Disabled" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PartitionNumber" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Key" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="AllocUnitTypeDesc" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments>
+               <entry>
+                  <string>DatabaseName</string>
+                  <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="%" isRequired="false" name="DatabaseName"/>
+               </entry>
+               <entry>
+                  <string>MinimumPageCount</string>
+                  <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="1000" isRequired="false" name="MinimumPageCount"/>
+               </entry>
+               <entry>
+                  <string>RowLimit</string>
+                  <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="50" isRequired="false" name="RowLimit"/>
+               </entry>
+            </arguments>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerAuxiliaryConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties>
+                     <entry>
+                        <string>timeout</string>
+                        <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">45m</property>
+                     </entry>
+                  </properties>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_FragmentationByIndex.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2005</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="IndexName">
+                        <expression><![CDATA[IndexName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBName">
+                        <expression><![CDATA[DBName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OwnerName">
+                        <expression><![CDATA[OwnerName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TableName">
+                        <expression><![CDATA[TableName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Type">
+                        <expression><![CDATA[Type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AverageFragmentation">
+                        <expression><![CDATA[AverageFragmentation]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageCount">
+                        <expression><![CDATA[PageCount]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TypeEnum">
+                        <expression><![CDATA[TypeEnum]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Disabled">
+                        <expression><![CDATA[Disabled]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PartitionNumber">
+                        <expression><![CDATA[PartitionNumber]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Key">
+                        <expression><![CDATA[concat(DBName, ".", TableName, ".", IndexName, ".", PartitionNumber,".",AllocUnitTypeDesc)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AllocUnitTypeDesc">
+                        <expression><![CDATA[AllocUnitTypeDesc]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="IndexName" dataType="STRING"/>
+                     <columnDataType columnName="DBName" dataType="STRING"/>
+                     <columnDataType columnName="OwnerName" dataType="STRING"/>
+                     <columnDataType columnName="TableName" dataType="STRING"/>
+                     <columnDataType columnName="Type" dataType="STRING"/>
+                     <columnDataType columnName="AverageFragmentation" dataType="DOUBLE"/>
+                     <columnDataType columnName="PageCount" dataType="LONG"/>
+                     <columnDataType columnName="TypeEnum" dataType="LONG"/>
+                     <columnDataType columnName="Disabled" dataType="BOOLEAN"/>
+                     <columnDataType columnName="PartitionNumber" dataType="LONG"/>
+                     <columnDataType columnName="AllocUnitTypeDesc" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.DailyScheduleConfiguration" timeOfDay="16200000">
+               <days class="java.util.ArrayList">
+                  <daysOfWeek>MON</daysOfWeek>
+                  <daysOfWeek>TUES</daysOfWeek>
+                  <daysOfWeek>WED</daysOfWeek>
+                  <daysOfWeek>THUR</daysOfWeek>
+                  <daysOfWeek>FRI</daysOfWeek>
+                  <daysOfWeek>SAT</daysOfWeek>
+                  <daysOfWeek>SUN</daysOfWeek>
+               </days>
+            </schedule>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="35">
+            <schedule class="com.quest.adk.configuration.component.schedule.DailyScheduleConfiguration" timeOfDay="14400000">
+               <days class="java.util.ArrayList">
+                  <daysOfWeek>MON</daysOfWeek>
+                  <daysOfWeek>TUES</daysOfWeek>
+                  <daysOfWeek>WED</daysOfWeek>
+                  <daysOfWeek>THUR</daysOfWeek>
+                  <daysOfWeek>FRI</daysOfWeek>
+                  <daysOfWeek>SAT</daysOfWeek>
+                  <daysOfWeek>SUN</daysOfWeek>
+               </days>
+            </schedule>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>timeout</string>
+                  <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">3600000</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

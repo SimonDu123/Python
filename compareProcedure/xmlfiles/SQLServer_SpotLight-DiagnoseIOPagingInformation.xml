@@ -1,0 +1,88 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Diagnose IO Paging Information" name="DiagnoseIOPagingInformation">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">diagnoseiopaginginformation</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DBAndFile" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="10000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="DBAndFile" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="DBName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="File" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Disk" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Path" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Type" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="Activity" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DIAGNOSE_IO_PRESSURE_PAGING_INFORMATION]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DBAndFile">
+                <expression><![CDATA[DBAndFile]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DBName">
+                <expression><![CDATA[DBName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="File">
+                <expression><![CDATA[File]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Disk">
+                <expression><![CDATA[Disk]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Path">
+                <expression><![CDATA[Path]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Type">
+                <expression><![CDATA[Type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Activity">
+                <expression><![CDATA[Activity]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DBAndFile" dataType="STRING" />
+              <columnDataType columnName="DBName" dataType="STRING" />
+              <columnDataType columnName="File" dataType="STRING" />
+              <columnDataType columnName="Disk" dataType="STRING" />
+              <columnDataType columnName="Path" dataType="STRING" />
+              <columnDataType columnName="Type" dataType="STRING" />
+              <columnDataType columnName="Activity" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

@@ -1,0 +1,112 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="IndexLatchWaits" name="IndexLatchWaits">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">indexlatchwaits</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="keyval" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="keyval" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="dbid" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="dbname" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="tableid" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="tablename" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="indexid" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="indexname" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="waitcount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="waitms" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="waitcountrate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="waitmsrate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="partition_number" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_IndexLatchWaitTimes.sql}}]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2005</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="keyval">
+                <expression><![CDATA[keyval]]></expression>
+              </columnExpression>
+              <columnExpression columnName="dbid">
+                <expression><![CDATA[dbid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="dbname">
+                <expression><![CDATA[dbname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="tableid">
+                <expression><![CDATA[tableid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="tablename">
+                <expression><![CDATA[tablename]]></expression>
+              </columnExpression>
+              <columnExpression columnName="indexid">
+                <expression><![CDATA[indexid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="indexname">
+                <expression><![CDATA[indexname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="waitcount">
+                <expression><![CDATA[waitcount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="waitms">
+                <expression><![CDATA[waitms]]></expression>
+              </columnExpression>
+              <columnExpression columnName="waitcountrate">
+                <expression><![CDATA[positiveRate(IndexLatchWaits.waitcount)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="waitmsrate">
+                <expression><![CDATA[positiveRate(IndexLatchWaits.waitms)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="partition_number">
+                <expression><![CDATA[partition_number]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="keyval" dataType="STRING" />
+              <columnDataType columnName="dbid" dataType="LONG" />
+              <columnDataType columnName="dbname" dataType="STRING" />
+              <columnDataType columnName="tableid" dataType="LONG" />
+              <columnDataType columnName="tablename" dataType="STRING" />
+              <columnDataType columnName="indexid" dataType="LONG" />
+              <columnDataType columnName="indexname" dataType="STRING" />
+              <columnDataType columnName="waitcount" dataType="LONG" />
+              <columnDataType columnName="waitms" dataType="LONG" />
+              <columnDataType columnName="partition_number" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

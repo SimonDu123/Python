@@ -1,0 +1,144 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Jobs List" name="AnalysisJobsList">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisjobslist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="JobID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="SPID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="JobID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="JobDescription" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="JobCreationTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="JobTotalTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="JobStartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="JobExecutionTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="JobThreadPoolID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# DISCOVER_JOBS not suppported on SSAS 2005]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SPID">
+                <expression><![CDATA[SPID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobID">
+                <expression><![CDATA[Job_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobDescription">
+                <expression><![CDATA[Job_Description]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobCreationTime">
+                <expression><![CDATA[Job_Creation_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobTotalTimeMS">
+                <expression><![CDATA[Job_Total_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobStartTime">
+                <expression><![CDATA[Job_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobExecutionTimeMS">
+                <expression><![CDATA[Job_Execution_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobThreadPoolID">
+                <expression><![CDATA[Job_Thread_Pool_ID]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="SPID" dataType="LONG" />
+              <columnDataType columnName="Job_ID" dataType="LONG" />
+              <columnDataType columnName="Job_Description" dataType="STRING" />
+              <columnDataType columnName="Job_Creation_Time" dataType="DATE" />
+              <columnDataType columnName="Job_Total_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Job_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Job_Execution_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Job_Thread_Pool_ID" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_JOBS]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SPID">
+                <expression><![CDATA[SPID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobID">
+                <expression><![CDATA[Job_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobDescription">
+                <expression><![CDATA[Job_Description]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobCreationTime">
+                <expression><![CDATA[Job_Creation_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobTotalTimeMS">
+                <expression><![CDATA[Job_Total_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobStartTime">
+                <expression><![CDATA[Job_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobExecutionTimeMS">
+                <expression><![CDATA[Job_Execution_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobThreadPoolID">
+                <expression><![CDATA[Job_Thread_Pool_ID]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="SPID" dataType="LONG" />
+              <columnDataType columnName="Job_ID" dataType="LONG" />
+              <columnDataType columnName="Job_Description" dataType="STRING" />
+              <columnDataType columnName="Job_Creation_Time" dataType="DATE" />
+              <columnDataType columnName="Job_Total_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Job_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Job_Execution_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Job_Thread_Pool_ID" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

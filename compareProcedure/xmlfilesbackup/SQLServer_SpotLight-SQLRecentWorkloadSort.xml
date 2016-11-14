@@ -1,0 +1,511 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Recent Workload using SORT Operator" name="SQLRecentWorkloadSort">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlrecentworkloadsort</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="" dataRetentionMode="NEVER" keyColumnName="key_column" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="1000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="key_column" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="sql_handle" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="statement_start_offset" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="statement_end_offset" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="plan_generation_num" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="plan_handle" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="creation_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="last_execution_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="execution_count" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_worker_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_worker_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="min_worker_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_worker_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_physical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_physical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="min_physical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_physical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_logical_writes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_logical_writes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="min_logical_writes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_logical_writes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_logical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_logical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="min_logical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_logical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_clr_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_clr_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="min_clr_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_clr_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_elapsed_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_elapsed_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="min_elapsed_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_elapsed_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="avg_worker_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="avg_physical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="avg_logical_writes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="avg_logical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="avg_clr_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="avg_elapsed_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_wait_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_wait_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="min_wait_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_wait_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="avg_wait_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="query_plan" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="query_text" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>lastnseconds</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="30" isRequired="false" name="lastnseconds" />
+          </entry>
+          <entry>
+            <string>paramone</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="false" name="paramone" />
+          </entry>
+          <entry>
+            <string>query_column_name</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="query_text" isRequired="false" name="query_column_name" />
+          </entry>
+          <entry>
+            <string>showmevalue</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="sort" isRequired="false" name="showmevalue" />
+          </entry>
+          <entry>
+            <string>sortvalue</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="last_execution_time" isRequired="false" name="sortvalue" />
+          </entry>
+          <entry>
+            <string>topvalue</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="10" isRequired="false" name="topvalue" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_TopSQLStatements.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="key_column">
+                <expression><![CDATA[key_column]]></expression>
+              </columnExpression>
+              <columnExpression columnName="sql_handle">
+                <expression><![CDATA[sql_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_start_offset">
+                <expression><![CDATA[statement_start_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_end_offset">
+                <expression><![CDATA[statement_end_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="plan_generation_num">
+                <expression><![CDATA[plan_generation_num]]></expression>
+              </columnExpression>
+              <columnExpression columnName="plan_handle">
+                <expression><![CDATA[plan_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="creation_time">
+                <expression><![CDATA[creation_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_execution_time">
+                <expression><![CDATA[last_execution_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="execution_count">
+                <expression><![CDATA[execution_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_worker_time">
+                <expression><![CDATA[total_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_worker_time">
+                <expression><![CDATA[last_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_worker_time">
+                <expression><![CDATA[min_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_worker_time">
+                <expression><![CDATA[max_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_physical_reads">
+                <expression><![CDATA[total_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_physical_reads">
+                <expression><![CDATA[last_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_physical_reads">
+                <expression><![CDATA[min_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_physical_reads">
+                <expression><![CDATA[max_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_logical_writes">
+                <expression><![CDATA[total_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_logical_writes">
+                <expression><![CDATA[last_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_logical_writes">
+                <expression><![CDATA[min_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_logical_writes">
+                <expression><![CDATA[max_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_logical_reads">
+                <expression><![CDATA[total_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_logical_reads">
+                <expression><![CDATA[last_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_logical_reads">
+                <expression><![CDATA[min_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_logical_reads">
+                <expression><![CDATA[max_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_clr_time">
+                <expression><![CDATA[total_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_clr_time">
+                <expression><![CDATA[last_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_clr_time">
+                <expression><![CDATA[min_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_clr_time">
+                <expression><![CDATA[max_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_elapsed_time">
+                <expression><![CDATA[total_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_elapsed_time">
+                <expression><![CDATA[last_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_elapsed_time">
+                <expression><![CDATA[min_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_elapsed_time">
+                <expression><![CDATA[max_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_worker_time">
+                <expression><![CDATA[avg_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_physical_reads">
+                <expression><![CDATA[avg_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_logical_writes">
+                <expression><![CDATA[avg_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_logical_reads">
+                <expression><![CDATA[avg_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_clr_time">
+                <expression><![CDATA[avg_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_elapsed_time">
+                <expression><![CDATA[avg_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_wait_time">
+                <expression><![CDATA[total_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_wait_time">
+                <expression><![CDATA[last_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_wait_time">
+                <expression><![CDATA[min_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_wait_time">
+                <expression><![CDATA[max_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_wait_time">
+                <expression><![CDATA[avg_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_plan">
+                <expression><![CDATA[query_plan]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_text">
+                <expression><![CDATA[query_text]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="key_column" dataType="STRING" />
+              <columnDataType columnName="sql_handle" dataType="STRING" />
+              <columnDataType columnName="statement_start_offset" dataType="LONG" />
+              <columnDataType columnName="statement_end_offset" dataType="LONG" />
+              <columnDataType columnName="plan_generation_num" dataType="LONG" />
+              <columnDataType columnName="plan_handle" dataType="STRING" />
+              <columnDataType columnName="creation_time" dataType="DATE" />
+              <columnDataType columnName="last_execution_time" dataType="DATE" />
+              <columnDataType columnName="execution_count" dataType="LONG" />
+              <columnDataType columnName="total_worker_time" dataType="LONG" />
+              <columnDataType columnName="last_worker_time" dataType="LONG" />
+              <columnDataType columnName="min_worker_time" dataType="LONG" />
+              <columnDataType columnName="max_worker_time" dataType="LONG" />
+              <columnDataType columnName="total_physical_reads" dataType="LONG" />
+              <columnDataType columnName="last_physical_reads" dataType="LONG" />
+              <columnDataType columnName="min_physical_reads" dataType="LONG" />
+              <columnDataType columnName="max_physical_reads" dataType="LONG" />
+              <columnDataType columnName="total_logical_writes" dataType="LONG" />
+              <columnDataType columnName="last_logical_writes" dataType="LONG" />
+              <columnDataType columnName="min_logical_writes" dataType="LONG" />
+              <columnDataType columnName="max_logical_writes" dataType="LONG" />
+              <columnDataType columnName="total_logical_reads" dataType="LONG" />
+              <columnDataType columnName="last_logical_reads" dataType="LONG" />
+              <columnDataType columnName="min_logical_reads" dataType="LONG" />
+              <columnDataType columnName="max_logical_reads" dataType="LONG" />
+              <columnDataType columnName="total_clr_time" dataType="LONG" />
+              <columnDataType columnName="last_clr_time" dataType="LONG" />
+              <columnDataType columnName="min_clr_time" dataType="LONG" />
+              <columnDataType columnName="max_clr_time" dataType="LONG" />
+              <columnDataType columnName="total_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="last_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="min_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="max_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="avg_worker_time" dataType="LONG" />
+              <columnDataType columnName="avg_physical_reads" dataType="LONG" />
+              <columnDataType columnName="avg_logical_writes" dataType="LONG" />
+              <columnDataType columnName="avg_logical_reads" dataType="LONG" />
+              <columnDataType columnName="avg_clr_time" dataType="LONG" />
+              <columnDataType columnName="avg_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="total_wait_time" dataType="LONG" />
+              <columnDataType columnName="last_wait_time" dataType="LONG" />
+              <columnDataType columnName="min_wait_time" dataType="LONG" />
+              <columnDataType columnName="max_wait_time" dataType="LONG" />
+              <columnDataType columnName="avg_wait_time" dataType="LONG" />
+              <columnDataType columnName="query_plan" dataType="STRING" />
+              <columnDataType columnName="query_text" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# not supported in SQL Server 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="key_column">
+                <expression><![CDATA[key_column]]></expression>
+              </columnExpression>
+              <columnExpression columnName="sql_handle">
+                <expression><![CDATA[sql_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_start_offset">
+                <expression><![CDATA[statement_start_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_end_offset">
+                <expression><![CDATA[statement_end_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="plan_generation_num">
+                <expression><![CDATA[plan_generation_num]]></expression>
+              </columnExpression>
+              <columnExpression columnName="plan_handle">
+                <expression><![CDATA[plan_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="creation_time">
+                <expression><![CDATA[creation_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_execution_time">
+                <expression><![CDATA[last_execution_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="execution_count">
+                <expression><![CDATA[execution_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_worker_time">
+                <expression><![CDATA[total_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_worker_time">
+                <expression><![CDATA[last_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_worker_time">
+                <expression><![CDATA[min_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_worker_time">
+                <expression><![CDATA[max_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_physical_reads">
+                <expression><![CDATA[total_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_physical_reads">
+                <expression><![CDATA[last_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_physical_reads">
+                <expression><![CDATA[min_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_physical_reads">
+                <expression><![CDATA[max_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_logical_writes">
+                <expression><![CDATA[total_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_logical_writes">
+                <expression><![CDATA[last_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_logical_writes">
+                <expression><![CDATA[min_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_logical_writes">
+                <expression><![CDATA[max_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_logical_reads">
+                <expression><![CDATA[total_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_logical_reads">
+                <expression><![CDATA[last_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_logical_reads">
+                <expression><![CDATA[min_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_logical_reads">
+                <expression><![CDATA[max_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_clr_time">
+                <expression><![CDATA[total_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_clr_time">
+                <expression><![CDATA[last_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_clr_time">
+                <expression><![CDATA[min_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_clr_time">
+                <expression><![CDATA[max_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_elapsed_time">
+                <expression><![CDATA[total_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_elapsed_time">
+                <expression><![CDATA[last_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_elapsed_time">
+                <expression><![CDATA[min_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_elapsed_time">
+                <expression><![CDATA[max_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_worker_time">
+                <expression><![CDATA[avg_worker_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_physical_reads">
+                <expression><![CDATA[avg_physical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_logical_writes">
+                <expression><![CDATA[avg_logical_writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_logical_reads">
+                <expression><![CDATA[avg_logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_clr_time">
+                <expression><![CDATA[avg_clr_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_elapsed_time">
+                <expression><![CDATA[avg_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_wait_time">
+                <expression><![CDATA[total_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_wait_time">
+                <expression><![CDATA[last_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="min_wait_time">
+                <expression><![CDATA[min_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_wait_time">
+                <expression><![CDATA[max_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="avg_wait_time">
+                <expression><![CDATA[avg_wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_plan">
+                <expression><![CDATA[query_plan]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_text">
+                <expression><![CDATA[query_text]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="key_column" dataType="STRING" />
+              <columnDataType columnName="sql_handle" dataType="STRING" />
+              <columnDataType columnName="statement_start_offset" dataType="LONG" />
+              <columnDataType columnName="statement_end_offset" dataType="LONG" />
+              <columnDataType columnName="plan_generation_num" dataType="LONG" />
+              <columnDataType columnName="plan_handle" dataType="STRING" />
+              <columnDataType columnName="creation_time" dataType="DATE" />
+              <columnDataType columnName="last_execution_time" dataType="DATE" />
+              <columnDataType columnName="execution_count" dataType="LONG" />
+              <columnDataType columnName="total_worker_time" dataType="LONG" />
+              <columnDataType columnName="last_worker_time" dataType="LONG" />
+              <columnDataType columnName="min_worker_time" dataType="LONG" />
+              <columnDataType columnName="max_worker_time" dataType="LONG" />
+              <columnDataType columnName="total_physical_reads" dataType="LONG" />
+              <columnDataType columnName="last_physical_reads" dataType="LONG" />
+              <columnDataType columnName="min_physical_reads" dataType="LONG" />
+              <columnDataType columnName="max_physical_reads" dataType="LONG" />
+              <columnDataType columnName="total_logical_writes" dataType="LONG" />
+              <columnDataType columnName="last_logical_writes" dataType="LONG" />
+              <columnDataType columnName="min_logical_writes" dataType="LONG" />
+              <columnDataType columnName="max_logical_writes" dataType="LONG" />
+              <columnDataType columnName="total_logical_reads" dataType="LONG" />
+              <columnDataType columnName="last_logical_reads" dataType="LONG" />
+              <columnDataType columnName="min_logical_reads" dataType="LONG" />
+              <columnDataType columnName="max_logical_reads" dataType="LONG" />
+              <columnDataType columnName="total_clr_time" dataType="LONG" />
+              <columnDataType columnName="last_clr_time" dataType="LONG" />
+              <columnDataType columnName="min_clr_time" dataType="LONG" />
+              <columnDataType columnName="max_clr_time" dataType="LONG" />
+              <columnDataType columnName="total_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="last_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="min_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="max_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="avg_worker_time" dataType="LONG" />
+              <columnDataType columnName="avg_physical_reads" dataType="LONG" />
+              <columnDataType columnName="avg_logical_writes" dataType="LONG" />
+              <columnDataType columnName="avg_logical_reads" dataType="LONG" />
+              <columnDataType columnName="avg_clr_time" dataType="LONG" />
+              <columnDataType columnName="avg_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="total_wait_time" dataType="LONG" />
+              <columnDataType columnName="last_wait_time" dataType="LONG" />
+              <columnDataType columnName="min_wait_time" dataType="LONG" />
+              <columnDataType columnName="max_wait_time" dataType="LONG" />
+              <columnDataType columnName="avg_wait_time" dataType="LONG" />
+              <columnDataType columnName="query_plan" dataType="STRING" />
+              <columnDataType columnName="query_text" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

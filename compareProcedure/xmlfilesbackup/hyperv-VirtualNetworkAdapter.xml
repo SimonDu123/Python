@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Hyper-V - Virtual Network Adapter" name="VirtualNetworkAdapter">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">hyperv</fragment>
+      <fragment type="PROCEDURE">virtualnetworkadapter</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="Name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PktsInPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalPktsInPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PktsOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalPktsOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PktsInOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalPktsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ErrorsInPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ErrorsOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalErrorsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="BytesInPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBInPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalBytesInPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalKBInPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="BytesOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalBytesOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalKBOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="BytesInOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBInOutPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalBytesPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalKBPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PacketsReceivedPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PacketsSentPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PacketsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="BytesReceivedPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="BytesSentPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="BytesPersec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Instance" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Host" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="HyperV" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT Name, PacketsReceivedPerSec, PacketsSentPerSec, PacketsPerSec, BytesReceivedPerSec, 
+	BytesSentPerSec, BytesPersec, DirectedPacketsReceivedPersec, DirectedPacketsSentPersec, 
+	DroppedPacketsIncomingPersec, DroppedPacketsOutgoingPersec, ExtensionsDroppedPacketsIncomingPersec,
+	ExtensionsDroppedPacketsOutgoingPersec 
+FROM Win32_PerfRawData_NvspNicStats_HyperVVirtualNetworkAdapter]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">hyperv</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PacketsReceivedPerSec">
+                        <expression><![CDATA[max(0,PacketsReceivedPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PacketsSentPerSec">
+                        <expression><![CDATA[max(0,PacketsSentPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PacketsPerSec">
+                        <expression><![CDATA[max(0,PacketsPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesReceivedPerSec">
+                        <expression><![CDATA[max(0,BytesReceivedPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesSentPerSec">
+                        <expression><![CDATA[max(0,BytesSentPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesPersec">
+                        <expression><![CDATA[max(0,BytesPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PktsInPerSec">
+                        <expression><![CDATA[positiveRate(VirtualNetworkAdapter.PacketsReceivedPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalPktsInPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.PktsInPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PktsOutPerSec">
+                        <expression><![CDATA[positiveRate(VirtualNetworkAdapter.PacketsSentPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalPktsOutPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.PktsOutPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PktsInOutPerSec">
+                        <expression><![CDATA[positiveRate(VirtualNetworkAdapter.PacketsPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalPktsPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.PktsInOutPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesInPerSec">
+                        <expression><![CDATA[positiveRate(VirtualNetworkAdapter.BytesReceivedPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBInPerSec">
+                        <expression><![CDATA[VirtualNetworkAdapter.BytesInPerSec / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytesInPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.BytesInPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKBInPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.BytesInPerSec) / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesOutPerSec">
+                        <expression><![CDATA[positiveRate(VirtualNetworkAdapter.BytesSentPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBOutPerSec">
+                        <expression><![CDATA[VirtualNetworkAdapter.BytesOutPerSec / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytesOutPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.BytesOutPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKBOutPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.BytesOutPerSec) / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesInOutPerSec">
+                        <expression><![CDATA[positiveRate(VirtualNetworkAdapter.BytesPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBInOutPerSec">
+                        <expression><![CDATA[VirtualNetworkAdapter.BytesInOutPerSec / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytesPerSec">
+                        <expression><![CDATA[sum(VirtualNetworkAdapter.BytesInOutPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKBPerSec">
+                        <expression><![CDATA[TotalBytesPerSec / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ErrorsInPerSec">
+                        <expression><![CDATA[max(0,DroppedPacketsIncomingPersec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ErrorsOutPerSec">
+                        <expression><![CDATA[max(0,DroppedPacketsOutgoingPersec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalErrorsPerSec">
+                        <expression><![CDATA[VirtualNetworkAdapter.ErrorsInPerSec + VirtualNetworkAdapter.ErrorsOutPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Instance">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[Host]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="PacketsReceivedPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PacketsSentPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PacketsPerSec" dataType="LONG"/>
+                     <columnDataType columnName="BytesReceivedPerSec" dataType="LONG"/>
+                     <columnDataType columnName="BytesSentPerSec" dataType="LONG"/>
+                     <columnDataType columnName="BytesPersec" dataType="LONG"/>
+                     <columnDataType columnName="DirectedPacketsReceivedPersec" dataType="LONG"/>
+                     <columnDataType columnName="DirectedPacketsSentPersec" dataType="LONG"/>
+                     <columnDataType columnName="DroppedPacketsIncomingPersec" dataType="LONG"/>
+                     <columnDataType columnName="DroppedPacketsOutgoingPersec" dataType="LONG"/>
+                     <columnDataType columnName="ExtensionsDroppedPacketsIncomingPersec" dataType="LONG"/>
+                     <columnDataType columnName="ExtensionsDroppedPacketsOutgoingPersec" dataType="LONG"/>
+                     <columnDataType columnName="Host" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="120000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="30">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

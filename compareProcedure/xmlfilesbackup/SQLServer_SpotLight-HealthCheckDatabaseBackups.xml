@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Health Check - Database Backups" name="HealthCheckDatabaseBackups">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">healthcheckdatabasebackups</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="DatabaseBackups" dataRetentionMode="NEVER" keyColumnName="key" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" usingAuxiliaryConnection="true">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="DATE" name="backup_finish_date" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="backup_set_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="backup_set_uuid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="backup_size" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="backup_start_date" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="begins_log_chain" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="catalog_family_number" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="catalog_media_number" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="checkpoint_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="code_page" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="collation_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="compatibility_level" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="compressed_backup_size" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="database_backup_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="database_creation_date" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="database_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="database_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="database_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="database_version" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="description" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="device_type" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="differential_base_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="differential_base_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="expiration_date" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="family_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="family_sequence_number" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="first_family_number" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="first_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="first_media_number" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="first_recovery_fork_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="flags" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="fork_point_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="has_backup_checksums" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="has_bulk_logged_data" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="has_incomplete_metadata" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="instance" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="instance_start_time_utc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_copy_only" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_damaged" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_force_offline" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_password_protected" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_readonly" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_single_user" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_snapshot" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="last_family_number" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="last_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="last_media_number" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="last_recovery_fork_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="logical_device_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="machine_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="media_count" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="media_family_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="media_set_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="mirror" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="mtf_minor_version" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="physical_block_size" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="physical_device_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="position" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="recovery_model" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="rownum" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="server_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="service" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="software_build_version" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="software_major_version" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="software_minor_version" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="software_vendor_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="sort_order" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="time_zone" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="type" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="unicode_compare_style" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="unicode_locale" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="user_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="key" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerAuxiliaryConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:DatabaseBackups.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2005</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="backup_finish_date">
+                        <expression><![CDATA[backup_finish_date]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="backup_set_id">
+                        <expression><![CDATA[backup_set_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="backup_set_uuid">
+                        <expression><![CDATA[backup_set_uuid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="backup_size">
+                        <expression><![CDATA[backup_size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="backup_start_date">
+                        <expression><![CDATA[backup_start_date]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="begins_log_chain">
+                        <expression><![CDATA[begins_log_chain]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="catalog_family_number">
+                        <expression><![CDATA[catalog_family_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="catalog_media_number">
+                        <expression><![CDATA[catalog_media_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="checkpoint_lsn">
+                        <expression><![CDATA[checkpoint_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="code_page">
+                        <expression><![CDATA[code_page]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="collation_name">
+                        <expression><![CDATA[collation_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="compatibility_level">
+                        <expression><![CDATA[compatibility_level]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="compressed_backup_size">
+                        <expression><![CDATA[compressed_backup_size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_backup_lsn">
+                        <expression><![CDATA[database_backup_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_creation_date">
+                        <expression><![CDATA[database_creation_date]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_guid">
+                        <expression><![CDATA[database_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_id">
+                        <expression><![CDATA[database_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_name">
+                        <expression><![CDATA[database_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_version">
+                        <expression><![CDATA[database_version]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="description">
+                        <expression><![CDATA[description]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="device_type">
+                        <expression><![CDATA[device_type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="differential_base_guid">
+                        <expression><![CDATA[differential_base_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="differential_base_lsn">
+                        <expression><![CDATA[differential_base_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="expiration_date">
+                        <expression><![CDATA[expiration_date]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="family_guid">
+                        <expression><![CDATA[family_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="family_sequence_number">
+                        <expression><![CDATA[family_sequence_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="first_family_number">
+                        <expression><![CDATA[first_family_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="first_lsn">
+                        <expression><![CDATA[first_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="first_media_number">
+                        <expression><![CDATA[first_media_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="first_recovery_fork_guid">
+                        <expression><![CDATA[first_recovery_fork_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="flags">
+                        <expression><![CDATA[flags]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="fork_point_lsn">
+                        <expression><![CDATA[fork_point_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="has_backup_checksums">
+                        <expression><![CDATA[has_backup_checksums]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="has_bulk_logged_data">
+                        <expression><![CDATA[has_bulk_logged_data]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="has_incomplete_metadata">
+                        <expression><![CDATA[has_incomplete_metadata]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance">
+                        <expression><![CDATA[instance]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance_start_time_utc">
+                        <expression><![CDATA[instance_start_time_utc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_copy_only">
+                        <expression><![CDATA[is_copy_only]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_damaged">
+                        <expression><![CDATA[is_damaged]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_force_offline">
+                        <expression><![CDATA[is_force_offline]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_password_protected">
+                        <expression><![CDATA[is_password_protected]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_readonly">
+                        <expression><![CDATA[is_readonly]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_single_user">
+                        <expression><![CDATA[is_single_user]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_snapshot">
+                        <expression><![CDATA[is_snapshot]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_family_number">
+                        <expression><![CDATA[last_family_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_lsn">
+                        <expression><![CDATA[last_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_media_number">
+                        <expression><![CDATA[last_media_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_recovery_fork_guid">
+                        <expression><![CDATA[last_recovery_fork_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="logical_device_name">
+                        <expression><![CDATA[logical_device_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="machine_name">
+                        <expression><![CDATA[machine_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="media_count">
+                        <expression><![CDATA[media_count]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="media_family_id">
+                        <expression><![CDATA[media_family_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="media_set_id">
+                        <expression><![CDATA[media_set_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="mirror">
+                        <expression><![CDATA[mirror]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="mtf_minor_version">
+                        <expression><![CDATA[mtf_minor_version]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="name">
+                        <expression><![CDATA[name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="physical_block_size">
+                        <expression><![CDATA[physical_block_size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="physical_device_name">
+                        <expression><![CDATA[physical_device_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="position">
+                        <expression><![CDATA[position]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="recovery_model">
+                        <expression><![CDATA[recovery_model]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="rownum">
+                        <expression><![CDATA[rownum]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="server_name">
+                        <expression><![CDATA[server_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="service">
+                        <expression><![CDATA[service]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="software_build_version">
+                        <expression><![CDATA[software_build_version]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="software_major_version">
+                        <expression><![CDATA[software_major_version]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="software_minor_version">
+                        <expression><![CDATA[software_minor_version]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="software_vendor_id">
+                        <expression><![CDATA[software_vendor_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="sort_order">
+                        <expression><![CDATA[sort_order]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="time_zone">
+                        <expression><![CDATA[time_zone]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="type">
+                        <expression><![CDATA[type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="unicode_compare_style">
+                        <expression><![CDATA[unicode_compare_style]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="unicode_locale">
+                        <expression><![CDATA[unicode_locale]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="user_name">
+                        <expression><![CDATA[user_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(instance)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(instance)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="backup_finish_date" dataType="DATE"/>
+                     <columnDataType columnName="backup_set_id" dataType="LONG"/>
+                     <columnDataType columnName="backup_set_uuid" dataType="STRING"/>
+                     <columnDataType columnName="backup_size" dataType="STRING"/>
+                     <columnDataType columnName="backup_start_date" dataType="DATE"/>
+                     <columnDataType columnName="begins_log_chain" dataType="BOOLEAN"/>
+                     <columnDataType columnName="catalog_family_number" dataType="LONG"/>
+                     <columnDataType columnName="catalog_media_number" dataType="LONG"/>
+                     <columnDataType columnName="checkpoint_lsn" dataType="LONG"/>
+                     <columnDataType columnName="code_page" dataType="LONG"/>
+                     <columnDataType columnName="collation_name" dataType="STRING"/>
+                     <columnDataType columnName="compatibility_level" dataType="LONG"/>
+                     <columnDataType columnName="compressed_backup_size" dataType="STRING"/>
+                     <columnDataType columnName="database_backup_lsn" dataType="LONG"/>
+                     <columnDataType columnName="database_creation_date" dataType="DATE"/>
+                     <columnDataType columnName="database_guid" dataType="STRING"/>
+                     <columnDataType columnName="database_id" dataType="LONG"/>
+                     <columnDataType columnName="database_name" dataType="STRING"/>
+                     <columnDataType columnName="database_version" dataType="LONG"/>
+                     <columnDataType columnName="description" dataType="STRING"/>
+                     <columnDataType columnName="device_type" dataType="LONG"/>
+                     <columnDataType columnName="differential_base_guid" dataType="STRING"/>
+                     <columnDataType columnName="differential_base_lsn" dataType="LONG"/>
+                     <columnDataType columnName="expiration_date" dataType="DATE"/>
+                     <columnDataType columnName="family_guid" dataType="STRING"/>
+                     <columnDataType columnName="family_sequence_number" dataType="LONG"/>
+                     <columnDataType columnName="first_family_number" dataType="LONG"/>
+                     <columnDataType columnName="first_lsn" dataType="LONG"/>
+                     <columnDataType columnName="first_media_number" dataType="LONG"/>
+                     <columnDataType columnName="first_recovery_fork_guid" dataType="STRING"/>
+                     <columnDataType columnName="flags" dataType="LONG"/>
+                     <columnDataType columnName="fork_point_lsn" dataType="LONG"/>
+                     <columnDataType columnName="has_backup_checksums" dataType="BOOLEAN"/>
+                     <columnDataType columnName="has_bulk_logged_data" dataType="BOOLEAN"/>
+                     <columnDataType columnName="has_incomplete_metadata" dataType="BOOLEAN"/>
+                     <columnDataType columnName="instance" dataType="STRING"/>
+                     <columnDataType columnName="instance_start_time_utc" dataType="DATE"/>
+                     <columnDataType columnName="is_copy_only" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_damaged" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_force_offline" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_password_protected" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_readonly" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_single_user" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_snapshot" dataType="BOOLEAN"/>
+                     <columnDataType columnName="last_family_number" dataType="LONG"/>
+                     <columnDataType columnName="last_lsn" dataType="LONG"/>
+                     <columnDataType columnName="last_media_number" dataType="LONG"/>
+                     <columnDataType columnName="last_recovery_fork_guid" dataType="STRING"/>
+                     <columnDataType columnName="logical_device_name" dataType="STRING"/>
+                     <columnDataType columnName="machine_name" dataType="STRING"/>
+                     <columnDataType columnName="media_count" dataType="LONG"/>
+                     <columnDataType columnName="media_family_id" dataType="STRING"/>
+                     <columnDataType columnName="media_set_id" dataType="LONG"/>
+                     <columnDataType columnName="mirror" dataType="LONG"/>
+                     <columnDataType columnName="mtf_minor_version" dataType="LONG"/>
+                     <columnDataType columnName="name" dataType="STRING"/>
+                     <columnDataType columnName="physical_block_size" dataType="LONG"/>
+                     <columnDataType columnName="physical_device_name" dataType="STRING"/>
+                     <columnDataType columnName="position" dataType="LONG"/>
+                     <columnDataType columnName="recovery_model" dataType="STRING"/>
+                     <columnDataType columnName="rownum" dataType="LONG"/>
+                     <columnDataType columnName="server_name" dataType="STRING"/>
+                     <columnDataType columnName="service" dataType="STRING"/>
+                     <columnDataType columnName="software_build_version" dataType="LONG"/>
+                     <columnDataType columnName="software_major_version" dataType="LONG"/>
+                     <columnDataType columnName="software_minor_version" dataType="LONG"/>
+                     <columnDataType columnName="software_vendor_id" dataType="LONG"/>
+                     <columnDataType columnName="sort_order" dataType="LONG"/>
+                     <columnDataType columnName="time_zone" dataType="LONG"/>
+                     <columnDataType columnName="type" dataType="STRING"/>
+                     <columnDataType columnName="unicode_compare_style" dataType="LONG"/>
+                     <columnDataType columnName="unicode_locale" dataType="LONG"/>
+                     <columnDataType columnName="user_name" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectionName="SQLServer.V5.backups" collectorWritingUploadData="true" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="true">
+            <schedule class="com.quest.adk.configuration.component.schedule.DailyScheduleConfiguration" timeOfDay="10800000">
+               <days class="java.util.ArrayList">
+                  <daysOfWeek>MON</daysOfWeek>
+                  <daysOfWeek>TUES</daysOfWeek>
+                  <daysOfWeek>WED</daysOfWeek>
+                  <daysOfWeek>THUR</daysOfWeek>
+                  <daysOfWeek>FRI</daysOfWeek>
+                  <daysOfWeek>SAT</daysOfWeek>
+                  <daysOfWeek>SUN</daysOfWeek>
+               </days>
+            </schedule>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>timeout</string>
+                  <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">30m</property>
+               </entry>
+               <entry>
+                  <string>rowlimit</string>
+                  <property dataType="STRING" description="rowLimit" displayName="rowLimit" encryptStyle="NONE" hidden="true" name="rowLimit">500000</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Health Check- Master Files" name="HealthCheckMasterFiles">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">healthcheckmasterfiles</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="MasterFiles" dataRetentionMode="NEVER" keyColumnName="key" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" usingAuxiliaryConnection="true">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="backup_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="create_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="database_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="data_space_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="differential_base_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="differential_base_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="differential_base_time" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="drop_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="file_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="file_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="growth" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="instance" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="instance_start_time_utc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_media_read_only" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_name_reserved" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_percent_growth" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_read_only" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_sparse" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="max_size" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="physical_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="read_only_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="read_write_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="redo_start_fork_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="redo_start_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="redo_target_fork_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="redo_target_lsn" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="rownum" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="service" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="size" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="state" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="state_desc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="type" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="database_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="key" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerAuxiliaryConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:MasterFiles.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2005</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="backup_lsn">
+                        <expression><![CDATA[backup_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="create_lsn">
+                        <expression><![CDATA[create_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_id">
+                        <expression><![CDATA[database_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="data_space_id">
+                        <expression><![CDATA[data_space_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="differential_base_guid">
+                        <expression><![CDATA[differential_base_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="differential_base_lsn">
+                        <expression><![CDATA[differential_base_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="differential_base_time">
+                        <expression><![CDATA[differential_base_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="drop_lsn">
+                        <expression><![CDATA[drop_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="file_guid">
+                        <expression><![CDATA[file_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="file_id">
+                        <expression><![CDATA[file_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="growth">
+                        <expression><![CDATA[growth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance">
+                        <expression><![CDATA[instance]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance_start_time_utc">
+                        <expression><![CDATA[instance_start_time_utc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_media_read_only">
+                        <expression><![CDATA[is_media_read_only]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_name_reserved">
+                        <expression><![CDATA[is_name_reserved]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_percent_growth">
+                        <expression><![CDATA[is_percent_growth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_read_only">
+                        <expression><![CDATA[is_read_only]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_sparse">
+                        <expression><![CDATA[is_sparse]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="max_size">
+                        <expression><![CDATA[max_size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="name">
+                        <expression><![CDATA[name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="physical_name">
+                        <expression><![CDATA[physical_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="read_only_lsn">
+                        <expression><![CDATA[read_only_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="read_write_lsn">
+                        <expression><![CDATA[read_write_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="redo_start_fork_guid">
+                        <expression><![CDATA[redo_start_fork_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="redo_start_lsn">
+                        <expression><![CDATA[redo_start_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="redo_target_fork_guid">
+                        <expression><![CDATA[redo_target_fork_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="redo_target_lsn">
+                        <expression><![CDATA[redo_target_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="rownum">
+                        <expression><![CDATA[rownum]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="service">
+                        <expression><![CDATA[service]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="size">
+                        <expression><![CDATA[size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="state">
+                        <expression><![CDATA[state]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="state_desc">
+                        <expression><![CDATA[state_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="type">
+                        <expression><![CDATA[type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(instance)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_name">
+                        <expression><![CDATA[database_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(instance)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="backup_lsn" dataType="LONG"/>
+                     <columnDataType columnName="create_lsn" dataType="LONG"/>
+                     <columnDataType columnName="database_id" dataType="LONG"/>
+                     <columnDataType columnName="data_space_id" dataType="LONG"/>
+                     <columnDataType columnName="differential_base_guid" dataType="STRING"/>
+                     <columnDataType columnName="differential_base_lsn" dataType="LONG"/>
+                     <columnDataType columnName="differential_base_time" dataType="DATE"/>
+                     <columnDataType columnName="drop_lsn" dataType="LONG"/>
+                     <columnDataType columnName="file_guid" dataType="STRING"/>
+                     <columnDataType columnName="file_id" dataType="LONG"/>
+                     <columnDataType columnName="growth" dataType="LONG"/>
+                     <columnDataType columnName="instance" dataType="STRING"/>
+                     <columnDataType columnName="instance_start_time_utc" dataType="DATE"/>
+                     <columnDataType columnName="is_media_read_only" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_name_reserved" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_percent_growth" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_read_only" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_sparse" dataType="BOOLEAN"/>
+                     <columnDataType columnName="max_size" dataType="LONG"/>
+                     <columnDataType columnName="name" dataType="STRING"/>
+                     <columnDataType columnName="physical_name" dataType="STRING"/>
+                     <columnDataType columnName="read_only_lsn" dataType="LONG"/>
+                     <columnDataType columnName="read_write_lsn" dataType="LONG"/>
+                     <columnDataType columnName="redo_start_fork_guid" dataType="STRING"/>
+                     <columnDataType columnName="redo_start_lsn" dataType="LONG"/>
+                     <columnDataType columnName="redo_target_fork_guid" dataType="STRING"/>
+                     <columnDataType columnName="redo_target_lsn" dataType="LONG"/>
+                     <columnDataType columnName="rownum" dataType="LONG"/>
+                     <columnDataType columnName="service" dataType="STRING"/>
+                     <columnDataType columnName="size" dataType="LONG"/>
+                     <columnDataType columnName="state" dataType="LONG"/>
+                     <columnDataType columnName="state_desc" dataType="STRING"/>
+                     <columnDataType columnName="type" dataType="LONG"/>
+                     <columnDataType columnName="diagnostic_server" dataType="STRING"/>
+                     <columnDataType columnName="database_name" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectionName="SQLServer.V5.master_files" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="true">
+            <schedule class="com.quest.adk.configuration.component.schedule.DailyScheduleConfiguration" timeOfDay="10800000">
+               <days class="java.util.ArrayList">
+                  <daysOfWeek>MON</daysOfWeek>
+                  <daysOfWeek>TUES</daysOfWeek>
+                  <daysOfWeek>WED</daysOfWeek>
+                  <daysOfWeek>THUR</daysOfWeek>
+                  <daysOfWeek>FRI</daysOfWeek>
+                  <daysOfWeek>SAT</daysOfWeek>
+                  <daysOfWeek>SUN</daysOfWeek>
+               </days>
+            </schedule>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>timeout</string>
+                  <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">30m</property>
+               </entry>
+               <entry>
+                  <string>rowlimit</string>
+                  <property dataType="STRING" description="rowLimit" displayName="rowLimit" encryptStyle="NONE" hidden="true" name="rowLimit">500000</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Health Check - Indexes" name="HealthCheckIndexes">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">healthcheckindexes</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="Indexes" dataRetentionMode="NEVER" keyColumnName="key" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" usingAuxiliaryConnection="true">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="BOOLEAN" name="allow_page_locks" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="allow_row_locks" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="database_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="database_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="data_space_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="fill_factor" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="has_filter" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="ignore_dup_key" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="index_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="index_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="index_type" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="instance" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="instance_start_time_utc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_disabled" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_hypothetical" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_padded" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_primary_key" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_unique" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_unique_constraint" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="object_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="object_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="service" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="rownum" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="key" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerAuxiliaryConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:Indexes.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2005</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="allow_page_locks">
+                        <expression><![CDATA[allow_page_locks]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="allow_row_locks">
+                        <expression><![CDATA[allow_row_locks]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_id">
+                        <expression><![CDATA[database_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_name">
+                        <expression><![CDATA[database_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="data_space_id">
+                        <expression><![CDATA[data_space_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="fill_factor">
+                        <expression><![CDATA[fill_factor]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="has_filter">
+                        <expression><![CDATA[has_filter]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ignore_dup_key">
+                        <expression><![CDATA[ignore_dup_key]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="index_id">
+                        <expression><![CDATA[index_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="index_name">
+                        <expression><![CDATA[index_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="index_type">
+                        <expression><![CDATA[index_type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance">
+                        <expression><![CDATA[instance]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance_start_time_utc">
+                        <expression><![CDATA[instance_start_time_utc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_disabled">
+                        <expression><![CDATA[is_disabled]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_hypothetical">
+                        <expression><![CDATA[is_hypothetical]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_padded">
+                        <expression><![CDATA[is_padded]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_primary_key">
+                        <expression><![CDATA[is_primary_key]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_unique">
+                        <expression><![CDATA[is_unique]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_unique_constraint">
+                        <expression><![CDATA[is_unique_constraint]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="object_id">
+                        <expression><![CDATA[object_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="object_name">
+                        <expression><![CDATA[object_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="service">
+                        <expression><![CDATA[service]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="rownum">
+                        <expression><![CDATA[rownum]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(instance)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(instance)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="allow_page_locks" dataType="BOOLEAN"/>
+                     <columnDataType columnName="allow_row_locks" dataType="BOOLEAN"/>
+                     <columnDataType columnName="database_id" dataType="LONG"/>
+                     <columnDataType columnName="database_name" dataType="STRING"/>
+                     <columnDataType columnName="data_space_id" dataType="LONG"/>
+                     <columnDataType columnName="fill_factor" dataType="LONG"/>
+                     <columnDataType columnName="filter_definition" dataType="STRING"/>
+                     <columnDataType columnName="has_filter" dataType="BOOLEAN"/>
+                     <columnDataType columnName="ignore_dup_key" dataType="BOOLEAN"/>
+                     <columnDataType columnName="index_id" dataType="LONG"/>
+                     <columnDataType columnName="index_name" dataType="STRING"/>
+                     <columnDataType columnName="index_type" dataType="LONG"/>
+                     <columnDataType columnName="instance" dataType="STRING"/>
+                     <columnDataType columnName="instance_start_time_utc" dataType="DATE"/>
+                     <columnDataType columnName="is_disabled" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_hypothetical" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_padded" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_primary_key" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_unique" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_unique_constraint" dataType="BOOLEAN"/>
+                     <columnDataType columnName="object_id" dataType="LONG"/>
+                     <columnDataType columnName="object_name" dataType="STRING"/>
+                     <columnDataType columnName="service" dataType="STRING"/>
+                     <columnDataType columnName="rownum" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>timeout</string>
+                  <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">30m</property>
+               </entry>
+               <entry>
+                  <string>rowlimit</string>
+                  <property dataType="STRING" description="rowLimit" displayName="rowLimit" encryptStyle="NONE" hidden="true" name="rowLimit">500000</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

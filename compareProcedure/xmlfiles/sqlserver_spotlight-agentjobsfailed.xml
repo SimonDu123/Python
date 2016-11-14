@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" name="AgentJobsFailed" displayName="Agent Jobs Failed Internal">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">agentjobsfailed</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLAgentJobsFailed ???" dataRetentionMode="NEVER" keyColumnName="JobName" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="86400">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">sqlversioninfo</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn name="JobName" dataType="STRING" persistedToShortTermHistory="true" persistedToLongTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn name="Message" dataType="STRING" persistedToShortTermHistory="true" persistedToLongTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn name="RaiseAlarm" dataType="LONG" persistedToShortTermHistory="true" persistedToLongTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn name="RunStarted" dataType="DATE" persistedToShortTermHistory="true" persistedToLongTermHistory="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn name="RunFinished" dataType="DATE" persistedToShortTermHistory="true" persistedToLongTermHistory="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000" callableName="">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_AgentJobsFailed.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="JobName">
+                        <expression><![CDATA[JobName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="RaiseAlarm">
+                        <expression><![CDATA[RaiseAlarm]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="RunFinished">
+                        <expression><![CDATA[RunFinished]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Message">
+                        <expression><![CDATA[Message]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="RunStarted">
+                        <expression><![CDATA[RunStarted]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="JobName" dataType="STRING"/>
+                     <columnDataType columnName="Message" dataType="STRING"/>
+                     <columnDataType columnName="RaiseAlarm" dataType="LONG"/>
+                     <columnDataType columnName="RunStarted" dataType="DATE"/>
+                     <columnDataType columnName="RunFinished" dataType="DATE"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" enabled="false" editable="false" subscriptionIgnoredByScheduling="false" executionInterval="-1">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureLTHComponent" enabled="false" editable="false" aggregationPeriod="-1" retentionDays="7">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

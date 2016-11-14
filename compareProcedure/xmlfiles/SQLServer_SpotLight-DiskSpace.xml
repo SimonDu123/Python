@@ -1,0 +1,150 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Database Disk Space Utilization" name="DiskSpace">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">diskspace</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_diskspace" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Disk" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="60">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+              <fragment type="PROCEDURE">sqlfiles</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Disk" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DataUsedMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DataFreeMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LogUsedMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LogFreeMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SQLTotalMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="NonSQLUsedMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="WinTotalMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="WinUsedMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="WinFreeMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DataUsedPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DataFreePct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LogUsedPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LogFreePct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="NonSQLUsedPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="WinFreePct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>CollectOsInfo</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="BOOLEAN" defaultValue="false" isRequired="false" name="CollectOsInfo" />
+          </entry>
+          <entry>
+            <string>DBList</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="false" name="DBList" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISKSPACE]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Disk">
+                <expression><![CDATA[Disk]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DataUsedMB">
+                <expression><![CDATA[DataUsedMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DataFreeMB">
+                <expression><![CDATA[DataFreeMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LogUsedMB">
+                <expression><![CDATA[LogUsedMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LogFreeMB">
+                <expression><![CDATA[LogFreeMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLTotalMB">
+                <expression><![CDATA[SQLTotalMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NonSQLUsedMB">
+                <expression><![CDATA[NonSQLUsedMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WinTotalMB">
+                <expression><![CDATA[WinTotalMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WinUsedMB">
+                <expression><![CDATA[WinUsedMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WinFreeMB">
+                <expression><![CDATA[WinFreeMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DataUsedPct">
+                <expression><![CDATA[DataUsedPct]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DataFreePct">
+                <expression><![CDATA[DataFreePct]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LogUsedPct">
+                <expression><![CDATA[LogUsedPct]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LogFreePct">
+                <expression><![CDATA[LogFreePct]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NonSQLUsedPct">
+                <expression><![CDATA[NonSQLUsedPct]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WinFreePct">
+                <expression><![CDATA[WinFreePct]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Disk" dataType="STRING" />
+              <columnDataType columnName="DataUsedMB" dataType="DOUBLE" />
+              <columnDataType columnName="DataFreeMB" dataType="DOUBLE" />
+              <columnDataType columnName="LogUsedMB" dataType="DOUBLE" />
+              <columnDataType columnName="LogFreeMB" dataType="DOUBLE" />
+              <columnDataType columnName="SQLTotalMB" dataType="DOUBLE" />
+              <columnDataType columnName="NonSQLUsedMB" dataType="DOUBLE" />
+              <columnDataType columnName="WinTotalMB" dataType="DOUBLE" />
+              <columnDataType columnName="WinUsedMB" dataType="DOUBLE" />
+              <columnDataType columnName="WinFreeMB" dataType="DOUBLE" />
+              <columnDataType columnName="DataUsedPct" dataType="DOUBLE" />
+              <columnDataType columnName="DataFreePct" dataType="DOUBLE" />
+              <columnDataType columnName="LogUsedPct" dataType="DOUBLE" />
+              <columnDataType columnName="LogFreePct" dataType="DOUBLE" />
+              <columnDataType columnName="NonSQLUsedPct" dataType="DOUBLE" />
+              <columnDataType columnName="WinFreePct" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="true" retentionDays="30">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

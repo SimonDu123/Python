@@ -1,0 +1,122 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Optimizer Info" name="SQLOptimizerInfo">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqloptimizerinfo</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="counter" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="counter" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="occurrence" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="value" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="cpucount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="total" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ratevalue" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[#not supported on SQL Server 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="counter">
+                <expression><![CDATA[counter]]></expression>
+              </columnExpression>
+              <columnExpression columnName="occurrence">
+                <expression><![CDATA[occurrence]]></expression>
+              </columnExpression>
+              <columnExpression columnName="value">
+                <expression><![CDATA[value]]></expression>
+              </columnExpression>
+              <columnExpression columnName="cpucount">
+                <expression><![CDATA[cpucount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total">
+                <expression><![CDATA[SQLOptimizerInfo.occurrence*SQLOptimizerInfo.value]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ratevalue">
+                <expression><![CDATA[positiveRate(SQLOptimizerInfo.total)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="counter" dataType="STRING" />
+              <columnDataType columnName="occurrence" dataType="LONG" />
+              <columnDataType columnName="value" dataType="DOUBLE" />
+              <columnDataType columnName="cpucount" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_OptimizerInfo.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="counter">
+                <expression><![CDATA[counter]]></expression>
+              </columnExpression>
+              <columnExpression columnName="occurrence">
+                <expression><![CDATA[occurrence]]></expression>
+              </columnExpression>
+              <columnExpression columnName="value">
+                <expression><![CDATA[value]]></expression>
+              </columnExpression>
+              <columnExpression columnName="cpucount">
+                <expression><![CDATA[cpucount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total">
+                <expression><![CDATA[SQLOptimizerInfo.occurrence*SQLOptimizerInfo.value]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ratevalue">
+                <expression><![CDATA[positiveRate(SQLOptimizerInfo.total)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="counter" dataType="STRING" />
+              <columnDataType columnName="occurrence" dataType="LONG" />
+              <columnDataType columnName="value" dataType="DOUBLE" />
+              <columnDataType columnName="cpucount" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

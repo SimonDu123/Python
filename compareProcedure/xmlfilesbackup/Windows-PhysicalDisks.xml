@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Physical Disks" name="PhysicalDisks">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">physicaldisks</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_PhysicalDisks" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">disktransfertime</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="Name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ReadsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WritesPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="IOPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="BytesReadPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="BytesWrittenPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBReadPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBWrittenPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalBytesPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalKBPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PctBusy" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ServiceTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ServiceTimeMS" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="QueueLength" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="MaxQueueLength" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="AvgDiskSecPerTransfer" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="AvgDiskSecPerTransfer_Base" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="AvgDiskQueueLength" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DiskBytesPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DiskReadBytesPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DiskReadsPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DiskTransfersPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DiskWriteBytesPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DiskWritesPerSec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PercentDiskTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PercentDiskTime_Base" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Instance" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT  AvgDiskSecPerTransfer, AvgDiskSecPerTransfer_Base, AvgDiskQueueLength, 
+	DiskBytesPerSec, DiskReadBytesPerSec, DiskReadsPerSec, DiskTransfersPerSec, 
+	DiskWriteBytesPerSec, DiskWritesPerSec, Frequency_PerfTime, Frequency_Sys100NS, 
+	Name, PercentDiskTime, Timestamp_Sys100NS 
+FROM    Win32_PerfRawData_PerfDisk_PhysicalDisk 
+WHERE   Name <> "_Total"]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgDiskSecPerTransfer">
+                        <expression><![CDATA[AvgDiskSecPerTransfer]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgDiskSecPerTransfer_Base">
+                        <expression><![CDATA[AvgDiskSecPerTransfer_Base]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgDiskQueueLength">
+                        <expression><![CDATA[AvgDiskQueueLength]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskBytesPerSec">
+                        <expression><![CDATA[DiskBytesPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskReadBytesPerSec">
+                        <expression><![CDATA[DiskReadBytesPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskReadsPerSec">
+                        <expression><![CDATA[DiskReadsPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskTransfersPerSec">
+                        <expression><![CDATA[DiskTransfersPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskWriteBytesPerSec">
+                        <expression><![CDATA[DiskWriteBytesPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskWritesPerSec">
+                        <expression><![CDATA[DiskWritesPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PercentDiskTime">
+                        <expression><![CDATA[PercentDiskTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PercentDiskTime_Base">
+                        <expression><![CDATA[Timestamp_Sys100NS]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ReadsPerSec">
+                        <expression><![CDATA[positiveRate(PhysicalDisks.DiskReadsPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WritesPerSec">
+                        <expression><![CDATA[positiveRate(PhysicalDisks.DiskWritesPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IOPerSec">
+                        <expression><![CDATA[positiveRate(PhysicalDisks.DiskTransfersPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesReadPerSec">
+                        <expression><![CDATA[positiveRate(PhysicalDisks.DiskReadBytesPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BytesWrittenPerSec">
+                        <expression><![CDATA[positiveRate(PhysicalDisks.DiskWriteBytesPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalBytesPerSec">
+                        <expression><![CDATA[positiveRate(PhysicalDisks.DiskBytesPerSec)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBReadPerSec">
+                        <expression><![CDATA[PhysicalDisks.BytesReadPerSec / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBWrittenPerSec">
+                        <expression><![CDATA[PhysicalDisks.BytesWrittenPerSec / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalKBPerSec">
+                        <expression><![CDATA[PhysicalDisks.TotalBytesPerSec / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PctBusy">
+                        <expression><![CDATA[min(100, positiveDelta(PhysicalDisks.PercentDiskTime) / positiveDelta(PhysicalDisks.PercentDiskTime_Base) * 100)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ServiceTime">
+                        <expression><![CDATA[positiveDelta(PhysicalDisks.AvgDiskSecPerTransfer) / positiveDelta(PhysicalDisks.AvgDiskSecPerTransfer_Base) / Frequency_PerfTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ServiceTimeMS">
+                        <expression><![CDATA[PhysicalDisks.ServiceTime * 1000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="QueueLength">
+                        <expression><![CDATA[positiveRate(PhysicalDisks.AvgDiskQueueLength) / Frequency_Sys100NS]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxQueueLength">
+                        <expression><![CDATA[max(PhysicalDisks.QueueLength)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Instance">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="AvgDiskSecPerTransfer" dataType="LONG"/>
+                     <columnDataType columnName="AvgDiskSecPerTransfer_Base" dataType="LONG"/>
+                     <columnDataType columnName="AvgDiskQueueLength" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskBytesPerSec" dataType="LONG"/>
+                     <columnDataType columnName="DiskReadBytesPerSec" dataType="LONG"/>
+                     <columnDataType columnName="DiskReadsPerSec" dataType="LONG"/>
+                     <columnDataType columnName="DiskTransfersPerSec" dataType="LONG"/>
+                     <columnDataType columnName="DiskWriteBytesPerSec" dataType="LONG"/>
+                     <columnDataType columnName="DiskWritesPerSec" dataType="LONG"/>
+                     <columnDataType columnName="Frequency_PerfTime" dataType="LONG"/>
+                     <columnDataType columnName="Frequency_Sys100NS" dataType="LONG"/>
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="PercentDiskTime" dataType="LONG"/>
+                     <columnDataType columnName="Timestamp_Sys100NS" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="30">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

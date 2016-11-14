@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" name="UpdateAnalysisServicesVersion" displayName="UpdateAnalysisServicesVersion">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">updateanalysisservicesversion</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureContentComponent" prettyKeyColumnName="" readOnly="true" backgroundEditable="false" lthEditable="false" lucyEditable="false" savedToPlayback="false" alwaysSaveToSSR="false" alwaysSaveToLucy="false" ssrDataSavedToLucy="false" skippedIfNoMatchingQuery="false" role="NONE" minimumPersistencePeriod="60000" reExecutionPriority="0" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthTextLimit="0">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="86400">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+              <fragment type="PROCEDURE">analysisversion</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList" />
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+               <queryConfiguration connectionName="" isScript="true" minimumRefreshInterval="10000" callableName="">
+            <properties />
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[try:
+	VersionTable = AnalysisVersion.getOrExecute(86400);
+
+	if length( VersionTable.VersionMajor ) == 1:
+		ver = VersionTable.VersionMajor[0];
+		fullVersion = VersionTable.Version[0];
+		if ver=="9":
+			setVersion( "2005", VersionTable.Version[0] );
+		elif ver=="10":
+			setVersion( "2008", VersionTable.Version[0] );
+		elif ver=="11":
+			if int(substring(fullVersion,5,4))>= 9120:
+				setVersion( "2014", VersionTable.Version[0] );
+			else:
+				setVersion( "2012", VersionTable.Version[0] );
+		elif ver=="12":
+			setVersion( "2014", VersionTable.Version[0] );
+		elif ver=="13":
+			setVersion( "2016", VersionTable.Version[0] );
+
+except RuntimeError, ex:
+	setError( 1, "Failed to execute AnalysisVersion because {0}", ex.args );]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">analysisservices</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList"/>
+                  <outputColumnDataTypeList class="java.util.ArrayList"/>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

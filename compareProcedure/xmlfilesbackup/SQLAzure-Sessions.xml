@@ -1,0 +1,144 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SQL Azure - Sessions" name="Sessions">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlazure</fragment>
+    <fragment type="PROCEDURE">sessions</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Session_ID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Session_ID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="LoginTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="HostName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ProgramName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="HostProcessID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="LoginName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Status" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CPUTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MemoryUsage" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Writes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="LogicalReads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="Active" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="User" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="LastRequestStartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="LastRequestEndTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ReadsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="WritesPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LogicalReadsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[select * from sys.dm_exec_sessions]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlazure</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Session_ID">
+                <expression><![CDATA[session_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LogicalReads">
+                <expression><![CDATA[logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Reads">
+                <expression><![CDATA[reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Writes">
+                <expression><![CDATA[writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LoginTime">
+                <expression><![CDATA[login_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="HostName">
+                <expression><![CDATA[host_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ProgramName">
+                <expression><![CDATA[program_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="HostProcessID">
+                <expression><![CDATA[host_process_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LoginName">
+                <expression><![CDATA[login_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Status">
+                <expression><![CDATA[status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CPUTime">
+                <expression><![CDATA[cpu_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MemoryUsage">
+                <expression><![CDATA[memory_usage]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Active">
+                <expression><![CDATA[status == "running"]]></expression>
+              </columnExpression>
+              <columnExpression columnName="User">
+                <expression><![CDATA[is_user_process]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LastRequestStartTime">
+                <expression><![CDATA[last_request_start_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LastRequestEndTime">
+                <expression><![CDATA[last_request_end_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReadsPerSec">
+                <expression><![CDATA[iff(positiveDelta(Sessions.Reads) < 0, null, positiveRate(Sessions.Reads))]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WritesPerSec">
+                <expression><![CDATA[iff(positiveDelta(Sessions.Writes) < 0, null, positiveRate(Sessions.Writes))]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LogicalReadsPerSec">
+                <expression><![CDATA[iff(positiveDelta(Sessions.LogicalReads) < 0, null, positiveRate(Sessions.LogicalReads))]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="session_id" dataType="LONG" />
+              <columnDataType columnName="login_time" dataType="DATE" />
+              <columnDataType columnName="host_name" dataType="STRING" />
+              <columnDataType columnName="program_name" dataType="STRING" />
+              <columnDataType columnName="host_process_id" dataType="LONG" />
+              <columnDataType columnName="login_name" dataType="STRING" />
+              <columnDataType columnName="status" dataType="STRING" />
+              <columnDataType columnName="cpu_time" dataType="DOUBLE" />
+              <columnDataType columnName="memory_usage" dataType="DOUBLE" />
+              <columnDataType columnName="reads" dataType="LONG" />
+              <columnDataType columnName="writes" dataType="LONG" />
+              <columnDataType columnName="logical_reads" dataType="LONG" />
+              <columnDataType columnName="is_user_process" dataType="BOOLEAN" />
+              <columnDataType columnName="last_request_start_time" dataType="DATE" />
+              <columnDataType columnName="last_request_end_time" dataType="DATE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

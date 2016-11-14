@@ -1,0 +1,106 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Connection" name="AnalysisConnection">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisconnection</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Currentconnections" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Currentusersessions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FailuresPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="RequestsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SuccessesPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalfailures" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalrequests" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalsuccesses" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFailuresPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalRequestsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalSuccessesPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[select Currentconnections, Currentusersessions, FailuresPersec, RequestsPersec, SuccessesPersec, 
+Totalfailures, Totalrequests, Totalsuccesses from {{WMIClassName.Name}}Connection]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Currentconnections">
+                <expression><![CDATA[Currentconnections]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentusersessions">
+                <expression><![CDATA[Currentusersessions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalfailures">
+                <expression><![CDATA[Totalfailures]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalrequests">
+                <expression><![CDATA[Totalrequests]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalsuccesses">
+                <expression><![CDATA[Totalsuccesses]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFailuresPersec">
+                <expression><![CDATA[FailuresPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRequestsPersec">
+                <expression><![CDATA[RequestsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalSuccessesPersec">
+                <expression><![CDATA[SuccessesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FailuresPersec">
+                <expression><![CDATA[positiveRate(AnalysisConnection.InternalFailuresPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RequestsPersec">
+                <expression><![CDATA[positiveRate(AnalysisConnection.InternalRequestsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SuccessesPersec">
+                <expression><![CDATA[positiveRate(AnalysisConnection.InternalSuccessesPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="CurrentConnections" dataType="LONG" />
+              <columnDataType columnName="Currentusersessions" dataType="LONG" />
+              <columnDataType columnName="FailuresPersec" dataType="LONG" />
+              <columnDataType columnName="RequestsPersec" dataType="LONG" />
+              <columnDataType columnName="SuccessesPersec" dataType="LONG" />
+              <columnDataType columnName="Totalfailures" dataType="LONG" />
+              <columnDataType columnName="Totalrequests" dataType="LONG" />
+              <columnDataType columnName="Totalsuccesses" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

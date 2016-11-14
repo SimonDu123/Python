@@ -1,0 +1,69 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Update VMware Version" name="UpdateVMWareVersion">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">vmwarevirtualization</fragment>
+    <fragment type="PROCEDURE">updatevmwareversion</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList" />
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[try:
+	VersionTable = GetOrExecute(VMWareVersion, {"persistent" : "true"}, 30);
+	if length( VersionTable.Version ) > 0:
+		version = VersionTable.Version[0];
+		dotPos = version.rfind(".");
+		if dotPos > 0:
+			version = version[0:dotPos];
+
+		apiType = VersionTable.APIType[0];
+		if apiType == "VirtualCenter":
+			if version >= "2.5":
+				version = "92.5";
+		else:
+			if apiType == "HostAgent":
+				if version >= "4.0":
+					version = "94.0";
+
+		setVersion( version, VersionTable.Version[0] );
+except RuntimeError, ex:
+	setError( 1, "{0}", ex.args );]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">vmware</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList" />
+            <outputColumnDataTypeList class="java.util.ArrayList" />
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

@@ -64,6 +64,7 @@ def process_proc(jsonfile):
 	with open(jsonfile,'w') as text_file:
 		text_file.write(proc_text)
  
-process_ds_conn('UpdateDS.json')
-process_ds_conn('UpdateConnection.json')
-process_proc('Procedure.json')
+if _name_ == "_main_": 
+	process_ds_conn('UpdateDS.json')
+	process_ds_conn('UpdateConnection.json')
+	process_proc('Procedure.json')

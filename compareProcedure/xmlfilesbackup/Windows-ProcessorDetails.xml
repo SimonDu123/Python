@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Processor Details" name="ProcessorDetails">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">processordetails</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_ProcessorDetails" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Sequence" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="3600000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="AddressWidth" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DataWidth" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Description" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Manufacturer" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ClockSpeed" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Architecture" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="NumCPUs" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="Hyperthreaded" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="MachineIs32Bit" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ArchitectureAndNumCPUs" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Host" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Sequence" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[# execute expanded verion of ProcessorDetails procedures first and failover to simpler version
+done = false;
+
+try:
+	pdTable=ProcessorDetails.execute({"queryName" : "singleRowVersion"});
+	done = (length(pdTable._exit) > 0) and (pdTable._exit[0] == 0);
+except RuntimeError, ex:
+	done = false;
+
+if not done:
+	try:
+		pdTable=ProcessorDetails.execute({"queryName" : "multiRowVersion"});
+	except RuntimeError, ex:
+		done = false;
+
+if (length(pdTable._exit) == 0):
+	setError(-2, "Exit column not found");
+elif (pdTable._exit[0] != 0):
+	setError(pdTable._errorCode[0], pdTable._errorText[0]);
+else:
+	copyresults(pdTable);]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="AddressWidth">
+                        <expression><![CDATA[AddressWidth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataWidth">
+                        <expression><![CDATA[DataWidth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Description">
+                        <expression><![CDATA[Description]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Manufacturer">
+                        <expression><![CDATA[Manufacturer]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ClockSpeed">
+                        <expression><![CDATA[ClockSpeed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NumCPUs">
+                        <expression><![CDATA[NumCPUs]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Architecture">
+                        <expression><![CDATA[Architecture]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Hyperthreaded">
+                        <expression><![CDATA[Hyperthreaded]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MachineIs32Bit">
+                        <expression><![CDATA[MachineIs32Bit]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ArchitectureAndNumCPUs">
+                        <expression><![CDATA[ArchitectureAndNumCPUs]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[createMEDisplayNameColumn(ProcessorDetails.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Sequence">
+                        <expression><![CDATA[createPseudoKeyColumn(ProcessorDetails.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(ProcessorDetails.Name)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="AddressWidth" dataType="LONG"/>
+                     <columnDataType columnName="Architecture" dataType="LONG"/>
+                     <columnDataType columnName="ClockSpeed" dataType="LONG"/>
+                     <columnDataType columnName="DataWidth" dataType="LONG"/>
+                     <columnDataType columnName="Description" dataType="STRING"/>
+                     <columnDataType columnName="HyperThreaded" dataType="BOOLEAN"/>
+                     <columnDataType columnName="MachineIs32Bit" dataType="BOOLEAN"/>
+                     <columnDataType columnName="Manufacturer" dataType="STRING"/>
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="NumCPUs" dataType="LONG"/>
+                     <columnDataType columnName="ArchitectureAndNumCPUs" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="multiRowVersion" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT AddressWidth, Architecture, DataWidth, Description, Name, Manufacturer, MaxClockSpeed 
+FROM   Win32_Processor]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="AddressWidth">
+                        <expression><![CDATA[AddressWidth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Architecture">
+                        <expression><![CDATA[Architecture]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataWidth">
+                        <expression><![CDATA[DataWidth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Description">
+                        <expression><![CDATA[Description]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Manufacturer">
+                        <expression><![CDATA[Manufacturer]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ClockSpeed">
+                        <expression><![CDATA[MaxClockSpeed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NumCPUs">
+                        <expression><![CDATA[count(ClockSpeed)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Hyperthreaded">
+                        <expression><![CDATA[false]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MachineIs32Bit">
+                        <expression><![CDATA[Architecture == 0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ArchitectureAndNumCPUs">
+                        <expression><![CDATA[concat(NumCPUs, " (", DataWidth, "-bit)")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[createMEDisplayNameColumn(ProcessorDetails.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Sequence">
+                        <expression><![CDATA[createPseudoKeyColumn(ProcessorDetails.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[getProperty("diagnostic_server")]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="AddressWidth" dataType="LONG"/>
+                     <columnDataType columnName="Architecture" dataType="LONG"/>
+                     <columnDataType columnName="DataWidth" dataType="LONG"/>
+                     <columnDataType columnName="Description" dataType="STRING"/>
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="Manufacturer" dataType="STRING"/>
+                     <columnDataType columnName="MaxClockSpeed" dataType="LONG"/>
+                     <columnDataType columnName="NumCPUs" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="singleRowVersion" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT AddressWidth, Architecture, DataWidth, Description, Name, Manufacturer, 
+       MaxClockSpeed, NumberOfCores, NumberOfLogicalProcessors 
+FROM   Win32_Processor]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="AddressWidth">
+                        <expression><![CDATA[AddressWidth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Architecture">
+                        <expression><![CDATA[Architecture]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataWidth">
+                        <expression><![CDATA[DataWidth]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Description">
+                        <expression><![CDATA[Description]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Manufacturer">
+                        <expression><![CDATA[Manufacturer]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ClockSpeed">
+                        <expression><![CDATA[MaxClockSpeed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NumCPUs">
+                        <expression><![CDATA[sum(NumberOfLogicalProcessors)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Hyperthreaded">
+                        <expression><![CDATA[NumberOfLogicalProcessors > NumberOfCores]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MachineIs32Bit">
+                        <expression><![CDATA[Architecture == 0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ArchitectureAndNumCPUs">
+                        <expression><![CDATA[concat(NumCPUs, " (", DataWidth, "-bit)")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[createMEDisplayNameColumn(ProcessorDetails.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Sequence">
+                        <expression><![CDATA[createPseudoKeyColumn(ProcessorDetails.Name)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[getProperty("diagnostic_server")]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="AddressWidth" dataType="LONG"/>
+                     <columnDataType columnName="Architecture" dataType="LONG"/>
+                     <columnDataType columnName="DataWidth" dataType="LONG"/>
+                     <columnDataType columnName="Description" dataType="STRING"/>
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="Manufacturer" dataType="STRING"/>
+                     <columnDataType columnName="MaxClockSpeed" dataType="LONG"/>
+                     <columnDataType columnName="NumberOfCores" dataType="LONG"/>
+                     <columnDataType columnName="NumberOfLogicalProcessors" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectionName="Windows.V5.Processors" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="true">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

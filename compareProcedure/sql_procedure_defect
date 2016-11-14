@@ -1,0 +1,45 @@
+1. HealthCheckAdhocWorkloadConfiguration 
+a.diagnostic_server Column Name not upload, mapping createDSDomainIDColumn(instance)
+b.all healthcheck procedure AarDvark column Name is instance_start_time_utc but from Cloud is ISO8601instance_start_time_utc
+2. HealthCheckDatabaseBackups
+a.diagnostic_server column name not upload
+b.key column not upload, this column has values, mapping createPseudoKeyColumn(instance)
+3.HealthcheckGuestAccess diagnostic_server, key column 
+4.HealthCheckDataspaces
+a.diagnostic_server
+5.HealthCheckGuestAccess
+a.diagnostic_server
+b.key
+6.HealthCheckMasterFiles
+a.strange thing has correct key column
+7.HealthCheckMissingIndexes
+a.diagnostic_server
+b.don't have key
+8.HealthCheckOSProcessMemory
+a.diagnostic_server
+9.healthcheckossystemmemory
+a.diagnostic_server
+10.healthcheckosvolumestats
+a.have diagnostic_server column
+11.HealthCheckSQLLogins
+a.don't have diagnostic_server
+b.don't have key
+c.owning_principal_id don't upload to cloud
+12.HealthCheckSYsinfo
+a.bpool_commit_target,bpool_committed,bpool_visible don't upload to cloud
+b. don't have diagnostic_server column
+13.HealthCheckSysObjects
+a.Don't diagnostic_server column
+b.don't upload key column
+14.HealthCheckSystemConfiguration
+a.don't upload diagnostic_server,key column
+15.healthcheckvirtualfilestats
+a.don't upload diagnostic_server,key column
+16.HealthCheckWaitStatistics
+a. have diagnostic_server column
+17.hostedby
+a. have diagnostic_server column
+17.sqldatabaselist
+a.oldesttransactionstarttime column AarDvark show null,cloud show value "1970-01-01T00:00:00.000Z",
+18.VirtualFileStats
+a.don't upload column readswaitratea, value are all 0

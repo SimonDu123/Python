@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Long Running SQL" name="LongRunningSQL">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">longrunningsql</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_LongRunningSQL" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="session_request_id" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="session_id" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">longrunningsqlrule</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="session_request_id" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="session_id" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="query_text" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="true"/>
+               <procedureColumn dataType="LONG" name="cpu_time" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="total_elapsed_time" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="total_elapsed_time_sec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="query_text_short" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="databasename" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="loginname" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="programname" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="hostname" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="status" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText>isNonNormalThresholdDefined(&quot;LongRunningSQLRule&quot;)</guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_LongRunningSQL.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="session_request_id">
+                        <expression><![CDATA[session_request_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="session_id">
+                        <expression><![CDATA[session_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_text">
+                        <expression><![CDATA[query_text]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="cpu_time">
+                        <expression><![CDATA[cpu_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="total_elapsed_time">
+                        <expression><![CDATA[total_elapsed_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="total_elapsed_time_sec">
+                        <expression><![CDATA[total_elapsed_time / 1000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_text_short">
+                        <expression><![CDATA[substring(query_text, 0, 1000)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="databasename">
+                        <expression><![CDATA[databasename]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="loginname">
+                        <expression><![CDATA[loginname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="programname">
+                        <expression><![CDATA[programname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="hostname">
+                        <expression><![CDATA[hostname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="status">
+                        <expression><![CDATA[status]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="session_request_id" dataType="STRING"/>
+                     <columnDataType columnName="session_id" dataType="LONG"/>
+                     <columnDataType columnName="query_text" dataType="STRING"/>
+                     <columnDataType columnName="cpu_time" dataType="LONG"/>
+                     <columnDataType columnName="total_elapsed_time" dataType="LONG"/>
+                     <columnDataType columnName="total_elapsed_time_sec" dataType="LONG"/>
+                     <columnDataType columnName="query_text_short" dataType="STRING"/>
+                     <columnDataType columnName="databasename" dataType="STRING"/>
+                     <columnDataType columnName="loginname" dataType="STRING"/>
+                     <columnDataType columnName="programname" dataType="STRING"/>
+                     <columnDataType columnName="hostname" dataType="STRING"/>
+                     <columnDataType columnName="status" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[# not supported in SQL Server 2000]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2000</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="session_request_id">
+                        <expression><![CDATA[session_request_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="session_id">
+                        <expression><![CDATA[session_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_text">
+                        <expression><![CDATA[query_text]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="cpu_time">
+                        <expression><![CDATA[cpu_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="total_elapsed_time">
+                        <expression><![CDATA[total_elapsed_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="total_elapsed_time_sec">
+                        <expression><![CDATA[total_elapsed_time / 1000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_text_short">
+                        <expression><![CDATA[substring(query_text, 0, 1000)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="databasename">
+                        <expression><![CDATA[databasename]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="loginname">
+                        <expression><![CDATA[loginname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="programname">
+                        <expression><![CDATA[programname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="hostname">
+                        <expression><![CDATA[hostname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="status">
+                        <expression><![CDATA[status]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="session_request_id" dataType="STRING"/>
+                     <columnDataType columnName="session_id" dataType="LONG"/>
+                     <columnDataType columnName="query_text" dataType="STRING"/>
+                     <columnDataType columnName="cpu_time" dataType="LONG"/>
+                     <columnDataType columnName="total_elapsed_time" dataType="LONG"/>
+                     <columnDataType columnName="total_elapsed_time_sec" dataType="LONG"/>
+                     <columnDataType columnName="query_text_short" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

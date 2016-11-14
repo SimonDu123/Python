@@ -1,0 +1,158 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Network TCP" name="NetworkTCP">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">networktcp</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_NetworkTCP" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="DOUBLE" name="PerfTimeDelta" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Segments" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SegmentsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SegmentsReceived" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SegmentsReceivedPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SegmentsRetransmitted" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SegmentsRetransmittedPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SegmentsSent" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SegmentsSentPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TimestampPerfTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT  Frequency_PerfTime, SegmentsPerSec, SegmentsReceivedPerSec, SegmentsRetransmittedPerSec, 
+	SegmentsSentPerSec, Timestamp_PerfTime 
+FROM    Win32_PerfRawData_Tcpip_TCPv4]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+                <fragment type="TECHNOLOGY">2003</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="TimestampPerfTime">
+                <expression><![CDATA[Timestamp_PerfTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PerfTimeDelta">
+                <expression><![CDATA[positiveDelta(NetworkTCP.TimestampPerfTime) / Frequency_PerfTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsReceived">
+                <expression><![CDATA[SegmentsReceivedPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsReceivedPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.SegmentsReceived) / PerfTimeDelta]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsRetransmitted">
+                <expression><![CDATA[SegmentsRetransmittedPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsRetransmittedPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.SegmentsRetransmitted) / PerfTimeDelta]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsSent">
+                <expression><![CDATA[SegmentsSentPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsSentPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.SegmentsSent) / PerfTimeDelta]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Segments">
+                <expression><![CDATA[SegmentsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.Segments) / PerfTimeDelta]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Frequency_PerfTime" dataType="LONG" />
+              <columnDataType columnName="SegmentsPerSec" dataType="LONG" />
+              <columnDataType columnName="SegmentsReceivedPerSec" dataType="LONG" />
+              <columnDataType columnName="SegmentsRetransmittedPerSec" dataType="LONG" />
+              <columnDataType columnName="SegmentsSentPerSec" dataType="LONG" />
+              <columnDataType columnName="Timestamp_PerfTime" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT  Frequency_PerfTime, SegmentsPerSec, SegmentsReceivedPerSec, SegmentsRetransmittedPerSec, 
+	SegmentsSentPerSec, Timestamp_PerfTime 
+FROM    Win32_PerfRawData_Tcpip_TCP]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="TimestampPerfTime">
+                <expression><![CDATA[Timestamp_PerfTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PerfTimeDelta">
+                <expression><![CDATA[positiveDelta(NetworkTCP.TimestampPerfTime) / Frequency_PerfTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsReceived">
+                <expression><![CDATA[SegmentsReceivedPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsReceivedPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.SegmentsReceived) / PerfTimeDelta]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsRetransmitted">
+                <expression><![CDATA[SegmentsRetransmittedPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsRetransmittedPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.SegmentsRetransmitted) / PerfTimeDelta]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsSent">
+                <expression><![CDATA[SegmentsSentPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsSentPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.SegmentsSent) / PerfTimeDelta]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Segments">
+                <expression><![CDATA[SegmentsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SegmentsPerSec">
+                <expression><![CDATA[positiveDelta(NetworkTCP.Segments) / PerfTimeDelta]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Frequency_PerfTime" dataType="LONG" />
+              <columnDataType columnName="SegmentsPerSec" dataType="LONG" />
+              <columnDataType columnName="SegmentsReceivedPerSec" dataType="LONG" />
+              <columnDataType columnName="SegmentsRetransmittedPerSec" dataType="LONG" />
+              <columnDataType columnName="SegmentsSentPerSec" dataType="LONG" />
+              <columnDataType columnName="Timestamp_PerfTime" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

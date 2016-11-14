@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Health Check- OS Performance Counters" name="HealthCheckOSPerformanceCounters">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">healthcheckosperformancecounters</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="OSPerformanceCounters" dataRetentionMode="NEVER" keyColumnName="key" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" usingAuxiliaryConnection="true">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="cntr_type" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="cntr_value" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="counter_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="instance" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="instance_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="instance_start_time_utc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="object_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="rownum" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="service" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="key" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerAuxiliaryConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:OSPerformanceCounters.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2005</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="cntr_type">
+                        <expression><![CDATA[cntr_type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="cntr_value">
+                        <expression><![CDATA[cntr_value]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="counter_name">
+                        <expression><![CDATA[counter_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance">
+                        <expression><![CDATA[instance]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance_name">
+                        <expression><![CDATA[instance_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance_start_time_utc">
+                        <expression><![CDATA[instance_start_time_utc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="object_name">
+                        <expression><![CDATA[object_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="rownum">
+                        <expression><![CDATA[rownum]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="service">
+                        <expression><![CDATA[service]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(instance)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(instance)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="cntr_type" dataType="LONG"/>
+                     <columnDataType columnName="cntr_value" dataType="LONG"/>
+                     <columnDataType columnName="counter_name" dataType="STRING"/>
+                     <columnDataType columnName="instance" dataType="STRING"/>
+                     <columnDataType columnName="instance_name" dataType="STRING"/>
+                     <columnDataType columnName="instance_start_time_utc" dataType="DATE"/>
+                     <columnDataType columnName="object_name" dataType="STRING"/>
+                     <columnDataType columnName="rownum" dataType="LONG"/>
+                     <columnDataType columnName="service" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>timeout</string>
+                  <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">30m</property>
+               </entry>
+               <entry>
+                  <string>rowlimit</string>
+                  <property dataType="STRING" description="rowLimit" displayName="rowLimit" encryptStyle="NONE" hidden="true" name="rowLimit">500000</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

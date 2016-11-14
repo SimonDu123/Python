@@ -1,0 +1,126 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Recompiling Queries" name="SQLRecompilingQueries">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlrecompilingqueries</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="query_hash" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="10000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="query_hash" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="sumof_plan_generationnum" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="typical_query" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="typical_plan" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="compiletime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="compilecpu" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[#not supported for SQL Server 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="query_hash">
+                <expression><![CDATA[query_hash]]></expression>
+              </columnExpression>
+              <columnExpression columnName="sumof_plan_generationnum">
+                <expression><![CDATA[sumof_plan_generationnum]]></expression>
+              </columnExpression>
+              <columnExpression columnName="typical_query">
+                <expression><![CDATA[typical_query]]></expression>
+              </columnExpression>
+              <columnExpression columnName="typical_plan">
+                <expression><![CDATA[typical_plan]]></expression>
+              </columnExpression>
+              <columnExpression columnName="compiletime">
+                <expression><![CDATA[compiletime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="compilecpu">
+                <expression><![CDATA[compilecpu]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="query_hash" dataType="STRING" />
+              <columnDataType columnName="sumof_plan_generationnum" dataType="LONG" />
+              <columnDataType columnName="typical_query" dataType="STRING" />
+              <columnDataType columnName="typical_plan" dataType="STRING" />
+              <columnDataType columnName="compiletime" dataType="LONG" />
+              <columnDataType columnName="compilecpu" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_RecompilingQueries.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="query_hash">
+                <expression><![CDATA[query_hash]]></expression>
+              </columnExpression>
+              <columnExpression columnName="sumof_plan_generationnum">
+                <expression><![CDATA[sumof_plan_generationnum]]></expression>
+              </columnExpression>
+              <columnExpression columnName="typical_query">
+                <expression><![CDATA[typical_query]]></expression>
+              </columnExpression>
+              <columnExpression columnName="typical_plan">
+                <expression><![CDATA[typical_plan]]></expression>
+              </columnExpression>
+              <columnExpression columnName="compiletime">
+                <expression><![CDATA[compiletime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="compilecpu">
+                <expression><![CDATA[compilecpu]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="query_hash" dataType="STRING" />
+              <columnDataType columnName="sumof_plan_generationnum" dataType="LONG" />
+              <columnDataType columnName="typical_query" dataType="STRING" />
+              <columnDataType columnName="typical_plan" dataType="STRING" />
+              <columnDataType columnName="compiletime" dataType="LONG" />
+              <columnDataType columnName="compilecpu" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

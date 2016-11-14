@@ -1,0 +1,179 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Full Text Catalog" name="SQLFullTextCatalogs">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlfulltextcatalogs</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLFullTextCalatogs" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="ftcatid" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="DatabaseName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ftcatid" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="FTCName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="FTCStatus" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="PopulateCompletage" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TableCount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ItemCount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="IndexSizeMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Path" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="SQLQuery" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_FullTextCatalogs.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DatabaseName">
+                <expression><![CDATA[DatabaseName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ftcatid">
+                <expression><![CDATA[ftcatid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FTCName">
+                <expression><![CDATA[FTCName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FTCStatus">
+                <expression><![CDATA[FTCStatus]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PopulateCompletage">
+                <expression><![CDATA[PopulateCompletage]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableCount">
+                <expression><![CDATA[TableCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ItemCount">
+                <expression><![CDATA[ItemCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexSizeMB">
+                <expression><![CDATA[IndexSizeMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Path">
+                <expression><![CDATA[Path]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DatabaseName" dataType="STRING" />
+              <columnDataType columnName="ftcatid" dataType="LONG" />
+              <columnDataType columnName="FTCName" dataType="STRING" />
+              <columnDataType columnName="FTCStatus" dataType="LONG" />
+              <columnDataType columnName="PopulateCompletage" dataType="DATE" />
+              <columnDataType columnName="TableCount" dataType="LONG" />
+              <columnDataType columnName="ItemCount" dataType="LONG" />
+              <columnDataType columnName="IndexSizeMB" dataType="LONG" />
+              <columnDataType columnName="Path" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[ftcTable = SQLFullTextCatalogs.execute({"queryName" : "SQLQuery"});
+if length(ftcTable.DatabaseName) > 0:
+	Result.DatabaseName = ftcTable.DatabaseName;
+	Result.ftcatid = ftcTable.ftcatid;
+	Result.FTCName = ftcTable.FTCName;
+	Result.PopulateCompletage = ftcTable.PopulateCompletage;
+	Result.TableCount = ftcTable.TableCount;
+	Result.ItemCount = ftcTable.ItemCount;
+	Result.IndexSizeMB = ftcTable.IndexSizeMB;
+	Result.Path = ftcTable.Path;
+	if length(ftcTable.FTCStatus) > 0:
+		if isnull(ftcTable.FTCStatus[0]): Result.FTCStatus = "Unknown";
+		elif int(ftcTable.FTCStatus[0]) == 0: Result.FTCStatus = "Idle";
+		elif int(ftcTable.FTCStatus[0]) == 1: Result.FTCStatus = "Full population in progress";
+		elif int(ftcTable.FTCStatus[0]) == 2: Result.FTCStatus = "Paused";
+		elif int(ftcTable.FTCStatus[0]) == 3: Result.FTCStatus = "Throttled";
+		elif int(ftcTable.FTCStatus[0]) == 4: Result.FTCStatus = "Recovering";
+		elif int(ftcTable.FTCStatus[0]) == 5: Result.FTCStatus = "Shutdown";
+		elif int(ftcTable.FTCStatus[0]) == 6: Result.FTCStatus = "Incremental population in progress";
+		elif int(ftcTable.FTCStatus[0]) == 7: Result.FTCStatus = "Building Index";
+		elif int(ftcTable.FTCStatus[0]) == 8: Result.FTCStatus = "Disk is full. Paused";
+		elif int(ftcTable.FTCStatus[0]) == 9: Result.FTCStatus = "Change Tracking";
+		else: Result.FTCStatus = "Unknown";
+	else: Result.FTCStatus = "Unknown";
+elif (length(ftcTable._exit) == 0):
+	setError(-2, "Exit column not found");
+elif (ftcTable._exit[0] != 0):
+	setError(ftcTable._errorCode[0], ftcTable._errorText[0]);]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DatabaseName">
+                <expression><![CDATA[DatabaseName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ftcatid">
+                <expression><![CDATA[ftcatid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FTCName">
+                <expression><![CDATA[FTCName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FTCStatus">
+                <expression><![CDATA[FTCStatus]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PopulateCompletage">
+                <expression><![CDATA[PopulateCompletage]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableCount">
+                <expression><![CDATA[TableCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ItemCount">
+                <expression><![CDATA[ItemCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexSizeMB">
+                <expression><![CDATA[IndexSizeMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Path">
+                <expression><![CDATA[Path]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DatabaseName" dataType="STRING" />
+              <columnDataType columnName="ftcatid" dataType="LONG" />
+              <columnDataType columnName="FTCName" dataType="STRING" />
+              <columnDataType columnName="FTCStatus" dataType="STRING" />
+              <columnDataType columnName="PopulateCompletage" dataType="DATE" />
+              <columnDataType columnName="TableCount" dataType="LONG" />
+              <columnDataType columnName="ItemCount" dataType="LONG" />
+              <columnDataType columnName="IndexSizeMB" dataType="LONG" />
+              <columnDataType columnName="Path" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="5">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

@@ -1,0 +1,94 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="System Drivers" name="Drivers">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">drivers</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_Drivers" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Driver" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Driver" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="DisplayName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ServiceType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="CurrentState" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="AcceptStop" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Win32ExitCode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="StartType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="PathName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Name, DisplayName, ServiceType, State, AcceptStop, ExitCode, StartMode, PathName 
+FROM   Win32_SystemDriver]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Driver">
+                <expression><![CDATA[Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DisplayName">
+                <expression><![CDATA[DisplayName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ServiceType">
+                <expression><![CDATA[ServiceType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CurrentState">
+                <expression><![CDATA[State]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AcceptStop">
+                <expression><![CDATA[AcceptStop]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Win32ExitCode">
+                <expression><![CDATA[ExitCode]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StartType">
+                <expression><![CDATA[StartMode]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PathName">
+                <expression><![CDATA[PathName]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Name" dataType="STRING" />
+              <columnDataType columnName="DisplayName" dataType="STRING" />
+              <columnDataType columnName="ServiceType" dataType="STRING" />
+              <columnDataType columnName="State" dataType="STRING" />
+              <columnDataType columnName="AcceptStop" dataType="BOOLEAN" />
+              <columnDataType columnName="ExitCode" dataType="LONG" />
+              <columnDataType columnName="StartMode" dataType="STRING" />
+              <columnDataType columnName="PathName" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

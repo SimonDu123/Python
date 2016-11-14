@@ -1,0 +1,93 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Shares" name="Shares">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">shares</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_Shares" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="ShareName" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="ShareName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="LocalPath" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Comment" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Type" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MaxUsers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CurrentUsers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="AllowMaximum" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="TempType" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Name, AllowMaximum, Description, MaximumAllowed, Path, Type 
+FROM   Win32_Share]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ShareName">
+                <expression><![CDATA[Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LocalPath">
+                <expression><![CDATA[Path]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Comment">
+                <expression><![CDATA[Description]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MaxUsers">
+                <expression><![CDATA[MaximumAllowed]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CurrentUsers">
+                <expression><![CDATA[-1]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AllowMaximum">
+                <expression><![CDATA[AllowMaximum]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TempType">
+                <expression><![CDATA[Type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Type">
+                <expression><![CDATA[choose(TempType, "0", "Disk Drive", "1", "Print Queue", "2", "Device", "3", "IPC", "2147483648", "Disk Drive Admin", "2147483649", "Print Queue Admin", "2147483650", "Device Admin", "2147483651", "IPC Admin")]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Name" dataType="STRING" />
+              <columnDataType columnName="Path" dataType="STRING" />
+              <columnDataType columnName="Description" dataType="STRING" />
+              <columnDataType columnName="Type" dataType="STRING" />
+              <columnDataType columnName="MaximumAllowed" dataType="LONG" />
+              <columnDataType columnName="CurrentUsers" dataType="LONG" />
+              <columnDataType columnName="AllowMaximum" dataType="BOOLEAN" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="3">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

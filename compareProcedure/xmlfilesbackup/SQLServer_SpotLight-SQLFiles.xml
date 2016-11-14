@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Files" name="SQLFiles">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqlfiles</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLFiles" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DBAndFile" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="File" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="15">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">files</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="DBName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="File" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBAndFile" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="FileGroup" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Type" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="AutoGrow" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="MaxSize" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="GrowthIncrement" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Path" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FileUsedMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FileFreeMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FileFreePct" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FileUsedPct" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="dbid" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBNameAndID" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="GrowthByPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="GrowthIncrementValue" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="MaxSizeValue" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBAndFileGroup" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DiskPath" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FileFreeKB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DiskFreeKB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DiskFreeMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DiskTotalKB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DiskTotalMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FixedDataUsed" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="FixedLogUsed" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="MaxSizeMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DynamicGrowthsRemaining" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="FileInfoAvailable" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="MaxGrowthAvailable" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="FileInfoMissingReason" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="Secondary" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SQL_FILES]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="DBName">
+                        <expression><![CDATA[DBName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="File">
+                        <expression><![CDATA[File]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBAndFile">
+                        <expression><![CDATA[DBAndFile]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileGroup">
+                        <expression><![CDATA[FileGroup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Type">
+                        <expression><![CDATA[Type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AutoGrow">
+                        <expression><![CDATA[AutoGrow]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSize">
+                        <expression><![CDATA[MaxSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="GrowthIncrement">
+                        <expression><![CDATA[GrowthIncrement]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Path">
+                        <expression><![CDATA[Path]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalMB">
+                        <expression><![CDATA[TotalMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileUsedMB">
+                        <expression><![CDATA[FileUsedMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileFreeMB">
+                        <expression><![CDATA[FileFreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileFreePct">
+                        <expression><![CDATA[FileFreePct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileUsedPct">
+                        <expression><![CDATA[FileUsedPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="dbid">
+                        <expression><![CDATA[dbid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBNameAndID">
+                        <expression><![CDATA[DBNameAndID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="GrowthByPct">
+                        <expression><![CDATA[GrowthByPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="GrowthIncrementValue">
+                        <expression><![CDATA[GrowthIncrementValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSizeValue">
+                        <expression><![CDATA[MaxSizeValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBAndFileGroup">
+                        <expression><![CDATA[DBAndFileGroup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskPath">
+                        <expression><![CDATA[DiskPath]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileFreeKB">
+                        <expression><![CDATA[FileFreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskFreeKB">
+                        <expression><![CDATA[DiskFreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskFreeMB">
+                        <expression><![CDATA[DiskFreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskTotalKB">
+                        <expression><![CDATA[DiskTotalKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskTotalMB">
+                        <expression><![CDATA[DiskTotalMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FixedDataUsed">
+                        <expression><![CDATA[FixedDataUsed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FixedLogUsed">
+                        <expression><![CDATA[FixedLogUsed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSizeMB">
+                        <expression><![CDATA[MaxSizeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DynamicGrowthsRemaining">
+                        <expression><![CDATA[DynamicGrowthsRemaining]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileInfoAvailable">
+                        <expression><![CDATA[FileInfoAvailable]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxGrowthAvailable">
+                        <expression><![CDATA[MaxGrowthAvailable]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileInfoMissingReason">
+                        <expression><![CDATA[FileInfoMissingReason]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Secondary">
+                        <expression><![CDATA[False]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="DBName" dataType="STRING"/>
+                     <columnDataType columnName="File" dataType="STRING"/>
+                     <columnDataType columnName="DBAndFile" dataType="STRING"/>
+                     <columnDataType columnName="FileGroup" dataType="STRING"/>
+                     <columnDataType columnName="Type" dataType="STRING"/>
+                     <columnDataType columnName="TotalKB" dataType="LONG"/>
+                     <columnDataType columnName="AutoGrow" dataType="STRING"/>
+                     <columnDataType columnName="MaxSize" dataType="STRING"/>
+                     <columnDataType columnName="GrowthIncrement" dataType="STRING"/>
+                     <columnDataType columnName="Path" dataType="STRING"/>
+                     <columnDataType columnName="FileUsedKB" dataType="LONG"/>
+                     <columnDataType columnName="dbid" dataType="LONG"/>
+                     <columnDataType columnName="MaxSizeValue" dataType="DOUBLE"/>
+                     <columnDataType columnName="GrowthByPct" dataType="DOUBLE"/>
+                     <columnDataType columnName="GrowthIncrementValue" dataType="DOUBLE"/>
+                     <columnDataType columnName="DBAndFileGroup" dataType="STRING"/>
+                     <columnDataType columnName="DiskPath" dataType="STRING"/>
+                     <columnDataType columnName="FileFreeKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskFreeKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskTotalKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FixedDataUsed" dataType="DOUBLE"/>
+                     <columnDataType columnName="FixedLogUsed" dataType="DOUBLE"/>
+                     <columnDataType columnName="MaxSizeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DynamicGrowthsRemaining" dataType="DOUBLE"/>
+                     <columnDataType columnName="DynamicDataGrowthsRemaining" dataType="DOUBLE"/>
+                     <columnDataType columnName="DynamicLogGrowthsRemaining" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileInfoAvailable" dataType="BOOLEAN"/>
+                     <columnDataType columnName="TotalMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileUsedMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileFreeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileFreePct" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileUsedPct" dataType="DOUBLE"/>
+                     <columnDataType columnName="DBNameAndID" dataType="STRING"/>
+                     <columnDataType columnName="DiskFreeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskTotalMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="MaxGrowthAvailable" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileInfoMissingReason" dataType="STRING"/>
+                     <columnDataType columnName="Secondary" dataType="BOOLEAN"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:SQLFiles.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2012</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="DBName">
+                        <expression><![CDATA[DBName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="File">
+                        <expression><![CDATA[File]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBAndFile">
+                        <expression><![CDATA[DBAndFile]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileGroup">
+                        <expression><![CDATA[FileGroup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Type">
+                        <expression><![CDATA[Type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AutoGrow">
+                        <expression><![CDATA[AutoGrow]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSize">
+                        <expression><![CDATA[MaxSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="GrowthIncrement">
+                        <expression><![CDATA[GrowthIncrement]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Path">
+                        <expression><![CDATA[Path]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalMB">
+                        <expression><![CDATA[TotalMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileUsedMB">
+                        <expression><![CDATA[FileUsedMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileFreeMB">
+                        <expression><![CDATA[FileFreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileFreePct">
+                        <expression><![CDATA[FileFreePct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileUsedPct">
+                        <expression><![CDATA[FileUsedPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="dbid">
+                        <expression><![CDATA[dbid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBNameAndID">
+                        <expression><![CDATA[DBNameAndID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="GrowthByPct">
+                        <expression><![CDATA[GrowthByPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="GrowthIncrementValue">
+                        <expression><![CDATA[GrowthIncrementValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSizeValue">
+                        <expression><![CDATA[MaxSizeValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBAndFileGroup">
+                        <expression><![CDATA[DBAndFileGroup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskPath">
+                        <expression><![CDATA[DiskPath]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileFreeKB">
+                        <expression><![CDATA[FileFreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskFreeKB">
+                        <expression><![CDATA[DiskFreeKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskFreeMB">
+                        <expression><![CDATA[DiskFreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskTotalKB">
+                        <expression><![CDATA[DiskTotalKB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskTotalMB">
+                        <expression><![CDATA[DiskTotalMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FixedDataUsed">
+                        <expression><![CDATA[FixedDataUsed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FixedLogUsed">
+                        <expression><![CDATA[FixedLogUsed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSizeMB">
+                        <expression><![CDATA[MaxSizeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DynamicGrowthsRemaining">
+                        <expression><![CDATA[DynamicGrowthsRemaining]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileInfoAvailable">
+                        <expression><![CDATA[FileInfoAvailable]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxGrowthAvailable">
+                        <expression><![CDATA[MaxGrowthAvailable]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileInfoMissingReason">
+                        <expression><![CDATA[FileInfoMissingReason]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Secondary">
+                        <expression><![CDATA[Secondary]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="DBName" dataType="STRING"/>
+                     <columnDataType columnName="File" dataType="STRING"/>
+                     <columnDataType columnName="DBAndFile" dataType="STRING"/>
+                     <columnDataType columnName="FileGroup" dataType="STRING"/>
+                     <columnDataType columnName="Type" dataType="STRING"/>
+                     <columnDataType columnName="AutoGrow" dataType="STRING"/>
+                     <columnDataType columnName="MaxSize" dataType="STRING"/>
+                     <columnDataType columnName="GrowthIncrement" dataType="STRING"/>
+                     <columnDataType columnName="Path" dataType="STRING"/>
+                     <columnDataType columnName="TotalMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileUsedMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileFreeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileFreePct" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileUsedPct" dataType="DOUBLE"/>
+                     <columnDataType columnName="dbid" dataType="LONG"/>
+                     <columnDataType columnName="DBNameAndID" dataType="STRING"/>
+                     <columnDataType columnName="GrowthByPct" dataType="DOUBLE"/>
+                     <columnDataType columnName="GrowthIncrementValue" dataType="DOUBLE"/>
+                     <columnDataType columnName="MaxSizeValue" dataType="DOUBLE"/>
+                     <columnDataType columnName="DBAndFileGroup" dataType="STRING"/>
+                     <columnDataType columnName="DiskPath" dataType="STRING"/>
+                     <columnDataType columnName="FileFreeKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskFreeKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskFreeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskTotalKB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DiskTotalMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="FixedDataUsed" dataType="DOUBLE"/>
+                     <columnDataType columnName="FixedLogUsed" dataType="LONG"/>
+                     <columnDataType columnName="MaxSizeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DynamicGrowthsRemaining" dataType="DOUBLE"/>
+                     <columnDataType columnName="MaxGrowthAvailable" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileInfoMissingReason" dataType="STRING"/>
+                     <columnDataType columnName="FileInfoAvailable" dataType="BOOLEAN"/>
+                     <columnDataType columnName="Secondary" dataType="BOOLEAN"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="30">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

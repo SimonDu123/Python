@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Hyper-V - Virtual Machine Data" name="HyperVVMData">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">hypervvmdata</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">hypervcpuwaittimeperdispatch</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">hypervvmheartbeat</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">hypervvmoverhead</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="BOOLEAN" name="DynamicMemoryEnabled" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DynamicMemoryAveragePressure" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DynamicMemoryCurrentPressure" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MemoryLimit" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MemoryReservation" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="MemorySwapFilesInUse" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MemoryTargetMemoryBuffer" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MemoryVirtualQuantity" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="MemoryVirtualQuantityUnits" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MemoryWeight" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CPUPercentGuestRunTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CPUPercentHypervisorRunTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CPUPercentRemoteRunTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CPUPercentTotalRunTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CPUCPUWaitTimePerDispatch" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="GuestHeartbeatStatus" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="VMName" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="OverallStatus" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MemoryUsage" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="OverallCpuUsage" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="PowerState" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Host" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Heartbeat" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="GeneralJavaConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText>isHostHyperV()</guardExpressionText>
+                  <commandText><![CDATA[COPY_ROW HyperV VirtualMachines VMName {{VMName}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="DynamicMemoryEnabled">
+                        <expression><![CDATA[DynamicMemoryEnabled]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DynamicMemoryAveragePressure">
+                        <expression><![CDATA[DynamicMemoryAveragePressure]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DynamicMemoryCurrentPressure">
+                        <expression><![CDATA[DynamicMemoryCurrentPressure]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemoryLimit">
+                        <expression><![CDATA[MemoryLimit]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemoryReservation">
+                        <expression><![CDATA[MemoryReservation]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemorySwapFilesInUse">
+                        <expression><![CDATA[MemorySwapFilesInUse]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemoryTargetMemoryBuffer">
+                        <expression><![CDATA[MemoryTargetMemoryBuffer]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemoryVirtualQuantity">
+                        <expression><![CDATA[MemoryVirtualQuantity]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemoryVirtualQuantityUnits">
+                        <expression><![CDATA[MemoryVirtualQuantityUnits]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemoryWeight">
+                        <expression><![CDATA[MemoryWeight]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPUPercentGuestRunTime">
+                        <expression><![CDATA[CPUPercentGuestRunTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPUPercentHypervisorRunTime">
+                        <expression><![CDATA[CPUPercentHypervisorRunTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPUPercentRemoteRunTime">
+                        <expression><![CDATA[CPUPercentRemoteRunTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPUPercentTotalRunTime">
+                        <expression><![CDATA[CPUPercentTotalRunTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPUCPUWaitTimePerDispatch">
+                        <expression><![CDATA[CPUCPUWaitTimePerDispatch]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="GuestHeartbeatStatus">
+                        <expression><![CDATA[GuestHeartbeatStatus]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="VMName">
+                        <expression><![CDATA[VMName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OverallStatus">
+                        <expression><![CDATA[OverallStatus]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MemoryUsage">
+                        <expression><![CDATA[MemoryUsage]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OverallCpuUsage">
+                        <expression><![CDATA[OverallCpuUsage]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PowerState">
+                        <expression><![CDATA[PowerState]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[Host]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Heartbeat">
+                        <expression><![CDATA[Heartbeat]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="DynamicMemoryEnabled" dataType="BOOLEAN"/>
+                     <columnDataType columnName="DynamicMemoryAveragePressure" dataType="LONG"/>
+                     <columnDataType columnName="DynamicMemoryCurrentPressure" dataType="LONG"/>
+                     <columnDataType columnName="MemoryLimit" dataType="LONG"/>
+                     <columnDataType columnName="MemoryReservation" dataType="LONG"/>
+                     <columnDataType columnName="MemorySwapFilesInUse" dataType="BOOLEAN"/>
+                     <columnDataType columnName="MemoryTargetMemoryBuffer" dataType="LONG"/>
+                     <columnDataType columnName="MemoryVirtualQuantity" dataType="LONG"/>
+                     <columnDataType columnName="MemoryVirtualQuantityUnits" dataType="STRING"/>
+                     <columnDataType columnName="MemoryWeight" dataType="LONG"/>
+                     <columnDataType columnName="CPUPercentGuestRunTime" dataType="DOUBLE"/>
+                     <columnDataType columnName="CPUPercentHypervisorRunTime" dataType="DOUBLE"/>
+                     <columnDataType columnName="CPUPercentRemoteRunTime" dataType="DOUBLE"/>
+                     <columnDataType columnName="CPUPercentTotalRunTime" dataType="DOUBLE"/>
+                     <columnDataType columnName="CPUCPUWaitTimePerDispatch" dataType="DOUBLE"/>
+                     <columnDataType columnName="GuestHeartbeatStatus" dataType="STRING"/>
+                     <columnDataType columnName="VMName" dataType="STRING"/>
+                     <columnDataType columnName="OverallStatus" dataType="STRING"/>
+                     <columnDataType columnName="MemoryUsage" dataType="LONG"/>
+                     <columnDataType columnName="OverallCpuUsage" dataType="DOUBLE"/>
+                     <columnDataType columnName="PowerState" dataType="STRING"/>
+                     <columnDataType columnName="Host" dataType="STRING"/>
+                     <columnDataType columnName="Heartbeat" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

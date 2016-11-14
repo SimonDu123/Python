@@ -1,0 +1,9 @@
+availabilitygroupstates
+ClusterDetails
+ClusterMembers
+databases
+FirstConnectionVersion
+GroupStates
+HAFailoverDetection
+replicas
+UpdateHighAvailabilityVersion

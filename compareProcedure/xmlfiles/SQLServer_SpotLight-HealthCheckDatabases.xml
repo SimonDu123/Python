@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Health Check - Databases" name="HealthCheckDatabases">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">healthcheckdatabases</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="NEVER" keyColumnName="key" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="true">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="collation_name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="compatibility_level" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="create_date" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="database_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="instance" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="instance_start_time_utc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_ansi_nulls_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_ansi_null_default_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_ansi_padding_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_ansi_warnings_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_arithabort_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_auto_close_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_auto_create_stats_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_auto_shrink_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_auto_update_stats_async_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_auto_update_stats_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_broker_enabled" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_cdc_enabled" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_cleanly_shutdown" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_concat_null_yields_null_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_cursor_close_on_commit_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_date_correlation_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_db_chaining_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_distributor" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_encrypted" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_fulltext_enabled" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_in_standby" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_local_cursor_default" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_master_key_encrypted_by_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_merge_published" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_numeric_roundabort_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_parameterization_forced" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_published" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_quoted_identifier_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_read_committed_snapshot_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_read_only" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_recursive_triggers_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_subscribed" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_supplemental_logging_enabled" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_sync_with_backup" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_trustworthy_on" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="log_reuse_wait" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="log_reuse_wait_desc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="name" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="owner_sid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="page_verify_option" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="page_verify_option_desc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="recovery_model" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="recovery_model_desc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="rownum" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="service" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="service_broker_guid" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="snapshot_isolation_state" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="snapshot_isolation_state_desc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="source_database_id" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="state" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="state_desc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="user_access" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="user_access_desc" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="key" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerAuxiliaryConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:Databases.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2005</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="collation_name">
+                        <expression><![CDATA[collation_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="compatibility_level">
+                        <expression><![CDATA[compatibility_level]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="create_date">
+                        <expression><![CDATA[create_date]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_id">
+                        <expression><![CDATA[database_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance">
+                        <expression><![CDATA[instance]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="instance_start_time_utc">
+                        <expression><![CDATA[instance_start_time_utc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_ansi_nulls_on">
+                        <expression><![CDATA[is_ansi_nulls_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_ansi_null_default_on">
+                        <expression><![CDATA[is_ansi_null_default_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_ansi_padding_on">
+                        <expression><![CDATA[is_ansi_padding_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_ansi_warnings_on">
+                        <expression><![CDATA[is_ansi_warnings_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_arithabort_on">
+                        <expression><![CDATA[is_arithabort_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_auto_close_on">
+                        <expression><![CDATA[is_auto_close_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_auto_create_stats_on">
+                        <expression><![CDATA[is_auto_create_stats_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_auto_shrink_on">
+                        <expression><![CDATA[is_auto_shrink_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_auto_update_stats_async_on">
+                        <expression><![CDATA[is_auto_update_stats_async_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_auto_update_stats_on">
+                        <expression><![CDATA[is_auto_update_stats_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_broker_enabled">
+                        <expression><![CDATA[is_broker_enabled]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_cdc_enabled">
+                        <expression><![CDATA[is_cdc_enabled]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_cleanly_shutdown">
+                        <expression><![CDATA[is_cleanly_shutdown]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_concat_null_yields_null_on">
+                        <expression><![CDATA[is_concat_null_yields_null_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_cursor_close_on_commit_on">
+                        <expression><![CDATA[is_cursor_close_on_commit_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_date_correlation_on">
+                        <expression><![CDATA[is_date_correlation_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_db_chaining_on">
+                        <expression><![CDATA[is_db_chaining_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_distributor">
+                        <expression><![CDATA[is_distributor]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_encrypted">
+                        <expression><![CDATA[is_encrypted]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_fulltext_enabled">
+                        <expression><![CDATA[is_fulltext_enabled]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_in_standby">
+                        <expression><![CDATA[is_in_standby]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_local_cursor_default">
+                        <expression><![CDATA[is_local_cursor_default]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_master_key_encrypted_by_server">
+                        <expression><![CDATA[is_master_key_encrypted_by_server]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_merge_published">
+                        <expression><![CDATA[is_merge_published]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_numeric_roundabort_on">
+                        <expression><![CDATA[is_numeric_roundabort_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_parameterization_forced">
+                        <expression><![CDATA[is_parameterization_forced]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_published">
+                        <expression><![CDATA[is_published]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_quoted_identifier_on">
+                        <expression><![CDATA[is_quoted_identifier_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_read_committed_snapshot_on">
+                        <expression><![CDATA[is_read_committed_snapshot_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_read_only">
+                        <expression><![CDATA[is_read_only]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_recursive_triggers_on">
+                        <expression><![CDATA[is_recursive_triggers_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_subscribed">
+                        <expression><![CDATA[is_subscribed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_supplemental_logging_enabled">
+                        <expression><![CDATA[is_supplemental_logging_enabled]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_sync_with_backup">
+                        <expression><![CDATA[is_sync_with_backup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_trustworthy_on">
+                        <expression><![CDATA[is_trustworthy_on]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="log_reuse_wait">
+                        <expression><![CDATA[log_reuse_wait]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="log_reuse_wait_desc">
+                        <expression><![CDATA[log_reuse_wait_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="name">
+                        <expression><![CDATA[name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="owner_sid">
+                        <expression><![CDATA[owner_sid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="page_verify_option">
+                        <expression><![CDATA[page_verify_option]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="page_verify_option_desc">
+                        <expression><![CDATA[page_verify_option_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="recovery_model">
+                        <expression><![CDATA[recovery_model]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="recovery_model_desc">
+                        <expression><![CDATA[recovery_model_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="rownum">
+                        <expression><![CDATA[rownum]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="service">
+                        <expression><![CDATA[service]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="service_broker_guid">
+                        <expression><![CDATA[service_broker_guid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="snapshot_isolation_state">
+                        <expression><![CDATA[snapshot_isolation_state]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="snapshot_isolation_state_desc">
+                        <expression><![CDATA[snapshot_isolation_state_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="source_database_id">
+                        <expression><![CDATA[source_database_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="state">
+                        <expression><![CDATA[state]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="state_desc">
+                        <expression><![CDATA[state_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="user_access">
+                        <expression><![CDATA[user_access]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="user_access_desc">
+                        <expression><![CDATA[user_access_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(instance)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(instance)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="collation_name" dataType="STRING"/>
+                     <columnDataType columnName="compatibility_level" dataType="LONG"/>
+                     <columnDataType columnName="create_date" dataType="DATE"/>
+                     <columnDataType columnName="database_id" dataType="LONG"/>
+                     <columnDataType columnName="instance" dataType="STRING"/>
+                     <columnDataType columnName="instance_start_time_utc" dataType="DATE"/>
+                     <columnDataType columnName="is_ansi_nulls_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_ansi_null_default_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_ansi_padding_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_ansi_warnings_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_arithabort_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_auto_close_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_auto_create_stats_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_auto_shrink_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_auto_update_stats_async_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_auto_update_stats_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_broker_enabled" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_cdc_enabled" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_cleanly_shutdown" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_concat_null_yields_null_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_cursor_close_on_commit_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_date_correlation_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_db_chaining_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_distributor" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_encrypted" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_fulltext_enabled" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_in_standby" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_local_cursor_default" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_master_key_encrypted_by_server" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_merge_published" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_numeric_roundabort_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_parameterization_forced" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_published" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_quoted_identifier_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_read_committed_snapshot_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_read_only" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_recursive_triggers_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_subscribed" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_supplemental_logging_enabled" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_sync_with_backup" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_trustworthy_on" dataType="BOOLEAN"/>
+                     <columnDataType columnName="log_reuse_wait" dataType="LONG"/>
+                     <columnDataType columnName="log_reuse_wait_desc" dataType="STRING"/>
+                     <columnDataType columnName="name" dataType="STRING"/>
+                     <columnDataType columnName="owner_sid" dataType="STRING"/>
+                     <columnDataType columnName="page_verify_option" dataType="LONG"/>
+                     <columnDataType columnName="page_verify_option_desc" dataType="STRING"/>
+                     <columnDataType columnName="recovery_model" dataType="LONG"/>
+                     <columnDataType columnName="recovery_model_desc" dataType="STRING"/>
+                     <columnDataType columnName="rownum" dataType="LONG"/>
+                     <columnDataType columnName="service" dataType="STRING"/>
+                     <columnDataType columnName="service_broker_guid" dataType="STRING"/>
+                     <columnDataType columnName="snapshot_isolation_state" dataType="LONG"/>
+                     <columnDataType columnName="snapshot_isolation_state_desc" dataType="STRING"/>
+                     <columnDataType columnName="source_database_id" dataType="LONG"/>
+                     <columnDataType columnName="state" dataType="LONG"/>
+                     <columnDataType columnName="state_desc" dataType="STRING"/>
+                     <columnDataType columnName="user_access" dataType="LONG"/>
+                     <columnDataType columnName="user_access_desc" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectionName="SQLServer.V5.sys_databases" collectorWritingUploadData="true" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="true">
+            <schedule class="com.quest.adk.configuration.component.schedule.DailyScheduleConfiguration" timeOfDay="10800000">
+               <days class="java.util.ArrayList">
+                  <daysOfWeek>MON</daysOfWeek>
+                  <daysOfWeek>TUES</daysOfWeek>
+                  <daysOfWeek>WED</daysOfWeek>
+                  <daysOfWeek>THUR</daysOfWeek>
+                  <daysOfWeek>FRI</daysOfWeek>
+                  <daysOfWeek>SAT</daysOfWeek>
+                  <daysOfWeek>SUN</daysOfWeek>
+               </days>
+            </schedule>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>timeout</string>
+                  <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">30m</property>
+               </entry>
+               <entry>
+                  <string>rowlimit</string>
+                  <property dataType="STRING" description="rowLimit" displayName="rowLimit" encryptStyle="NONE" hidden="true" name="rowLimit">500000</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

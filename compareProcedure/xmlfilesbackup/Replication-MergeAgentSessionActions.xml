@@ -1,0 +1,133 @@
+
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Merge Agent Session Actions" name="MergeAgentSessionActions">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">mergeagentsessionactions</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="ArticleName" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="ArticleName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PercentComplete" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="RelativeCost" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Duration" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Inserts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Updates" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Deletes" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Conflicts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ErrorID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SeqNo" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SchemaChanges" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalDuration" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PercentOfTotal" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="RowsRetried" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>agent</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="agent" />
+          </entry>
+          <entry>
+            <string>session</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="" isRequired="true" name="session" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="ReplicationConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[mergeagentsessionactions
+agent={{agent}}
+session={{session}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ArticleName">
+                <expression><![CDATA[ArticleName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PercentComplete">
+                <expression><![CDATA[PercentComplete]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RelativeCost">
+                <expression><![CDATA[RelativeCost]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Duration">
+                <expression><![CDATA[Duration]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Inserts">
+                <expression><![CDATA[Inserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Updates">
+                <expression><![CDATA[Updates]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Deletes">
+                <expression><![CDATA[Deletes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Conflicts">
+                <expression><![CDATA[Conflicts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ErrorID">
+                <expression><![CDATA[ErrorID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SeqNo">
+                <expression><![CDATA[SeqNo]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SchemaChanges">
+                <expression><![CDATA[SchemaChanges]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalDuration">
+                <expression><![CDATA[sum(Duration)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PercentOfTotal">
+                <expression><![CDATA[Duration / TotalDuration * 100]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowsRetried">
+                <expression><![CDATA[RowsRetried]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="ArticleName" dataType="STRING" />
+              <columnDataType columnName="PercentComplete" dataType="DOUBLE" />
+              <columnDataType columnName="RelativeCost" dataType="DOUBLE" />
+              <columnDataType columnName="Duration" dataType="LONG" />
+              <columnDataType columnName="Inserts" dataType="LONG" />
+              <columnDataType columnName="Updates" dataType="LONG" />
+              <columnDataType columnName="Deletes" dataType="LONG" />
+              <columnDataType columnName="Conflicts" dataType="LONG" />
+              <columnDataType columnName="ErrorID" dataType="LONG" />
+              <columnDataType columnName="SeqNo" dataType="LONG" />
+              <columnDataType columnName="SchemaChanges" dataType="LONG" />
+              <columnDataType columnName="RowsRetried" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

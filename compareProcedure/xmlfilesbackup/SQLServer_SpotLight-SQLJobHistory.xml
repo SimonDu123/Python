@@ -1,0 +1,123 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Agent Job History" name="SQLJobHistory">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqljobhistory</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLJobHistory" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="InstanceID" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="InstanceID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="JobID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="JobName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="StepID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="StepName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SQLMessageID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SQLSeverity" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Message" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="RunStatus" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="RunDateTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="RunDuration" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="RetriesAttempted" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Server" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>JobName</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="JobName" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_JobHistory.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="InstanceID">
+                <expression><![CDATA[instance_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobID">
+                <expression><![CDATA[job_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="JobName">
+                <expression><![CDATA[job_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StepID">
+                <expression><![CDATA[step_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StepName">
+                <expression><![CDATA[step_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLMessageID">
+                <expression><![CDATA[sql_message_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLSeverity">
+                <expression><![CDATA[sql_severity]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Message">
+                <expression><![CDATA[message]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RunStatus">
+                <expression><![CDATA[run_status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RunDateTime">
+                <expression><![CDATA[fromWMIDate(run_date)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RunDuration">
+                <expression><![CDATA[run_duration]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RetriesAttempted">
+                <expression><![CDATA[retries_attempted]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Server">
+                <expression><![CDATA[server]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="instance_id" dataType="LONG" />
+              <columnDataType columnName="job_id" dataType="STRING" />
+              <columnDataType columnName="job_name" dataType="STRING" />
+              <columnDataType columnName="step_id" dataType="LONG" />
+              <columnDataType columnName="step_Name" dataType="STRING" />
+              <columnDataType columnName="sql_message_id" dataType="LONG" />
+              <columnDataType columnName="sql_severity" dataType="LONG" />
+              <columnDataType columnName="message" dataType="STRING" />
+              <columnDataType columnName="run_status" dataType="STRING" />
+              <columnDataType columnName="run_date" dataType="STRING" />
+              <columnDataType columnName="run_duration" dataType="LONG" />
+              <columnDataType columnName="retries_attempted" dataType="LONG" />
+              <columnDataType columnName="server" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

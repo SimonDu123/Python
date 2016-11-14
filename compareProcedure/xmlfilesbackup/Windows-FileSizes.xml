@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="File Sizes" name="FileSizes">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">filesizes</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_FileSizes" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="FileName" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" reExecutionPropertyRegExp="File.*" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">fileexceededsetsize</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="FileName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FileSize" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MaxSize" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PercentMaxSize" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="FileExists" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="runQuery" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT Name, FileSize 
+FROM CIM_DataFile 
+WHERE Name = '{{FileName}}']]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="FileName">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileSize">
+                        <expression><![CDATA[FileSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSize">
+                        <expression><![CDATA[null]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PercentMaxSize">
+                        <expression><![CDATA[null]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileExists">
+                        <expression><![CDATA[null]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="FileSize" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[# FileSizes procedure; 2 arguments: {{FileLocations}} and {{FileSizes}}
+if Length(u"{{unicode:FileLocations}}") == 0:
+	append(Result.FileName, "No files specified");
+else:
+	FileLocations = split(u"{{unicode:FileLocations}}", "|");
+	MaxFileSizes = split(u"{{unicode:FileSizes}}", "|");
+
+	l = Length(FileLocations);
+	
+	if (l != Length(MaxFileSizes)):
+		setError(-1, "'FileLocations' doesn't match 'FileSizes'");
+	else:
+		ndx = 0;
+		while (ndx < l):
+			FName = FileLocations[ndx];
+			if (FName != ""):
+				append(Result.FileName, FName);
+				MaxFileSize = MaxFileSizes[ndx];
+				append(Result.MaxSize, MaxFileSize);
+		
+				# ensure FName has double-slashes in it
+				FName = doubleSlashes(FName);
+
+				fsTable = FileSizes.Execute({"queryName" : "runQuery", "FileName" : FName});
+	
+				if ((Length(fsTable.FileName) > 0) and (fsTable.FileName[0] != null)):
+					append(Result.FileExists, true);
+					# to megabytes
+					FileSize = fsTable.FileSize[0] / 1024 / 1024;
+					append(Result.FileSize, FileSize);
+					append(Result.PercentMaxSize, FileSize * 100 / double(MaxFileSize));
+				elif (length(fsTable._exit) == 0):
+					setError(-2, "Exit column not found");
+				elif (fsTable._exit[0] != 0):
+					setError(fsTable._errorCode[0], fsTable._errorText[0]);
+				else:
+					append(Result.FileExists, false);
+					append(Result.FileSize, null);
+					append(Result.PercentMaxSize, null);
+
+			ndx += 1;]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="FileName">
+                        <expression><![CDATA[FileName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileSize">
+                        <expression><![CDATA[FileSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxSize">
+                        <expression><![CDATA[MaxSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PercentMaxSize">
+                        <expression><![CDATA[PercentMaxSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileExists">
+                        <expression><![CDATA[FileExists]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="FileName" dataType="STRING"/>
+                     <columnDataType columnName="FileSize" dataType="DOUBLE"/>
+                     <columnDataType columnName="MaxSize" dataType="LONG"/>
+                     <columnDataType columnName="PercentMaxSize" dataType="DOUBLE"/>
+                     <columnDataType columnName="FileExists" dataType="BOOLEAN"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

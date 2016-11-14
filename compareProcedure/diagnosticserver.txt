@@ -1,0 +1,13 @@
+Availability
+CauseAgentDeadlock
+ClearPlannedOutage
+DeadlockStatus
+DiskUsage
+DotnetAvailability
+GetReactiveData
+HostName
+LicenseUsage
+MemoryUsage
+PlaybackMetrics
+StopDiagnosticServer
+Version

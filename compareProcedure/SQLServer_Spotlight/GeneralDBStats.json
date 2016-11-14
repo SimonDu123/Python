@@ -1,0 +1,72 @@
+{
+    "Timestamp": "1478679973448",
+    "ISO8601TimestampUTC": "2016-11-09T08:26:13.448Z",
+    "ConnectionName": "zhuw12r2spl501.melquest.dev.mel.au.qsft_sql2016_sqlserver",
+    "PackageName": "sqlserver_spotlight",
+    "ProcedureName": "generaldbstats",
+    "TechnologyName": "database/sqlserver",
+    "DiagnosticServerHost": "ZHUW12R2SPL401:3843",
+    "DiagnosticServerID": "e17bdab3-d6ef-4b88-94cb-4ea794893efc",
+    "OwnerID": 31065,
+    "OwnerGuid": "d638e90c-4ace-4560-99a4-b714ed8ae3e5",
+    "UserAgent": "Spotlight on SQL Server Enterprise/26.1.0.8250",
+    "Version": "0.0.0.0",
+    "Columns": [
+        {
+            "Name": "sqllogfilemb",
+            "DataType": 11,
+            "Values": [
+                "28856.6875"
+            ]
+        },
+        {
+            "Name": "sqldatabasecnt",
+            "DataType": 8,
+            "Values": [
+                "100"
+            ]
+        },
+        {
+            "Name": "sqldatafilecnt",
+            "DataType": 8,
+            "Values": [
+                "107"
+            ]
+        },
+        {
+            "Name": "sqldatafilemb",
+            "DataType": 11,
+            "Values": [
+                "44182.6875"
+            ]
+        },
+        {
+            "Name": "sqldatafilepctused",
+            "DataType": 11,
+            "Values": [
+                "55.7107351154228"
+            ]
+        },
+        {
+            "Name": "sqlfilegroupcnt",
+            "DataType": 8,
+            "Values": [
+                "100"
+            ]
+        },
+        {
+            "Name": "sqllogfilepctused",
+            "DataType": 11,
+            "Values": [
+                "3.17173916778222"
+            ]
+        },
+        {
+            "Name": "sqllogfilecnt",
+            "DataType": 8,
+            "Values": [
+                "100"
+            ]
+        }
+    ]
+}

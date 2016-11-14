@@ -1,0 +1,136 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Open Shares" name="OpenShares">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">openshares</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_OpenShares" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Share" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Share" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Computer" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="User" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ElapsedTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="OpenFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="NumberOfUsers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT ShareName, ComputerName, UserName, ActiveTime, NumberOfFiles, ConnectionID, NumberOfUsers 
+FROM   Win32_ServerConnection]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Share">
+                <expression><![CDATA[ShareName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Computer">
+                <expression><![CDATA[ComputerName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="User">
+                <expression><![CDATA[UserName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ElapsedTime">
+                <expression><![CDATA[ActiveTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OpenFiles">
+                <expression><![CDATA[NumberOfFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionID">
+                <expression><![CDATA[ConnectionID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NumberOfUsers">
+                <expression><![CDATA[NumberOfUsers]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="ShareName" dataType="STRING" />
+              <columnDataType columnName="ComputerName" dataType="STRING" />
+              <columnDataType columnName="UserName" dataType="STRING" />
+              <columnDataType columnName="ActiveTime" dataType="LONG" />
+              <columnDataType columnName="NumberOfFiles" dataType="LONG" />
+              <columnDataType columnName="ConnectionID" dataType="LONG" />
+              <columnDataType columnName="NumberOfUsers" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# not supported on Windows 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Share">
+                <expression><![CDATA[Share]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Computer">
+                <expression><![CDATA[Computer]]></expression>
+              </columnExpression>
+              <columnExpression columnName="User">
+                <expression><![CDATA[User]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ElapsedTime">
+                <expression><![CDATA[ElapsedTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OpenFiles">
+                <expression><![CDATA[OpenFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NumberOfUsers">
+                <expression><![CDATA[NumberOfUsers]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionID">
+                <expression><![CDATA[ConnectionID]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Share" dataType="STRING" />
+              <columnDataType columnName="Computer" dataType="STRING" />
+              <columnDataType columnName="User" dataType="STRING" />
+              <columnDataType columnName="ElapsedTime" dataType="LONG" />
+              <columnDataType columnName="OpenFiles" dataType="LONG" />
+              <columnDataType columnName="NumberOfUsers" dataType="LONG" />
+              <columnDataType columnName="ConnectionID" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

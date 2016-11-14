@@ -1,0 +1,14 @@
+Agents
+AgentSessionActions
+AgentSessions
+AgentSummary
+ErrorRecords
+LogReaderAgentSessions
+MergeAgentSessionActions
+MergeAgentSessions
+Publications
+Publishers
+ReplicationVersion
+Subscribers
+Subscriptions
+UpdateReplicationVersion

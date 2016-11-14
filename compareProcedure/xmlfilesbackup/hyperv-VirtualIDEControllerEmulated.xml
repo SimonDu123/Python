@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Hyper-V - Virtual IDE Controller Emulated" name="VirtualIDEControllerEmulated">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">hyperv</fragment>
+      <fragment type="PROCEDURE">virtualidecontrolleremulated</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="Name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ReadBytesPersec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="WriteBytesPersec" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Timestamp_PerfTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Frequency_PerfTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ActualReadBytesPersec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ActualWriteBytesPersec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Host" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="HyperV" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[select Name, ReadBytesPersec, WriteBytesPersec, Timestamp_PerfTime, Frequency_PerfTime from Win32_PerfRawData_IdePerfProvider_HyperVVirtualIDEControllerEmulated ]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">hyperv</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ReadBytesPersec">
+                        <expression><![CDATA[ReadBytesPersec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WriteBytesPersec">
+                        <expression><![CDATA[WriteBytesPersec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Timestamp_PerfTime">
+                        <expression><![CDATA[Timestamp_PerfTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Frequency_PerfTime">
+                        <expression><![CDATA[Frequency_PerfTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ActualReadBytesPersec">
+                        <expression><![CDATA[positiveDelta(VirtualIDEControllerEmulated.ReadBytesPersec) / (positiveDelta(VirtualIDEControllerEmulated.Timestamp_PerfTime) / Frequency_PerfTime)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ActualWriteBytesPersec">
+                        <expression><![CDATA[positiveDelta(VirtualIDEControllerEmulated.WriteBytesPersec) / (positiveDelta(VirtualIDEControllerEmulated.Timestamp_PerfTime) / Frequency_PerfTime)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[Host]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="ReadBytesPersec" dataType="LONG"/>
+                     <columnDataType columnName="WriteBytesPersec" dataType="LONG"/>
+                     <columnDataType columnName="Timestamp_PerfTime" dataType="LONG"/>
+                     <columnDataType columnName="Frequency_PerfTime" dataType="LONG"/>
+                     <columnDataType columnName="Host" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

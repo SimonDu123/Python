@@ -1,0 +1,159 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Log Shipping Primaries" name="LogShippingPrimaries">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">logshippingprimaries</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_LogShippingPrimaries" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="primary_id" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+            <fragment type="RULE">logshippingprimarybackupjob</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="primary_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="primary_database" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="backup_directory" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="backup_share" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="backup_retention_period" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="backup_job_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="monitor_server" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="monitor_server_security_mode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="last_backup_file" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="last_backup_date" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="backup_compression" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="primary_server" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="backup_threshold" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="threshold_alert" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="threshold_alert_enabled" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="last_backup_date_utc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="history_retention_period" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="monitor_server_security_mode_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="backup_compression_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="backup_job_enabled" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_LogShippingPrimaries.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="primary_id">
+                <expression><![CDATA[primary_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="primary_database">
+                <expression><![CDATA[primary_database]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_directory">
+                <expression><![CDATA[backup_directory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_share">
+                <expression><![CDATA[backup_share]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_retention_period">
+                <expression><![CDATA[backup_retention_period]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_job_id">
+                <expression><![CDATA[backup_job_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="monitor_server">
+                <expression><![CDATA[monitor_server]]></expression>
+              </columnExpression>
+              <columnExpression columnName="monitor_server_security_mode">
+                <expression><![CDATA[monitor_server_security_mode]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_backup_file">
+                <expression><![CDATA[last_backup_file]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_backup_date">
+                <expression><![CDATA[last_backup_date]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_compression">
+                <expression><![CDATA[backup_compression]]></expression>
+              </columnExpression>
+              <columnExpression columnName="primary_server">
+                <expression><![CDATA[primary_server]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_threshold">
+                <expression><![CDATA[backup_threshold]]></expression>
+              </columnExpression>
+              <columnExpression columnName="threshold_alert">
+                <expression><![CDATA[threshold_alert]]></expression>
+              </columnExpression>
+              <columnExpression columnName="threshold_alert_enabled">
+                <expression><![CDATA[threshold_alert_enabled]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_backup_date_utc">
+                <expression><![CDATA[last_backup_date_utc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="history_retention_period">
+                <expression><![CDATA[history_retention_period]]></expression>
+              </columnExpression>
+              <columnExpression columnName="monitor_server_security_mode_desc">
+                <expression><![CDATA[monitor_server_security_mode_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_compression_desc">
+                <expression><![CDATA[backup_compression_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_job_enabled">
+                <expression><![CDATA[backup_job_enabled]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="primary_id" dataType="STRING" />
+              <columnDataType columnName="primary_database" dataType="STRING" />
+              <columnDataType columnName="backup_directory" dataType="STRING" />
+              <columnDataType columnName="backup_share" dataType="STRING" />
+              <columnDataType columnName="backup_retention_period" dataType="LONG" />
+              <columnDataType columnName="backup_job_id" dataType="STRING" />
+              <columnDataType columnName="monitor_server" dataType="STRING" />
+              <columnDataType columnName="monitor_server_security_mode" dataType="BOOLEAN" />
+              <columnDataType columnName="last_backup_file" dataType="STRING" />
+              <columnDataType columnName="last_backup_date" dataType="DATE" />
+              <columnDataType columnName="backup_compression" dataType="LONG" />
+              <columnDataType columnName="primary_server" dataType="STRING" />
+              <columnDataType columnName="backup_threshold" dataType="LONG" />
+              <columnDataType columnName="threshold_alert" dataType="LONG" />
+              <columnDataType columnName="threshold_alert_enabled" dataType="BOOLEAN" />
+              <columnDataType columnName="last_backup_date_utc" dataType="DATE" />
+              <columnDataType columnName="history_retention_period" dataType="LONG" />
+              <columnDataType columnName="monitor_server_security_mode_desc" dataType="STRING" />
+              <columnDataType columnName="backup_compression_desc" dataType="STRING" />
+              <columnDataType columnName="backup_job_enabled" dataType="BOOLEAN" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

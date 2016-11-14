@@ -1,0 +1,127 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Locks List" name="SQLLocksList">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqllockslist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLLocksList" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="spid" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="spid" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="dbname" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="lockcount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="indexname" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="objectname" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="locktype" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="lockmode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="lockstatus" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="loginname" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>FilterDBName</string>
+            <argument checkedForSQLInjection="true" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="%" isRequired="false" name="FilterDBName" />
+          </entry>
+          <entry>
+            <string>FilterObjectName</string>
+            <argument checkedForSQLInjection="true" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="%" isRequired="false" name="FilterObjectName" />
+          </entry>
+          <entry>
+            <string>SelectedSPID</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="0" isRequired="false" name="SelectedSPID" />
+          </entry>
+          <entry>
+            <string>ShowDBShareLocks</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="Y" isRequired="false" name="ShowDBShareLocks" />
+          </entry>
+          <entry>
+            <string>ShowIntentLocks</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="Y" isRequired="false" name="ShowIntentLocks" />
+          </entry>
+          <entry>
+            <string>ShowSystemObjects</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="Y" isRequired="false" name="ShowSystemObjects" />
+          </entry>
+          <entry>
+            <string>ShowTempDBLocks</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="Y" isRequired="false" name="ShowTempDBLocks" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_LocksList.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="spid">
+                <expression><![CDATA[spid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="dbname">
+                <expression><![CDATA[dbname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="lockcount">
+                <expression><![CDATA[lockcount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="indexname">
+                <expression><![CDATA[indexname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="objectname">
+                <expression><![CDATA[objectname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="locktype">
+                <expression><![CDATA[locktype]]></expression>
+              </columnExpression>
+              <columnExpression columnName="lockmode">
+                <expression><![CDATA[lockmode]]></expression>
+              </columnExpression>
+              <columnExpression columnName="lockstatus">
+                <expression><![CDATA[lockstatus]]></expression>
+              </columnExpression>
+              <columnExpression columnName="loginname">
+                <expression><![CDATA[loginname]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="spid" dataType="LONG" />
+              <columnDataType columnName="DBName" dataType="STRING" />
+              <columnDataType columnName="lockcount" dataType="LONG" />
+              <columnDataType columnName="indexname" dataType="STRING" />
+              <columnDataType columnName="objectname" dataType="STRING" />
+              <columnDataType columnName="locktype" dataType="STRING" />
+              <columnDataType columnName="lockmode" dataType="STRING" />
+              <columnDataType columnName="lockstatus" dataType="STRING" />
+              <columnDataType columnName="loginname" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

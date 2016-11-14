@@ -1,0 +1,138 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Index Statistics Dist" name="SQLIndexStatsDist">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlindexstatsdist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLIndexStats" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="RangeHiKey" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="1000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="AvgRangeRows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DistinctRangeRows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="EqRows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="RangeHiKey" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="RangeRows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>DBName</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="DBName" />
+          </entry>
+          <entry>
+            <string>IXName</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="IXName" />
+          </entry>
+          <entry>
+            <string>Section</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="2" isRequired="false" name="Section" />
+          </entry>
+          <entry>
+            <string>TBName</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="TBName" />
+          </entry>
+          <entry>
+            <string>TBOwner</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="TBOwner" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_IndexStats.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AvgRangeRows">
+                <expression><![CDATA[AVG_RANGE_ROWS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DistinctRangeRows">
+                <expression><![CDATA[DISTINCT_RANGE_ROWS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="EqRows">
+                <expression><![CDATA[EQ_ROWS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RangeHiKey">
+                <expression><![CDATA[RANGE_HI_KEY]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RangeRows">
+                <expression><![CDATA[RANGE_ROWS]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="RANGE_HI_KEY" dataType="STRING" />
+              <columnDataType columnName="RANGE_ROWS" dataType="LONG" />
+              <columnDataType columnName="EQ_ROWS" dataType="LONG" />
+              <columnDataType columnName="DISTINCT_RANGE_ROWS" dataType="LONG" />
+              <columnDataType columnName="AVG_RANGE_ROWS" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText>false</guardExpressionText>
+            <commandText><![CDATA[# not supported on SQL Server 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AvgRangeRows">
+                <expression><![CDATA[AvgRangeRows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DistinctRangeRows">
+                <expression><![CDATA[DistinctRangeRows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="EqRows">
+                <expression><![CDATA[EqRows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RangeHiKey">
+                <expression><![CDATA[RangeHiKey]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RangeRows">
+                <expression><![CDATA[RangeRows]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="AvgRangeRows" dataType="LONG" />
+              <columnDataType columnName="DistinctRangeRows" dataType="LONG" />
+              <columnDataType columnName="EqRows" dataType="LONG" />
+              <columnDataType columnName="RangeHiKey" dataType="STRING" />
+              <columnDataType columnName="RangeRows" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

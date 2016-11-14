@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" name="LockRequests" displayName="Lock Requests">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">lockrequests</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureContentComponent" keyColumnName="Type" prettyKeyColumnName="" contextHelpKeyword="sosse:proc_LockRequests" readOnly="true" backgroundEditable="false" lthEditable="false" lucyEditable="false" savedToPlayback="false" alwaysSaveToSSR="false" alwaysSaveToLucy="false" ssrDataSavedToLucy="false" skippedIfNoMatchingQuery="false" role="NONE" minimumPersistencePeriod="60000" reExecutionPriority="0" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthTextLimit="0">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+               <procedureColumn name="Type" dataType="STRING" persistedToShortTermHistory="false" persistedToLongTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn name="Requests" dataType="LONG" persistedToShortTermHistory="false" persistedToLongTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn name="RequestRate" dataType="LONG" persistedToShortTermHistory="false" persistedToLongTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn name="Instance" dataType="STRING" persistedToShortTermHistory="false" persistedToLongTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn name="Interval" dataType="LONG" persistedToShortTermHistory="false" persistedToLongTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn name="diagnostic_server" dataType="STRING" persistedToShortTermHistory="false" persistedToLongTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+               <queryConfiguration connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="10000" callableName="">
+            <properties />
+                  <guardExpressionText></guardExpressionText>
+            <commandText><![CDATA[{{versioned_file:QS_LockRequests.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Type">
+                <expression><![CDATA[type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Requests">
+                <expression><![CDATA[cntr_value]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RequestRate">
+                <expression><![CDATA[positiveRate(LockRequests.Requests)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Instance">
+                <expression><![CDATA[createMEDisplayNameColumn(LockRequests.Type)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Interval">
+                <expression><![CDATA[createIntervalColumn(LockRequests.Type)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="diagnostic_server">
+                <expression><![CDATA[createDSDomainIDColumn(LockRequests.Type)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="type" dataType="STRING" />
+              <columnDataType columnName="cntr_value" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" enabled="false" editable="false" subscriptionIgnoredByScheduling="false" executionInterval="-1">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureLTHComponent" enabled="false" editable="false" aggregationPeriod="-1" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistentDefinition>

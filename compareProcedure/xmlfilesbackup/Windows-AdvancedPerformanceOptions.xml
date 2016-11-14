@@ -1,0 +1,157 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Advanced Performance Options" name="AdvancedPerformanceOptions">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">advancedperformanceoptions</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_advperfoptions" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Option" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="86400">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">windows</fragment>
+              <fragment type="PROCEDURE">operatingsystem</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Option" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Setting" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Value" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# execute MemoryManagement and ProcessorScheduling registry lookups and merge the results
+procSchedTable = AdvancedPerformanceOptions.execute({"queryName" : "ProcessorScheduling"});
+
+append(result.Option, procSchedTable.Option);
+append(result.Setting, procSchedTable.Setting);
+append(result.Value, procSchedTable.Value);
+
+memMgmtTable = AdvancedPerformanceOptions.execute({"queryName" : "MemoryManagement"});
+
+append(result.Option, memMgmtTable.Option);
+append(result.Setting, memMgmtTable.Setting);
+append(result.Value, memMgmtTable.Value);]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Option">
+                <expression><![CDATA[Option]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Value">
+                <expression><![CDATA[Value]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Setting">
+                <expression><![CDATA[Setting]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Option" dataType="STRING" />
+              <columnDataType columnName="Setting" dataType="STRING" />
+              <columnDataType columnName="Value" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="MemoryManagement" connectionName="WindowsRegistryConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[<query>
+    <method name="GetDWORDValue">
+	<argument name="hDefKey" value="HKEY_LOCAL_MACHINE"/>
+        <argument name="sSubKeyName" value="SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"/>
+        <argument name="sValueName" value="LargeSystemCache"/>
+	<column name="uValue"/>
+    </method>
+</query>]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Option">
+                <expression><![CDATA["Memory usage"]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Value">
+                <expression><![CDATA[uValue]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Setting">
+                <expression><![CDATA[iff(Value == 0, "Programs", "System cache")]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="uValue" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="ProcessorScheduling" connectionName="WindowsRegistryConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[<query>
+    <method name="GetDWORDValue">
+	<argument name="hDefKey" value="HKEY_LOCAL_MACHINE"/>
+        <argument name="sSubKeyName" value="SYSTEM\CurrentControlSet\Control\PriorityControl"/>
+        <argument name="sValueName" value="Win32PrioritySeparation"/>
+	<column name="uValue"/>
+    </method>
+</query>]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Option">
+                <expression><![CDATA["Processor scheduling"]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Value">
+                <expression><![CDATA[uValue]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Setting">
+                <expression><![CDATA[choose(Value, 2, iff(OperatingSystem.ProductType == 1, "Default  (Programs)", "Default (Background services)"), 24, "Background services", 38, "Programs", "Custom")]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="uValue" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="true" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

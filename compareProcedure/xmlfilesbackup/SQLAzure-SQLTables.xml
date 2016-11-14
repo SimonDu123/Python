@@ -1,0 +1,252 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SQL Azure - Database Tables" name="SQLTables">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlazure</fragment>
+    <fragment type="PROCEDURE">sqltables</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="TableName" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="TableName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Owner" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ReservedPages" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="UsedPages" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ReservedKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="UsedKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="FreeKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DatabaseMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PercentOfDB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Rows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>FilterObjectName</string>
+            <argument checkedForSQLInjection="true" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="%" isRequired="false" name="FilterObjectName" />
+          </entry>
+          <entry>
+            <string>RowLimit</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="50" isRequired="false" name="RowLimit" />
+          </entry>
+          <entry>
+            <string>query</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="bysize" isRequired="false" name="query" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="byTableSize" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_TablesBySize.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlazure</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Owner">
+                <expression><![CDATA[Owner]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReservedPages">
+                <expression><![CDATA[ReservedPages]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedPages">
+                <expression><![CDATA[UsedPages]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReservedKB">
+                <expression><![CDATA[ReservedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedKb">
+                <expression><![CDATA[UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeKB">
+                <expression><![CDATA[ReservedKB - UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DatabaseMB">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PercentOfDB">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="Owner" dataType="STRING" />
+              <columnDataType columnName="ReservedPages" dataType="LONG" />
+              <columnDataType columnName="UsedPages" dataType="LONG" />
+              <columnDataType columnName="ReservedKB" dataType="LONG" />
+              <columnDataType columnName="UsedKB" dataType="LONG" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[dbSize = GetProperty("databaseSize");
+dbSizeKB = int(dbSize) * 1024 * 1024;
+
+if equals("{{query}}", "bysize"):
+	SQLTablesTable = SQLTables.execute({"queryName" : "byTableSize", "FilterObjectName" : u"{{unicode:FilterObjectName}}", "RowLimit" : "{{RowLimit}}", "reset" : "true"});
+elif equals("{{query}}", "byrowcount"):
+	SQLTablesTable = SQLTables.execute({"queryName" : "byRowCount", "FilterObjectName" : u"{{unicode:FilterObjectName}}", "RowLimit" : "{{RowLimit}}", "reset" : "true"});
+
+if (length(SQLTablesTable._exit) == 0):
+	setError(-2, "Exit column not found");
+elif (SQLTablesTable._exit[0] != 0):
+	setError(SQLTablesTable._errorCode[0], SQLTablesTable._errorText[0]);
+else:
+	rows = length(SQLTablesTable.TableName);
+	row = 0;
+	while row < rows:
+		append(Result.TableName, SQLTablesTable.TableName[row]);
+		append(Result.Owner, SQLTablesTable.Owner[row]);
+		append(Result.ReservedPages, SQLTablesTable.ReservedPages[row]);
+		append(Result.UsedPages, SQLTablesTable.UsedPages[row]);
+		append(Result.ReservedKB, SQLTablesTable.ReservedKB[row]);
+		append(Result.UsedKB, SQLTablesTable.UsedKB[row]);
+		append(Result.FreeKB, SQLTablesTable.FreeKB[row]);
+		append(Result.DatabaseMB, dbSizeKB);
+		append(Result.PercentOfDB, SQLTablesTable.ReservedKB[row] / dbSizeKB * 100);
+		append(Result.Rows, SQLTablesTable.Rows[row]);
+		row += 1;]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlazure</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Owner">
+                <expression><![CDATA[Owner]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReservedPages">
+                <expression><![CDATA[ReservedPages]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedPages">
+                <expression><![CDATA[UsedPages]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReservedKB">
+                <expression><![CDATA[ReservedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedKb">
+                <expression><![CDATA[UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeKB">
+                <expression><![CDATA[FreeKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DatabaseMB">
+                <expression><![CDATA[DatabaseMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PercentOfDB">
+                <expression><![CDATA[PercentOfDB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="Owner" dataType="STRING" />
+              <columnDataType columnName="ReservedPages" dataType="LONG" />
+              <columnDataType columnName="UsedPages" dataType="LONG" />
+              <columnDataType columnName="ReservedKB" dataType="LONG" />
+              <columnDataType columnName="UsedKB" dataType="LONG" />
+              <columnDataType columnName="FreeKB" dataType="LONG" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+              <columnDataType columnName="DatabaseMB" dataType="LONG" />
+              <columnDataType columnName="PercentOfDB" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="byRowCount" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_TablesByRowCount.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlazure</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Owner">
+                <expression><![CDATA[Owner]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReservedPages">
+                <expression><![CDATA[ReservedPages]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedPages">
+                <expression><![CDATA[UsedPages]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReservedKB">
+                <expression><![CDATA[ReservedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedKb">
+                <expression><![CDATA[UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeKB">
+                <expression><![CDATA[ReservedKB - UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DatabaseMB">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PercentOfDB">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="Owner" dataType="STRING" />
+              <columnDataType columnName="ReservedPages" dataType="LONG" />
+              <columnDataType columnName="UsedPages" dataType="LONG" />
+              <columnDataType columnName="ReservedKB" dataType="LONG" />
+              <columnDataType columnName="UsedKB" dataType="LONG" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

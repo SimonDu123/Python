@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Virtual Machine" name="VirtualMachine">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">vmwarevirtualization</fragment>
+      <fragment type="PROCEDURE">virtualmachine</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="DOUBLE" name="OverallCpuUsage" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="MaxCpuUsage" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CPUPercent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="OverheadPercent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CPULimit" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ReadyPercent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SystemPercent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="UsedPercent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="AvailablePercent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="VMExists" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="active" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="swapped" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="vmmemctl" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="memorySizeMB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="balloonPct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="swappingpct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="remainingpct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="physicalrampct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="guestHeartbeatStatus" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments>
+               <entry>
+                  <string>name</string>
+                  <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="name"/>
+               </entry>
+            </arguments>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="VMWare" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[VirtualMachine 
+name={{name}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">vmware</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="OverallCpuUsage">
+                        <expression><![CDATA[overallCpuUsage]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxCpuUsage">
+                        <expression><![CDATA[maxCpuUsage]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPULimit">
+                        <expression><![CDATA[CpuLimit]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPUPercent">
+                        <expression><![CDATA[min(100, overallCpuUsage / CPULimit  * 100)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OverheadPercent">
+                        <expression><![CDATA[overheadPercent]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ReadyPercent">
+                        <expression><![CDATA[readyPercent]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SystemPercent">
+                        <expression><![CDATA[systemPercent]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedPercent">
+                        <expression><![CDATA[usedPercent]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvailablePercent">
+                        <expression><![CDATA[100 - overheadPercent]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="VMExists">
+                        <expression><![CDATA[vmExists]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="active">
+                        <expression><![CDATA[active]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="swapped">
+                        <expression><![CDATA[swapped]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="vmmemctl">
+                        <expression><![CDATA[vmmemctl]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="memorySizeMB">
+                        <expression><![CDATA[memorySizeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="balloonPct">
+                        <expression><![CDATA[100 * (vmmemctl/1024) / memorySizeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="swappingpct">
+                        <expression><![CDATA[100 * (swapped / 1024) / memorySizeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="remainingpct">
+                        <expression><![CDATA[100 - (100 * ((vmmemctl + swapped + active) / 1024) / MemorySizeMB)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="physicalrampct">
+                        <expression><![CDATA[100 * (active / 1024) / memorysizeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="guestHeartbeatStatus">
+                        <expression><![CDATA[guestHeartbeatStatus]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="overallCpuUsage" dataType="DOUBLE"/>
+                     <columnDataType columnName="maxCpuUsage" dataType="DOUBLE"/>
+                     <columnDataType columnName="overheadPercent" dataType="DOUBLE"/>
+                     <columnDataType columnName="CpuLimit" dataType="DOUBLE"/>
+                     <columnDataType columnName="readyPercent" dataType="DOUBLE"/>
+                     <columnDataType columnName="systemPercent" dataType="DOUBLE"/>
+                     <columnDataType columnName="usedPercent" dataType="DOUBLE"/>
+                     <columnDataType columnName="vmExists" dataType="BOOLEAN"/>
+                     <columnDataType columnName="active" dataType="DOUBLE"/>
+                     <columnDataType columnName="swapped" dataType="DOUBLE"/>
+                     <columnDataType columnName="vmmemctl" dataType="DOUBLE"/>
+                     <columnDataType columnName="memorySizeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="guestHeartbeatStatus" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,172 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Replication Publications" name="Publications">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">publications</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="publicationKey" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="publication_full" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">publicationexpiration</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">publicationfailure</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="publication" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publisher_db" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="publication_type" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="subsciptions_count" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publisher_name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="status" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="synchronizing_count" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="num_errors" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="num_warning" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="last_distsync" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="queuereader_agent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="snapshot_agent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="logreader_agent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="publication_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publication_full" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="statusText" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publicationType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="retentionHours" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="latencythreshold" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="hoursSinceLastSync" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="publicationKey" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>publisher</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="false" name="publisher" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="ReplicationConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[publications
+publisher={{publisher}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="publication">
+                <expression><![CDATA[publication]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publisher_db">
+                <expression><![CDATA[publisher_db]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publication_type">
+                <expression><![CDATA[publication_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="subsciptions_count">
+                <expression><![CDATA[subscriptioncount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publisher_name">
+                <expression><![CDATA[publisher_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="status">
+                <expression><![CDATA[status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="synchronizing_count">
+                <expression><![CDATA[num_now_syncing]]></expression>
+              </columnExpression>
+              <columnExpression columnName="num_errors">
+                <expression><![CDATA[num_errors]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_distsync">
+                <expression><![CDATA[last_distsync]]></expression>
+              </columnExpression>
+              <columnExpression columnName="num_warning">
+                <expression><![CDATA[num_warning]]></expression>
+              </columnExpression>
+              <columnExpression columnName="queuereader_agent">
+                <expression><![CDATA[queuereader_agent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="snapshot_agent">
+                <expression><![CDATA[snapshot_agent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="logreader_agent">
+                <expression><![CDATA[logreader_agent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publication_id">
+                <expression><![CDATA[publication_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publication_full">
+                <expression><![CDATA[iff(publisher_db == null, publication, concat("[", publisher_db, "]: ", publication))]]></expression>
+              </columnExpression>
+              <columnExpression columnName="HoursSinceLastSync">
+                <expression><![CDATA[iff((last_distsync == null) | (publication_type == 2), null, (now() - last_distsync) / 3600000)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statusText">
+                <expression><![CDATA[choose(Status, 1, "Started", 2, "Completed", 3, "Running", 4, "Idle", 5, "Retrying", 6, "Error")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publicationType">
+                <expression><![CDATA[choose(publication_type, 0, "Transactional", 1, "Snaphot", 2, "Merge")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="retentionHours">
+                <expression><![CDATA[iff((retention == 0) | (publication_type == 2), null, retention)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="latencythreshold">
+                <expression><![CDATA[latencythreshold]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publicationKey">
+                <expression><![CDATA[hashcode(concat(publisher_name, ".[", publisher_db, "].", publication))]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="publication" dataType="STRING" />
+              <columnDataType columnName="publisher_db" dataType="STRING" />
+              <columnDataType columnName="publication_type" dataType="LONG" />
+              <columnDataType columnName="publisher_name" dataType="STRING" />
+              <columnDataType columnName="subscriptioncount" dataType="LONG" />
+              <columnDataType columnName="num_now_syncing" dataType="LONG" />
+              <columnDataType columnName="num_errors" dataType="LONG" />
+              <columnDataType columnName="num_warning" dataType="LONG" />
+              <columnDataType columnName="status" dataType="LONG" />
+              <columnDataType columnName="last_distsync" dataType="DATE" />
+              <columnDataType columnName="queuereader_agent" dataType="STRING" />
+              <columnDataType columnName="snapshot_agent" dataType="STRING" />
+              <columnDataType columnName="logreader_agent" dataType="STRING" />
+              <columnDataType columnName="publication_id" dataType="LONG" />
+              <columnDataType columnName="retention" dataType="LONG" />
+              <columnDataType columnName="retention_period_unit" dataType="LONG" />
+              <columnDataType columnName="latencythreshold" dataType="LONG" />
+              <columnDataType columnName="expirationthreshold" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

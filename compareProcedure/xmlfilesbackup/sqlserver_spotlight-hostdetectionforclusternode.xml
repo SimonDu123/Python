@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" name="HostDetectionForClusterNode" displayName="Host Detection For ClusterNode">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">hostdetectionforclusternode</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureContentComponent" keyColumnName="missing_host" prettyKeyColumnName="" contextHelpKeyword="HostDetectionForClusterNode" readOnly="true" backgroundEditable="false" lthEditable="false" lucyEditable="false" savedToPlayback="false" alwaysSaveToSSR="false" alwaysSaveToLucy="false" ssrDataSavedToLucy="false" skippedIfNoMatchingQuery="false" role="NONE" racAggregation="false" minimumPersistencePeriod="60000" reExecutionPriority="0" dataRetentionMode="UNLOAD_STRING_COLUMNS" notExecutableInteractively="false" lthTextLimit="0" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">missinghostforclusternode</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn name="missing_host" dataType="STRING" persistedToShortTermHistory="true" persistedToLongTermHistory="false" sentToProjectLucy="false" wideStringInSSR="false" putInLucyHeader="false"/>
+               <procedureColumn name="available" dataType="BOOLEAN" persistedToShortTermHistory="true" persistedToLongTermHistory="false" sentToProjectLucy="false" wideStringInSSR="false" putInLucyHeader="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration connectionName="JavaConnection" isScript="false" minimumRefreshInterval="10000" callableName="">
+                  <properties/>
+                  <guardExpressionText>isDynamicHost()</guardExpressionText>
+                  <commandText><![CDATA[CLUSTER_HOST_DETECTION]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="missing_host">
+                        <expression><![CDATA[missing_host]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="available">
+                        <expression><![CDATA[available]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="missing_host" dataType="STRING"/>
+                     <columnDataType columnName="available" dataType="BOOLEAN"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" enabled="true" editable="false" subscriptionIgnoredByScheduling="false" executionInterval="-1">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureLTHComponent" enabled="false" editable="false" aggregationPeriod="-1" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

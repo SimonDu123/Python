@@ -1,0 +1,198 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Command Object List" name="AnalysisCommandObjectList">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysiscommandobjectlist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="ObjectID" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="SessionSPID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SessionID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SessionCommandCount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectParentPath" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectVersion" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectDataVersion" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectCPUTimeMS" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectRowsReturned" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectRowsScanned" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectReads" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectReadKB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectWrites" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectWriteKB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# DISCOVER_COMMAND_OBJECTS not supported on SSAS 2005]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SessionSPID">
+                <expression><![CDATA[Session_SPID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionID">
+                <expression><![CDATA[Session_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCommandCount">
+                <expression><![CDATA[Session_Command_Count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectID">
+                <expression><![CDATA[Object_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectParentPath">
+                <expression><![CDATA[Object_Parent_Path]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectVersion">
+                <expression><![CDATA[Object_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectDataVersion">
+                <expression><![CDATA[Object_Data_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectCPUTimeMS">
+                <expression><![CDATA[Object_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectRowsReturned">
+                <expression><![CDATA[Object_Rows_Returned]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectRowsScanned">
+                <expression><![CDATA[Object_Rows_Scanned]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectReads">
+                <expression><![CDATA[Object_Reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectReadKB">
+                <expression><![CDATA[Object_Read_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectWrites">
+                <expression><![CDATA[Object_Writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectWriteKB">
+                <expression><![CDATA[Object_Write_KB]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Session_SPID" dataType="STRING" />
+              <columnDataType columnName="Session_ID" dataType="STRING" />
+              <columnDataType columnName="Session_Command_Count" dataType="STRING" />
+              <columnDataType columnName="Object_ID" dataType="STRING" />
+              <columnDataType columnName="Object_Parent_Path" dataType="STRING" />
+              <columnDataType columnName="Object_Version" dataType="STRING" />
+              <columnDataType columnName="Object_Data_Version" dataType="STRING" />
+              <columnDataType columnName="Object_CPU_Time_MS" dataType="STRING" />
+              <columnDataType columnName="Object_Rows_Returned" dataType="STRING" />
+              <columnDataType columnName="Object_Rows_Scanned" dataType="STRING" />
+              <columnDataType columnName="Object_Reads" dataType="STRING" />
+              <columnDataType columnName="Object_Read_KB" dataType="STRING" />
+              <columnDataType columnName="Object_Writes" dataType="STRING" />
+              <columnDataType columnName="Object_Write_KB" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_COMMAND_OBJECTS]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SessionSPID">
+                <expression><![CDATA[Session_SPID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionID">
+                <expression><![CDATA[Session_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCommandCount">
+                <expression><![CDATA[Session_Command_Count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectID">
+                <expression><![CDATA[Object_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectParentPath">
+                <expression><![CDATA[Object_Parent_Path]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectVersion">
+                <expression><![CDATA[Object_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectDataVersion">
+                <expression><![CDATA[Object_Data_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectCPUTimeMS">
+                <expression><![CDATA[Object_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectRowsReturned">
+                <expression><![CDATA[Object_Rows_Returned]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectRowsScanned">
+                <expression><![CDATA[Object_Rows_Scanned]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectReads">
+                <expression><![CDATA[Object_Reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectReadKB">
+                <expression><![CDATA[Object_Read_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectWrites">
+                <expression><![CDATA[Object_Writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectWriteKB">
+                <expression><![CDATA[Object_Write_KB]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Session_SPID" dataType="STRING" />
+              <columnDataType columnName="Session_ID" dataType="STRING" />
+              <columnDataType columnName="Session_Command_Count" dataType="STRING" />
+              <columnDataType columnName="Object_ID" dataType="STRING" />
+              <columnDataType columnName="Object_Parent_Path" dataType="STRING" />
+              <columnDataType columnName="Object_Version" dataType="STRING" />
+              <columnDataType columnName="Object_Data_Version" dataType="STRING" />
+              <columnDataType columnName="Object_CPU_Time_MS" dataType="STRING" />
+              <columnDataType columnName="Object_Rows_Returned" dataType="STRING" />
+              <columnDataType columnName="Object_Rows_Scanned" dataType="STRING" />
+              <columnDataType columnName="Object_Reads" dataType="STRING" />
+              <columnDataType columnName="Object_Read_KB" dataType="STRING" />
+              <columnDataType columnName="Object_Writes" dataType="STRING" />
+              <columnDataType columnName="Object_Write_KB" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

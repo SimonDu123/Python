@@ -1,0 +1,229 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Log Shipping Secondaries" name="LogShippingSecondaries">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">logshippingsecondaries</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_LogShippingSecondaries" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="secondary_id" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+            <fragment type="RULE">logshippingsecondaryjob</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+            <fragment type="RULE">logshippingsecondarylatency</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="secondary_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="primary_server" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="primary_database" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="backup_source_directory" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="backup_destination_directory" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="file_retention_period" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="copy_job_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="restore_job_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="monitor_server" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="monitor_server_security_mode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="last_copied_file" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="last_copied_date" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="monitor_server_security_mode_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="secondary_database" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="restore_delay" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="restore_all" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="restore_mode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="disconnect_users" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="block_size" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="buffer_count" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="max_transfer_size" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="last_restored_file" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="last_restored_date" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="restore_mode_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="secondary_server" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="restore_threshold" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="threshold_alert" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="threshold_alert_enabled" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="last_restored_latency" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="history_retention_period" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="threshold_alert_enabled_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="copy_job_enabled" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="restore_job_enabled" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_LogShippingSecondaries.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="secondary_id">
+                <expression><![CDATA[secondary_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="primary_server">
+                <expression><![CDATA[primary_server]]></expression>
+              </columnExpression>
+              <columnExpression columnName="primary_database">
+                <expression><![CDATA[primary_database]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_source_directory">
+                <expression><![CDATA[backup_source_directory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="backup_destination_directory">
+                <expression><![CDATA[backup_destination_directory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="file_retention_period">
+                <expression><![CDATA[file_retention_period]]></expression>
+              </columnExpression>
+              <columnExpression columnName="copy_job_id">
+                <expression><![CDATA[copy_job_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="restore_job_id">
+                <expression><![CDATA[restore_job_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="monitor_server">
+                <expression><![CDATA[monitor_server]]></expression>
+              </columnExpression>
+              <columnExpression columnName="monitor_server_security_mode">
+                <expression><![CDATA[monitor_server_security_mode]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_copied_file">
+                <expression><![CDATA[last_copied_file]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_copied_date">
+                <expression><![CDATA[last_copied_date]]></expression>
+              </columnExpression>
+              <columnExpression columnName="monitor_server_security_mode_desc">
+                <expression><![CDATA[monitor_server_security_mode_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="secondary_database">
+                <expression><![CDATA[secondary_database]]></expression>
+              </columnExpression>
+              <columnExpression columnName="restore_delay">
+                <expression><![CDATA[restore_delay]]></expression>
+              </columnExpression>
+              <columnExpression columnName="restore_all">
+                <expression><![CDATA[restore_all]]></expression>
+              </columnExpression>
+              <columnExpression columnName="restore_mode">
+                <expression><![CDATA[restore_mode]]></expression>
+              </columnExpression>
+              <columnExpression columnName="disconnect_users">
+                <expression><![CDATA[disconnect_users]]></expression>
+              </columnExpression>
+              <columnExpression columnName="block_size">
+                <expression><![CDATA[block_size]]></expression>
+              </columnExpression>
+              <columnExpression columnName="buffer_count">
+                <expression><![CDATA[buffer_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="max_transfer_size">
+                <expression><![CDATA[max_transfer_size]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_restored_file">
+                <expression><![CDATA[last_restored_file]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_restored_date">
+                <expression><![CDATA[last_restored_date]]></expression>
+              </columnExpression>
+              <columnExpression columnName="restore_mode_desc">
+                <expression><![CDATA[restore_mode_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="secondary_server">
+                <expression><![CDATA[secondary_server]]></expression>
+              </columnExpression>
+              <columnExpression columnName="restore_threshold">
+                <expression><![CDATA[restore_threshold]]></expression>
+              </columnExpression>
+              <columnExpression columnName="threshold_alert">
+                <expression><![CDATA[threshold_alert]]></expression>
+              </columnExpression>
+              <columnExpression columnName="threshold_alert_enabled">
+                <expression><![CDATA[threshold_alert_enabled]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_restored_latency">
+                <expression><![CDATA[last_restored_latency]]></expression>
+              </columnExpression>
+              <columnExpression columnName="history_retention_period">
+                <expression><![CDATA[history_retention_period]]></expression>
+              </columnExpression>
+              <columnExpression columnName="threshold_alert_enabled_desc">
+                <expression><![CDATA[threshold_alert_enabled_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="copy_job_enabled">
+                <expression><![CDATA[copy_job_enabled]]></expression>
+              </columnExpression>
+              <columnExpression columnName="restore_job_enabled">
+                <expression><![CDATA[restore_job_enabled]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="secondary_id" dataType="STRING" />
+              <columnDataType columnName="primary_server" dataType="STRING" />
+              <columnDataType columnName="primary_database" dataType="STRING" />
+              <columnDataType columnName="backup_source_directory" dataType="STRING" />
+              <columnDataType columnName="backup_destination_directory" dataType="STRING" />
+              <columnDataType columnName="file_retention_period" dataType="LONG" />
+              <columnDataType columnName="copy_job_id" dataType="STRING" />
+              <columnDataType columnName="restore_job_id" dataType="STRING" />
+              <columnDataType columnName="monitor_server" dataType="STRING" />
+              <columnDataType columnName="monitor_server_security_mode" dataType="BOOLEAN" />
+              <columnDataType columnName="last_copied_file" dataType="STRING" />
+              <columnDataType columnName="last_copied_date" dataType="DATE" />
+              <columnDataType columnName="monitor_server_security_mode_desc" dataType="STRING" />
+              <columnDataType columnName="secondary_database" dataType="STRING" />
+              <columnDataType columnName="restore_delay" dataType="LONG" />
+              <columnDataType columnName="restore_all" dataType="BOOLEAN" />
+              <columnDataType columnName="restore_mode" dataType="BOOLEAN" />
+              <columnDataType columnName="disconnect_users" dataType="BOOLEAN" />
+              <columnDataType columnName="block_size" dataType="LONG" />
+              <columnDataType columnName="buffer_count" dataType="LONG" />
+              <columnDataType columnName="max_transfer_size" dataType="LONG" />
+              <columnDataType columnName="last_restored_file" dataType="STRING" />
+              <columnDataType columnName="last_restored_date" dataType="DATE" />
+              <columnDataType columnName="restore_mode_desc" dataType="STRING" />
+              <columnDataType columnName="secondary_server" dataType="STRING" />
+              <columnDataType columnName="restore_threshold" dataType="LONG" />
+              <columnDataType columnName="threshold_alert" dataType="LONG" />
+              <columnDataType columnName="threshold_alert_enabled" dataType="BOOLEAN" />
+              <columnDataType columnName="last_restored_latency" dataType="LONG" />
+              <columnDataType columnName="history_retention_period" dataType="LONG" />
+              <columnDataType columnName="threshold_alert_enabled_desc" dataType="STRING" />
+              <columnDataType columnName="copy_job_enabled" dataType="BOOLEAN" />
+              <columnDataType columnName="restore_job_enabled" dataType="BOOLEAN" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

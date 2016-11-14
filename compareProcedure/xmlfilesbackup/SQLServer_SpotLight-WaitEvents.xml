@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Waits Events" name="WaitEvents">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">waitevents</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_StatementWaits" dataRetentionMode="NEVER" keyColumnName="key" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="true" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="DATE" name="time_stamp" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="wait_type" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="duration" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="signal_duration" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="sql_text" normalised="true" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="username" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="session_id" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="query_plan_hash" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="query_hash" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="plan_handle" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="database_name" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="client_hostname" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="client_app_name" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="key" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="identifier" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="available_cpu_time" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText>isUsingExtendedEvents()</guardExpressionText>
+                  <commandText><![CDATA[WAIT_EVENTS]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2008</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="time_stamp">
+                        <expression><![CDATA[time_stamp]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_type">
+                        <expression><![CDATA[wait_type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="duration">
+                        <expression><![CDATA[duration]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="signal_duration">
+                        <expression><![CDATA[signal_duration]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="sql_text">
+                        <expression><![CDATA[sql_text]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="username">
+                        <expression><![CDATA[username]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="session_id">
+                        <expression><![CDATA[session_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_plan_hash">
+                        <expression><![CDATA[query_plan_hash]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_hash">
+                        <expression><![CDATA[query_hash]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="plan_handle">
+                        <expression><![CDATA[plan_handle]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_name">
+                        <expression><![CDATA[database_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="client_hostname">
+                        <expression><![CDATA[client_hostname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="client_app_name">
+                        <expression><![CDATA[client_app_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(duration)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="identifier">
+                        <expression><![CDATA[identifier]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="available_cpu_time">
+                        <expression><![CDATA[available_cpu_time]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="time_stamp" dataType="DATE"/>
+                     <columnDataType columnName="wait_type" dataType="STRING"/>
+                     <columnDataType columnName="duration" dataType="LONG"/>
+                     <columnDataType columnName="signal_duration" dataType="LONG"/>
+                     <columnDataType columnName="sql_text" dataType="STRING"/>
+                     <columnDataType columnName="username" dataType="STRING"/>
+                     <columnDataType columnName="session_id" dataType="LONG"/>
+                     <columnDataType columnName="query_plan_hash" dataType="STRING"/>
+                     <columnDataType columnName="query_hash" dataType="STRING"/>
+                     <columnDataType columnName="plan_handle" dataType="STRING"/>
+                     <columnDataType columnName="database_name" dataType="STRING"/>
+                     <columnDataType columnName="client_hostname" dataType="STRING"/>
+                     <columnDataType columnName="client_app_name" dataType="STRING"/>
+                     <columnDataType columnName="key" dataType="LONG"/>
+                     <columnDataType columnName="identifier" dataType="STRING"/>
+                     <columnDataType columnName="available_cpu_time" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText>isUsingExtendedEvents()</guardExpressionText>
+                  <commandText><![CDATA[WAIT_EVENTS_2012_PLUS]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2012</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="time_stamp">
+                        <expression><![CDATA[time_stamp]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_type">
+                        <expression><![CDATA[wait_type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="duration">
+                        <expression><![CDATA[duration]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="signal_duration">
+                        <expression><![CDATA[signal_duration]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="sql_text">
+                        <expression><![CDATA[sql_text]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="username">
+                        <expression><![CDATA[username]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="session_id">
+                        <expression><![CDATA[session_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_plan_hash">
+                        <expression><![CDATA[query_plan_hash]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="query_hash">
+                        <expression><![CDATA[query_hash]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="plan_handle">
+                        <expression><![CDATA[plan_handle]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_name">
+                        <expression><![CDATA[database_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="client_hostname">
+                        <expression><![CDATA[client_hostname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="client_app_name">
+                        <expression><![CDATA[client_app_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(duration)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="identifier">
+                        <expression><![CDATA[identifier]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="available_cpu_time">
+                        <expression><![CDATA[available_cpu_time]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="time_stamp" dataType="DATE"/>
+                     <columnDataType columnName="wait_type" dataType="STRING"/>
+                     <columnDataType columnName="duration" dataType="LONG"/>
+                     <columnDataType columnName="signal_duration" dataType="LONG"/>
+                     <columnDataType columnName="sql_text" dataType="STRING"/>
+                     <columnDataType columnName="username" dataType="STRING"/>
+                     <columnDataType columnName="session_id" dataType="LONG"/>
+                     <columnDataType columnName="query_plan_hash" dataType="STRING"/>
+                     <columnDataType columnName="query_hash" dataType="STRING"/>
+                     <columnDataType columnName="plan_handle" dataType="STRING"/>
+                     <columnDataType columnName="database_name" dataType="STRING"/>
+                     <columnDataType columnName="client_hostname" dataType="STRING"/>
+                     <columnDataType columnName="client_app_name" dataType="STRING"/>
+                     <columnDataType columnName="key" dataType="LONG"/>
+                     <columnDataType columnName="identifier" dataType="STRING"/>
+                     <columnDataType columnName="available_cpu_time" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="60000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

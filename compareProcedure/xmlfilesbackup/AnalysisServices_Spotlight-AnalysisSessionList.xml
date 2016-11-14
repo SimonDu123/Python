@@ -1,0 +1,270 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Session List" name="AnalysisSessionList">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysissessionlist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="SessionID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="SessionID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionSpid" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionConnectionID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SessionUserName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SessionCurrentDatabase" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="SessionLastCommandStartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionLastCommandElapsedTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="SessionLastCommandEndTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionCPUTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="SessionStartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionElapsedTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionIdleTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionUsedMemory" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SessionProperties" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SessionLastCommand" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionLastCommandCPUTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionStatus" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionReads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionWrites" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionReadKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionWriteKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionCommandCount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_SESSIONS]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SessionID">
+                <expression><![CDATA[Session_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionSpid">
+                <expression><![CDATA[Session_Spid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionConnectionID">
+                <expression><![CDATA[Session_Connection_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionUserName">
+                <expression><![CDATA[Session_User_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCurrentDatabase">
+                <expression><![CDATA[Session_Current_Database]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandStartTime">
+                <expression><![CDATA[Session_Last_Command_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandElapsedTimeMS">
+                <expression><![CDATA[Session_Last_Command_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandEndTime">
+                <expression><![CDATA[Session_Last_Command_End_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCPUTimeMS">
+                <expression><![CDATA[Session_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionStartTime">
+                <expression><![CDATA[Session_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionElapsedTimeMS">
+                <expression><![CDATA[Session_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionIdleTimeMS">
+                <expression><![CDATA[Session_Idle_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionUsedMemory">
+                <expression><![CDATA[Session_Used_Memory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionProperties">
+                <expression><![CDATA[Session_Properties]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommand">
+                <expression><![CDATA[Session_Last_Command]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandCPUTimeMS">
+                <expression><![CDATA[Session_Last_Command_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionStatus">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionReads">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionWrites">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionReadKB">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionWriteKB">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCommandCount">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Session_ID" dataType="STRING" />
+              <columnDataType columnName="Session_Spid" dataType="LONG" />
+              <columnDataType columnName="Session_Connection_ID" dataType="LONG" />
+              <columnDataType columnName="Session_User_Name" dataType="STRING" />
+              <columnDataType columnName="Session_Current_Database" dataType="STRING" />
+              <columnDataType columnName="Session_Last_Command_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Session_Last_Command_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Last_Command_End_Time" dataType="DATE" />
+              <columnDataType columnName="Session_CPU_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Session_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Idle_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Used_Memory" dataType="LONG" />
+              <columnDataType columnName="Session_Properties" dataType="STRING" />
+              <columnDataType columnName="Session_Last_Command" dataType="STRING" />
+              <columnDataType columnName="Session_Last_Command_CPU_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Status" dataType="LONG" />
+              <columnDataType columnName="Session_Reads" dataType="LONG" />
+              <columnDataType columnName="Session_Writes" dataType="LONG" />
+              <columnDataType columnName="Session_Read_KB" dataType="LONG" />
+              <columnDataType columnName="Session_Write_KB" dataType="LONG" />
+              <columnDataType columnName="Session_Comand_Count" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_SESSIONS]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SessionID">
+                <expression><![CDATA[Session_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionSpid">
+                <expression><![CDATA[Session_Spid]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionConnectionID">
+                <expression><![CDATA[Session_Connection_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionUserName">
+                <expression><![CDATA[Session_User_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCurrentDatabase">
+                <expression><![CDATA[Session_Current_Database]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandStartTime">
+                <expression><![CDATA[Session_Last_Command_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandElapsedTimeMS">
+                <expression><![CDATA[Session_Last_Command_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandEndTime">
+                <expression><![CDATA[Session_Last_Command_End_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCPUTimeMS">
+                <expression><![CDATA[Session_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionStartTime">
+                <expression><![CDATA[Session_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionElapsedTimeMS">
+                <expression><![CDATA[Session_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionIdleTimeMS">
+                <expression><![CDATA[Session_Idle_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionUsedMemory">
+                <expression><![CDATA[Session_Used_Memory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionProperties">
+                <expression><![CDATA[Session_Properties]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommand">
+                <expression><![CDATA[Session_Last_Command]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionLastCommandCPUTimeMS">
+                <expression><![CDATA[Session_Last_Command_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionStatus">
+                <expression><![CDATA[Session_Status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionReads">
+                <expression><![CDATA[Session_Reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionWrites">
+                <expression><![CDATA[Session_Writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionReadKB">
+                <expression><![CDATA[Session_Read_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionWriteKB">
+                <expression><![CDATA[Session_Write_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCommandCount">
+                <expression><![CDATA[Session_Command_Count]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Session_ID" dataType="STRING" />
+              <columnDataType columnName="Session_Spid" dataType="LONG" />
+              <columnDataType columnName="Session_Connection_ID" dataType="LONG" />
+              <columnDataType columnName="Session_User_Name" dataType="STRING" />
+              <columnDataType columnName="Session_Current_Database" dataType="STRING" />
+              <columnDataType columnName="Session_Last_Command_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Session_Last_Command_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Last_Command_End_Time" dataType="DATE" />
+              <columnDataType columnName="Session_CPU_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Session_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Idle_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Used_Memory" dataType="LONG" />
+              <columnDataType columnName="Session_Properties" dataType="STRING" />
+              <columnDataType columnName="Session_Last_Command" dataType="STRING" />
+              <columnDataType columnName="Session_Last_Command_CPU_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Session_Status" dataType="LONG" />
+              <columnDataType columnName="Session_Reads" dataType="LONG" />
+              <columnDataType columnName="Session_Writes" dataType="LONG" />
+              <columnDataType columnName="Session_Read_KB" dataType="LONG" />
+              <columnDataType columnName="Session_Write_KB" dataType="LONG" />
+              <columnDataType columnName="Session_Command_Count" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Replicas" name="replicas">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">highavailability</fragment>
+      <fragment type="PROCEDURE">replicas</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="replica_id" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="replica_server_name" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="replica_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="group_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="replica_metadata_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="replica_server_name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="owner_sid" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="endpoint_url" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="availability_mode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="availability_mode_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="failover_mode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="failover_mode_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="session_timeout" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="primary_role_allow_connections" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="primary_role_allow_connections_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="secondary_role_allow_connections" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="secondary_role_allow_connections_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="create_date" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="modify_date" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="backup_priority" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="read_only_routing_url" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_local" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="role" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="role_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="operation_state" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="operational_state_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="connected_state" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="connected_state_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="recovery_health" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="recovery_health_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="synchronization_health" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="synchronization_health_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="last_connect_error_number" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="last_connect_error_description" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="last_connect_error_timestamp" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="automaticfailoveravailable" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="manualfailoveravailable" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[declare @dbaddress  NVARCHAR(4000);
+declare @dbaddress2  NVARCHAR(100);
+declare @portno nvarchar(6)
+set @dbaddress='{{dbaddress}}'
+set @dbaddress2 = case
+			when charindex('.',@dbaddress) > 0 then lower(substring(@dbaddress, 1, charindex('.',@dbaddress) - 1)) 
+			when charindex(',',@dbaddress) > 0 then lower(substring(@dbaddress, 1, charindex(',',@dbaddress) - 1))
+		else (lower(@dbaddress))
+		end
+set @portno = case
+			when charindex(',',@dbaddress) > 0 then substring(@dbaddress, charindex(',',@dbaddress) + 1,20)
+		else null
+		end
+select 
+	r.replica_id, 
+	r.group_id,
+	r.replica_metadata_id,
+	r.replica_server_name,
+	r.owner_sid,
+	r.endpoint_url,
+	r.availability_mode,
+	r.availability_mode_desc,
+	r.failover_mode,
+	r.failover_mode_desc,
+	r.session_timeout, 
+	r.primary_role_allow_connections,
+	r.primary_role_allow_connections_desc,
+	r.secondary_role_allow_connections,
+	r.secondary_role_allow_connections_desc,
+	r.create_date,
+	r.modify_date,
+	r.backup_priority,
+	r.read_only_routing_url,
+	s.is_local,
+	s.role,
+	s.role_desc,
+	s.operational_state,
+	s.operational_state_desc,
+	s.connected_state,
+	s.connected_state_desc,
+	s.recovery_health,
+	s.recovery_health_desc,
+	s.synchronization_health,
+	s.synchronization_health_desc,
+	s.last_connect_error_number,
+	s.last_connect_error_description,
+	s.last_connect_error_timestamp
+from 
+	sys.availability_replicas r
+join sys.dm_hadr_availability_replica_states s on r.replica_id = s.replica_id
+join sys.availability_group_listeners l on l.group_id = r.group_id
+and (lower(l.dns_name)=@dbaddress2 or charindex(@dbaddress2,l.ip_configuration_string_from_cluster) > 0)
+	and (@portno is null or l.port=@portno)]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">highavailability</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="replica_id">
+                        <expression><![CDATA[replica_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="group_id">
+                        <expression><![CDATA[group_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="replica_metadata_id">
+                        <expression><![CDATA[replica_metadata_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="replica_server_name">
+                        <expression><![CDATA[replica_server_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="owner_sid">
+                        <expression><![CDATA[owner_sid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="endpoint_url">
+                        <expression><![CDATA[endpoint_url]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="availability_mode">
+                        <expression><![CDATA[availability_mode]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="availability_mode_desc">
+                        <expression><![CDATA[availability_mode_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="failover_mode">
+                        <expression><![CDATA[failover_mode]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="failover_mode_desc">
+                        <expression><![CDATA[failover_mode_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="session_timeout">
+                        <expression><![CDATA[session_timeout]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="primary_role_allow_connections">
+                        <expression><![CDATA[primary_role_allow_connections]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="primary_role_allow_connections_desc">
+                        <expression><![CDATA[primary_role_allow_connections_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="secondary_role_allow_connections">
+                        <expression><![CDATA[secondary_role_allow_connections]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="secondary_role_allow_connections_desc">
+                        <expression><![CDATA[secondary_role_allow_connections_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="create_date">
+                        <expression><![CDATA[create_date]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="modify_date">
+                        <expression><![CDATA[modify_date]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="backup_priority">
+                        <expression><![CDATA[backup_priority]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="read_only_routing_url">
+                        <expression><![CDATA[read_only_routing_url]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_local">
+                        <expression><![CDATA[is_local]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="role">
+                        <expression><![CDATA[role]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="role_desc">
+                        <expression><![CDATA[role_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="operation_state">
+                        <expression><![CDATA[operation_state]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="operational_state_desc">
+                        <expression><![CDATA[operational_state_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="connected_state">
+                        <expression><![CDATA[connected_state]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="connected_state_desc">
+                        <expression><![CDATA[connected_state_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="recovery_health">
+                        <expression><![CDATA[recovery_health]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="recovery_health_desc">
+                        <expression><![CDATA[recovery_health_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_health">
+                        <expression><![CDATA[synchronization_health]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_health_desc">
+                        <expression><![CDATA[synchronization_health_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_connect_error_number">
+                        <expression><![CDATA[last_connect_error_number]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_connect_error_description">
+                        <expression><![CDATA[last_connect_error_description]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_connect_error_timestamp">
+                        <expression><![CDATA[last_connect_error_timestamp]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="automaticfailoveravailable">
+                        <expression><![CDATA[iff(is_local,0,iff(failover_mode==0,1,0))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="manualfailoveravailable">
+                        <expression><![CDATA[iff(is_local,0,iff(failover_mode==1,1,0))]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="replica_id" dataType="STRING"/>
+                     <columnDataType columnName="group_id" dataType="STRING"/>
+                     <columnDataType columnName="replica_metadata_id" dataType="STRING"/>
+                     <columnDataType columnName="replica_server_name" dataType="STRING"/>
+                     <columnDataType columnName="owner_sid" dataType="STRING"/>
+                     <columnDataType columnName="endpoint_url" dataType="STRING"/>
+                     <columnDataType columnName="availability_mode" dataType="LONG"/>
+                     <columnDataType columnName="availability_mode_desc" dataType="STRING"/>
+                     <columnDataType columnName="failover_mode" dataType="LONG"/>
+                     <columnDataType columnName="failover_mode_desc" dataType="STRING"/>
+                     <columnDataType columnName="session_timeout" dataType="LONG"/>
+                     <columnDataType columnName="primary_role_allow_connections" dataType="LONG"/>
+                     <columnDataType columnName="primary_role_allow_connections_desc" dataType="STRING"/>
+                     <columnDataType columnName="secondary_role_allow_connections" dataType="LONG"/>
+                     <columnDataType columnName="secondary_role_allow_connections_desc" dataType="STRING"/>
+                     <columnDataType columnName="create_date" dataType="DATE"/>
+                     <columnDataType columnName="modify_date" dataType="DATE"/>
+                     <columnDataType columnName="backup_priority" dataType="LONG"/>
+                     <columnDataType columnName="read_only_routing_url" dataType="STRING"/>
+                     <columnDataType columnName="is_local" dataType="BOOLEAN"/>
+                     <columnDataType columnName="role" dataType="LONG"/>
+                     <columnDataType columnName="role_desc" dataType="STRING"/>
+                     <columnDataType columnName="operational_state" dataType="LONG"/>
+                     <columnDataType columnName="operational_state_desc" dataType="STRING"/>
+                     <columnDataType columnName="connected_state" dataType="LONG"/>
+                     <columnDataType columnName="connected_state_desc" dataType="STRING"/>
+                     <columnDataType columnName="recovery_health" dataType="LONG"/>
+                     <columnDataType columnName="recovery_health_desc" dataType="STRING"/>
+                     <columnDataType columnName="synchronization_health" dataType="LONG"/>
+                     <columnDataType columnName="synchronization_health_desc" dataType="STRING"/>
+                     <columnDataType columnName="last_connect_error_number" dataType="LONG"/>
+                     <columnDataType columnName="last_connect_error_description" dataType="STRING"/>
+                     <columnDataType columnName="last_connect_error_timestamp" dataType="DATE"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

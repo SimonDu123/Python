@@ -1,0 +1,17 @@
+ActiveTransactions
+AzureVersion
+Computers
+Connections
+DatabaseSize
+DatabaseSpace
+DatabaseTransactions
+ExecRequests
+ResponseTime
+Sessions
+SQLBlockingList
+SQLBlocks
+SQLConnectionList
+SQLIndexes
+SQLLocksList
+SQLTables
+UpdateAzureVersion

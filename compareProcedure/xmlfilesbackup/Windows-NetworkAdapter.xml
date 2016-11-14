@@ -1,0 +1,150 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Network Adapter" name="NetworkAdapter">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">networkadapter</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_networkadapter" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DeviceID" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="AdapterType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Description" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DeviceID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="MACAddress" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Manufacturer" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="NetConnectionID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ServiceName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Host" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT DeviceID, AdapterType, Description, MACAddress, Manufacturer, NetConnectionID, ServiceName 
+FROM   Win32_NetworkAdapter]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AdapterType">
+                <expression><![CDATA[AdapterType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Description">
+                <expression><![CDATA[Description]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DeviceID">
+                <expression><![CDATA[DeviceID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MACAddress">
+                <expression><![CDATA[MACAddress]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Manufacturer">
+                <expression><![CDATA[Manufacturer]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NetConnectionID">
+                <expression><![CDATA[NetConnectionID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ServiceName">
+                <expression><![CDATA[ServiceName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Host">
+                <expression><![CDATA[createMEDisplayNameColumn(NetworkAdapter.DeviceID)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="diagnostic_server">
+                <expression><![CDATA[createDSDomainIDColumn(NetworkAdapter.DeviceID)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DeviceID" dataType="LONG" />
+              <columnDataType columnName="AdapterType" dataType="STRING" />
+              <columnDataType columnName="Description" dataType="STRING" />
+              <columnDataType columnName="MACAddress" dataType="STRING" />
+              <columnDataType columnName="Manufacturer" dataType="STRING" />
+              <columnDataType columnName="NetConnectionID" dataType="STRING" />
+              <columnDataType columnName="ServiceName" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT DeviceID, AdapterType, Description, MACAddress, Manufacturer, ServiceName 
+FROM   Win32_NetworkAdapter]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AdapterType">
+                <expression><![CDATA[AdapterType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Description">
+                <expression><![CDATA[Description]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DeviceID">
+                <expression><![CDATA[DeviceID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MACAddress">
+                <expression><![CDATA[MACAddress]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Manufacturer">
+                <expression><![CDATA[Manufacturer]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NetConnectionID">
+                <expression><![CDATA[""]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ServiceName">
+                <expression><![CDATA[ServiceName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Host">
+                <expression><![CDATA[createMEDisplayNameColumn(NetworkAdapter.DeviceID)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="diagnostic_server">
+                <expression><![CDATA[createDSDomainIDColumn(NetworkAdapter.DeviceID)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DeviceID" dataType="LONG" />
+              <columnDataType columnName="AdapterType" dataType="STRING" />
+              <columnDataType columnName="Description" dataType="STRING" />
+              <columnDataType columnName="MACAddress" dataType="STRING" />
+              <columnDataType columnName="Manufacturer" dataType="STRING" />
+              <columnDataType columnName="ServiceName" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="true" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

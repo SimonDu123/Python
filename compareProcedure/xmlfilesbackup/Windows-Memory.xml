@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Memory" name="Memory">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">memory</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_Memory" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="3600">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">physicalram</fragment>
+                  </procedurePath>
+               </procedureDependency>
+               <procedureDependency recencyOfExecutionSeconds="300">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">pagingfiles</fragment>
+                  </procedurePath>
+               </procedureDependency>
+               <procedureDependency recencyOfExecutionSeconds="86400">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">operatingsystem</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">freesystempagetableentries</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">physram</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">virtmem</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="DOUBLE" name="FreePhysMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="UsedPhysMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="TotalPhysMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="FreeVirtualMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="CommittedBytes" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="UsedVirtualMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="CommitLimit" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="TotalVirtualMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FreePhysMemPct" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="FreeVirtMemPct" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PhysFileCacheBytes" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PhysPagedPoolBytes" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PhysNonPagedPoolBytes" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PhysKernelBytes" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="CacheFaults" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CacheFaultsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PhysFileCacheMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PhysKernelMB" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="FreeSystemPageTableEntries" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PageFaults" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PageFaultsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PageReads" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PageReadsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PageWrites" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PageWritesPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PagesInput" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PagesInputPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PagesOutput" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PagesOutputPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Pages" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalPagesPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SoftFaultsPerSec" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PageHitRatio" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT  AvailableKBytes, CacheBytes, CacheFaultsPerSec, CommitLimit, CommittedBytes, 
+	FreeSystemPageTableEntries, PageFaultsPerSec, PageReadsPerSec, PageWritesPerSec, 
+	PagesInputPerSec, PagesOutputPerSec, PagesPerSec, PoolNonpagedBytes, PoolPagedResidentBytes 
+FROM    Win32_PerfRawData_PerfOS_Memory]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="FreePhysMB">
+                        <expression><![CDATA[AvailableKBytes / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PhysFileCacheBytes">
+                        <expression><![CDATA[CacheBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CacheFaults">
+                        <expression><![CDATA[CacheFaultsPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CommittedBytes">
+                        <expression><![CDATA[CommittedBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CommitLimit">
+                        <expression><![CDATA[CommitLimit]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeSystemPageTableEntries">
+                        <expression><![CDATA[FreeSystemPageTableEntries]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PhysNonPagedPoolBytes">
+                        <expression><![CDATA[PoolNonpagedBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PhysPagedPoolBytes">
+                        <expression><![CDATA[PoolPagedResidentBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageFaults">
+                        <expression><![CDATA[PageFaultsPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageReads">
+                        <expression><![CDATA[PageReadsPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageWrites">
+                        <expression><![CDATA[PageWritesPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PagesInput">
+                        <expression><![CDATA[PagesInputPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PagesOutput">
+                        <expression><![CDATA[PagesOutputPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Pages">
+                        <expression><![CDATA[PagesPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PhysKernelBytes">
+                        <expression><![CDATA[Memory.PhysPagedPoolBytes + Memory.PhysNonPagedPoolBytes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalPhysMB">
+                        <expression><![CDATA[PhysicalRAM.TotalMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedPhysMB">
+                        <expression><![CDATA[Memory.TotalPhysMB - Memory.FreePhysMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UsedVirtualMB">
+                        <expression><![CDATA[Memory.UsedPhysMB + PagingFiles.TotalUsedMb]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalVirtualMB">
+                        <expression><![CDATA[Memory.TotalPhysMB + PagingFiles.TotalMb]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeVirtualMB">
+                        <expression><![CDATA[Memory.TotalVirtualMB - Memory.UsedVirtualMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreePhysMemPct">
+                        <expression><![CDATA[Memory.FreePhysMB / Memory.TotalPhysMB * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeVirtMemPct">
+                        <expression><![CDATA[Memory.FreeVirtualMB / Memory.TotalVirtualMB * 100]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PhysFileCacheMB">
+                        <expression><![CDATA[Memory.PhysFileCacheBytes / 1024 / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PhysKernelMB">
+                        <expression><![CDATA[Memory.PhysKernelBytes / 1024 / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CacheFaultsPerSec">
+                        <expression><![CDATA[positiveRate(Memory.CacheFaults)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageFaultsPerSec">
+                        <expression><![CDATA[positiveRate(Memory.PageFaults)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageReadsPerSec">
+                        <expression><![CDATA[positiveRate(Memory.PageReads)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageWritesPerSec">
+                        <expression><![CDATA[positiveRate(Memory.PageWrites)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PagesInputPerSec">
+                        <expression><![CDATA[positiveRate(Memory.PagesInput)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PagesOutputPerSec">
+                        <expression><![CDATA[positiveRate(Memory.PagesOutput)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalPagesPerSec">
+                        <expression><![CDATA[positiveRate(Memory.Pages)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SoftFaultsPerSec">
+                        <expression><![CDATA[Memory.PageFaultsPerSec - Memory.PagesInputPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageHitRatio">
+                        <expression><![CDATA[(1 - Memory.PagesInputPerSec / Memory.PageFaultsPerSec) * 100]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="AvailableKBytes" dataType="LONG"/>
+                     <columnDataType columnName="CacheBytes" dataType="LONG"/>
+                     <columnDataType columnName="CacheFaultsPerSec" dataType="LONG"/>
+                     <columnDataType columnName="CommitLimit" dataType="LONG"/>
+                     <columnDataType columnName="CommittedBytes" dataType="LONG"/>
+                     <columnDataType columnName="FreeSystemPageTableEntries" dataType="LONG"/>
+                     <columnDataType columnName="PageFaultsPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PageReadsPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PageWritesPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PagesInputPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PagesOutputPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PagesPerSec" dataType="LONG"/>
+                     <columnDataType columnName="PoolNonpagedBytes" dataType="LONG"/>
+                     <columnDataType columnName="PoolPagedResidentBytes" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="120000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

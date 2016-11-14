@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Blocking List" name="SQLBlockingList">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqlblockinglist</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="true" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLBlockingList" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="spid" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="10000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" reExecutionPropertyRegExp="" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">blockedprocesses</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="spid" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="BlockedBySPID" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="SQLUser" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="NTUser" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Type" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Resource" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Status" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="WaitTimeMS" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Program" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Command" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="CPU" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PhysicalIO" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="HostName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="sql_text" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="true"/>
+               <procedureColumn dataType="LONG" name="SQLHash" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="blocking_sql_text" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="true"/>
+               <procedureColumn dataType="STRING" name="blockingdatabasename" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="blockingapplicationname" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="blockinghostname" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="blockingosuser" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="blockingdbuser" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="WaitTimeAlarm" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="HostProcessId" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="blockinghostprocessid" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_BlockingList.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="spid">
+                        <expression><![CDATA[spid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLUser">
+                        <expression><![CDATA[SQLUser]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NTUser">
+                        <expression><![CDATA[NTUser]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Status">
+                        <expression><![CDATA[Status]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Type">
+                        <expression><![CDATA[Type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBName">
+                        <expression><![CDATA[DBName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Resource">
+                        <expression><![CDATA[Resource]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Program">
+                        <expression><![CDATA[Program]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Command">
+                        <expression><![CDATA[Command]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="HostName">
+                        <expression><![CDATA[HostName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BlockedBySPID">
+                        <expression><![CDATA[BlockedBySPID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CPU">
+                        <expression><![CDATA[CPU]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PhysicalIO">
+                        <expression><![CDATA[PhysicalIO]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTimeMS">
+                        <expression><![CDATA[WaitTimeMS]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="sql_text">
+                        <expression><![CDATA[blocked_sql_text]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLHash">
+                        <expression><![CDATA[hashCode(normalizeSQL(sql_text))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blocking_sql_text">
+                        <expression><![CDATA[blocking_sql_text]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blockingdatabasename">
+                        <expression><![CDATA[blockingdatabasename]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blockingapplicationname">
+                        <expression><![CDATA[blockingapplicationname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blockinghostname">
+                        <expression><![CDATA[blockinghostname]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blockingosuser">
+                        <expression><![CDATA[blockingosuser]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blockingdbuser">
+                        <expression><![CDATA[blockingdbuser]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTimeAlarm">
+                        <expression><![CDATA[WaitTimeAlarm]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="HostProcessId">
+                        <expression><![CDATA[HostProcessId]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blockinghostprocessid">
+                        <expression><![CDATA[blockinghostprocessid]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="spid" dataType="LONG"/>
+                     <columnDataType columnName="BlockedBySPID" dataType="LONG"/>
+                     <columnDataType columnName="SQLUser" dataType="STRING"/>
+                     <columnDataType columnName="NTUser" dataType="STRING"/>
+                     <columnDataType columnName="Type" dataType="STRING"/>
+                     <columnDataType columnName="Resource" dataType="STRING"/>
+                     <columnDataType columnName="Status" dataType="STRING"/>
+                     <columnDataType columnName="WaitTimeMS" dataType="LONG"/>
+                     <columnDataType columnName="Program" dataType="STRING"/>
+                     <columnDataType columnName="Command" dataType="STRING"/>
+                     <columnDataType columnName="CPU" dataType="LONG"/>
+                     <columnDataType columnName="PhysicalIO" dataType="LONG"/>
+                     <columnDataType columnName="HostName" dataType="STRING"/>
+                     <columnDataType columnName="DBName" dataType="STRING"/>
+                     <columnDataType columnName="blocked_sql_text" dataType="STRING"/>
+                     <columnDataType columnName="blocking_sql_text" dataType="STRING"/>
+                     <columnDataType columnName="blockingdatabasename" dataType="STRING"/>
+                     <columnDataType columnName="blockingapplicationname" dataType="STRING"/>
+                     <columnDataType columnName="blockinghostname" dataType="STRING"/>
+                     <columnDataType columnName="blockingosuser" dataType="STRING"/>
+                     <columnDataType columnName="blockingdbuser" dataType="STRING"/>
+                     <columnDataType columnName="WaitTimeAlarm" dataType="LONG"/>
+                     <columnDataType columnName="HostProcessId" dataType="LONG"/>
+                     <columnDataType columnName="blockinghostprocessid" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="120000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="15">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,107 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Physical Disk Drive" name="PhysicalDiskDrive">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">physicaldiskdrive</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_PhysicalDiskDrive" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Index" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Index" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Description" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="InterfaceType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Model" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Partitions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Size" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SCSIPort" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SCSITargetID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SCSILogicalUnit" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Host" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Index, Description, InterfaceType, Model, Partitions, Size, SCSIPort, SCSITargetID, SCSILogicalUnit 
+FROM   Win32_DiskDrive]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Index">
+                <expression><![CDATA[Index]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Description">
+                <expression><![CDATA[Description]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InterfaceType">
+                <expression><![CDATA[InterfaceType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Model">
+                <expression><![CDATA[Model]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Partitions">
+                <expression><![CDATA[Partitions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Size">
+                <expression><![CDATA[Size]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SCSIPort">
+                <expression><![CDATA[SCSIPort]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SCSITargetID">
+                <expression><![CDATA[SCSITargetID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SCSILogicalUnit">
+                <expression><![CDATA[SCSILogicalUnit]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Host">
+                <expression><![CDATA[createMEDisplayNameColumn(PhysicalDiskDrive.Index)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="diagnostic_server">
+                <expression><![CDATA[createDSDomainIDColumn(PhysicalDiskDrive.Index)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Index" dataType="LONG" />
+              <columnDataType columnName="Description" dataType="STRING" />
+              <columnDataType columnName="InterfaceType" dataType="STRING" />
+              <columnDataType columnName="Model" dataType="STRING" />
+              <columnDataType columnName="Partitions" dataType="LONG" />
+              <columnDataType columnName="Size" dataType="LONG" />
+              <columnDataType columnName="SCSIPort" dataType="STRING" />
+              <columnDataType columnName="SCSITargetID" dataType="STRING" />
+              <columnDataType columnName="SCSILogicalUnit" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>
