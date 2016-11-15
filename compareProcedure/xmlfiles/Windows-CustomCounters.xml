@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Custom Counters - Windows" name="CustomCounters">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">customcounters</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_CustomCounters" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="CounterName" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">customcounter</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="CounterName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CounterValue" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="CounterStringValue" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="CounterErrorMessage" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="CounterError" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="CounterEnabled" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText>GetProperty(&quot;customCounters&quot;) != null and length(GetProperty(&quot;customCounters&quot;)) &gt; 0</guardExpressionText>
+                  <commandText><![CDATA[CustomCounter = split(getcustomcounters(getProperty("monitoredEntityName")), "~_0O0_~");
+index = 0;
+l = length(CustomCounter);
+
+
+while (index < l):
+	# Each Custom counter is defined a triplet in the format name~enabled~query
+	CCPart = split(CustomCounter[index], "~");
+	if (length(CCPart) == 3):
+		CounterName = CCPart[0];
+		append(Result.CounterName, CounterName);
+		if (isequal(CCPart[1], 'true')):
+			append(Result.CounterEnabled, true);
+			customQuery = CustomCounters.Execute({"queryName" : "runQuery", "_Query" : CCPart[2], "reset" : "true"});
+			if (length(customQuery._exit) > 0) and (customQuery._exit[0] != 0):
+				# execution returned an error
+				append(Result.CounterValue, null);
+				append(Result.CounterStringValue, null);
+				append(Result.CounterErrorMessage, customQuery._errortext);
+				append(Result.CounterError, customQuery._exit[0]);
+			else:
+				append(Result.CounterValue, customQuery.CounterValue);
+				append(Result.CounterStringValue, customQuery.CounterStringValue);
+				append(Result.CounterErrorMessage, null);
+				append(Result.CounterError,0.0);
+		else:
+			# return empty result with disabled flag
+			append(Result.CounterEnabled, false);
+			append(Result.CounterValue, null);
+			append(Result.CounterStringValue, null);
+			append(Result.CounterErrorMessage, null);
+			append(Result.CounterError, 0);
+	else:
+		if (length(CustomCounter[index]) > 0):
+			print "Invalid custom counter '" + CustomCounter[index] + "'";
+	index += 1;]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="CounterName">
+                        <expression><![CDATA[CounterName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterValue">
+                        <expression><![CDATA[CounterValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterStringValue">
+                        <expression><![CDATA[CounterStringValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterError">
+                        <expression><![CDATA[CounterError]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterErrorMessage">
+                        <expression><![CDATA[CounterErrorMessage]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterEnabled">
+                        <expression><![CDATA[CounterEnabled]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="CounterName" dataType="STRING"/>
+                     <columnDataType columnName="CounterValue" dataType="DOUBLE"/>
+                     <columnDataType columnName="CounterStringValue" dataType="STRING"/>
+                     <columnDataType columnName="CounterError" dataType="DOUBLE"/>
+                     <columnDataType columnName="CounterErrorMessage" dataType="STRING"/>
+                     <columnDataType columnName="CounterEnabled" dataType="DOUBLE"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="runQuery" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="11000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{_Query}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="CounterName">
+                        <expression><![CDATA[null]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterValue">
+                        <expression><![CDATA[toDoubleOrZero(CounterStringValue)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterStringValue">
+                        <expression><![CDATA[CounterStringValue]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterError">
+                        <expression><![CDATA[0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterErrorMessage">
+                        <expression><![CDATA[null]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CounterEnabled">
+                        <expression><![CDATA[CounterEnabled]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="CounterStringValue" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="7">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROPERTIES</componentType>
+         <component class="com.quest.adk.configuration.component.PropertiesComponent">
+            <properties>
+               <entry>
+                  <string>customcounter</string>
+                  <property dataType="STRING" description="CustomCounter" displayName="CustomCounter" encryptStyle="NONE" hidden="false" name="CustomCounter">true</property>
+               </entry>
+            </properties>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

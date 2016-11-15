@@ -1,0 +1,141 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SQL Index Log Waits" name="SQLIndexLogWaits">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlindexlogwaits</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_sqlindexlogwaits" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="dbtableindex" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="1000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="dbname" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="tablename" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="indexname" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="partition_number" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="inserts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="deletes" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="updates" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="dbtableindex" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DIAGNOSE_IO_PRESSURE_INDEX_LOG_WAITS]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="dbname">
+                <expression><![CDATA[dbname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="tablename">
+                <expression><![CDATA[tablename]]></expression>
+              </columnExpression>
+              <columnExpression columnName="indexname">
+                <expression><![CDATA[indexname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="partition_number">
+                <expression><![CDATA[partition_number]]></expression>
+              </columnExpression>
+              <columnExpression columnName="inserts">
+                <expression><![CDATA[inserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="deletes">
+                <expression><![CDATA[deletes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="updates">
+                <expression><![CDATA[updates]]></expression>
+              </columnExpression>
+              <columnExpression columnName="dbtableindex">
+                <expression><![CDATA[concat(dbname, ".", tablename, ".", indexname, ".", partition_number)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="dbname" dataType="STRING" />
+              <columnDataType columnName="tablename" dataType="STRING" />
+              <columnDataType columnName="indexname" dataType="STRING" />
+              <columnDataType columnName="partition_number" dataType="LONG" />
+              <columnDataType columnName="inserts" dataType="DOUBLE" />
+              <columnDataType columnName="deletes" dataType="DOUBLE" />
+              <columnDataType columnName="updates" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# not supported in SQL Server 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="dbname">
+                <expression><![CDATA[dbname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="tablename">
+                <expression><![CDATA[tablename]]></expression>
+              </columnExpression>
+              <columnExpression columnName="indexname">
+                <expression><![CDATA[indexname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="inserts">
+                <expression><![CDATA[inserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="deletes">
+                <expression><![CDATA[deletes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="updates">
+                <expression><![CDATA[updates]]></expression>
+              </columnExpression>
+              <columnExpression columnName="dbtableindex">
+                <expression><![CDATA[dbname]]></expression>
+              </columnExpression>
+              <columnExpression columnName="partition_number">
+                <expression><![CDATA[partition_number]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="dbname" dataType="STRING" />
+              <columnDataType columnName="tablename" dataType="STRING" />
+              <columnDataType columnName="indexname" dataType="STRING" />
+              <columnDataType columnName="inserts" dataType="DOUBLE" />
+              <columnDataType columnName="deletes" dataType="DOUBLE" />
+              <columnDataType columnName="updates" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

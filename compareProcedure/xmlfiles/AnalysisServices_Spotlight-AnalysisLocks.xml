@@ -1,0 +1,129 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Locks" name="AnalysisLocks">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysislocks</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Currentlatchwaits" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Currentlocks" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Currentlockwaits" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LatchwaitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LockdenialsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LockgrantsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LockrequestsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LockwaitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totaldeadlocksdetected" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="UnlockrequestsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalLatchwaitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalLockdenialsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalLockgrantsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalLockrequestsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalLockwaitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalUnlockrequestsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Currentlatchwaits, Currentlocks, Currentlockwaits, LatchwaitsPersec, LockdenialsPersec, LockgrantsPersec, 
+LockrequestsPersec, LockwaitsPersec, Totaldeadlocksdetected, UnlockrequestsPersec 
+FROM {{WMIClassName.Name}}Locks]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Currentlatchwaits">
+                <expression><![CDATA[Currentlatchwaits]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentlocks">
+                <expression><![CDATA[Currentlocks]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentlockwaits">
+                <expression><![CDATA[Currentlockwaits]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totaldeadlocksdetected">
+                <expression><![CDATA[Totaldeadlocksdetected]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLatchwaitsPersec">
+                <expression><![CDATA[LatchwaitsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLockdenialsPersec">
+                <expression><![CDATA[LockdenialsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLockgrantsPersec">
+                <expression><![CDATA[LockgrantsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLockrequestsPersec">
+                <expression><![CDATA[LockrequestsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLockwaitsPersec">
+                <expression><![CDATA[LockwaitsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalUnlockrequestsPersec">
+                <expression><![CDATA[UnlockrequestsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LatchwaitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisLocks.InternalLatchwaitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LockdenialsPersec">
+                <expression><![CDATA[positiveRate(AnalysisLocks.InternalLockdenialsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LockgrantsPersec">
+                <expression><![CDATA[positiveRate(AnalysisLocks.InternalLockgrantsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LockrequestsPersec">
+                <expression><![CDATA[positiveRate(AnalysisLocks.InternalLockrequestsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LockwaitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisLocks.InternalLockwaitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UnlockrequestsPersec">
+                <expression><![CDATA[positiveRate(AnalysisLocks.InternalUnlockrequestsPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Currentlatchwaits" dataType="LONG" />
+              <columnDataType columnName="Currentlocks" dataType="LONG" />
+              <columnDataType columnName="Currentlockwaits" dataType="LONG" />
+              <columnDataType columnName="LatchwaitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="LockdenialsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="LockgrantsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="LockrequestsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="LockwaitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="Totaldeadlocksdetected" dataType="LONG" />
+              <columnDataType columnName="UnlockrequestsPersec" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

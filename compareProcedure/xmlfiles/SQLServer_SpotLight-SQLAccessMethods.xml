@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Access Methods" name="SQLAccessMethods">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqlaccessmethods</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLAccessMethods" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="DOUBLE" name="SQLTableLockEscallationsDelta" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLPageSplitsRateDelta" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLPagesSplitsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLPageAllocationsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLPageDeallocationsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLFreeSpaceScansRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLForwardedRecordsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLSkippedGhostedRecordsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLTableLockEscalationRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="TableLockEscalation" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PageSplits" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PageAllocations" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PageDeallocations" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="FreeSpaceScans" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ForwardedRecords" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SkippedGhostedRecords" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText>SQLCheckPerformanceData.Result == 1</guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_AccessMethods.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap">
+                     <entry>
+                        <integer>2147483647</integer>
+                        <errorAction code="2147483647" flowControl="STOP"/>
+                     </entry>
+                  </errorActions>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="SQLTableLockEscallationsDelta">
+                        <expression><![CDATA[positiveDelta(SQLAccessMethods.TableLockEscalation)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLPageSplitsRateDelta">
+                        <expression><![CDATA[positiveDelta(SQLAccessMethods.PageSplits)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLPagesSplitsRate">
+                        <expression><![CDATA[positiveRate(SQLAccessMethods.PageSplits)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLPageAllocationsRate">
+                        <expression><![CDATA[positiveRate(SQLAccessMethods.PageAllocations)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLPageDeallocationsRate">
+                        <expression><![CDATA[positiveRate(SQLAccessMethods.PageDeallocations)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLFreeSpaceScansRate">
+                        <expression><![CDATA[positiveRate(SQLAccessMethods.FreeSpaceScans)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLForwardedRecordsRate">
+                        <expression><![CDATA[positiveRate(SQLAccessMethods.ForwardedRecords)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLSkippedGhostedRecordsRate">
+                        <expression><![CDATA[positiveRate(SQLAccessMethods.SkippedGhostedRecords)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLTableLockEscalationRate">
+                        <expression><![CDATA[positiveRate(SQLAccessMethods.TableLockEscalation)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TableLockEscalation">
+                        <expression><![CDATA[TableLockEscalation]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageSplits">
+                        <expression><![CDATA[PageSplits]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageAllocations">
+                        <expression><![CDATA[PageAllocations]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PageDeallocations">
+                        <expression><![CDATA[PageDeallocations]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FreeSpaceScans">
+                        <expression><![CDATA[FreeSpaceScans]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ForwardedRecords">
+                        <expression><![CDATA[ForwardedRecords]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SkippedGhostedRecords">
+                        <expression><![CDATA[SkippedGhostedRecords]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="TableLockEscalation" dataType="LONG"/>
+                     <columnDataType columnName="PageSplits" dataType="LONG"/>
+                     <columnDataType columnName="PageAllocations" dataType="LONG"/>
+                     <columnDataType columnName="PageDeallocations" dataType="LONG"/>
+                     <columnDataType columnName="FreeSpaceScans" dataType="LONG"/>
+                     <columnDataType columnName="ForwardedRecords" dataType="LONG"/>
+                     <columnDataType columnName="SkippedGhostedRecords" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="7">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

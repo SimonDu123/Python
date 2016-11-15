@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Operating System" name="OperatingSystem">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">operatingsystem</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_OperatingSystem" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="14400000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="BuildNumber" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="OS" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ServicePack" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Version" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="OSArchitecture" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ProductType" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="true" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Host" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT BuildNumber, Caption, CSDVersion, Version FROM Win32_OperatingSystem]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                        <fragment type="TECHNOLOGY">2000</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="OS">
+                        <expression><![CDATA[Caption]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BuildNumber">
+                        <expression><![CDATA[BuildNumber]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ServicePack">
+                        <expression><![CDATA[CSDVersion]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Version">
+                        <expression><![CDATA[Version]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OSArchitecture">
+                        <expression><![CDATA[OSArchitecture]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ProductType">
+                        <expression><![CDATA[3]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[getProperty("diagnostic_server")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[getProperty("monitoredEntityName")]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="BuildNumber" dataType="STRING"/>
+                     <columnDataType columnName="Caption" dataType="STRING"/>
+                     <columnDataType columnName="CSDVersion" dataType="STRING"/>
+                     <columnDataType columnName="Version" dataType="STRING"/>
+                     <columnDataType columnName="OSArchitecture" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT BuildNumber, Caption, CSDVersion, OSArchitecture, ProductType, Version 
+FROM   Win32_OperatingSystem]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                        <fragment type="TECHNOLOGY">vista</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="OS">
+                        <expression><![CDATA[Caption]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BuildNumber">
+                        <expression><![CDATA[BuildNumber]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ServicePack">
+                        <expression><![CDATA[CSDVersion]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Version">
+                        <expression><![CDATA[concat(Version, " (", OSArchitecture, ")")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OSArchitecture">
+                        <expression><![CDATA[OSArchitecture]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ProductType">
+                        <expression><![CDATA[ProductType]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[getProperty("diagnostic_server")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[getProperty("monitoredEntityName")]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="BuildNumber" dataType="STRING"/>
+                     <columnDataType columnName="Caption" dataType="STRING"/>
+                     <columnDataType columnName="CSDVersion" dataType="STRING"/>
+                     <columnDataType columnName="OSArchitecture" dataType="STRING"/>
+                     <columnDataType columnName="ProductType" dataType="LONG"/>
+                     <columnDataType columnName="Version" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT BuildNumber, Caption, CSDVersion, ProductType, Version FROM Win32_OperatingSystem]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="OS">
+                        <expression><![CDATA[Caption]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BuildNumber">
+                        <expression><![CDATA[BuildNumber]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ServicePack">
+                        <expression><![CDATA[CSDVersion]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Version">
+                        <expression><![CDATA[concat(Version, " (", first(ProcessorDetails.AddressWidth), "-bit)")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OSArchitecture">
+                        <expression><![CDATA[OSArchitecture]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ProductType">
+                        <expression><![CDATA[ProductType]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[getProperty("diagnostic_server")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Host">
+                        <expression><![CDATA[getProperty("monitoredEntityName")]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="BuildNumber" dataType="STRING"/>
+                     <columnDataType columnName="Caption" dataType="STRING"/>
+                     <columnDataType columnName="CSDVersion" dataType="STRING"/>
+                     <columnDataType columnName="ProductType" dataType="LONG"/>
+                     <columnDataType columnName="Version" dataType="STRING"/>
+                     <columnDataType columnName="OSArchitecture" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectionName="Windows.V5.Version_Info" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="true">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,479 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Memory" name="AnalysisMemory">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysismemory</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="AggCacheKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="AggregationMapFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="CleanerBalancePersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CleanerCurrentPrice" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CleanerMemoryKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CleanerMemorynonshrinkableKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CleanerMemoryshrinkableKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="CleanerMemoryshrunkKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DimensionIndexHashFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DimensionPropertyFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DimensionStringFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="FactAggregationFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="FactDataFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="FactStringFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreClockPagesExaminedPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreClockPagesHaveRefPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreClockPagesValidPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="FilestoreIOErrors" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreIOErrorsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="FilestoreKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreKBReadsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreKBWritePersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="FilestoreMemoryPinnedKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestorePageFaultsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreReadsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FilestoreWritesPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryAggregationMapFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryAggregationMapFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryDimensionIndexHashFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryDimensionIndexHashFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryDimensionPropertyFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryDimensionPropertyFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryDimensionStringFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryDimensionStringFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryFactAggregationFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryFactAggregationFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryFactDataFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryFactDataFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryFactStringFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryFactStringFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryMapFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryMapFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InmemoryOtherFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InmemoryOtherFileKBPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MapFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MemoryLimitHighKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MemoryLimitLowKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MemoryUsageKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="OtherFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PagePool1AllocKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PagePool1LookasideKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PagePool64AllocKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PagePool64LookasideKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PagePool8AllocKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PagePool8LookasideKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryAggregationMapFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryDimensionIndexHashFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryDimensionPropertyFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryDimensionStringFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryFactAggregationFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryFactDataFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryFactStringFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryMapFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PotentialInmemoryOtherFileKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="QuotaBlocked" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="QuotaKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalCleanerBalancePersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalCleanerMemoryshrunkKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreClockPagesExaminedPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreClockPagesHaveRefPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreClockPagesValidPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreIOErrorsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreKBReadsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreKBWritePersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestorePageFaultsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreReadsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFilestoreWritesPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryAggregationMapFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryDimensionIndexHashFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryDimensionPropertyFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryDimensionStringFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryFactAggregationFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryFactDataFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryFactStringFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryMapFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInmemoryOtherFileKBPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT AggCacheKB, AggregationMapFiles, CleanerBalancePersec, CleanerCurrentPrice, CleanerMemoryKB, 
+CleanerMemorynonshrinkableKB, CleanerMemoryshrinkableKB, CleanerMemoryshrunkKBPersec, DimensionIndexHashFiles, 
+DimensionPropertyFiles, DimensionStringFiles, FactAggregationFiles, FactDataFiles, FactStringFiles, 
+FilestoreClockPagesExaminedPersec, FilestoreClockPagesHaveRefPersec, FilestoreClockPagesValidPersec, 
+FilestoreIOErrors, FilestoreIOErrorsPersec, FilestoreKB, FilestoreKBReadsPersec, FilestoreKBWritePersec, 
+FilestoreMemoryPinnedKB, FilestorePageFaultsPersec, FilestoreReadsPersec, FilestoreWritesPersec,  
+InmemoryAggregationMapFileKB, InmemoryAggregationMapFileKBPersec, InmemoryDimensionIndexHashFileKB, 
+InmemoryDimensionIndexHashFileKBPersec, InmemoryDimensionPropertyFileKB, InmemoryDimensionPropertyFileKBPersec, 
+InmemoryDimensionStringFileKB, InmemoryDimensionStringFileKBPersec, InmemoryFactAggregationFileKB, 
+InmemoryFactAggregationFileKBPersec, InmemoryFactDataFileKB, InmemoryFactDataFileKBPersec, InmemoryFactStringFileKB, 
+InmemoryFactStringFileKBPersec, InmemoryMapFileKB, InmemoryMapFileKBPersec, InmemoryOtherFileKB, InmemoryOtherFileKBPersec, 
+MapFiles, MemoryLimitHighKB, MemoryLimitLowKB, MemoryUsageKB, OtherFiles, PagePool1AllocKB, PagePool1LookasideKB, 
+PagePool64AllocKB, PagePool64LookasideKB, PagePool8AllocKB, PagePool8LookasideKB, PotentialInmemoryAggregationMapFileKB, 
+PotentialInmemoryDimensionIndexHashFileKB, PotentialInmemoryDimensionPropertyFileKB, PotentialInmemoryDimensionStringFileKB, 
+PotentialInmemoryFactAggregationFileKB, PotentialInmemoryFactDataFileKB, PotentialInmemoryFactStringFileKB, 
+PotentialInmemoryMapFileKB, PotentialInmemoryOtherFileKB, QuotaBlocked, QuotaKB    
+FROM {{WMIClassName.Name}}Memory]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AggCacheKB">
+                <expression><![CDATA[AggCacheKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AggregationMapFiles">
+                <expression><![CDATA[AggregationMapFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CleanerCurrentPrice">
+                <expression><![CDATA[CleanerCurrentPrice]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CleanerMemoryKB">
+                <expression><![CDATA[CleanerMemoryKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CleanerMemorynonshrinkableKB">
+                <expression><![CDATA[CleanerMemorynonshrinkableKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CleanerMemoryshrinkableKB">
+                <expression><![CDATA[CleanerMemoryshrinkableKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensionIndexHashFiles">
+                <expression><![CDATA[DimensionIndexHashFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensionPropertyFiles">
+                <expression><![CDATA[DimensionPropertyFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensionStringFiles">
+                <expression><![CDATA[DimensionStringFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FactAggregationFiles">
+                <expression><![CDATA[FactAggregationFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FactDataFiles">
+                <expression><![CDATA[FactDataFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FactStringFiles">
+                <expression><![CDATA[FactStringFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreIOErrors">
+                <expression><![CDATA[FilestoreIOErrors]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreKB">
+                <expression><![CDATA[FilestoreKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreMemoryPinnedKB">
+                <expression><![CDATA[FilestoreMemoryPinnedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryAggregationMapFileKB">
+                <expression><![CDATA[InmemoryAggregationMapFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryDimensionIndexHashFileKB">
+                <expression><![CDATA[InmemoryDimensionIndexHashFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryDimensionPropertyFileKB">
+                <expression><![CDATA[InmemoryDimensionPropertyFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryDimensionStringFileKB">
+                <expression><![CDATA[InmemoryDimensionStringFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryFactAggregationFileKB">
+                <expression><![CDATA[InmemoryFactAggregationFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryFactDataFileKB">
+                <expression><![CDATA[InmemoryFactDataFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryFactStringFileKB">
+                <expression><![CDATA[InmemoryFactStringFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryMapFileKB">
+                <expression><![CDATA[InmemoryMapFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryOtherFileKB">
+                <expression><![CDATA[InmemoryOtherFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MapFiles">
+                <expression><![CDATA[MapFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MemoryLimitHighKB">
+                <expression><![CDATA[MemoryLimitHighKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MemoryLimitLowKB">
+                <expression><![CDATA[MemoryLimitLowKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MemoryUsageKB">
+                <expression><![CDATA[MemoryUsageKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OtherFiles">
+                <expression><![CDATA[OtherFiles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagePool1AllocKB">
+                <expression><![CDATA[PagePool1AllocKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagePool1LookasideKB">
+                <expression><![CDATA[PagePool1LookasideKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagePool64AllocKB">
+                <expression><![CDATA[PagePool64AllocKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagePool64LookasideKB">
+                <expression><![CDATA[PagePool64LookasideKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagePool8AllocKB">
+                <expression><![CDATA[PagePool8AllocKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PagePool8LookasideKB">
+                <expression><![CDATA[PagePool8LookasideKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryAggregationMapFileKB">
+                <expression><![CDATA[PotentialInmemoryAggregationMapFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryDimensionIndexHashFileKB">
+                <expression><![CDATA[PotentialInmemoryDimensionIndexHashFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryDimensionPropertyFileKB">
+                <expression><![CDATA[PotentialInmemoryDimensionPropertyFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryDimensionStringFileKB">
+                <expression><![CDATA[PotentialInmemoryDimensionStringFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryFactAggregationFileKB">
+                <expression><![CDATA[PotentialInmemoryFactAggregationFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryFactDataFileKB">
+                <expression><![CDATA[PotentialInmemoryFactDataFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryFactStringFileKB">
+                <expression><![CDATA[PotentialInmemoryFactStringFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryMapFileKB">
+                <expression><![CDATA[PotentialInmemoryMapFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PotentialInmemoryOtherFileKB">
+                <expression><![CDATA[PotentialInmemoryOtherFileKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QuotaBlocked">
+                <expression><![CDATA[QuotaBlocked]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QuotaKB">
+                <expression><![CDATA[QuotaKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalCleanerBalancePersec">
+                <expression><![CDATA[CleanerBalancePersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalCleanerMemoryshrunkKBPersec">
+                <expression><![CDATA[CleanerMemoryshrunkKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreClockPagesExaminedPersec">
+                <expression><![CDATA[FilestoreClockPagesExaminedPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreClockPagesHaveRefPersec">
+                <expression><![CDATA[FilestoreClockPagesHaveRefPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreClockPagesValidPersec">
+                <expression><![CDATA[FilestoreClockPagesValidPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreIOErrorsPersec">
+                <expression><![CDATA[FilestoreIOErrorsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreKBReadsPersec">
+                <expression><![CDATA[FilestoreKBReadsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreKBWritePersec">
+                <expression><![CDATA[FilestoreKBWritePersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestorePageFaultsPersec">
+                <expression><![CDATA[FilestorePageFaultsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreReadsPersec">
+                <expression><![CDATA[FilestoreReadsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFilestoreWritesPersec">
+                <expression><![CDATA[FilestoreWritesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryAggregationMapFileKBPersec">
+                <expression><![CDATA[InmemoryAggregationMapFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryDimensionIndexHashFileKBPersec">
+                <expression><![CDATA[InmemoryDimensionIndexHashFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryDimensionPropertyFileKBPersec">
+                <expression><![CDATA[InmemoryDimensionPropertyFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryDimensionStringFileKBPersec">
+                <expression><![CDATA[InmemoryDimensionStringFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryFactAggregationFileKBPersec">
+                <expression><![CDATA[InmemoryFactAggregationFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryFactDataFileKBPersec">
+                <expression><![CDATA[InmemoryFactDataFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryFactStringFileKBPersec">
+                <expression><![CDATA[InmemoryFactStringFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryMapFileKBPersec">
+                <expression><![CDATA[InmemoryMapFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInmemoryOtherFileKBPersec">
+                <expression><![CDATA[InmemoryOtherFileKBPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CleanerBalancePersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalCleanerBalancePersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CleanerMemoryshrunkKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalCleanerMemoryshrunkKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreClockPagesExaminedPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreClockPagesExaminedPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreClockPagesHaveRefPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreClockPagesHaveRefPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreClockPagesValidPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreClockPagesValidPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreIOErrorsPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreIOErrorsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreKBReadsPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreKBReadsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreKBWritePersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreKBWritePersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestorePageFaultsPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestorePageFaultsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreReadsPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreReadsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FilestoreWritesPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalFilestoreWritesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryAggregationMapFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryAggregationMapFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryDimensionIndexHashFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryDimensionIndexHashFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryDimensionPropertyFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryDimensionPropertyFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryDimensionStringFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryDimensionStringFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryFactAggregationFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryFactAggregationFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryFactDataFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryFactDataFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryFactStringFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryFactStringFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryMapFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryMapFileKBPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InmemoryOtherFileKBPersec">
+                <expression><![CDATA[positiveRate(AnalysisMemory.InternalInmemoryOtherFileKBPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="AggCacheKB" dataType="LONG" />
+              <columnDataType columnName="AggregationMapFiles" dataType="LONG" />
+              <columnDataType columnName="CleanerBalancePersec" dataType="DOUBLE" />
+              <columnDataType columnName="CleanerCurrentPrice" dataType="LONG" />
+              <columnDataType columnName="CleanerMemoryKB" dataType="LONG" />
+              <columnDataType columnName="CleanerMemorynonshrinkableKB" dataType="LONG" />
+              <columnDataType columnName="CleanerMemoryshrinkableKB" dataType="LONG" />
+              <columnDataType columnName="CleanerMemoryshrunkKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DimensionIndexHashFiles" dataType="LONG" />
+              <columnDataType columnName="DimensionPropertyFiles" dataType="LONG" />
+              <columnDataType columnName="DimensionStringFiles" dataType="LONG" />
+              <columnDataType columnName="FactAggregationFiles" dataType="LONG" />
+              <columnDataType columnName="FactDataFiles" dataType="LONG" />
+              <columnDataType columnName="FactStringFiles" dataType="LONG" />
+              <columnDataType columnName="FilestoreClockPagesExaminedPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreClockPagesHaveRefPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreClockPagesValidPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreIOErrors" dataType="LONG" />
+              <columnDataType columnName="FilestoreIOErrorsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreKB" dataType="LONG" />
+              <columnDataType columnName="FilestoreKBReadsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreKBWritePersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreMemoryPinnedKB" dataType="LONG" />
+              <columnDataType columnName="FilestorePageFaultsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreReadsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FilestoreWritesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryAggregationMapFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryAggregationMapFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryDimensionIndexHashFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryDimensionIndexHashFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryDimensionPropertyFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryDimensionPropertyFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryDimensionStringFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryDimensionStringFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryFactAggregationFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryFactAggregationFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryFactDataFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryFactDataFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryFactStringFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryFactStringFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryMapFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryMapFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="InmemoryOtherFileKB" dataType="LONG" />
+              <columnDataType columnName="InmemoryOtherFileKBPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MapFiles" dataType="LONG" />
+              <columnDataType columnName="MemoryLimitHighKB" dataType="LONG" />
+              <columnDataType columnName="MemoryLimitLowKB" dataType="LONG" />
+              <columnDataType columnName="MemoryUsageKB" dataType="LONG" />
+              <columnDataType columnName="OtherFiles" dataType="LONG" />
+              <columnDataType columnName="PagePool1AllocKB" dataType="LONG" />
+              <columnDataType columnName="PagePool1LookasideKB" dataType="LONG" />
+              <columnDataType columnName="PagePool64AllocKB" dataType="LONG" />
+              <columnDataType columnName="PagePool64LookasideKB" dataType="LONG" />
+              <columnDataType columnName="PagePool8AllocKB" dataType="LONG" />
+              <columnDataType columnName="PagePool8LookasideKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryAggregationMapFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryDimensionIndexHashFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryDimensionPropertyFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryDimensionStringFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryFactAggregationFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryFactDataFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryFactStringFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryMapFileKB" dataType="LONG" />
+              <columnDataType columnName="PotentialInmemoryOtherFileKB" dataType="LONG" />
+              <columnDataType columnName="QuotaBlocked" dataType="LONG" />
+              <columnDataType columnName="QuotaKB" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

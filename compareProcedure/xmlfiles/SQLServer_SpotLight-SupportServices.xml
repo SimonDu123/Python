@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Support Services" name="SupportServices">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">supportservices</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_supportservices" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Service" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="10">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">generalcounters</fragment>
+                  </procedurePath>
+               </procedureDependency>
+               <procedureDependency recencyOfExecutionSeconds="60">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">generalcounters_sqlmail</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="Service" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="State" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="StartTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="CurrentServerTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[# get the GeneralCounters table
+GCTable = GeneralCounters.GetOrExecute(10);
+GCMailTable = GeneralCounters_SQLMail.GetOrExecute(60);
+SQLVersionInfoTable = SQLVersionInfo.GetOrExecute(10);
+
+# get previous result set from this table
+# only works when procedure is subscribed to
+PrevTable = SupportServices;
+
+def getStatus(colRef):
+	result = "Unknown";
+	if length(colRef) > 0:
+		if colRef[0] == 0: result = "Active";
+		elif colRef[0] == 1: result = "Inactive";
+		elif colRef[0] == -1: result = "Not Installed";
+		elif colRef[0] == -2: result = "Not Configured";
+		elif colRef[0] == -3: result = "Configured";
+		elif colRef[0] == -4: result = "Unknown - insufficient privileges to read status";
+	return result;
+def processResults(colRef, key, errortext):
+	# if no result and no error then don't include it
+	if length(errortext) > 0 or length(colRef) > 0:
+		append(Result.Service, key);
+		# check for errors
+		if length(errortext) > 0:
+			if pos(errortext[0], "0x80040111") > -1:
+				resultState = "Not Configured";
+			else: resultState = errortext[0];
+		else: resultState = getStatus(colRef);
+		append(Result.State, resultState);
+		append(Result.CurrentServerTime, GCTable.CurrentServerTime[0]);
+		# compare with previous result set
+		if equals(resultState, lookupKey(PrevTable.State, key)):
+			append(Result.StartTime, lookupKey(PrevTable.StartTime, key));
+		else: append(Result.StartTime, GCTable.CurrentServerTime[0]);
+# check for invalid results
+if length(GCTable.CurrentServerTime) == 0:
+	print "SupportServices: Current Server Time not available";
+else:
+	# get row 0 for each column
+	processResults(GCTable.AgentStatus, "SQL Server Agent", GCTable._errortext);
+	processResults(GCTable.AgentMailStatus, "SQL Agent Mail", GCTable._errortext);
+	processResults(GCTable.DTCStatus, "DTC", GCTable._errortext);
+	# Full Text Search service does not exsits in sql server 2008 and later versions
+	if SQLVersionInfoTable.sqlserverversion <= 9:
+		processResults(GCTable.FTSStatus, "Full Text Search", GCTable._errortext);
+	else:
+		processResults(GCTable.FTSStatus, "Full-text Filter Daemon Launcher", GCTable._errortext);		
+	processResults(GCMailTable.SQLMailStatus, "SQL Mail", GCMailTable._errortext);
+	processResults(GCTable.IntegrationStatus, "Integration Services", GCTable._errortext);
+	processResults(GCTable.ReportingStatus, "Reporting Services", GCTable._errortext);]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Service">
+                        <expression><![CDATA[Service]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="State">
+                        <expression><![CDATA[State]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="StartTime">
+                        <expression><![CDATA[StartTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="CurrentServerTime">
+                        <expression><![CDATA[CurrentServerTime]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Service" dataType="STRING"/>
+                     <columnDataType columnName="State" dataType="STRING"/>
+                     <columnDataType columnName="StartTime" dataType="DATE"/>
+                     <columnDataType columnName="CurrentServerTime" dataType="DATE"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="5">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,146 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Tables" name="SQLTables">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqltables</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLTables" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="QualifiedName" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="0" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="DBName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="FGName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="OwnerName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FreeMB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PercentOfDB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="QualifiedName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ReservedMB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Rows" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TableMB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="TableName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="UsedMB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PartitionNumber" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>FilterDBIDList</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="FilterDBIDList" />
+          </entry>
+          <entry>
+            <string>FilterFileGroupName</string>
+            <argument checkedForSQLInjection="true" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="FilterFileGroupName" />
+          </entry>
+          <entry>
+            <string>FilterObjectName</string>
+            <argument checkedForSQLInjection="true" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="FilterObjectName" />
+          </entry>
+          <entry>
+            <string>RowLimit</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="50" isRequired="false" name="RowLimit" />
+          </entry>
+          <entry>
+            <string>query</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="query" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# master query for all SQLTables queries
+if not equals("{{FilterDBIDList}}", "*"):
+	if equals("{{query}}", "bysize"):
+		sqlTables = SQLTablesBySize.execute({"FilterObjectName" : u"{{unicode:FilterObjectName}}", "FilterFileGroupName" : u"{{unicode:FilterFileGroupName}}", "FilterDBIDlist" : u"{{unicode:FilterDBIDList}}", "RowLimit" : "{{RowLimit}}"});
+		CopyResults(sqlTables);
+	elif equals("{{query}}", "byrowcount"):
+		sqlTables = SQLTablesByRowCount.execute({"FilterObjectName" : u"{{unicode:FilterObjectName}}", "FilterFileGroupName" : u"{{unicode:FilterFileGroupName}}", "FilterDBIDlist" : u"{{unicode:FilterDBIDList}}", "RowLimit" : "{{RowLimit}}"});
+		CopyResults(sqlTables);
+
+	if (length(sqlTables._exit) == 0):
+		setError(-2, "Exit column not found");
+	elif (sqlTables._exit[0] != 0):
+		setError(sqlTables._errorCode[0], sqlTables._errorText[0]);]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DBName">
+                <expression><![CDATA[DBName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FGName">
+                <expression><![CDATA[FGName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OwnerName">
+                <expression><![CDATA[OwnerName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeMB">
+                <expression><![CDATA[FreeMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PercentOfDB">
+                <expression><![CDATA[PercentOfDB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QualifiedName">
+                <expression><![CDATA[QualifiedName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReservedMB">
+                <expression><![CDATA[ReservedMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableMB">
+                <expression><![CDATA[TableMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedMB">
+                <expression><![CDATA[UsedMB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PartitionNumber">
+                <expression><![CDATA[PartitionNumber]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="QualifiedName" dataType="STRING" />
+              <columnDataType columnName="DBName" dataType="STRING" />
+              <columnDataType columnName="OwnerName" dataType="STRING" />
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="FGName" dataType="STRING" />
+              <columnDataType columnName="TableMB" dataType="DOUBLE" />
+              <columnDataType columnName="ReservedMB" dataType="DOUBLE" />
+              <columnDataType columnName="UsedMB" dataType="DOUBLE" />
+              <columnDataType columnName="FreeMB" dataType="DOUBLE" />
+              <columnDataType columnName="PercentOfDB" dataType="DOUBLE" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+              <columnDataType columnName="PartitionNumber" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

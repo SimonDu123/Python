@@ -1,0 +1,184 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Command List" name="AnalysisCommandList">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysiscommandlist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="SessionSPID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+            <fragment type="RULE">longrunningcommand</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="SessionSPID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionCommandCount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="CommandStartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CommandElapsedTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CommandCPUTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CommandReads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CommandReadKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CommandWrites" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CommandWriteKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="CommandText" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="CommandEndTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="CommandElapsedSeconds" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# DISCOVER_COMMANDS not supported on SSAS 2005]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SessionSPID">
+                <expression><![CDATA[Session_SPID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCommandCount">
+                <expression><![CDATA[Session_Command_Count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandStartTime">
+                <expression><![CDATA[Command_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandElapsedTimeMS">
+                <expression><![CDATA[Command_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandCPUTimeMS">
+                <expression><![CDATA[Command_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandReads">
+                <expression><![CDATA[Command_Reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandReadKB">
+                <expression><![CDATA[Command_Read_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandWrites">
+                <expression><![CDATA[Command_Writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandWriteKB">
+                <expression><![CDATA[Command_Write_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandText">
+                <expression><![CDATA[Command_Text]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandEndTime">
+                <expression><![CDATA[Command_End_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandElapsedSeconds">
+                <expression><![CDATA[Command_Elapsed_Time_MS / 1000]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Session_SPID" dataType="LONG" />
+              <columnDataType columnName="Session_Command_Count" dataType="LONG" />
+              <columnDataType columnName="Command_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Command_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Command_CPU_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Command_Reads" dataType="LONG" />
+              <columnDataType columnName="Command_Read_KB" dataType="LONG" />
+              <columnDataType columnName="Command_Writes" dataType="LONG" />
+              <columnDataType columnName="Command_Write_KB" dataType="LONG" />
+              <columnDataType columnName="Command_Text" dataType="STRING" />
+              <columnDataType columnName="Command_End_Time" dataType="DATE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_COMMANDS]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="SessionSPID">
+                <expression><![CDATA[Session_SPID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionCommandCount">
+                <expression><![CDATA[Session_Command_Count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandStartTime">
+                <expression><![CDATA[Command_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandElapsedTimeMS">
+                <expression><![CDATA[Command_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandCPUTimeMS">
+                <expression><![CDATA[Command_CPU_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandReads">
+                <expression><![CDATA[Command_Reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandReadKB">
+                <expression><![CDATA[Command_Read_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandWrites">
+                <expression><![CDATA[Command_Writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandWriteKB">
+                <expression><![CDATA[Command_Write_KB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandText">
+                <expression><![CDATA[substring(Command_Text, 0, 65536)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandEndTime">
+                <expression><![CDATA[Command_End_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandElapsedSeconds">
+                <expression><![CDATA[Command_Elapsed_Time_MS / 1000]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Session_SPID" dataType="LONG" />
+              <columnDataType columnName="Session_Command_Count" dataType="LONG" />
+              <columnDataType columnName="Command_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Command_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Command_CPU_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Command_Reads" dataType="LONG" />
+              <columnDataType columnName="Command_Read_KB" dataType="LONG" />
+              <columnDataType columnName="Command_Writes" dataType="LONG" />
+              <columnDataType columnName="Command_Write_KB" dataType="LONG" />
+              <columnDataType columnName="Command_Text" dataType="STRING" />
+              <columnDataType columnName="Command_End_Time" dataType="DATE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="600000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

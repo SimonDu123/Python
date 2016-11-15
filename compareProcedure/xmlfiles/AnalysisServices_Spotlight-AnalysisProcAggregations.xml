@@ -1,0 +1,111 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Proc Aggregations" name="AnalysisProcAggregations">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisprocaggregations</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Currentpartitions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Memorysizebytes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Memorysizerows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="RowscreatedPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="RowsmergedPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TempfilebyteswrittenPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TempfilerowswrittenPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalpartitions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalRowscreatedPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalRowsmergedPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalTempfilebyteswrittenPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalTempfilerowswrittenPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Currentpartitions, Memorysizebytes, Memorysizerows, RowscreatedPersec, RowsmergedPersec, 
+TempfilebyteswrittenPersec, TempfilerowswrittenPersec, Totalpartitions  
+FROM {{WMIClassName.Name}}ProcAggregations]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Currentpartitions">
+                <expression><![CDATA[Currentpartitions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Memorysizebytes">
+                <expression><![CDATA[Memorysizebytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Memorysizerows">
+                <expression><![CDATA[Memorysizerows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalpartitions">
+                <expression><![CDATA[Totalpartitions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRowscreatedPersec">
+                <expression><![CDATA[RowscreatedPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRowsmergedPersec">
+                <expression><![CDATA[RowsmergedPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalTempfilebyteswrittenPersec">
+                <expression><![CDATA[TempfilebyteswrittenPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalTempfilerowswrittenPersec">
+                <expression><![CDATA[TempfilerowswrittenPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowscreatedPersec">
+                <expression><![CDATA[positiveRate(AnalysisProcAggregations.InternalRowscreatedPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowsmergedPersec">
+                <expression><![CDATA[positiveRate(AnalysisProcAggregations.InternalRowsmergedPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TempfilebyteswrittenPersec">
+                <expression><![CDATA[positiveRate(AnalysisProcAggregations.InternalTempfilebyteswrittenPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TempfilerowswrittenPersec">
+                <expression><![CDATA[positiveRate(AnalysisProcAggregations.InternalTempfilerowswrittenPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Currentpartitions" dataType="LONG" />
+              <columnDataType columnName="Memorysizebytes" dataType="LONG" />
+              <columnDataType columnName="Memorysizerows" dataType="LONG" />
+              <columnDataType columnName="RowscreatedPersec" dataType="LONG" />
+              <columnDataType columnName="RowsmergedPersec" dataType="LONG" />
+              <columnDataType columnName="TempfilebyteswrittenPersec" dataType="DOUBLE" />
+              <columnDataType columnName="TempfilerowswrittenPersec" dataType="DOUBLE" />
+              <columnDataType columnName="Totalpartitions" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

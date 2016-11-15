@@ -1,0 +1,80 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Map Logical To Physical Drives" name="MapLogicalToPhysicalDrives">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">maplogicaltophysicaldrives</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_MapLogicalToPhysicalDrives" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DeviceID" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="DeviceID" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Index" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Host" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[physicalDisksTable = PhysicalDiskDrive.GetOrExecute(21600);
+disk = 0;
+while disk < length(physicalDisksTable.Index):
+	logicalDisksTable = GetLogicalDrivesForPhysicalDisk.Execute({"DiskID" : physicalDisksTable.Index[disk]});
+	row = 0;
+	while row < length(logicalDisksTable.DeviceID):
+		append(Result.DeviceID, logicalDisksTable.DeviceID[row]);
+		append(Result.Index, physicalDisksTable.Index[disk]);
+		row += 1;
+	disk += 1;]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DeviceID">
+                <expression><![CDATA[DeviceID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Index">
+                <expression><![CDATA[Index]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Host">
+                <expression><![CDATA[createMEDisplayNameColumn(MapLogicalToPhysicalDrives.DeviceID)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="diagnostic_server">
+                <expression><![CDATA[createDSDomainIDColumn(MapLogicalToPhysicalDrives.DeviceID)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DeviceID" dataType="STRING" />
+              <columnDataType columnName="Index" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

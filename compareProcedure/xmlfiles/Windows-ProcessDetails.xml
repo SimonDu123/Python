@@ -1,0 +1,95 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Process Details" name="ProcessDetails">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">processdetails</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_ProcessDetails" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="86400">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">windows</fragment>
+              <fragment type="PROCEDURE">processordetails</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="DOUBLE" name="ElapsedTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PctKernel" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PctUser" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PctProcessor" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="KernelModeTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="UserModeTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>ProcessID</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="" isRequired="true" name="ProcessID" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText>not isnull(ProcessorDetails.NumCPUs) and (length(ProcessorDetails.NumCPUs) &gt; 0)</guardExpressionText>
+            <commandText><![CDATA[SELECT CreationDate, KernelModeTime, UserModeTime 
+FROM Win32_Process 
+WHERE ProcessID = {{ProcessID}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ElapsedTime">
+                <expression><![CDATA[(now() - fromWMIDate(CreationDate)) / 1000]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KernelModeTime">
+                <expression><![CDATA[KernelModeTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctKernel">
+                <expression><![CDATA[iff(count(ProcessorDetails.NumCPUs)==0,"",positiveRate(ProcessDetails.KernelModeTime) / 100000 / ProcessorDetails.NumCPUs[0])]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UserModeTime">
+                <expression><![CDATA[UserModeTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctUser">
+                <expression><![CDATA[iff(count(ProcessorDetails.NumCPUs)==0,"",positiveRate(ProcessDetails.UserModeTime) / 100000 / ProcessorDetails.NumCPUs[0])]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctProcessor">
+                <expression><![CDATA[min(100, PctKernel + PctUser)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="KernelModeTime" dataType="LONG" />
+              <columnDataType columnName="UserModeTime" dataType="LONG" />
+              <columnDataType columnName="CreationDate" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

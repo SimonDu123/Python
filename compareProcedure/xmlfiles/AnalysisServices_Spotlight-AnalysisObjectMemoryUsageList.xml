@@ -1,0 +1,151 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Object Memory Usage List" name="AnalysisObjectMemoryUsageList">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisobjectmemoryusagelist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="ObjectKey" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="ObjectID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectParentPath" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ObjectMemoryShrinkable" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ObjectMemoryNonShrinkable" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ObjectVersion" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ObjectDataVersion" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ObjectTypeID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="ObjectTimeCreated" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ObjectKey" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# DISCOVER_OBJECT_MEMORY_USAGE not supported in SSAS 2005]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ObjectID">
+                <expression><![CDATA[Object_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectParentPath">
+                <expression><![CDATA[Object_Parent_Path]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectMemoryShrinkable">
+                <expression><![CDATA[Object_Memory_Shrinkable]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectMemoryNonShrinkable">
+                <expression><![CDATA[Object_Memory_NonShrinkable]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectVersion">
+                <expression><![CDATA[Object_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectDataVersion">
+                <expression><![CDATA[Object_Data_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectTypeID">
+                <expression><![CDATA[Object_Type_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectTimeCreated">
+                <expression><![CDATA[Object_Time_Created]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectKey">
+                <expression><![CDATA[""]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Object_ID" dataType="STRING" />
+              <columnDataType columnName="Object_Parent_Path" dataType="STRING" />
+              <columnDataType columnName="Object_Memory_Shrinkable" dataType="LONG" />
+              <columnDataType columnName="Object_Memory_NonShrinkable" dataType="LONG" />
+              <columnDataType columnName="Object_Version" dataType="LONG" />
+              <columnDataType columnName="Object_Data_Version" dataType="LONG" />
+              <columnDataType columnName="Object_Type_ID" dataType="LONG" />
+              <columnDataType columnName="Object_Time_Created" dataType="DATE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_OBJECT_MEMORY_USAGE]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ObjectID">
+                <expression><![CDATA[Object_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectParentPath">
+                <expression><![CDATA[Object_Parent_Path]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectMemoryShrinkable">
+                <expression><![CDATA[Object_Memory_Shrinkable]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectMemoryNonShrinkable">
+                <expression><![CDATA[Object_Memory_NonShrinkable]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectVersion">
+                <expression><![CDATA[Object_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectDataVersion">
+                <expression><![CDATA[Object_Data_Version]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectTypeID">
+                <expression><![CDATA[Object_Type_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectTimeCreated">
+                <expression><![CDATA[Object_Time_Created]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ObjectKey">
+                <expression><![CDATA[concat(AnalysisObjectMemoryUsageList.ObjectParentPath, ".", AnalysisObjectMemoryUsageList.ObjectID)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Object_ID" dataType="STRING" />
+              <columnDataType columnName="Object_Parent_Path" dataType="STRING" />
+              <columnDataType columnName="Object_Memory_Shrinkable" dataType="LONG" />
+              <columnDataType columnName="Object_Memory_NonShrinkable" dataType="LONG" />
+              <columnDataType columnName="Object_Version" dataType="LONG" />
+              <columnDataType columnName="Object_Data_Version" dataType="LONG" />
+              <columnDataType columnName="Object_Type_ID" dataType="LONG" />
+              <columnDataType columnName="Object_Time_Created" dataType="DATE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

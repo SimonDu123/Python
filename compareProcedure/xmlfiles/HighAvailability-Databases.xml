@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Database Replicas" name="databases">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">highavailability</fragment>
+      <fragment type="PROCEDURE">databases</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="key" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="database_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="group_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="replica_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="group_database_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_local" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="synchronization_state" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="synchronization_state_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_commit_participant" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="synchronization_health" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="synchronization_health_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="database_state" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="database_state_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_suspended" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="suspend_reason" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="suspend_reason_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="recovery_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="truncation_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="last_sent_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="last_sent_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="last_received_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="last_received_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="last_hardened_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="last_hardened_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="last_redone_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="last_redone_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="log_send_queue_size" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="log_send_rate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="redo_queue_size" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="redo_rate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="filestream_send_rate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="end_of_log_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="last_commit_lsn" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="last_commit_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="low_water_mark_for_ghosts" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="database_name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_failover_ready" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_pending_secondary_suspend" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_database_joined" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="replica_server_name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="dataloss" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="key" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[declare @dbaddress  NVARCHAR(4000);
+declare @dbaddress2  NVARCHAR(100);
+declare @portno nvarchar(6)
+set @dbaddress='{{dbaddress}}'
+set @dbaddress2 = case
+			when charindex('.',@dbaddress) > 0 then lower(substring(@dbaddress, 1, charindex('.',@dbaddress) - 1)) 
+			when charindex(',',@dbaddress) > 0 then lower(substring(@dbaddress, 1, charindex(',',@dbaddress) - 1))
+		else (lower(@dbaddress))
+		end
+set @portno = case
+			when charindex(',',@dbaddress) > 0 then substring(@dbaddress, charindex(',',@dbaddress) + 1,20)
+		else null
+		end
+
+select 
+	s.database_id,
+	s.group_id,
+	s.replica_id,
+	s.group_database_id,
+	s.is_local,
+	s.synchronization_state,
+	s.synchronization_state_desc,
+	s.is_commit_participant,
+	s.synchronization_health,
+	s.synchronization_health_desc,
+	s.database_state,
+	s.database_state_desc,
+	s.is_suspended,
+	s.suspend_reason,
+	s.suspend_reason_desc,
+	s.recovery_lsn,
+	s.truncation_lsn,
+	s.last_sent_lsn,
+	s.last_sent_time,
+	s.last_received_lsn,
+	s.last_received_time,
+	s.last_hardened_lsn,
+	s.last_hardened_time,
+	s.last_redone_lsn,
+	s.last_redone_time,
+	s.log_send_queue_size,
+	s.log_send_rate,
+	s.redo_queue_size,
+	s.redo_rate,
+	s.filestream_send_rate,
+	s.end_of_log_lsn,
+	s.last_commit_lsn,
+	s.last_commit_time,
+	s.low_water_mark_for_ghosts,
+	c.database_name,
+	c.is_failover_ready,
+	c.is_pending_secondary_suspend,
+	c.is_database_joined,
+	r.replica_server_name
+ from 
+	sys.dm_hadr_database_replica_states s
+	join sys.dm_hadr_database_replica_cluster_states c on s.replica_id = c.replica_id	 and s.group_database_id = c.group_database_id
+	join sys.availability_replicas r on s.replica_id = r.replica_id
+	join sys.availability_group_listeners l on l.group_id = r.group_id
+	and (lower(l.dns_name)=@dbaddress2 or charindex(@dbaddress2,ip_configuration_string_from_cluster) > 0)
+	and (@portno is null or l.port=@portno)]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">highavailability</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="database_id">
+                        <expression><![CDATA[database_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="group_id">
+                        <expression><![CDATA[group_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="replica_id">
+                        <expression><![CDATA[replica_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="group_database_id">
+                        <expression><![CDATA[group_database_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_local">
+                        <expression><![CDATA[is_local]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_state">
+                        <expression><![CDATA[synchronization_state]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_state_desc">
+                        <expression><![CDATA[synchronization_state_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_commit_participant">
+                        <expression><![CDATA[is_commit_participant]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_health">
+                        <expression><![CDATA[synchronization_health]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_health_desc">
+                        <expression><![CDATA[synchronization_health_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_state">
+                        <expression><![CDATA[database_state]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_state_desc">
+                        <expression><![CDATA[database_state_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_suspended">
+                        <expression><![CDATA[is_suspended]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="suspend_reason">
+                        <expression><![CDATA[suspend_reason]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="suspend_reason_desc">
+                        <expression><![CDATA[suspend_reason_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="recovery_lsn">
+                        <expression><![CDATA[recovery_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="truncation_lsn">
+                        <expression><![CDATA[truncation_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_sent_lsn">
+                        <expression><![CDATA[last_sent_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_sent_time">
+                        <expression><![CDATA[last_sent_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_hardened_lsn">
+                        <expression><![CDATA[last_hardened_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_hardened_time">
+                        <expression><![CDATA[last_hardened_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_redone_lsn">
+                        <expression><![CDATA[last_redone_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_redone_time">
+                        <expression><![CDATA[last_redone_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="log_send_queue_size">
+                        <expression><![CDATA[log_send_queue_size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="log_send_rate">
+                        <expression><![CDATA[log_send_rate]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="redo_queue_size">
+                        <expression><![CDATA[redo_queue_size]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="redo_rate">
+                        <expression><![CDATA[redo_rate]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="filestream_send_rate">
+                        <expression><![CDATA[filestream_send_rate]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="end_of_log_lsn">
+                        <expression><![CDATA[end_of_log_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_commit_lsn">
+                        <expression><![CDATA[last_commit_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_commit_time">
+                        <expression><![CDATA[last_commit_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="low_water_mark_for_ghosts">
+                        <expression><![CDATA[low_water_mark_for_ghosts]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="database_name">
+                        <expression><![CDATA[database_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_failover_ready">
+                        <expression><![CDATA[is_failover_ready]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_pending_secondary_suspend">
+                        <expression><![CDATA[is_pending_secondary_suspend]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_database_joined">
+                        <expression><![CDATA[is_database_joined]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_received_lsn">
+                        <expression><![CDATA[last_received_lsn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="last_received_time">
+                        <expression><![CDATA[last_received_time]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="replica_server_name">
+                        <expression><![CDATA[replica_server_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="dataloss">
+                        <expression><![CDATA[iff(is_failover_ready,0,1)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[concat(group_database_id,replica_id)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="database_id" dataType="LONG"/>
+                     <columnDataType columnName="group_id" dataType="STRING"/>
+                     <columnDataType columnName="replica_id" dataType="STRING"/>
+                     <columnDataType columnName="group_database_id" dataType="STRING"/>
+                     <columnDataType columnName="is_local" dataType="BOOLEAN"/>
+                     <columnDataType columnName="synchronization_state" dataType="LONG"/>
+                     <columnDataType columnName="synchronization_state_desc" dataType="STRING"/>
+                     <columnDataType columnName="is_commit_participant" dataType="BOOLEAN"/>
+                     <columnDataType columnName="synchronization_health" dataType="LONG"/>
+                     <columnDataType columnName="synchronization_health_desc" dataType="STRING"/>
+                     <columnDataType columnName="database_state" dataType="LONG"/>
+                     <columnDataType columnName="database_state_desc" dataType="STRING"/>
+                     <columnDataType columnName="is_suspended" dataType="BOOLEAN"/>
+                     <columnDataType columnName="suspend_reason" dataType="STRING"/>
+                     <columnDataType columnName="suspend_reason_desc" dataType="STRING"/>
+                     <columnDataType columnName="recovery_lsn" dataType="STRING"/>
+                     <columnDataType columnName="truncation_lsn" dataType="STRING"/>
+                     <columnDataType columnName="last_sent_lsn" dataType="STRING"/>
+                     <columnDataType columnName="last_sent_time" dataType="DATE"/>
+                     <columnDataType columnName="last_received_lsn" dataType="STRING"/>
+                     <columnDataType columnName="last_received_time" dataType="DATE"/>
+                     <columnDataType columnName="last_hardened_lsn" dataType="STRING"/>
+                     <columnDataType columnName="last_hardened_time" dataType="DATE"/>
+                     <columnDataType columnName="last_redone_lsn" dataType="STRING"/>
+                     <columnDataType columnName="last_redone_time" dataType="DATE"/>
+                     <columnDataType columnName="log_send_queue_size" dataType="LONG"/>
+                     <columnDataType columnName="log_send_rate" dataType="LONG"/>
+                     <columnDataType columnName="redo_queue_size" dataType="LONG"/>
+                     <columnDataType columnName="redo_rate" dataType="LONG"/>
+                     <columnDataType columnName="filestream_send_rate" dataType="LONG"/>
+                     <columnDataType columnName="end_of_log_lsn" dataType="STRING"/>
+                     <columnDataType columnName="last_commit_lsn" dataType="STRING"/>
+                     <columnDataType columnName="last_commit_time" dataType="DATE"/>
+                     <columnDataType columnName="low_water_mark_for_ghosts" dataType="LONG"/>
+                     <columnDataType columnName="database_name" dataType="STRING"/>
+                     <columnDataType columnName="is_failover_ready" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_pending_secondary_suspend" dataType="BOOLEAN"/>
+                     <columnDataType columnName="is_database_joined" dataType="BOOLEAN"/>
+                     <columnDataType columnName="replica_server_name" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

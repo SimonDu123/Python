@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="OS and CPU short version" name="ShortNames">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">shortnames</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_ShortNames" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="14400000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="86400">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">operatingsystem</fragment>
+                  </procedurePath>
+               </procedureDependency>
+               <procedureDependency recencyOfExecutionSeconds="86400">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">processordetails</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="CPUName" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="OSName" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[# execute OperatingSystem query to get row results
+osTable = OperatingSystem.GetOrExecute(86400);
+if (length(osTable.OS) > 0):
+	osName = osTable.OS[0];
+else:
+	osName = "";
+
+osName = osName.replace('(R)', '', 2);
+osName = osName.replace('\xA9', '', 2);
+osName = osName.replace('(TM)', '', 2);
+osName = osName.replace('\xAE', '', 2);
+osName = osName.replace('Microsoft', '', 1);
+osName = osName.replace('x64', '', 1);
+osName = osName.replace(' Code Name', '', 1);
+editionPos = osName.find(' Edition');
+if (editionPos > 0):
+	osName = substring(osName, 1, editionPos);
+osName = osName.strip();
+
+# execute ProcessorDetails query to get row results
+pdTable = ProcessorDetails.GetOrExecute(86400);
+if (length(pdTable.Name) > 0):
+	pdName = pdTable.Name[0];
+	pdName = pdName.replace('AMD', '', 1);
+	pdName = pdName.replace('Intel', '', 1);
+elif (length(pdTable.Manufacturer) != 0):
+	pdName = pdTable.Manufacturer[0];
+	pdName = pdName.replace('Authentic', '', 1);
+	pdName = pdName.replace('Genuine', '', 1);
+else:
+	pdName = "";
+
+pdName = pdName.replace('(R)', '', 2);
+pdName = pdName.replace('\xA9', '', 2);
+pdName = pdName.replace('(TM)', '', 2);
+pdName = pdName.replace('(tm)', '', 2);
+pdName = pdName.replace('\xAE', '', 2);
+pdName = pdName.replace(' processor', '', 1);
+pdName = pdName.replace(' Processor', '', 1);
+pdName = pdName.replace('Unknown', '', 1);
+cpuPos = pdName.find(' CPU ');
+if (cpuPos > 0):
+	pdName = substring(pdName, 1, cpuPos);
+pdName = pdName.strip();
+
+if (length(pdName) > 12):
+	pdName = pdName.replace('Pentium ', 'P', 1);
+
+result.OSName.append(osName);
+result.CPUName.append(pdName);]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="CPUName">
+                        <expression><![CDATA[CPUName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OSName">
+                        <expression><![CDATA[OSName]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="OSName" dataType="STRING"/>
+                     <columnDataType columnName="CPUName" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,207 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Connection List" name="AnalysisConnectionList">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisconnectionlist</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="ConnectionID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="ConnectionID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ConnectionUserName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ConnectionImpersonatedUserName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ConnectionHostName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ConnectionHostApplication" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="ConnectionStartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionElapsedTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="ConnectionLastCommandStartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="ConnectionLastCommandEndTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionLastCommandElapsedTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionIdleTimeMS" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionBytesSent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionDataBytesSent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionBytesReceived" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ConnectionDataBytesReceived" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_CONNECTIONS]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ConnectionID">
+                <expression><![CDATA[Connection_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionUserName">
+                <expression><![CDATA[Connection_User_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionImpersonatedUserName">
+                <expression><![CDATA[Connection_Impersonated_User_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionHostName">
+                <expression><![CDATA[Connection_Host_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionHostApplication">
+                <expression><![CDATA[Connection_Host_Application]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionStartTime">
+                <expression><![CDATA[Connection_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionElapsedTimeMS">
+                <expression><![CDATA[Connection_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionLastCommandStartTime">
+                <expression><![CDATA[Connection_Last_Command_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionLastCommandEndTime">
+                <expression><![CDATA[Connection_Last_Command_End_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionLastCommandElapsedTimeMS">
+                <expression><![CDATA[Connection_Last_Command_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionIdleTimeMS">
+                <expression><![CDATA[Connection_Idle_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionBytesSent">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionDataBytesSent">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionBytesReceived">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionDataBytesReceived">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Connection_ID" dataType="LONG" />
+              <columnDataType columnName="Connection_User_Name" dataType="STRING" />
+              <columnDataType columnName="Connection_Impersonated_User_Name" dataType="STRING" />
+              <columnDataType columnName="Connection_Host_Name" dataType="STRING" />
+              <columnDataType columnName="Connection_Host_Application" dataType="STRING" />
+              <columnDataType columnName="Connection_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Connection_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Connection_Last_Command_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Connection_Last_Command_End_Time" dataType="DATE" />
+              <columnDataType columnName="Connection_Last_Command_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Connection_Idle_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Connection_Bytes_Sent" dataType="LONG" />
+              <columnDataType columnName="Connection_Data_Bytes_Sent" dataType="LONG" />
+              <columnDataType columnName="Connection_Bytes_Received" dataType="LONG" />
+              <columnDataType columnName="Connection_Data_Bytes_Received" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="AnalysisServices" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[DISCOVER_CONNECTIONS]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="ConnectionID">
+                <expression><![CDATA[Connection_ID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionUserName">
+                <expression><![CDATA[Connection_User_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionImpersonatedUserName">
+                <expression><![CDATA[Connection_Impersonated_User_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionHostName">
+                <expression><![CDATA[Connection_Host_Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionHostApplication">
+                <expression><![CDATA[Connection_Host_Application]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionStartTime">
+                <expression><![CDATA[Connection_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionElapsedTimeMS">
+                <expression><![CDATA[Connection_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionLastCommandStartTime">
+                <expression><![CDATA[Connection_Last_Command_Start_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionLastCommandEndTime">
+                <expression><![CDATA[Connection_Last_Command_End_Time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionLastCommandElapsedTimeMS">
+                <expression><![CDATA[Connection_Last_Command_Elapsed_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionIdleTimeMS">
+                <expression><![CDATA[Connection_Idle_Time_MS]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionBytesSent">
+                <expression><![CDATA[Connection_Bytes_Sent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionDataBytesSent">
+                <expression><![CDATA[Connection_Data_Bytes_Sent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionBytesReceived">
+                <expression><![CDATA[Connection_Bytes_Received]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ConnectionDataBytesReceived">
+                <expression><![CDATA[Connection_Data_Bytes_Received]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Connection_ID" dataType="LONG" />
+              <columnDataType columnName="Connection_User_Name" dataType="STRING" />
+              <columnDataType columnName="Connection_Impersonated_User_Name" dataType="STRING" />
+              <columnDataType columnName="Connection_Host_Name" dataType="STRING" />
+              <columnDataType columnName="Connection_Host_Application" dataType="STRING" />
+              <columnDataType columnName="Connection_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Connection_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Connection_Last_Command_Start_Time" dataType="DATE" />
+              <columnDataType columnName="Connection_Last_Command_End_Time" dataType="DATE" />
+              <columnDataType columnName="Connection_Last_Command_Elapsed_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Connection_Idle_Time_MS" dataType="LONG" />
+              <columnDataType columnName="Connection_Bytes_Sent" dataType="LONG" />
+              <columnDataType columnName="Connection_Data_Bytes_Sent" dataType="LONG" />
+              <columnDataType columnName="Connection_Bytes_Received" dataType="LONG" />
+              <columnDataType columnName="Connection_Data_Bytes_Received" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

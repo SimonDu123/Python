@@ -1,0 +1,126 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Session IO Summary" name="SQLSessionIOSummary">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlsessioniosummary</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="totalreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="totalwrites" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="totallogicalreads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="readsrate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="writesrate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="logicalreadsrate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# not supported for SQL Server 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="totalreads">
+                <expression><![CDATA[totalreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="totalwrites">
+                <expression><![CDATA[totalwrites]]></expression>
+              </columnExpression>
+              <columnExpression columnName="totallogicalreads">
+                <expression><![CDATA[totallogicalreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="readsrate">
+                <expression><![CDATA[positiveRate(sqlsessionIOSummary.totalreads)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="writesrate">
+                <expression><![CDATA[positiveRate(sqlsessionIOSummary.totalwrites)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="logicalreadsrate">
+                <expression><![CDATA[positiveRate(sqlsessioniosummary.totallogicalreads)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="totalreads" dataType="LONG" />
+              <columnDataType columnName="totalwrites" dataType="LONG" />
+              <columnDataType columnName="totallogicalreads" dataType="LONG" />
+              <columnDataType columnName="readsrate" dataType="DOUBLE" />
+              <columnDataType columnName="writesrate" dataType="DOUBLE" />
+              <columnDataType columnName="logicalreadsrate" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_SessionIOSummary.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="totalreads">
+                <expression><![CDATA[totalreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="totalwrites">
+                <expression><![CDATA[totalwrites]]></expression>
+              </columnExpression>
+              <columnExpression columnName="totallogicalreads">
+                <expression><![CDATA[totallogicalreads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="readsrate">
+                <expression><![CDATA[positiveRate(sqlsessioniosummary.totalreads)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="writesrate">
+                <expression><![CDATA[positiveRate(sqlsessioniosummary.totalwrites)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="logicalreadsrate">
+                <expression><![CDATA[positiveRate(sqlsessioniosummary.totallogicalreads)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="totalreads" dataType="LONG" />
+              <columnDataType columnName="totalwrites" dataType="LONG" />
+              <columnDataType columnName="totallogicalreads" dataType="LONG" />
+              <columnDataType columnName="readsrate" dataType="DOUBLE" />
+              <columnDataType columnName="writesrate" dataType="DOUBLE" />
+              <columnDataType columnName="logicalreadsrate" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

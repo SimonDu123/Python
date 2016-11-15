@@ -1,0 +1,93 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="DTC Information" name="DTCInformation">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">dtcinformation</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_DTCInformation" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="AbortedTransactions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ActiveTransactions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="CommittedTransactionsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InDoubtTransactions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ResponseTimeAverage" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TransactionsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CommittedTransactions" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Transactions" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT  AbortedTransactions, ActiveTransactions, CommittedTransactionsPerSec, 
+	InDoubtTransactions, ResponseTimeAverage, TransactionsPerSec 
+FROM    Win32_PerfRawData_MSDTC_DistributedTransactionCoordinator]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AbortedTransactions">
+                <expression><![CDATA[AbortedTransactions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ActiveTransactions">
+                <expression><![CDATA[ActiveTransactions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommittedTransactions">
+                <expression><![CDATA[CommittedTransactionPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommittedTransactionsPerSec">
+                <expression><![CDATA[positiveRate(DTCInformation.CommittedTransactions)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InDoubtTransactions">
+                <expression><![CDATA[InDoubtTransactions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ResponseTimeAverage">
+                <expression><![CDATA[ResponseTimeAverage]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Transactions">
+                <expression><![CDATA[TransactionPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TransactionsPerSec">
+                <expression><![CDATA[positiveRate(DTCInformation.Transactions)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="AbortedTransactions" dataType="LONG" />
+              <columnDataType columnName="ActiveTransactions" dataType="LONG" />
+              <columnDataType columnName="CommittedTransactionPerSec" dataType="LONG" />
+              <columnDataType columnName="InDoubtTransactions" dataType="LONG" />
+              <columnDataType columnName="ResponseTimeAverage" dataType="LONG" />
+              <columnDataType columnName="TransactionPerSec" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

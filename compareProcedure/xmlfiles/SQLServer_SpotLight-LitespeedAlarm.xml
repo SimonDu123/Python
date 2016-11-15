@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="LiteSpeed Alarm" name="LitespeedAlarm">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">litespeedalarm</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_LitespeedAlarm" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="keycolumn" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="DatabaseName" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">litespeedbackupfailed</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">litespeedbackupwarning</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="DatabaseName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ReplicateID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Repository" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PercentCompleted" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="UserName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="LastBackupTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ServerName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="AttachedBackupTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="LS" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ActivityTypeName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="LastBackupActivityID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="FinishTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DatabaseSize" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="StatusName" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="WarningMessage" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="StartTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="AttachedNativeSize" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Deleted" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="BackupTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ActivityDetail" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ActivityID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ResultMessage" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="AttachedBackupSize" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="NativeSize" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ErrorMessage" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="StatusTypeID" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="keycolumn" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ActivityTypeDesc" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="BackupSize" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SQL_LITESPEED_ALARM]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="DatabaseName">
+                        <expression><![CDATA[DatabaseName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ReplicateID">
+                        <expression><![CDATA[ReplicateID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Repository">
+                        <expression><![CDATA[Repository]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PID">
+                        <expression><![CDATA[PID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PercentCompleted">
+                        <expression><![CDATA[PercentCompleted]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UserName">
+                        <expression><![CDATA[UserName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LastBackupTime">
+                        <expression><![CDATA[LastBackupTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ServerName">
+                        <expression><![CDATA[ServerName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AttachedBackupTime">
+                        <expression><![CDATA[AttachedBackupTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LS">
+                        <expression><![CDATA[LS]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ActivityTypeName">
+                        <expression><![CDATA[ActivityTypeName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LastBackupActivityID">
+                        <expression><![CDATA[LastBackupActivityID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FinishTime">
+                        <expression><![CDATA[FinishTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DatabaseSize">
+                        <expression><![CDATA[DatabaseSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="StatusName">
+                        <expression><![CDATA[StatusName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WarningMessage">
+                        <expression><![CDATA[trim(WarningMessage)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="StartTime">
+                        <expression><![CDATA[StartTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AttachedNativeSize">
+                        <expression><![CDATA[AttachedNativeSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Deleted">
+                        <expression><![CDATA[Deleted]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BackupTime">
+                        <expression><![CDATA[BackupTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ActivityDetail">
+                        <expression><![CDATA[ActivityDetail]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ActivityID">
+                        <expression><![CDATA[ActivityID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ResultMessage">
+                        <expression><![CDATA[trim(ResultMessage)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AttachedBackupSize">
+                        <expression><![CDATA[AttachedBackupSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NativeSize">
+                        <expression><![CDATA[NativeSize]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ErrorMessage">
+                        <expression><![CDATA[trim(ErrorMessage)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="StatusTypeID">
+                        <expression><![CDATA[StatusTypeID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="keycolumn">
+                        <expression><![CDATA[keycolumn]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ActivityTypeDesc">
+                        <expression><![CDATA[ActivityTypeDesc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BackupSize">
+                        <expression><![CDATA[BackupSize]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="DatabaseName" dataType="STRING"/>
+                     <columnDataType columnName="ReplicateID" dataType="STRING"/>
+                     <columnDataType columnName="Repository" dataType="STRING"/>
+                     <columnDataType columnName="PID" dataType="LONG"/>
+                     <columnDataType columnName="PercentCompleted" dataType="LONG"/>
+                     <columnDataType columnName="UserName" dataType="STRING"/>
+                     <columnDataType columnName="LastBackupTime" dataType="DATE"/>
+                     <columnDataType columnName="ServerName" dataType="STRING"/>
+                     <columnDataType columnName="AttachedBackupTime" dataType="LONG"/>
+                     <columnDataType columnName="LS" dataType="LONG"/>
+                     <columnDataType columnName="ActivityTypeName" dataType="STRING"/>
+                     <columnDataType columnName="LastBackupActivityID" dataType="LONG"/>
+                     <columnDataType columnName="FinishTime" dataType="DATE"/>
+                     <columnDataType columnName="DatabaseSize" dataType="DOUBLE"/>
+                     <columnDataType columnName="StatusName" dataType="STRING"/>
+                     <columnDataType columnName="WarningMessage" dataType="STRING"/>
+                     <columnDataType columnName="StartTime" dataType="DATE"/>
+                     <columnDataType columnName="AttachedNativeSize" dataType="LONG"/>
+                     <columnDataType columnName="Deleted" dataType="LONG"/>
+                     <columnDataType columnName="BackupTime" dataType="LONG"/>
+                     <columnDataType columnName="ActivityDetail" dataType="STRING"/>
+                     <columnDataType columnName="ActivityID" dataType="LONG"/>
+                     <columnDataType columnName="ResultMessage" dataType="STRING"/>
+                     <columnDataType columnName="AttachedBackupSize" dataType="LONG"/>
+                     <columnDataType columnName="NativeSize" dataType="DOUBLE"/>
+                     <columnDataType columnName="ErrorMessage" dataType="STRING"/>
+                     <columnDataType columnName="StatusTypeID" dataType="LONG"/>
+                     <columnDataType columnName="keycolumn" dataType="STRING"/>
+                     <columnDataType columnName="ActivityTypeDesc" dataType="STRING"/>
+                     <columnDataType columnName="BackupSize" dataType="DOUBLE"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

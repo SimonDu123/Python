@@ -1,0 +1,111 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Lock Statistics" name="SQLLockStats">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqllockstats</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLLockStats" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="InstanceName" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="InstanceName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="LockRequestCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="LockTimeoutCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalWaitTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalWaits" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="DeadlockCnt" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SQLLockRequestRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SQLLockTimeoutRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SQLWaitTimeRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SQLWaitsRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="SQLDeadlockRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalLockRequests" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalLockRequestsPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText>SQLCheckPerformanceData.Result == 1</guardExpressionText>
+            <commandText><![CDATA[{{versioned_file:QS_LockStats.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="InstanceName">
+                <expression><![CDATA[InstanceName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LockRequestCnt">
+                <expression><![CDATA[LockRequestCnt]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LockTimeoutCnt">
+                <expression><![CDATA[LockTimeoutCnt]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalWaitTime">
+                <expression><![CDATA[TotalWaitTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalWaits">
+                <expression><![CDATA[TotalWaits]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DeadlockCnt">
+                <expression><![CDATA[DeadlockCnt]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLLockRequestRate">
+                <expression><![CDATA[positiveRate(SQLLockStats.LockRequestCnt)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLLockTimeoutRate">
+                <expression><![CDATA[positiveRate(SQLLockStats.LockTimeoutCnt)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLWaitTimeRate">
+                <expression><![CDATA[positiveRate(SQLLockStats.TotalWaitTime)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLWaitsRate">
+                <expression><![CDATA[positiveRate(SQLLockStats.TotalWaits)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SQLDeadlockRate">
+                <expression><![CDATA[positiveRate(SQLLockStats.DeadlockCnt)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalLockRequests">
+                <expression><![CDATA[sum(LockRequestCnt)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalLockRequestsPerSec">
+                <expression><![CDATA[positiveRate(SQLLockStats.TotalLockRequests)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="InstanceName" dataType="STRING" />
+              <columnDataType columnName="LockRequestCnt" dataType="LONG" />
+              <columnDataType columnName="LockTimeoutCnt" dataType="LONG" />
+              <columnDataType columnName="TotalWaitTime" dataType="LONG" />
+              <columnDataType columnName="TotalWaits" dataType="LONG" />
+              <columnDataType columnName="DeadlockCnt" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="7">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="7200000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

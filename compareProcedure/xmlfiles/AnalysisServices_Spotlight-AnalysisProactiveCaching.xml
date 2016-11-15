@@ -1,0 +1,91 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Proactive Caching" name="AnalysisProactiveCaching">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisproactivecaching</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="DOUBLE" name="NotificationsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ProactiveCachingBeginPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ProactiveCachingCompletionPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ProcessingCancellationsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalNotificationsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalProactiveCachingBeginPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalProactiveCachingCompletionPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalProcessingCancellationsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT NotificationsPersec, ProactiveCachingBeginPersec, ProactiveCachingCompletionPersec, 
+ProcessingCancellationsPersec   
+FROM {{WMIClassName.Name}}ProactiveCaching]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="InternalNotificationsPersec">
+                <expression><![CDATA[NotificationsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalProactiveCachingBeginPersec">
+                <expression><![CDATA[ProactiveCachingBeginPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalProactiveCachingCompletionPersec">
+                <expression><![CDATA[ProactiveCachingCompletionPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalProcessingCancellationsPersec">
+                <expression><![CDATA[ProcessingCancellationsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NotificationsPersec">
+                <expression><![CDATA[positiveRate(AnalysisProactiveCaching.InternalNotificationsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ProactiveCachingBeginPersec">
+                <expression><![CDATA[positiveRate(AnalysisProactiveCaching.InternalProactiveCachingBeginPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ProactiveCachingCompletionPersec">
+                <expression><![CDATA[positiveRate(AnalysisProactiveCaching.InternalProactiveCachingCompletionPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ProcessingCancellationsPersec">
+                <expression><![CDATA[positiveRate(AnalysisProactiveCaching.InternalProcessingCancellationsPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="NotificationsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="ProactiveCachingBeginPersec" dataType="DOUBLE" />
+              <columnDataType columnName="ProactiveCachingCompletionPersec" dataType="DOUBLE" />
+              <columnDataType columnName="ProcessingCancellationsPersec" dataType="DOUBLE" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

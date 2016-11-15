@@ -1,0 +1,124 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Replication Publishers" name="Publishers">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">publishers</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">publisherfailure</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="distribution_db" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="security_mode" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="login" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="password" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="active" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="working_directory" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="trusted" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="thirdparty_flag" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publisher_type" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publisher_data_source" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="status" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="publicationcount" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="ReplicationConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[publishers]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="name">
+                <expression><![CDATA[name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="distribution_db">
+                <expression><![CDATA[distribution_db]]></expression>
+              </columnExpression>
+              <columnExpression columnName="security_mode">
+                <expression><![CDATA[security_mode]]></expression>
+              </columnExpression>
+              <columnExpression columnName="login">
+                <expression><![CDATA[login]]></expression>
+              </columnExpression>
+              <columnExpression columnName="password">
+                <expression><![CDATA[password]]></expression>
+              </columnExpression>
+              <columnExpression columnName="active">
+                <expression><![CDATA[active]]></expression>
+              </columnExpression>
+              <columnExpression columnName="working_directory">
+                <expression><![CDATA[working_directory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="trusted">
+                <expression><![CDATA[trusted]]></expression>
+              </columnExpression>
+              <columnExpression columnName="thirdparty_flag">
+                <expression><![CDATA[thirdparty_flag]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publisher_type">
+                <expression><![CDATA[publisher_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publisher_data_source">
+                <expression><![CDATA[publisher_data_source]]></expression>
+              </columnExpression>
+              <columnExpression columnName="status">
+                <expression><![CDATA[status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publicationcount">
+                <expression><![CDATA[publicationcount]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="name" dataType="STRING" />
+              <columnDataType columnName="distribution_db" dataType="STRING" />
+              <columnDataType columnName="security_mode" dataType="LONG" />
+              <columnDataType columnName="login" dataType="STRING" />
+              <columnDataType columnName="password" dataType="STRING" />
+              <columnDataType columnName="active" dataType="BOOLEAN" />
+              <columnDataType columnName="working_directory" dataType="STRING" />
+              <columnDataType columnName="trusted" dataType="BOOLEAN" />
+              <columnDataType columnName="thirdparty_flag" dataType="BOOLEAN" />
+              <columnDataType columnName="publisher_type" dataType="STRING" />
+              <columnDataType columnName="publisher_data_source" dataType="STRING" />
+              <columnDataType columnName="publicationcount" dataType="LONG" />
+              <columnDataType columnName="status" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

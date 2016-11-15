@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Update OS Version" name="UpdateOSVersion">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">updateosversion</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_UpdateOSVersion" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="0" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="86400">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">osversion</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList"/>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[try:
+	VersionTable = OSVersion.getOrExecute(86400);
+
+	if length( VersionTable.Version ) == 1:
+		winVer = substring(VersionTable.Version[0], 0, 3);
+		fullVersion = VersionTable.Version[0] + " " + VersionTable.Caption[0];
+		if winVer=="5.0":
+			setVersion( "2000", fullVersion );
+		elif winVer=="5.1":
+			setVersion( "XP", fullVersion );
+		elif winVer=="5.2":
+			setVersion( "2003", fullVersion );
+		elif winVer=="6.0":
+			prodType = VersionTable.ProductType[0];
+			if prodType==1:
+				setVersion( "Vista", fullVersion );
+			else:
+				setVersion( "2008", fullVersion );
+		elif winVer=="6.1":
+			prodType = VersionTable.ProductType[0];
+			if prodType==1:
+				setVersion( "7", fullVersion );
+			else:
+				setVersion( "2008 R2", fullVersion );
+		elif winVer=="6.2":
+			prodType = VersionTable.ProductType[0];
+			if prodType==1:
+				setVersion( "8", fullVersion );
+			else:
+				setVersion( "2012", fullVersion );
+		elif winVer=="6.3":
+			prodType = VersionTable.ProductType[0];
+			if prodType==1:
+				setVersion( "8.1", fullVersion );
+			else:
+				setVersion( "2012 R2", fullVersion );
+		elif winVer=="6.4":
+			setVersion( "10", fullVersion );
+		elif winVer=="10.":
+			setVersion( "10", fullVersion );
+		else:
+			setError( 1, "Windows version {0} is not supported", winVer);
+
+except RuntimeError, ex:
+	setError( 1, "{0}", ex.args );]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList"/>
+                  <outputColumnDataTypeList class="java.util.ArrayList"/>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

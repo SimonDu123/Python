@@ -1,0 +1,116 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Threads" name="Thread">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">thread</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_Threads" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="IDThread" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Instance" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="IDProcess" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="IDThread" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="pctProcessor" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ThreadState" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ThreadWaitReason" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="pctUserTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="pctPrivilegedTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ContextSwitchesPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ElapsedTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Priority" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>ProcessID</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="" isRequired="true" name="ProcessID" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Name, IDProcess, IDThread, ContextSwitchesPerSec, ElapsedTime, PercentPrivilegedTime, 
+       PercentProcessorTime, PercentUserTime, PriorityCurrent, ThreadState, ThreadWaitReason 
+FROM   Win32_PerfFormattedData_PerfProc_Thread 
+WHERE  IDProcess = {{ProcessID}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Instance">
+                <expression><![CDATA[Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IDProcess">
+                <expression><![CDATA[IDProcess]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IDThread">
+                <expression><![CDATA[IDThread]]></expression>
+              </columnExpression>
+              <columnExpression columnName="pctProcessor">
+                <expression><![CDATA[PercentProcessorTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ThreadState">
+                <expression><![CDATA[ThreadState]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ThreadWaitReason">
+                <expression><![CDATA[ThreadWaitReason]]></expression>
+              </columnExpression>
+              <columnExpression columnName="pctUserTime">
+                <expression><![CDATA[PercentUserTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="pctPrivilegedTime">
+                <expression><![CDATA[PercentPrivilegedTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ContextSwitchesPerSec">
+                <expression><![CDATA[ContextSwitchesPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ElapsedTime">
+                <expression><![CDATA[ElapsedTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Priority">
+                <expression><![CDATA[PriorityCurrent]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Name" dataType="STRING" />
+              <columnDataType columnName="IDProcess" dataType="LONG" />
+              <columnDataType columnName="IDThread" dataType="LONG" />
+              <columnDataType columnName="ContextSwitchesPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="ElapsedTime" dataType="DOUBLE" />
+              <columnDataType columnName="PercentPrivilegedTime" dataType="DOUBLE" />
+              <columnDataType columnName="PercentProcessorTime" dataType="DOUBLE" />
+              <columnDataType columnName="PercentUserTime" dataType="DOUBLE" />
+              <columnDataType columnName="PriorityCurrent" dataType="LONG" />
+              <columnDataType columnName="ThreadState" dataType="LONG" />
+              <columnDataType columnName="ThreadWaitReason" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

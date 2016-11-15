@@ -1,0 +1,272 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SQL Azure - Database Indexes" name="SQLIndexes">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlazure</fragment>
+    <fragment type="PROCEDURE">sqlindexes</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="QualifiedName" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="QualifiedName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="DBName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="OwnerName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="TableName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="IndexName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="IndexID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="IndexType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="IndexKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="UsedKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FreeKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Rows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="OrigFillFactor" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>FilterObjectName</string>
+            <argument checkedForSQLInjection="true" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="%" isRequired="false" name="FilterObjectName" />
+          </entry>
+          <entry>
+            <string>FilterTableName</string>
+            <argument checkedForSQLInjection="true" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="%" isRequired="false" name="FilterTableName" />
+          </entry>
+          <entry>
+            <string>RowLimit</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="50" isRequired="false" name="RowLimit" />
+          </entry>
+          <entry>
+            <string>query</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="bysize" isRequired="false" name="query" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[if equals("{{query}}", "bysize"):
+	SQLIndexesTable = SQLIndexes.execute({"queryName" : "byIndexSize", "FilterTableName" : u"{{unicode:FilterTableName}}", "FilterObjectName" : u"{{unicode:FilterObjectName}}", "RowLimit" : "{{RowLimit}}", "reset" : "true"});
+elif equals("{{query}}", "byrowcount"):
+	SQLIndexesTable = SQLIndexes.execute({"queryName" : "byRowCount", "FilterTableName" : u"{{unicode:FilterTableName}}", "FilterObjectName" : u"{{unicode:FilterObjectName}}", "RowLimit" : "{{RowLimit}}", "reset" : "true"});
+
+if (length(SQLIndexesTable._exit) == 0):
+	setError(-2, "Exit column not found");
+elif (SQLIndexesTable._exit[0] != 0):
+	setError(SQLIndexesTable._errorCode[0], SQLIndexesTable._errorText[0]);
+else:
+	CopyResults(SQLIndexesTable);]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlazure</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="QualifiedName">
+                <expression><![CDATA[QualifiedName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DBName">
+                <expression><![CDATA[DBName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OwnerName">
+                <expression><![CDATA[OwnerName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexName">
+                <expression><![CDATA[IndexName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexID">
+                <expression><![CDATA[IndexID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexType">
+                <expression><![CDATA[IndexType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexKB">
+                <expression><![CDATA[IndexKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedKB">
+                <expression><![CDATA[UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeKB">
+                <expression><![CDATA[FreeKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OrigFillFactor">
+                <expression><![CDATA[OrigFillFactor]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="QualifiedName" dataType="STRING" />
+              <columnDataType columnName="DBName" dataType="STRING" />
+              <columnDataType columnName="OwnerName" dataType="STRING" />
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="IndexName" dataType="STRING" />
+              <columnDataType columnName="IndexID" dataType="LONG" />
+              <columnDataType columnName="IndexType" dataType="STRING" />
+              <columnDataType columnName="IndexKB" dataType="DOUBLE" />
+              <columnDataType columnName="UsedKB" dataType="DOUBLE" />
+              <columnDataType columnName="FreeKB" dataType="DOUBLE" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+              <columnDataType columnName="OrigFillFactor" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="byRowCount" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_IndexesByRowCount.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlazure</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="QualifiedName">
+                <expression><![CDATA[QualifiedName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DBName">
+                <expression><![CDATA[DBName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OwnerName">
+                <expression><![CDATA[OwnerName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexName">
+                <expression><![CDATA[IndexName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexID">
+                <expression><![CDATA[IndexId]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexType">
+                <expression><![CDATA[IndexType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexKB">
+                <expression><![CDATA[IndexKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedKB">
+                <expression><![CDATA[UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeKB">
+                <expression><![CDATA[FreeKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OrigFillFactor">
+                <expression><![CDATA[OrigFillFactor]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="QualifiedName" dataType="STRING" />
+              <columnDataType columnName="DBName" dataType="STRING" />
+              <columnDataType columnName="OwnerName" dataType="STRING" />
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="IndexName" dataType="STRING" />
+              <columnDataType columnName="IndexId" dataType="LONG" />
+              <columnDataType columnName="IndexType" dataType="STRING" />
+              <columnDataType columnName="IndexKB" dataType="DOUBLE" />
+              <columnDataType columnName="UsedKB" dataType="DOUBLE" />
+              <columnDataType columnName="FreeKB" dataType="DOUBLE" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+              <columnDataType columnName="OrigFillFactor" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="byIndexSize" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_IndexesBySize.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlazure</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="QualifiedName">
+                <expression><![CDATA[QualifiedName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DBName">
+                <expression><![CDATA[DBName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OwnerName">
+                <expression><![CDATA[OwnerName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexName">
+                <expression><![CDATA[IndexName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexID">
+                <expression><![CDATA[IndexId]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexType">
+                <expression><![CDATA[IndexType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexKB">
+                <expression><![CDATA[IndexKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UsedKB">
+                <expression><![CDATA[UsedKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeKB">
+                <expression><![CDATA[FreeKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OrigFillFactor">
+                <expression><![CDATA[OrigFillFactor]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="QualifiedName" dataType="STRING" />
+              <columnDataType columnName="DBName" dataType="STRING" />
+              <columnDataType columnName="OwnerName" dataType="STRING" />
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="IndexName" dataType="STRING" />
+              <columnDataType columnName="IndexId" dataType="LONG" />
+              <columnDataType columnName="IndexType" dataType="STRING" />
+              <columnDataType columnName="IndexKB" dataType="DOUBLE" />
+              <columnDataType columnName="UsedKB" dataType="DOUBLE" />
+              <columnDataType columnName="FreeKB" dataType="DOUBLE" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+              <columnDataType columnName="OrigFillFactor" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

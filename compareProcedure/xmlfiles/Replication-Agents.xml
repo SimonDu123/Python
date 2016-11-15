@@ -1,0 +1,212 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Replication Agents" name="Agents">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">agents</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">distributionagentfailure</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">distributionlatency</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">logreaderagentfailure</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">logreaderlatency</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">mergeagentfailure</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">miscellaneousagentfailure</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">queuereaderagentfailure</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">replication</fragment>
+            <fragment type="RULE">snapshotagentfailure</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="agent_type" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="status" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publisher" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publisher_db" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publication" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="subscriber" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="subscriber_db" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="subscription_type" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="StartTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="duration" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivered_transactions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivered_commands" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="average_commands" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="delivery_rate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivery_latency" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="StatusText" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SubscriptionType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="publication_full" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="subscription" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MergePubCmds" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="MergeSubCmds" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MergePubCmdRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MergeSubCmdRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="ReplicationConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[agents]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="name">
+                <expression><![CDATA[name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="agent_type">
+                <expression><![CDATA[agent_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="status">
+                <expression><![CDATA[status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publisher">
+                <expression><![CDATA[publisher]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publisher_db">
+                <expression><![CDATA[publisher_db]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publication">
+                <expression><![CDATA[publication]]></expression>
+              </columnExpression>
+              <columnExpression columnName="subscriber">
+                <expression><![CDATA[subscriber]]></expression>
+              </columnExpression>
+              <columnExpression columnName="subscriber_db">
+                <expression><![CDATA[subscriber_db]]></expression>
+              </columnExpression>
+              <columnExpression columnName="subscription_type">
+                <expression><![CDATA[subscription_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="duration">
+                <expression><![CDATA[duration]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivered_transactions">
+                <expression><![CDATA[iff (delivered_transactions < 0, 4294967296l + delivered_transactions, delivered_transactions)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivered_commands">
+                <expression><![CDATA[iff (delivered_commands < 0, 4294967296l + delivered_commands, delivered_commands)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="average_commands">
+                <expression><![CDATA[average_commands]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivery_rate">
+                <expression><![CDATA[delivery_rate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivery_latency">
+                <expression><![CDATA[delivery_latency]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SubscriptionType">
+                <expression><![CDATA[choose(subscription_type, 0, "Push", 1, "Pull", 2, "Anonymous")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StartTime">
+                <expression><![CDATA[parseDate("yyyyMMdd HH:mm:ss.SSS", start_time)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StatusText">
+                <expression><![CDATA[choose(status, 1, "Started", 2, "Completed", 3, "Running", 4, "Idle", 5, "Retrying", 6, "Error")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publication_full">
+                <expression><![CDATA[iff(publication == null, publication, concat("[", publisher_db, "]: ", publication))]]></expression>
+              </columnExpression>
+              <columnExpression columnName="subscription">
+                <expression><![CDATA[iff(subscriber_db == null, subscriber, concat("[", subscriber, "].[", subscriber_db, "]"))]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MergePubCmds">
+                <expression><![CDATA[upload_inserts + upload_updates + upload_deletes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MergeSubCmds">
+                <expression><![CDATA[download_inserts + download_updates + download_deletes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MergePubCmdRate">
+                <expression><![CDATA[positiveRate(Agents.MergePubCmds)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MergeSubCmdRate">
+                <expression><![CDATA[positiveRate(Agents.MergeSubCmds)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="name" dataType="STRING" />
+              <columnDataType columnName="agent_type" dataType="STRING" />
+              <columnDataType columnName="status" dataType="LONG" />
+              <columnDataType columnName="publisher" dataType="STRING" />
+              <columnDataType columnName="publisher_db" dataType="STRING" />
+              <columnDataType columnName="publication" dataType="STRING" />
+              <columnDataType columnName="subscriber" dataType="STRING" />
+              <columnDataType columnName="subscriber_db" dataType="STRING" />
+              <columnDataType columnName="subscription_type" dataType="LONG" />
+              <columnDataType columnName="start_time" dataType="STRING" />
+              <columnDataType columnName="duration" dataType="LONG" />
+              <columnDataType columnName="delivered_transactions" dataType="LONG" />
+              <columnDataType columnName="delivered_commands" dataType="LONG" />
+              <columnDataType columnName="average_commands" dataType="DOUBLE" />
+              <columnDataType columnName="delivery_rate" dataType="DOUBLE" />
+              <columnDataType columnName="delivery_latency" dataType="LONG" />
+              <columnDataType columnName="download_inserts" dataType="LONG" />
+              <columnDataType columnName="download_updates" dataType="LONG" />
+              <columnDataType columnName="download_deletes" dataType="LONG" />
+              <columnDataType columnName="upload_inserts" dataType="LONG" />
+              <columnDataType columnName="upload_updates" dataType="LONG" />
+              <columnDataType columnName="upload_deletes" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

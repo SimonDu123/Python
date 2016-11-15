@@ -1,0 +1,585 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Storage Engine Query" name="AnalysisStorageEngineQuery">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisstorageenginequery</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="DOUBLE" name="AggregationhitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="AggregationlookupsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="AvgtimePerquery" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="BytessentPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="CalculationcachehitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="CalculationcachelookupsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Currentdimensionqueries" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Currentmeasuregroupqueries" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DatabytesPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DatareadsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DimensioncachehitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DimensioncachelookupsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DimensionqueriesPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FlatcachehitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="FlatcachelookupsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MapbytesPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MapreadsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MeasuregroupcachehitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MeasuregroupcachelookupsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MeasuregroupqueriesPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="NetworkroundtripsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PersistedcachehitsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PersistedcachelookupsPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="QueriesansweredPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="QueriesfromcachedirectPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="QueriesfromcachefilteredPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="QueriesfromfilePersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="RowssentPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalbytessent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totaldimensionqueries" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalmeasuregroupqueries" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalnetworkroundtrips" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalqueriesanswered" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalqueriesfromcachedirect" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalqueriesfromcachefiltered" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalqueriesfromfile" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalrowssent" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalAggregationhitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalAggregationlookupsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalBytessentPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalCalculationcachehitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalCalculationcachelookupsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalDatabytesPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalDatareadsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalDimensioncachehitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalDimensioncachelookupsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalDimensionqueriesPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFlatcachehitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalFlatcachelookupsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalMapbytesPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalMapreadsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalMeasuregroupcachehitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalMeasuregroupcachelookupsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalMeasuregroupqueriesPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalNetworkroundtripsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalPersistedcachehitsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalPersistedcachelookupsPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalQueriesansweredPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalQueriesfromcachedirectPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalQueriesfromcachefilteredPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalQueriesfromfilePersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalRowssentPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT AvgtimePerquery, BytessentPersec, Currentdimensionqueries, Currentmeasuregroupqueries, DatabytesPersec, 
+DatareadsPersec, DimensionqueriesPersec, MapbytesPersec, MapreadsPersec, MeasuregroupqueriesPersec,  
+NetworkroundtripsPersec, QueriesansweredPersec, QueriesfromcachedirectPersec, QueriesfromcachefilteredPersec, 
+QueriesfromfilePersec, RowssentPersec, Totalbytessent, Totaldimensionqueries, Totalmeasuregroupqueries, 
+Totalnetworkroundtrips, Totalqueriesanswered, Totalqueriesfromcachedirect, Totalqueriesfromcachefiltered, 
+Totalqueriesfromfile, Totalrowssent 
+FROM {{WMIClassName.Name}}StorageEngineQuery]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AggregationhitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AggregationlookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AvgtimePerquery">
+                <expression><![CDATA[AvgtimePerquery]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CalculationcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CalculationcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentdimensionqueries">
+                <expression><![CDATA[Currentdimensionqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentmeasuregroupqueries">
+                <expression><![CDATA[Currentmeasuregroupqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensioncachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensioncachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FlatcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FlatcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MeasuregroupcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MeasuregroupcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PersistedcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PersistedcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalbytessent">
+                <expression><![CDATA[Totalbytessent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totaldimensionqueries">
+                <expression><![CDATA[Totaldimensionqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalmeasuregroupqueries">
+                <expression><![CDATA[Totalmeasuregroupqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalnetworkroundtrips">
+                <expression><![CDATA[Totalnetworkroundtrips]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesanswered">
+                <expression><![CDATA[Totalqueriesanswered]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesfromcachedirect">
+                <expression><![CDATA[Totalqueriesfromcachedirect]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesfromcachefiltered">
+                <expression><![CDATA[Totalqueriesfromcachefiltered]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesfromfile">
+                <expression><![CDATA[Totalqueriesfromfile]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalrowssent">
+                <expression><![CDATA[Totalrowssent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalAggregationhitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalAggregationlookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalBytessentPersec">
+                <expression><![CDATA[BytessentPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalCalculationcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalCalculationcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDatabytesPersec">
+                <expression><![CDATA[DatabytesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDatareadsPersec">
+                <expression><![CDATA[DatareadsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDimensioncachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDimensioncachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDimensionqueriesPersec">
+                <expression><![CDATA[DimensionqueriesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFlatcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFlatcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMapbytesPersec">
+                <expression><![CDATA[MapbytesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMapreadsPersec">
+                <expression><![CDATA[MapreadsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMeasuregroupcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMeasuregroupcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMeasuregroupqueriesPersec">
+                <expression><![CDATA[MeasuregroupqueriesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalNetworkroundtripsPersec">
+                <expression><![CDATA[NetworkroundtripsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalPersistedcachehitsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalPersistedcachelookupsPersec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesansweredPersec">
+                <expression><![CDATA[QueriesansweredPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesfromcachedirectPersec">
+                <expression><![CDATA[QueriesfromcachedirectPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesfromcachefilteredPersec">
+                <expression><![CDATA[QueriesfromcachefilteredPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesfromfilePersec">
+                <expression><![CDATA[QueriesfromfilePersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRowssentPersec">
+                <expression><![CDATA[RowssentPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytessentPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalBytessentPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DatabytesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDatabytesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DatareadsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDatareadsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensionqueriesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDimensionqueriesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MapbytesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMapbytesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MapreadsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMapreadsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MeasuregroupqueriesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMeasuregroupqueriesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NetworkroundtripsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalNetworkroundtripsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesansweredPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesansweredPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesfromcachedirectPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesfromcachedirectPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesfromcachefilteredPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesfromcachefilteredPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesfromfilePersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesfromfilePersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowssentPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalRowssentPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="AvgtimePerquery" dataType="LONG" />
+              <columnDataType columnName="BytessentPersec" dataType="DOUBLE" />
+              <columnDataType columnName="Currentdimensionqueries" dataType="LONG" />
+              <columnDataType columnName="Currentmeasuregroupqueries" dataType="LONG" />
+              <columnDataType columnName="DatabytesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DatareadsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DimensioncachehitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DimensioncachelookupsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DimensionqueriesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MapbytesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MapreadsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MeasuregroupcachehitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MeasuregroupqueriesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="NetworkroundtripsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesansweredPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesfromcachedirectPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesfromcachefilteredPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesfromfilePersec" dataType="DOUBLE" />
+              <columnDataType columnName="RowssentPersec" dataType="DOUBLE" />
+              <columnDataType columnName="Totalbytessent" dataType="LONG" />
+              <columnDataType columnName="Totaldimensionqueries" dataType="LONG" />
+              <columnDataType columnName="Totalmeasuregroupqueries" dataType="LONG" />
+              <columnDataType columnName="Totalnetworkroundtrips" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesanswered" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesfromcachedirect" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesfromcachefiltered" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesfromfile" dataType="LONG" />
+              <columnDataType columnName="Totalrowssent" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT AggregationhitsPersec, AggregationlookupsPersec, AvgtimePerquery, BytessentPersec, CalculationcachehitsPersec, 
+CalculationcachelookupsPersec, Currentdimensionqueries, Currentmeasuregroupqueries, DatabytesPersec, DatareadsPersec, 
+DimensioncachehitsPersec, DimensioncachelookupsPersec, DimensionqueriesPersec, FlatcachehitsPersec, FlatcachelookupsPersec, 
+MapbytesPersec, MapreadsPersec, MeasuregroupcachehitsPersec, MeasuregroupcachelookupsPersec, MeasuregroupqueriesPersec,  
+NetworkroundtripsPersec, PersistedcachehitsPersec, PersistedcachelookupsPersec, QueriesansweredPersec, 
+QueriesfromcachedirectPersec, QueriesfromcachefilteredPersec, QueriesfromfilePersec, RowssentPersec, Totalbytessent, 
+Totaldimensionqueries, Totalmeasuregroupqueries, Totalnetworkroundtrips, Totalqueriesanswered, Totalqueriesfromcachedirect, 
+Totalqueriesfromcachefiltered, Totalqueriesfromfile, Totalrowssent 
+FROM {{WMIClassName.Name}}StorageEngineQuery]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="AvgtimePerquery">
+                <expression><![CDATA[AvgtimePerquery]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentdimensionqueries">
+                <expression><![CDATA[Currentdimensionqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentmeasuregroupqueries">
+                <expression><![CDATA[Currentmeasuregroupqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalbytessent">
+                <expression><![CDATA[Totalbytessent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totaldimensionqueries">
+                <expression><![CDATA[Totaldimensionqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalmeasuregroupqueries">
+                <expression><![CDATA[Totalmeasuregroupqueries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalnetworkroundtrips">
+                <expression><![CDATA[Totalnetworkroundtrips]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesanswered">
+                <expression><![CDATA[Totalqueriesanswered]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesfromcachedirect">
+                <expression><![CDATA[Totalqueriesfromcachedirect]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesfromcachefiltered">
+                <expression><![CDATA[Totalqueriesfromcachefiltered]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalqueriesfromfile">
+                <expression><![CDATA[Totalqueriesfromfile]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalrowssent">
+                <expression><![CDATA[Totalrowssent]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalAggregationhitsPersec">
+                <expression><![CDATA[DatareadsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalAggregationlookupsPersec">
+                <expression><![CDATA[AggregationlookupsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalBytessentPersec">
+                <expression><![CDATA[BytessentPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalCalculationcachehitsPersec">
+                <expression><![CDATA[CalculationcachehitsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalCalculationcachelookupsPersec">
+                <expression><![CDATA[CalculationcachelookupsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDatabytesPersec">
+                <expression><![CDATA[DatabytesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDatareadsPersec">
+                <expression><![CDATA[DatareadsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDimensioncachehitsPersec">
+                <expression><![CDATA[DimensioncachehitsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDimensioncachelookupsPersec">
+                <expression><![CDATA[DimensioncachelookupsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDimensionqueriesPersec">
+                <expression><![CDATA[DimensionqueriesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFlatcachehitsPersec">
+                <expression><![CDATA[FlatcachehitsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalFlatcachelookupsPersec">
+                <expression><![CDATA[FlatcachelookupsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMapbytesPersec">
+                <expression><![CDATA[MapbytesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMapreadsPersec">
+                <expression><![CDATA[MapreadsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMeasuregroupcachehitsPersec">
+                <expression><![CDATA[MeasuregroupcachehitsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMeasuregroupcachelookupsPersec">
+                <expression><![CDATA[MeasuregroupcachelookupsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMeasuregroupqueriesPersec">
+                <expression><![CDATA[MeasuregroupqueriesPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalNetworkroundtripsPersec">
+                <expression><![CDATA[NetworkroundtripsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalPersistedcachehitsPersec">
+                <expression><![CDATA[PersistedcachehitsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalPersistedcachelookupsPersec">
+                <expression><![CDATA[PersistedcachelookupsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesansweredPersec">
+                <expression><![CDATA[QueriesansweredPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesfromcachedirectPersec">
+                <expression><![CDATA[QueriesfromcachedirectPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesfromcachefilteredPersec">
+                <expression><![CDATA[QueriesfromcachefilteredPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalQueriesfromfilePersec">
+                <expression><![CDATA[QueriesfromfilePersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRowssentPersec">
+                <expression><![CDATA[RowssentPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AggregationhitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalAggregationhitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="AggregationlookupsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalAggregationlookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytessentPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalBytessentPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CalculationcachehitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalCalculationcachehitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CalculationcachelookupsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalCalculationcachelookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DatabytesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDatabytesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DatareadsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDatareadsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensioncachehitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDimensioncachehitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensioncachelookupsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDimensioncachelookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DimensionqueriesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalDimensionqueriesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FlatcachehitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalFlatcachehitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FlatcachelookupsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalFlatcachelookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MapbytesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMapbytesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MapreadsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMapreadsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MeasuregroupcachehitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMeasuregroupcachehitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MeasuregroupcachelookupsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMeasuregroupcachelookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MeasuregroupqueriesPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalMeasuregroupqueriesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NetworkroundtripsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalNetworkroundtripsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PersistedcachehitsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalPersistedcachehitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PersistedcachelookupsPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalPersistedcachelookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesansweredPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesansweredPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesfromcachedirectPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesfromcachedirectPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesfromcachefilteredPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesfromcachefilteredPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="QueriesfromfilePersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalQueriesfromfilePersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowssentPersec">
+                <expression><![CDATA[positiveRate(AnalysisStorageEngineQuery.InternalRowssentPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="AggregationhitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="AggregationlookupsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="AvgtimePerquery" dataType="LONG" />
+              <columnDataType columnName="BytessentPersec" dataType="DOUBLE" />
+              <columnDataType columnName="CalculationcachehitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="CalculationcachelookupsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="Currentdimensionqueries" dataType="LONG" />
+              <columnDataType columnName="Currentmeasuregroupqueries" dataType="LONG" />
+              <columnDataType columnName="DatabytesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DatareadsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DimensioncachehitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DimensioncachelookupsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="DimensionqueriesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FlatcachehitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="FlatcachelookupsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MapbytesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MapreadsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MeasuregroupcachehitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MeasuregroupcachelookupsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="MeasuregroupqueriesPersec" dataType="DOUBLE" />
+              <columnDataType columnName="NetworkroundtripsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="PersistedcachehitsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="PersistedcachelookupsPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesansweredPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesfromcachedirectPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesfromcachefilteredPersec" dataType="DOUBLE" />
+              <columnDataType columnName="QueriesfromfilePersec" dataType="DOUBLE" />
+              <columnDataType columnName="RowssentPersec" dataType="DOUBLE" />
+              <columnDataType columnName="Totalbytessent" dataType="LONG" />
+              <columnDataType columnName="Totaldimensionqueries" dataType="LONG" />
+              <columnDataType columnName="Totalmeasuregroupqueries" dataType="LONG" />
+              <columnDataType columnName="Totalnetworkroundtrips" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesanswered" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesfromcachedirect" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesfromcachefiltered" dataType="LONG" />
+              <columnDataType columnName="Totalqueriesfromfile" dataType="LONG" />
+              <columnDataType columnName="Totalrowssent" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

@@ -1,0 +1,93 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Logical Disk Drive" name="LogicalDiskDrive">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">logicaldiskdrive</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_LogicalDiskDrive" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DeviceID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="DeviceID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="VolumeName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="FileSystem" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="FreeSpace" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Size" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Compressed" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Host" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="diagnostic_server" persistedToLongTermHistory="false" persistedToShortTermHistory="false" sentToProjectLucy="true" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT DeviceID, VolumeName, FileSystem, FreeSpace, Size, Compressed
+  FROM   Win32_LogicalDisk
+  WHERE  DriveType = 3]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DeviceID">
+                <expression><![CDATA[DeviceID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VolumeName">
+                <expression><![CDATA[VolumeName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FileSystem">
+                <expression><![CDATA[FileSystem]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeSpace">
+                <expression><![CDATA[FreeSpace]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Size">
+                <expression><![CDATA[Size]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Compressed">
+                <expression><![CDATA[Compressed]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Host">
+                <expression><![CDATA[createMEDisplayNameColumn(LogicalDiskDrive.DeviceID)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="diagnostic_server">
+                <expression><![CDATA[createDSDomainIDColumn(LogicalDiskDrive.DeviceID)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DeviceID" dataType="STRING" />
+              <columnDataType columnName="VolumeName" dataType="STRING" />
+              <columnDataType columnName="FileSystem" dataType="STRING" />
+              <columnDataType columnName="FreeSpace" dataType="STRING" />
+              <columnDataType columnName="Size" dataType="STRING" />
+              <columnDataType columnName="Compressed" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

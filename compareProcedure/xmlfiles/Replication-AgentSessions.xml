@@ -1,0 +1,187 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Replication Agent Sessions" name="AgentSessions">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">replication</fragment>
+    <fragment type="PROCEDURE">agentsessions</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="time" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="runstatus" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="time" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="comments" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="duration" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="delivery_rate" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivery_latency" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivery_time" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivered_transactions" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="delivered_commands" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="average_commands" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="action_count" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="error_id" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="transactions_processed" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="commands_processed" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="publication_id" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="download_inserts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="download_updates" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="download_deletes" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="download_conflicts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="upload_inserts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="upload_updates" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="upload_deletes" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="upload_conflicts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="status" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="StartTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="EndTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>agent</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="agent" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="ReplicationConnection" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[agentsessions
+agent={{agent}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">replication</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="runstatus">
+                <expression><![CDATA[runstatus]]></expression>
+              </columnExpression>
+              <columnExpression columnName="comments">
+                <expression><![CDATA[comments]]></expression>
+              </columnExpression>
+              <columnExpression columnName="duration">
+                <expression><![CDATA[duration]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivery_rate">
+                <expression><![CDATA[delivery_rate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivery_latency">
+                <expression><![CDATA[delivery_latency]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivery_time">
+                <expression><![CDATA[delivery_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivered_transactions">
+                <expression><![CDATA[iff (delivered_transactions < 0, 4294967296l + delivered_transactions, delivered_transactions)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="delivered_commands">
+                <expression><![CDATA[iff (delivered_commands < 0, 4294967296l + delivered_commands, delivered_commands)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="average_commands">
+                <expression><![CDATA[average_commands]]></expression>
+              </columnExpression>
+              <columnExpression columnName="action_count">
+                <expression><![CDATA[action_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="error_id">
+                <expression><![CDATA[error_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="transactions_processed">
+                <expression><![CDATA[transactions_processed]]></expression>
+              </columnExpression>
+              <columnExpression columnName="commands_processed">
+                <expression><![CDATA[commands_processed]]></expression>
+              </columnExpression>
+              <columnExpression columnName="publication_id">
+                <expression><![CDATA[publication_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="download_inserts">
+                <expression><![CDATA[download_inserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="download_updates">
+                <expression><![CDATA[download_updates]]></expression>
+              </columnExpression>
+              <columnExpression columnName="download_deletes">
+                <expression><![CDATA[download_deletes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="download_conflicts">
+                <expression><![CDATA[download_conflicts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="upload_inserts">
+                <expression><![CDATA[upload_inserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="upload_updates">
+                <expression><![CDATA[upload_updates]]></expression>
+              </columnExpression>
+              <columnExpression columnName="upload_deletes">
+                <expression><![CDATA[upload_deletes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="upload_conflicts">
+                <expression><![CDATA[upload_conflicts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="status">
+                <expression><![CDATA[choose(runstatus, 1, "Started", 2, "Completed", 3, "Running", 4, "Idle", 5, "Retrying", 6, "Error")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="StartTime">
+                <expression><![CDATA[parseDate("yyyyMMdd HH:mm:ss.SSS", start_time)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="EndTime">
+                <expression><![CDATA[parseDate("yyyyMMdd HH:mm:ss.SSS", time)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="time">
+                <expression><![CDATA[iff(time == "0", iff(runstatus == 3, null, start_time),  time)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="runstatus" dataType="LONG" />
+              <columnDataType columnName="start_time" dataType="STRING" />
+              <columnDataType columnName="time" dataType="STRING" />
+              <columnDataType columnName="comments" dataType="STRING" />
+              <columnDataType columnName="duration" dataType="LONG" />
+              <columnDataType columnName="delivery_rate" dataType="DOUBLE" />
+              <columnDataType columnName="delivery_latency" dataType="LONG" />
+              <columnDataType columnName="delivery_time" dataType="LONG" />
+              <columnDataType columnName="delivered_transactions" dataType="LONG" />
+              <columnDataType columnName="delivered_commands" dataType="LONG" />
+              <columnDataType columnName="average_commands" dataType="DOUBLE" />
+              <columnDataType columnName="action_count" dataType="LONG" />
+              <columnDataType columnName="error_id" dataType="LONG" />
+              <columnDataType columnName="transactions_processed" dataType="LONG" />
+              <columnDataType columnName="commands_processed" dataType="LONG" />
+              <columnDataType columnName="publication_id" dataType="LONG" />
+              <columnDataType columnName="download_inserts" dataType="LONG" />
+              <columnDataType columnName="download_updates" dataType="LONG" />
+              <columnDataType columnName="download_deletes" dataType="LONG" />
+              <columnDataType columnName="download_conflicts" dataType="LONG" />
+              <columnDataType columnName="upload_inserts" dataType="LONG" />
+              <columnDataType columnName="upload_updates" dataType="LONG" />
+              <columnDataType columnName="upload_deletes" dataType="LONG" />
+              <columnDataType columnName="upload_conflicts" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

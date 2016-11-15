@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Update Replication Version" name="UpdateReplicationVersion">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">replication</fragment>
+      <fragment type="PROCEDURE">updatereplicationversion</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="30">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">replication</fragment>
+                     <fragment type="PROCEDURE">replicationversion</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList"/>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="30000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[try:
+	VersionTable = GetOrExecute(ReplicationVersion, {"persistent" : "true"}, 30);
+	if length(VersionTable.Major) == 1:
+		sqlVersion = VersionTable.Major[0];
+		sqlBuild = int(VersionTable.BuildNumber[0]);
+		fullVersion = VersionTable.Major[0] + "." + VersionTable.Minor[0] + "." + VersionTable.BuildNumber[0]
+		if sqlVersion == "8":
+			#setError( 1, "SQL Server version 2000 is not supported");
+			setVersion("2000", fullVersion);
+		elif sqlVersion == "9":
+			setVersion("2005", fullVersion);
+		elif sqlVersion == "10":
+			setVersion("2008", fullVersion);
+		elif sqlVersion == "11":
+			if sqlBuild >= 9120:
+				setVersion("2014", fullVersion);
+			else:
+				setVersion("2011", fullVersion);
+		elif sqlVersion == "12":
+			setVersion("2014", fullVersion);
+		elif sqlVersion == "13":
+			setVersion("2016", fullVersion);
+		else:
+			setError( 1, "SQL Server version %s is not supported" % fullVersion );
+except RuntimeError, ex:
+	setError(1, "{0}", ex.args);]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">replication</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList"/>
+                  <outputColumnDataTypeList class="java.util.ArrayList"/>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

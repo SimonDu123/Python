@@ -1,0 +1,466 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Processes" name="Processes">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">processes</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_Processes" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="NameAndID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="15000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="86400">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">windows</fragment>
+              <fragment type="PROCEDURE">processordetails</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Instance" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ParentId" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PhysMemoryBytes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="VirtualMemoryBytes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PctProcessor" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PctUser" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PctKernel" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ElapsedTime" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Handles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Threads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Priority" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="PageFaultsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="ReadsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="WritesPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="IODataBytesPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="IODataOperationsPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="IOOtherBytesPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="IOOtherOperationsPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="IOReadBytesPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="IOWriteBytesPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PageFileBytes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PageFileBytesPeak" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PoolNonpagedBytes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PoolPagedBytes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PrivateBytes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PeakPhysMemoryBytes" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PeakVirtualMemoryBytes" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PrivateBytesDelta" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="WorkingSetDelta" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="NegativeWorkingSets" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="NameAndID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="CommandLine" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SessionId" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="KernelModeTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="UserModeTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="PageFaults" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="VirtualMemoryMB" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ReadOperationCount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="WriteOperationCount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="OtherOperationCount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ReadTransferCount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="WriteTransferCount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="OtherTransferCount" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="RunWMIQuery" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT * FROM Win32_Process]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Instance">
+                <expression><![CDATA[Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PID">
+                <expression><![CDATA[ProcessId]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NameAndID">
+                <expression><![CDATA[concat(Instance, " (", PID, ")")]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PhysMemoryBytes">
+                <expression><![CDATA[WorkingSetSize]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VirtualMemoryBytes">
+                <expression><![CDATA[VirtualSize]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PeakPhysMemoryBytes">
+                <expression><![CDATA[PeakWorkingSetSize * 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PeakVirtualMemoryBytes">
+                <expression><![CDATA[PeakVirtualSize]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KernelModeTime">
+                <expression><![CDATA[KernelModeTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctKernel">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UserModeTime">
+                <expression><![CDATA[UserModeTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctUser">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctProcessor">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Handles">
+                <expression><![CDATA[HandleCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Threads">
+                <expression><![CDATA[ThreadCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Priority">
+                <expression><![CDATA[Priority]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFaults">
+                <expression><![CDATA[PageFaults]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFaultsPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ParentId">
+                <expression><![CDATA[ParentProcessId]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFileBytes">
+                <expression><![CDATA[PageFileUsage * 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFileBytesPeak">
+                <expression><![CDATA[PeakPageFileUsage * 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PoolNonpagedBytes">
+                <expression><![CDATA[QuotaNonpagedPoolUsage * 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PoolPagedBytes">
+                <expression><![CDATA[QuotaPagedPoolUsage * 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PrivateBytes">
+                <expression><![CDATA[PrivatePageCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PrivateBytesDelta">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WorkingSetDelta">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NegativeWorkingSets">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandLine">
+                <expression><![CDATA[CommandLine]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionId">
+                <expression><![CDATA[SessionId]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReadOperationCount">
+                <expression><![CDATA[ReadOperationCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReadsPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WriteOperationCount">
+                <expression><![CDATA[WriteOperationCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WritesPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OtherOperationCount">
+                <expression><![CDATA[OtherOperationCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOOtherOperationsPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IODataOperationsPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReadTransferCount">
+                <expression><![CDATA[ReadTransferCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOReadBytesPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WriteTransferCount">
+                <expression><![CDATA[WriteTransferCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOWriteBytesPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OtherTransferCount">
+                <expression><![CDATA[OtherTransferCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOOtherBytesPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IODataBytesPerSec">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ElapsedTime">
+                <expression><![CDATA[iff(CreationDate=="", null, (now() - fromWMIDate(CreationDate)) / 1000)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VirtualMemoryMB">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Name" dataType="STRING" />
+              <columnDataType columnName="ProcessId" dataType="LONG" />
+              <columnDataType columnName="ParentProcessId" dataType="LONG" />
+              <columnDataType columnName="WorkingSetSize" dataType="LONG" />
+              <columnDataType columnName="VirtualSize" dataType="LONG" />
+              <columnDataType columnName="PeakWorkingSetSize" dataType="LONG" />
+              <columnDataType columnName="PeakVirtualSize" dataType="LONG" />
+              <columnDataType columnName="KernelModeTime" dataType="LONG" />
+              <columnDataType columnName="UserModeTime" dataType="LONG" />
+              <columnDataType columnName="CreationDate" dataType="STRING" />
+              <columnDataType columnName="HandleCount" dataType="LONG" />
+              <columnDataType columnName="ThreadCount" dataType="LONG" />
+              <columnDataType columnName="Priority" dataType="LONG" />
+              <columnDataType columnName="PageFaults" dataType="LONG" />
+              <columnDataType columnName="ReadOperationCount" dataType="LONG" />
+              <columnDataType columnName="WriteOperationCount" dataType="LONG" />
+              <columnDataType columnName="OtherOperationCount" dataType="LONG" />
+              <columnDataType columnName="ReadTransferCount" dataType="LONG" />
+              <columnDataType columnName="WriteTransferCount" dataType="LONG" />
+              <columnDataType columnName="OtherTransferCount" dataType="LONG" />
+              <columnDataType columnName="PageFileUsage" dataType="LONG" />
+              <columnDataType columnName="PeakPageFileUsage" dataType="LONG" />
+              <columnDataType columnName="QuotaNonpagedPoolUsage" dataType="LONG" />
+              <columnDataType columnName="QuotaPagedPoolUsage" dataType="LONG" />
+              <columnDataType columnName="PrivatePageCount" dataType="LONG" />
+              <columnDataType columnName="CommandLine" dataType="STRING" />
+              <columnDataType columnName="SessionId" dataType="LONG" />
+              <columnDataType columnName="Domain" dataType="STRING" />
+              <columnDataType columnName="User" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[processesTable = Processes.execute({"queryName" : "RunWMIQuery", "reset" : "true"});
+if (length(processesTable._exit) == 0):
+	setError(-2, "Exit column not found");
+elif (processesTable._exit[0] != 0):
+	setError(processesTable._errorCode[0], processesTable._errorText[0]);
+else:
+	copyresults(processesTable);]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Instance">
+                <expression><![CDATA[Instance]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PID">
+                <expression><![CDATA[PID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NameAndID">
+                <expression><![CDATA[NameAndID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PhysMemoryBytes">
+                <expression><![CDATA[PhysMemoryBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VirtualMemoryBytes">
+                <expression><![CDATA[VirtualMemoryBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PeakPhysMemoryBytes">
+                <expression><![CDATA[PeakPhysMemoryBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PeakVirtualMemoryBytes">
+                <expression><![CDATA[PeakVirtualMemoryBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KernelModeTime">
+                <expression><![CDATA[KernelModeTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctKernel">
+                <expression><![CDATA[iff(count(ProcessorDetails.NumCPUs)==0,"",positiveRate(Processes.KernelModeTime) / 100000 / ProcessorDetails.NumCPUs[0])]]></expression>
+              </columnExpression>
+              <columnExpression columnName="UserModeTime">
+                <expression><![CDATA[UserModeTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctUser">
+                <expression><![CDATA[iff(count(ProcessorDetails.NumCPUs)==0,"",positiveRate(Processes.UserModeTime) / 100000 / ProcessorDetails.NumCPUs[0])]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PctProcessor">
+                <expression><![CDATA[min(100, PctKernel + PctUser)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Handles">
+                <expression><![CDATA[Handles]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Threads">
+                <expression><![CDATA[Threads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Priority">
+                <expression><![CDATA[Priority]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFaults">
+                <expression><![CDATA[PageFaults]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFaultsPerSec">
+                <expression><![CDATA[positiveRate(Processes.PageFaults)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ParentId">
+                <expression><![CDATA[ParentId]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFileBytes">
+                <expression><![CDATA[PageFileBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PageFileBytesPeak">
+                <expression><![CDATA[PageFileBytesPeak]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PoolNonpagedBytes">
+                <expression><![CDATA[PoolNonpagedBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PoolPagedBytes">
+                <expression><![CDATA[PoolPagedBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PrivateBytes">
+                <expression><![CDATA[PrivateBytes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="PrivateBytesDelta">
+                <expression><![CDATA[positiveDelta(Processes.PrivateBytes)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WorkingSetDelta">
+                <expression><![CDATA[positiveDelta(Processes.PhysMemoryBytes)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NegativeWorkingSets">
+                <expression><![CDATA[WorkingSetDelta < 0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CommandLine">
+                <expression><![CDATA[CommandLine]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SessionId">
+                <expression><![CDATA[SessionId]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReadOperationCount">
+                <expression><![CDATA[ReadOperationCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReadsPerSec">
+                <expression><![CDATA[positiveRate(Processes.ReadOperationCount)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WriteOperationCount">
+                <expression><![CDATA[WriteOperationCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WritesPerSec">
+                <expression><![CDATA[positiveRate(Processes.WriteOperationCount)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OtherOperationCount">
+                <expression><![CDATA[OtherOperationCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOOtherOperationsPerSec">
+                <expression><![CDATA[positiveRate(Processes.OtherOperationCount)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IODataOperationsPerSec">
+                <expression><![CDATA[ReadsPerSec + WritesPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReadTransferCount">
+                <expression><![CDATA[ReadTransferCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOReadBytesPerSec">
+                <expression><![CDATA[positiveRate(Processes.ReadTransferCount)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="WriteTransferCount">
+                <expression><![CDATA[WriteTransferCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOWriteBytesPerSec">
+                <expression><![CDATA[positiveRate(Processes.WriteTransferCount)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OtherTransferCount">
+                <expression><![CDATA[OtherTransferCount]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IOOtherBytesPerSec">
+                <expression><![CDATA[positiveRate(Processes.OtherTransferCount)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IODataBytesPerSec">
+                <expression><![CDATA[IOReadBytesPerSec + IOWriteBytesPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ElapsedTime">
+                <expression><![CDATA[ElapsedTime]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VirtualMemoryMB">
+                <expression><![CDATA[VirtualMemoryBytes / 1024 / 1024]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Instance" dataType="STRING" />
+              <columnDataType columnName="PID" dataType="LONG" />
+              <columnDataType columnName="ParentId" dataType="LONG" />
+              <columnDataType columnName="PhysMemoryBytes" dataType="LONG" />
+              <columnDataType columnName="VirtualMemoryBytes" dataType="LONG" />
+              <columnDataType columnName="PctProcessor" dataType="DOUBLE" />
+              <columnDataType columnName="PctUser" dataType="DOUBLE" />
+              <columnDataType columnName="PctKernel" dataType="DOUBLE" />
+              <columnDataType columnName="ElapsedTime" dataType="DOUBLE" />
+              <columnDataType columnName="Handles" dataType="LONG" />
+              <columnDataType columnName="Threads" dataType="LONG" />
+              <columnDataType columnName="Priority" dataType="LONG" />
+              <columnDataType columnName="PageFaultsPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="ReadsPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="WritesPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="IODataBytesPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="IODataOperationsPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="IOOtherBytesPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="IOOtherOperationsPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="IOReadBytesPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="IOWriteBytesPerSec" dataType="DOUBLE" />
+              <columnDataType columnName="PageFileBytes" dataType="LONG" />
+              <columnDataType columnName="PageFileBytesPeak" dataType="LONG" />
+              <columnDataType columnName="PoolNonpagedBytes" dataType="LONG" />
+              <columnDataType columnName="PoolPagedBytes" dataType="LONG" />
+              <columnDataType columnName="PrivateBytes" dataType="LONG" />
+              <columnDataType columnName="PeakPhysMemoryBytes" dataType="LONG" />
+              <columnDataType columnName="PeakVirtualMemoryBytes" dataType="LONG" />
+              <columnDataType columnName="PrivateBytesDelta" dataType="LONG" />
+              <columnDataType columnName="WorkingSetDelta" dataType="LONG" />
+              <columnDataType columnName="NegativeWorkingSets" dataType="BOOLEAN" />
+              <columnDataType columnName="NameAndID" dataType="STRING" />
+              <columnDataType columnName="CommandLine" dataType="STRING" />
+              <columnDataType columnName="SessionId" dataType="LONG" />
+              <columnDataType columnName="KernelModeTime" dataType="LONG" />
+              <columnDataType columnName="UserModeTime" dataType="LONG" />
+              <columnDataType columnName="PageFaults" dataType="LONG" />
+              <columnDataType columnName="VirtualMemoryMB" dataType="DOUBLE" />
+              <columnDataType columnName="ReadOperationCount" dataType="LONG" />
+              <columnDataType columnName="WriteOperationCount" dataType="LONG" />
+              <columnDataType columnName="OtherOperationCount" dataType="LONG" />
+              <columnDataType columnName="ReadTransferCount" dataType="LONG" />
+              <columnDataType columnName="WriteTransferCount" dataType="LONG" />
+              <columnDataType columnName="OtherTransferCount" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="5">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="7200000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

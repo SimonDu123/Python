@@ -1,0 +1,96 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Processing" name="AnalysisProcessing">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisprocessing</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="DOUBLE" name="RowsconvertedPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="RowsreadPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="RowswrittenPersec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalrowsconverted" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalrowsread" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalrowswritten" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalRowsconvertedPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalRowsreadPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalRowswrittenPersec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT RowsconvertedPersec, RowsreadPersec, RowswrittenPersec, Totalrowsconverted, Totalrowsread, Totalrowswritten   
+FROM {{WMIClassName.Name}}Processing]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Totalrowsconverted">
+                <expression><![CDATA[Totalrowsconverted]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalrowsread">
+                <expression><![CDATA[Totalrowsread]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalrowswritten">
+                <expression><![CDATA[Totalrowswritten]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRowsconvertedPersec">
+                <expression><![CDATA[RowsconvertedPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRowsreadPersec">
+                <expression><![CDATA[RowsreadPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalRowswrittenPersec">
+                <expression><![CDATA[RowswrittenPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowsconvertedPersec">
+                <expression><![CDATA[positiveRate(AnalysisProcessing.InternalRowsconvertedPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowsreadPersec">
+                <expression><![CDATA[positiveRate(AnalysisProcessing.InternalRowsreadPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RowswrittenPersec">
+                <expression><![CDATA[positiveRate(AnalysisProcessing.InternalRowswrittenPersec)]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="RowsconvertedPersec" dataType="DOUBLE" />
+              <columnDataType columnName="RowsreadPersec" dataType="DOUBLE" />
+              <columnDataType columnName="RowswrittenPersec" dataType="DOUBLE" />
+              <columnDataType columnName="Totalrowsconverted" dataType="LONG" />
+              <columnDataType columnName="Totalrowsread" dataType="LONG" />
+              <columnDataType columnName="Totalrowswritten" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

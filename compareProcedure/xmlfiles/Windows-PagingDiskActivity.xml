@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Paging Disk Activity" name="PagingDiskActivity">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">pagingdiskactivity</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_PagingDiskActivity" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Disk" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="300">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">memory</fragment>
+                  </procedurePath>
+               </procedureDependency>
+               <procedureDependency recencyOfExecutionSeconds="300">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">physicaldisks</fragment>
+                  </procedurePath>
+               </procedureDependency>
+               <procedureDependency recencyOfExecutionSeconds="86400">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">windows</fragment>
+                     <fragment type="PROCEDURE">pagingfilelocations</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">pagingdiskwithhighio</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="Disk" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PctBusy" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="PctBusyIncludingPaging" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="PagingFiles" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="DiskID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[#
+# Paging is considered "active" if there is activity in the
+# total pages managed per second. We only report PctBusy if
+# paging is not active because otherwise it could well
+# account for that activity. If paging is active, the
+# PctBusyIncludingPaging column is filled in instead.
+#
+pagingTable = Memory.getOrExecute(300)
+ioTable = PhysicalDisks.getOrExecute(300);
+if length(ioTable.Name) < 2:
+	# no point alarming if only one physical disk exists
+	result.Disk.append( "" );
+	result.PctBusy.append( 0 );
+	result.PctBusyIncludingPaging.append( 0 );
+else:
+	# make sure PctBusy column is populated (first refresh issue)
+	if length(ioTable.PctBusy) != length(ioTable.Name):
+		ioTable = PhysicalDisks.Execute();
+
+	locationTable = PagingFileLocations.getOrExecute(86400);
+	n = 0;
+	ltSize = length(locationTable.Disk);
+	if length(pagingTable.totalpagespersec) > 0:
+		while n < ltSize:
+			disk = locationTable.Disk[n];
+			i = 0;
+			ioSize = length(ioTable.PctBusy);
+			while i < ioSize:
+				if disk == ioTable.Name[i]:
+					parts = disk.split();
+					if length(parts) > 0:
+						result.DiskID.append( float(parts[0]) );
+						result.Disk.append( disk );
+						result.PagingFiles.append( locationTable.PagingFiles[n] );
+						# if paging is active, use PctBusyIncludingPaging column instead
+						if pagingTable.totalpagespersec >= 20:
+							result.PctBusy.append( 0 );
+							# ideally we should only fill in a non-zero value here
+							# if this particular paging file has seen activity
+							result.PctBusyIncludingPaging.append( ioTable.PctBusy[i] );
+						else:
+							result.PctBusy.append( ioTable.PctBusy[i] );
+							result.PctBusyIncludingPaging.append( 0 );
+				i += 1;
+			n += 1;]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Disk">
+                        <expression><![CDATA[Disk]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PagingFiles">
+                        <expression><![CDATA[PagingFiles]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PctBusy">
+                        <expression><![CDATA[min(100, max(0, PctBusy))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DiskID">
+                        <expression><![CDATA[DiskID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PctBusyIncludingPaging">
+                        <expression><![CDATA[PctBusyIncludingPaging]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Disk" dataType="STRING"/>
+                     <columnDataType columnName="PctBusy" dataType="DOUBLE"/>
+                     <columnDataType columnName="PctBusyIncludingPaging" dataType="DOUBLE"/>
+                     <columnDataType columnName="PagingFiles" dataType="STRING"/>
+                     <columnDataType columnName="DiskId" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

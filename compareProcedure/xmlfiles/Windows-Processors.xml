@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Processors" name="Processors">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">windows</fragment>
+      <fragment type="PROCEDURE">processors</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="true" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_Processors" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">cpu</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">windows</fragment>
+                  <fragment type="RULE">individualcpu</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="Name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="IdlePct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KernelPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="UserPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="TotalPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="AvgIdlePct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="AvgKernelPct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="AvgUserPct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="AvgTotalPct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="InterruptsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Interrupts" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="InterruptTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PrivilegedTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="UserTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="InterruptPct" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Instance" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="IdleTime" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="VMWaitPct" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT  InterruptsPerSec, Name, PercentInterruptTime, PercentPrivilegedTime, PercentUserTime, PercentIdleTime 
+FROM    Win32_PerfRawData_PerfOS_Processor 
+WHERE   Name <> "_Total"]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Interrupts">
+                        <expression><![CDATA[InterruptsPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="InterruptTime">
+                        <expression><![CDATA[PercentInterruptTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PrivilegedTime">
+                        <expression><![CDATA[PercentPrivilegedTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UserTime">
+                        <expression><![CDATA[PercentUserTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IdleTime">
+                        <expression><![CDATA[PercentIdleTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="InterruptsPerSec">
+                        <expression><![CDATA[positiveRate(Processors.Interrupts)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="InterruptPct">
+                        <expression><![CDATA[positiveRate(Processors.InterruptTime) / 100000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KernelPct">
+                        <expression><![CDATA[positiveRate(Processors.PrivilegedTime) / 100000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UserPct">
+                        <expression><![CDATA[positiveRate(Processors.UserTime) / 100000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IdlePct">
+                        <expression><![CDATA[positiveRate(Processors.IdleTime) / 100000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="VMWaitPct">
+                        <expression><![CDATA[max(0, 100-InterruptPct-KernelPct-UserPct-IdlePct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalPct">
+                        <expression><![CDATA[min(100, (InterruptPct+KernelPct+UserPct)/(100-VMWaitPct)*100)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgIdlePct">
+                        <expression><![CDATA[avg(Processors.IdlePct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgUserPct">
+                        <expression><![CDATA[avg(Processors.UserPct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgKernelPct">
+                        <expression><![CDATA[avg(Processors.KernelPct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgTotalPct">
+                        <expression><![CDATA[avg(Processors.TotalPct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Instance">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="InterruptsPerSec" dataType="LONG"/>
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="PercentInterruptTime" dataType="LONG"/>
+                     <columnDataType columnName="PercentPrivilegedTime" dataType="LONG"/>
+                     <columnDataType columnName="PercentUserTime" dataType="LONG"/>
+                     <columnDataType columnName="PercentIdleTime" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SELECT  InterruptsPerSec, Name, PercentInterruptTime, PercentPrivilegedTime, PercentUserTime 
+FROM    Win32_PerfRawData_PerfOS_Processor 
+WHERE   Name <> "_Total"]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">windows</fragment>
+                        <fragment type="TECHNOLOGY">2000</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="Name">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Interrupts">
+                        <expression><![CDATA[InterruptsPerSec]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="InterruptTime">
+                        <expression><![CDATA[PercentInterruptTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PrivilegedTime">
+                        <expression><![CDATA[PercentPrivilegedTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UserTime">
+                        <expression><![CDATA[PercentUserTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IdleTime">
+                        <expression><![CDATA[0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="InterruptsPerSec">
+                        <expression><![CDATA[positiveRate(Processors.Interrupts)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="InterruptPct">
+                        <expression><![CDATA[positiveRate(Processors.InterruptTime) / 100000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KernelPct">
+                        <expression><![CDATA[positiveRate(Processors.PrivilegedTime) / 100000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="UserPct">
+                        <expression><![CDATA[positiveRate(Processors.UserTime) / 100000]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IdlePct">
+                        <expression><![CDATA[100-InterruptPct-KernelPct-UserPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="VMWaitPct">
+                        <expression><![CDATA[0]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TotalPct">
+                        <expression><![CDATA[InterruptPct+KernelPct+UserPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgIdlePct">
+                        <expression><![CDATA[avg(Processors.IdlePct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgUserPct">
+                        <expression><![CDATA[avg(Processors.UserPct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgKernelPct">
+                        <expression><![CDATA[avg(Processors.KernelPct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="AvgTotalPct">
+                        <expression><![CDATA[avg(Processors.TotalPct)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Instance">
+                        <expression><![CDATA[Name]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="InterruptsPerSec" dataType="LONG"/>
+                     <columnDataType columnName="Name" dataType="STRING"/>
+                     <columnDataType columnName="PercentInterruptTime" dataType="LONG"/>
+                     <columnDataType columnName="PercentPrivilegedTime" dataType="LONG"/>
+                     <columnDataType columnName="PercentUserTime" dataType="LONG"/>
+                     <columnDataType columnName="PercentIdleTime" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="60000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

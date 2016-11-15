@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Hyper-V - Version" name="HyperVVersion">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">hyperv</fragment>
+      <fragment type="PROCEDURE">hypervversion</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="SystemDirectory" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Version" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[displayName = getProperty("displayName");
+sd=HyperVVersion.execute({"queryName" : "getSystemDirectory"});
+if length(sd._exit) > 0:
+	if sd._exit[0] == 0:
+		if length(sd.SystemDirectory) > 0:
+			dssd=doubleSlashes(sd.SystemDirectory[0]);
+			hyperVVersion=HyperVVersion.execute({"queryName" : "getHyperVVersion", "SystemDirectory" : dssd});
+			if length(hyperVVersion._exit) > 0:
+				if hyperVVersion._exit[0] == 0:
+					append(result.SystemDirectory, sd.SystemDirectory[0]);
+					if length(hyperVVersion.Version) > 0:
+						append(result.Version, hyperVVersion.Version[0]);
+				else:
+					setError(hyperVVersion._exit[0], hyperVVersion._errortext[0]);
+			else:
+				setError(6, "HyperV Version Get HyperV Version is not available for the '" + displayName + "' collection : collection failed.");
+		else:
+			setError(3, "Get System Directory failed.");
+	else:
+		setError(sd._exit[0], sd._errortext[0]);
+else:
+	setError(6, "HyperV Version Get System Directory is not available for the '" + displayName + "' collection : collection failed.");]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">hyperv</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="SystemDirectory">
+                        <expression><![CDATA[SystemDirectory]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Version">
+                        <expression><![CDATA[Version]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="SystemDirectory" dataType="STRING"/>
+                     <columnDataType columnName="Version" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="getSystemDirectory" connectionName="HyperV" isScript="false" minimumRefreshInterval="10000">
+                  <properties>
+                     <entry>
+                        <string>singlehost</string>
+                        <property dataType="STRING" description="SingleHost" displayName="SingleHost" encryptStyle="NONE" hidden="true" name="SingleHost">True</property>
+                     </entry>
+                  </properties>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[select SystemDirectory from Win32_OperatingSystem]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">hyperv</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="SystemDirectory">
+                        <expression><![CDATA[SystemDirectory]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Version">
+                        <expression><![CDATA[""]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="SystemDirectory" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+               <queryConfiguration callableName="getHyperVVersion" connectionName="HyperV" isScript="false" minimumRefreshInterval="10000">
+                  <properties>
+                     <entry>
+                        <string>singlehost</string>
+                        <property dataType="STRING" description="SingleHost" displayName="SingleHost" encryptStyle="NONE" hidden="true" name="SingleHost">True</property>
+                     </entry>
+                  </properties>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[select Version from CIM_DATAFILE where name='{{SystemDirectory}}\\vmms.exe']]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">os</fragment>
+                        <fragment type="TECHNOLOGY">hyperv</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="SystemDirectory">
+                        <expression><![CDATA[""]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Version">
+                        <expression><![CDATA[Version]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="Version" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,198 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Logical Disk Drive (internal)" name="GetLogicalDrivesForPhysicalDisk">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">getlogicaldrivesforphysicaldisk</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_LogicalDiskDrive" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DeviceID" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="DeviceID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="VolumeName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="FileSystem" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="FreeSpace" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Size" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Compressed" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>DiskID</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="" isRequired="true" name="DiskID" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="Win32_DiskDriveToDiskPartition" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[ASSOCIATORS OF {Win32_DiskDrive.DeviceID="\\\\.\\PHYSICALDRIVE{{DiskID}}"}
+  WHERE AssocClass = Win32_DiskDriveToDiskPartition]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DeviceID">
+                <expression><![CDATA[DeviceID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VolumeName">
+                <expression><![CDATA[VolumeName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FileSystem">
+                <expression><![CDATA[FileSystem]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeSpace">
+                <expression><![CDATA[FreeSpace]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Size">
+                <expression><![CDATA[Size]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Compressed">
+                <expression><![CDATA[Compressed]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DeviceID" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="Win32_LogicalDiskToPartition" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[ASSOCIATORS OF {Win32_DiskPartition.DeviceID="{{PartitionID}}"}
+  WHERE AssocClass = Win32_LogicalDiskToPartition]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DeviceID">
+                <expression><![CDATA[DeviceID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VolumeName">
+                <expression><![CDATA[VolumeName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FileSystem">
+                <expression><![CDATA[FileSystem]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeSpace">
+                <expression><![CDATA[FreeSpace]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Size">
+                <expression><![CDATA[Size]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Compressed">
+                <expression><![CDATA[Compressed]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DeviceID" dataType="STRING" />
+              <columnDataType columnName="VolumeName" dataType="STRING" />
+              <columnDataType columnName="FileSystem" dataType="STRING" />
+              <columnDataType columnName="FreeSpace" dataType="STRING" />
+              <columnDataType columnName="Size" dataType="STRING" />
+              <columnDataType columnName="Compressed" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[diskID = u"{{unicode:DiskID}}";
+partitionTable = GetLogicalDrivesForPhysicalDisk.Execute({"queryName" : "Win32_DiskDriveToDiskPartition", "DiskID" : diskID});
+
+if (length(partitionTable._exit) == 0):
+	setError(-2, "Exit column not found");
+elif (partitionTable._exit[0] != 0):
+	setError(partitionTable._errorCode[0], partitionTable._errorText[0]);
+else:
+	totalPartitions = length(partitionTable.DeviceID);
+	partition = 0;
+	while partition < totalPartitions:
+		partitionID = partitionTable.DeviceID[partition];
+		logicalDiskTable = GetLogicalDrivesForPhysicalDisk.Execute({"queryName" : "Win32_LogicalDiskToPartition", "PartitionID" : partitionID});
+
+		if (length(logicalDiskTable._exit) == 0):
+			setError(-2, "Exit column not found");
+		elif (logicalDiskTable._exit[0] != 0):
+			setError(logicalDiskTable._errorCode[0], logicalDiskTable._errorText[0]);
+		else:
+			totalRows = length(logicalDiskTable.DeviceID);
+			row = 0;
+			while row < totalRows:
+				append(Result.DeviceID, logicalDiskTable.DeviceID[row]);
+				append(Result.VolumeName, logicalDiskTable.VolumeName[row]);
+				append(Result.FileSystem, logicalDiskTable.FileSystem[row]);
+				append(Result.FreeSpace, logicalDiskTable.FreeSpace[row]);
+				append(Result.Size, logicalDiskTable.Size[row]);
+				append(Result.Compressed, logicalDiskTable.Compressed[row]);
+				row += 1;
+		partition += 1;]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DeviceID">
+                <expression><![CDATA[DeviceID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="VolumeName">
+                <expression><![CDATA[VolumeName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FileSystem">
+                <expression><![CDATA[FileSystem]]></expression>
+              </columnExpression>
+              <columnExpression columnName="FreeSpace">
+                <expression><![CDATA[FreeSpace]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Size">
+                <expression><![CDATA[Size]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Compressed">
+                <expression><![CDATA[Compressed]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DeviceID" dataType="STRING" />
+              <columnDataType columnName="VolumeName" dataType="STRING" />
+              <columnDataType columnName="FileSystem" dataType="STRING" />
+              <columnDataType columnName="FreeSpace" dataType="STRING" />
+              <columnDataType columnName="Size" dataType="STRING" />
+              <columnDataType columnName="Compressed" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

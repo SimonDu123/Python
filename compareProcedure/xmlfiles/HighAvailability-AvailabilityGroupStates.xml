@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Availability Group States" name="availabilitygroupstates">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">highavailability</fragment>
+      <fragment type="PROCEDURE">availabilitygroupstates</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="group_id" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="primary_replica" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">highavailability</fragment>
+                  <fragment type="RULE">synchronizationhealth</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="group_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="primary_replica" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="primary_recovery_health" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="primary_recovery_health_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="secondary_recovery_health" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="secondary_recovery_health_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="synchronization_health" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="synchronization_health_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="listener_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="dns_name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="port" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="is_conformant" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="ip_configuration_string_from_cluster" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[declare @dbaddress  NVARCHAR(4000);
+declare @dbaddress2  NVARCHAR(100);
+declare @portno nvarchar(6)
+set @dbaddress='{{dbaddress}}'
+set @dbaddress2 = case
+			when charindex('.',@dbaddress) > 0 then lower(substring(@dbaddress, 1, charindex('.',@dbaddress) - 1)) 
+			when charindex(',',@dbaddress) > 0 then lower(substring(@dbaddress, 1, charindex(',',@dbaddress) - 1))
+		else (lower(@dbaddress))
+		end
+set @portno = case
+			when charindex(',',@dbaddress) > 0 then substring(@dbaddress, charindex(',',@dbaddress) + 1,20)
+		else null
+		end
+select
+	gs.group_id,
+	gs.primary_replica,
+	gs.primary_recovery_health,
+	gs.primary_recovery_health_desc,
+	gs.secondary_recovery_health,
+	gs.secondary_recovery_health_desc,
+	gs.synchronization_health,
+	gs.synchronization_health_desc,
+	gl.listener_id,
+	gl.dns_name,
+	gl.port,
+	gl.is_conformant,
+	gl.ip_configuration_string_from_cluster
+from 
+	sys.dm_hadr_availability_group_states gs
+	join sys.availability_group_listeners gl 
+	on gs.group_id = gl.group_id
+	and (lower(gl.dns_name)=@dbaddress2 or charindex(@dbaddress2,ip_configuration_string_from_cluster) > 0)
+	and (@portno is null or gl.port=@portno)
+]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">highavailability</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="group_id">
+                        <expression><![CDATA[group_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="primary_replica">
+                        <expression><![CDATA[primary_replica]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="secondary_recovery_health">
+                        <expression><![CDATA[secondary_recovery_health]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="secondary_recovery_health_desc">
+                        <expression><![CDATA[secondary_recovery_health]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_health">
+                        <expression><![CDATA[synchronization_health]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="synchronization_health_desc">
+                        <expression><![CDATA[synchronization_health_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="primary_recovery_health">
+                        <expression><![CDATA[primary_recovery_health]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="primary_recovery_health_desc">
+                        <expression><![CDATA[primary_recovery_health_desc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="listener_id">
+                        <expression><![CDATA[listener_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="dns_name">
+                        <expression><![CDATA[dns_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="port">
+                        <expression><![CDATA[port]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="is_conformant">
+                        <expression><![CDATA[is_conformant]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ip_configuration_string_from_cluster">
+                        <expression><![CDATA[ip_configuration_string_from_cluster]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="group_id" dataType="STRING"/>
+                     <columnDataType columnName="primary_replica" dataType="STRING"/>
+                     <columnDataType columnName="primary_recovery_health" dataType="LONG"/>
+                     <columnDataType columnName="primary_recovery_health_desc" dataType="STRING"/>
+                     <columnDataType columnName="secondary_recovery_health" dataType="LONG"/>
+                     <columnDataType columnName="secondary_recovery_health_desc" dataType="STRING"/>
+                     <columnDataType columnName="synchronization_health" dataType="LONG"/>
+                     <columnDataType columnName="synchronization_health_desc" dataType="STRING"/>
+                     <columnDataType columnName="listener_id" dataType="STRING"/>
+                     <columnDataType columnName="dns_name" dataType="STRING"/>
+                     <columnDataType columnName="port" dataType="LONG"/>
+                     <columnDataType columnName="is_conformant" dataType="BOOLEAN"/>
+                     <columnDataType columnName="ip_configuration_string_from_cluster" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

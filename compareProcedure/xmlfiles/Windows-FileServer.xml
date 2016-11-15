@@ -1,0 +1,127 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="NBT" name="FileServer">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">windows</fragment>
+    <fragment type="PROCEDURE">fileserver</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sowe:proc_NBT" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="Name" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="Name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="BytesSentPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="BytesReceivedPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="BytesPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="KBSentPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="KBReceivedPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="KBPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TotalBytesSentPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TotalBytesReceivedPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TotalBytesPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TotalKBSentPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TotalKBReceivedPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="TotalKBPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="BytesSent" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="BytesReceived" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="BytesTotal" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Instance" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT  Name, BytesReceivedPerSec, BytesSentPerSec, BytesTotalPerSec 
+FROM    Win32_PerfRawData_Tcpip_NBTConnection 
+WHERE   Name <> "Total"]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">os</fragment>
+                <fragment type="TECHNOLOGY">windows</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Name">
+                <expression><![CDATA[Name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytesReceived">
+                <expression><![CDATA[BytesReceivedPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytesSent">
+                <expression><![CDATA[BytesSentPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytesTotal">
+                <expression><![CDATA[BytesTotalPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytesReceivedPerSec">
+                <expression><![CDATA[positiveRate(FileServer.BytesReceived)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytesSentPerSec">
+                <expression><![CDATA[positiveRate(FileServer.BytesSent)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="BytesPerSec">
+                <expression><![CDATA[positiveRate(FileServer.BytesTotal)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KBSentPerSec">
+                <expression><![CDATA[FileServer.BytesSentPerSec / 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KBReceivedPerSec">
+                <expression><![CDATA[FileServer.BytesReceivedPerSec / 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KBPerSec">
+                <expression><![CDATA[FileServer.BytesPerSec / 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalBytesSentPerSec">
+                <expression><![CDATA[sum(FileServer.BytesSentPerSec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalBytesReceivedPerSec">
+                <expression><![CDATA[sum(FileServer.BytesReceivedPerSec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalBytesPerSec">
+                <expression><![CDATA[sum(FileServer.BytesPerSec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalKBSentPerSec">
+                <expression><![CDATA[sum(FileServer.BytesSentPerSec) / 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalKBReceivedPerSec">
+                <expression><![CDATA[sum(FileServer.BytesReceivedPerSec) /1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalKBPerSec">
+                <expression><![CDATA[sum(FileServer.BytesPerSec) / 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Instance">
+                <expression><![CDATA[Name]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Name" dataType="STRING" />
+              <columnDataType columnName="BytesReceivedPerSec" dataType="LONG" />
+              <columnDataType columnName="BytesSentPerSec" dataType="LONG" />
+              <columnDataType columnName="BytesTotalPerSec" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="30">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

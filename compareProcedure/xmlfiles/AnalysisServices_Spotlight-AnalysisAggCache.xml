@@ -1,0 +1,267 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - Cache" name="AnalysisAggCache">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysisaggcache</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Currententries" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="CurrentKB" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DirecthitRate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="DirectHitsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="EvictionsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="InsertsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="KBAddedPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="LookupsPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DOUBLE" name="MissesPerSec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalDirectHits" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalEvictions" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalFilteredIteratorCacheHits" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalFilteredIteratorCacheMisses" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalInserts" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalLookups" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalMisses" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalDirectHitsPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalEvictionsPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalInsertsPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalKBAddedPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalLookupsPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="InternalMissesPerSec" persistedToLongTermHistory="false" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Currententries, CurrentKB, Directhitratio, Directhitratio_base, Directhitspersec,  
+EvictionsPersec, InsertsPersec, KBAddedPersec, LookupsPersec, MissesPersec, Totaldirecthits,  
+TotalEvictions, Totalinserts, Totallookups, Totalmisses  
+FROM {{WMIClassName.Name}}Cache]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Currententries">
+                <expression><![CDATA[Currententries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CurrentKB">
+                <expression><![CDATA[CurrentKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalDirectHits">
+                <expression><![CDATA[Totaldirecthits]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalEvictions">
+                <expression><![CDATA[Totalevictions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalFilteredIteratorCacheHits">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalFilteredIteratorCacheMisses">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalInserts">
+                <expression><![CDATA[Totalinserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalLookups">
+                <expression><![CDATA[TotalLookups]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalMisses">
+                <expression><![CDATA[TotalMisses]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalEvictionsPerSec">
+                <expression><![CDATA[EvictionsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInsertsPerSec">
+                <expression><![CDATA[InsertsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalKBAddedPerSec">
+                <expression><![CDATA[KBAddedPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLookupsPerSec">
+                <expression><![CDATA[LookupsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMissesPerSec">
+                <expression><![CDATA[MissesPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDirectHitsPerSec">
+                <expression><![CDATA[DirectHitsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DirectHitsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalDirecthitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="EvictionsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalEvictionsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InsertsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalInsertsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KBAddedPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalKBAddedPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LookupsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalLookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MissesPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalMissesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DirecthitRate">
+                <expression><![CDATA[Directhitratio/Directhitratio_Base]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Currententries" dataType="LONG" />
+              <columnDataType columnName="CurrentKB" dataType="LONG" />
+              <columnDataType columnName="Directhitratio" dataType="LONG" />
+              <columnDataType columnName="Directhitratio_Base" dataType="LONG" />
+              <columnDataType columnName="DirecthitsPersec" dataType="LONG" />
+              <columnDataType columnName="EvictionsPersec" dataType="LONG" />
+              <columnDataType columnName="InsertsPersec" dataType="LONG" />
+              <columnDataType columnName="KBaddedPersec" dataType="LONG" />
+              <columnDataType columnName="LookupsPersec" dataType="LONG" />
+              <columnDataType columnName="MissesPersec" dataType="LONG" />
+              <columnDataType columnName="Totaldirecthits" dataType="LONG" />
+              <columnDataType columnName="Totalevictions" dataType="LONG" />
+              <columnDataType columnName="Totalfilterediteratorcachehits" dataType="LONG" />
+              <columnDataType columnName="Totalfilterediteratorcachemisses" dataType="LONG" />
+              <columnDataType columnName="Totalinserts" dataType="LONG" />
+              <columnDataType columnName="Totallookups" dataType="LONG" />
+              <columnDataType columnName="Totalmisses" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Currententries, CurrentKB, Directhitratio, Directhitratio_base, Directhitspersec,  
+EvictionsPersec, InsertsPersec, KBAddedPersec, LookupsPersec, MissesPersec, Totaldirecthits,  
+TotalEvictions, Totalfilterediteratorcachehits, Totalfilterediteratorcachemisses,  
+Totalinserts, Totallookups, Totalmisses  
+FROM {{WMIClassName.Name}}Cache]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Currententries">
+                <expression><![CDATA[Currententries]]></expression>
+              </columnExpression>
+              <columnExpression columnName="CurrentKB">
+                <expression><![CDATA[CurrentKB]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalDirectHits">
+                <expression><![CDATA[Totaldirecthits]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalEvictions">
+                <expression><![CDATA[Totalevictions]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalFilteredIteratorCacheHits">
+                <expression><![CDATA[Totalfilterediteratorcachehits]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalFilteredIteratorCacheMisses">
+                <expression><![CDATA[Totalfilterediteratorcachemisses]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalInserts">
+                <expression><![CDATA[Totalinserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalLookups">
+                <expression><![CDATA[TotalLookups]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalMisses">
+                <expression><![CDATA[TotalMisses]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalEvictionsPerSec">
+                <expression><![CDATA[EvictionsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalInsertsPerSec">
+                <expression><![CDATA[InsertsPersec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalKBAddedPerSec">
+                <expression><![CDATA[KBAddedPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalLookupsPerSec">
+                <expression><![CDATA[LookupsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalMissesPerSec">
+                <expression><![CDATA[MissesPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InternalDirectHitsPerSec">
+                <expression><![CDATA[DirectHitsPerSec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DirectHitsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalDirecthitsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="EvictionsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalEvictionsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="InsertsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalInsertsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="KBAddedPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalKBAddedPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="LookupsPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalLookupsPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="MissesPerSec">
+                <expression><![CDATA[positiveRate(AnalysisAggCache.InternalMissesPersec)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="DirecthitRate">
+                <expression><![CDATA[Directhitratio/Directhitratio_Base]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Currententries" dataType="LONG" />
+              <columnDataType columnName="CurrentKB" dataType="LONG" />
+              <columnDataType columnName="Directhitratio" dataType="LONG" />
+              <columnDataType columnName="Directhitratio_Base" dataType="LONG" />
+              <columnDataType columnName="DirecthitsPersec" dataType="LONG" />
+              <columnDataType columnName="EvictionsPersec" dataType="LONG" />
+              <columnDataType columnName="InsertsPersec" dataType="LONG" />
+              <columnDataType columnName="KBaddedPersec" dataType="LONG" />
+              <columnDataType columnName="LookupsPersec" dataType="LONG" />
+              <columnDataType columnName="MissesPersec" dataType="LONG" />
+              <columnDataType columnName="Totaldirecthits" dataType="LONG" />
+              <columnDataType columnName="Totalevictions" dataType="LONG" />
+              <columnDataType columnName="Totalfilterediteratorcachehits" dataType="LONG" />
+              <columnDataType columnName="Totalfilterediteratorcachemisses" dataType="LONG" />
+              <columnDataType columnName="Totalinserts" dataType="LONG" />
+              <columnDataType columnName="Totallookups" dataType="LONG" />
+              <columnDataType columnName="Totalmisses" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

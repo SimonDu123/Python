@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Database List" name="SQLDatabaseList">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqldatabaselist</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_sqldatabaselist" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DBNameAndID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="DBName" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="15">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">databaselist</fragment>
+                  </procedurePath>
+               </procedureDependency>
+               <procedureDependency recencyOfExecutionSeconds="60">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">sqlfiles</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">databasesbackup</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">databasesdifferentialbackup</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">databaseslogbackup</fragment>
+               </path>
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">databasesunavailable</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="DataCanGrow" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DataFreeMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DataFreePct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DataMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DataUsedMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DataUsedPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="DaysSinceLastFullBackup" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="MirroringRole" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Disks" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="FileCnt" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="FileGroupCnt" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="LastFullBackupTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="LogCanGrow" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="LogFreeMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="LogMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="OldestTransactionSpid" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="OldestTransactionStartTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Status" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="TableCnt" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="dbid" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="LogFreePct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="LogUsedPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="LogUsedMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBNameAndID" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="HoursSinceLastDifferentialBackup" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="LastDifferentialBackupTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="MinutesSinceLastLogBackup" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DATE" name="LastLogBackupTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="Unavailable" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Recovery" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="HoursSinceLastFullBackup" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="BackupNotRequired" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="LogReuseWaitDesc" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="JavaConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[SQL_DATABASE_LIST]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="DBName">
+                        <expression><![CDATA[DBName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TableCnt">
+                        <expression><![CDATA[TableCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileGroupCnt">
+                        <expression><![CDATA[FileGroupCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileCnt">
+                        <expression><![CDATA[FileCnt]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OldestTransactionStartTime">
+                        <expression><![CDATA[OldestTransactionStartTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="OldestTransactionSpid">
+                        <expression><![CDATA[OldestTransactionSpid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Status">
+                        <expression><![CDATA[Status]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MirroringRole">
+                        <expression><![CDATA[MirroringRole]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Disks">
+                        <expression><![CDATA[Disks]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataCanGrow">
+                        <expression><![CDATA[DataCanGrow]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogCanGrow">
+                        <expression><![CDATA[LogCanGrow]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataMB">
+                        <expression><![CDATA[DataMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataFreeMB">
+                        <expression><![CDATA[DataFreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataFreePct">
+                        <expression><![CDATA[DataFreePct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataUsedMB">
+                        <expression><![CDATA[DataUsedMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DataUsedPct">
+                        <expression><![CDATA[DataUsedPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogMB">
+                        <expression><![CDATA[LogMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogFreeMB">
+                        <expression><![CDATA[LogFreeMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="dbid">
+                        <expression><![CDATA[dbid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogFreePct">
+                        <expression><![CDATA[LogFreePct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogUsedPct">
+                        <expression><![CDATA[LogUsedPct]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogUsedMB">
+                        <expression><![CDATA[LogUsedMB]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBNameAndID">
+                        <expression><![CDATA[DBNameAndID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DaysSinceLastFullBackup">
+                        <expression><![CDATA[DaysSinceLastFullBackup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LastFullBackupTime">
+                        <expression><![CDATA[LastFullBackupTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LastDifferentialBackupTime">
+                        <expression><![CDATA[LastDifferentialBackupTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LastLogBackupTime">
+                        <expression><![CDATA[LastLogBackupTime]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Unavailable">
+                        <expression><![CDATA[Unavailable]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MinutesSinceLastLogBackup">
+                        <expression><![CDATA[MinutesSinceLastLogBackup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Recovery">
+                        <expression><![CDATA[Recovery]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="HoursSinceLastDifferentialBackup">
+                        <expression><![CDATA[HoursSinceLastDifferentialBackup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="HoursSinceLastFullBackup">
+                        <expression><![CDATA[HoursSinceLastFullBackup]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="BackupNotRequired">
+                        <expression><![CDATA[BackupNotRequired]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogReuseWaitDesc">
+                        <expression><![CDATA[LogReuseWaitDesc]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="dbid" dataType="LONG"/>
+                     <columnDataType columnName="DBName" dataType="STRING"/>
+                     <columnDataType columnName="TableCnt" dataType="LONG"/>
+                     <columnDataType columnName="FileGroupCnt" dataType="LONG"/>
+                     <columnDataType columnName="FileCnt" dataType="LONG"/>
+                     <columnDataType columnName="LastFullBackupTime" dataType="DATE"/>
+                     <columnDataType columnName="OldestTransactionStartTime" dataType="DATE"/>
+                     <columnDataType columnName="OldestTransactionSpid" dataType="LONG"/>
+                     <columnDataType columnName="Status" dataType="STRING"/>
+                     <columnDataType columnName="MirroringRole" dataType="STRING"/>
+                     <columnDataType columnName="Disks" dataType="STRING"/>
+                     <columnDataType columnName="DataCanGrow" dataType="STRING"/>
+                     <columnDataType columnName="LogCanGrow" dataType="STRING"/>
+                     <columnDataType columnName="DataMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DataFreeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DataFreePct" dataType="DOUBLE"/>
+                     <columnDataType columnName="DataUsedMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="DataUsedPct" dataType="DOUBLE"/>
+                     <columnDataType columnName="LogMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="LogFreeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="LogFreePct" dataType="DOUBLE"/>
+                     <columnDataType columnName="HoursSinceLastFullBackup" dataType="DOUBLE"/>
+                     <columnDataType columnName="LogUsedPct" dataType="DOUBLE"/>
+                     <columnDataType columnName="LogUsedMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="LastDifferentialBackupTime" dataType="DATE"/>
+                     <columnDataType columnName="HoursSinceLastDifferentialBackup" dataType="DOUBLE"/>
+                     <columnDataType columnName="LastLogBackupTime" dataType="DATE"/>
+                     <columnDataType columnName="Unavailable" dataType="BOOLEAN"/>
+                     <columnDataType columnName="DBNameAndID" dataType="STRING"/>
+                     <columnDataType columnName="DaysSinceLastFullBackup" dataType="DOUBLE"/>
+                     <columnDataType columnName="DaysSinceLastDifferentialBackup" dataType="DOUBLE"/>
+                     <columnDataType columnName="MinutesSinceLastLogBackup" dataType="DOUBLE"/>
+                     <columnDataType columnName="Recovery" dataType="STRING"/>
+                     <columnDataType columnName="BackupNotRequired" dataType="BOOLEAN"/>
+                     <columnDataType columnName="LogReuseWaitDesc" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="1800000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="90">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Virtual File Statistics" name="VirtualFileStats">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">virtualfilestats</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_VirtualFileStats" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="DBFileName" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="FileName" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="DBName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="FileName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="TypeDesc" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBFileName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="IOWaitMS" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBAndFGName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ReadsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WritesRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="IORate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBRead" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBWritten" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBTotal" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="KBOnDisk" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="IOWaitRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="NumberReads" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="NumberWrites" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Disk" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="IOStallReadMS" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="IOStallWriteMS" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ReadsWaitRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WritesWaitRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WaitPerIO" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Instance" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Interval" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="LogicalFileName" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_VirtualFileStats.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="DBName">
+                        <expression><![CDATA[DBName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="FileName">
+                        <expression><![CDATA[FileName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="TypeDesc">
+                        <expression><![CDATA[TypeDesc]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBFileName">
+                        <expression><![CDATA[DBFileName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IOWaitMS">
+                        <expression><![CDATA[IoStallMS]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NumberReads">
+                        <expression><![CDATA[NumberReads]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="NumberWrites">
+                        <expression><![CDATA[NumberWrites]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="DBAndFGName">
+                        <expression><![CDATA[DBAndFGName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ReadsRate">
+                        <expression><![CDATA[iff(positiveDelta(VirtualFileStats.NumberReads) < 0, null, positiveRate(VirtualFileStats.NumberReads))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WritesRate">
+                        <expression><![CDATA[iff(positiveDelta(VirtualFileStats.NumberWrites) < 0, null, positiveRate(VirtualFileStats.NumberWrites))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IORate">
+                        <expression><![CDATA[iff((positiveDelta(VirtualFileStats.NumberReads) < 0) | (positiveDelta(VirtualFileStats.NumberWrites) < 0), null, positiveRate(VirtualFileStats.NumberReads) + positiveRate(VirtualFileStats.NumberWrites))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBRead">
+                        <expression><![CDATA[BytesRead / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBWritten">
+                        <expression><![CDATA[BytesWritten / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBTotal">
+                        <expression><![CDATA[(BytesRead + BytesWritten) / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IOWaitRate">
+                        <expression><![CDATA[iff(positiveDelta(VirtualFileStats.IOWaitMS) < 0, null, positiveRate(VirtualFileStats.IOWaitMS))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Disk">
+                        <expression><![CDATA[iff(length(VirtualFileStats.FileName)>1, substring(VirtualFileStats.FileName, 0, 2), null)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="KBOnDisk">
+                        <expression><![CDATA[BytesOnDisk / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IOStallReadMS">
+                        <expression><![CDATA[IOStallReadMS]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IOStallWriteMS">
+                        <expression><![CDATA[IOStallWriteMS]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ReadsWaitRate">
+                        <expression><![CDATA[iff(positiveDelta(VirtualFileStats.IOStallReadMS) < 0, null, positiveRate(VirtualFileStats.IOStallReadMS))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WritesWaitRate">
+                        <expression><![CDATA[iff(positiveDelta(VirtualFileStats.IOStallWriteMS) < 0, null, positiveRate(VirtualFileStats.IOStallWriteMS))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitPerIO">
+                        <expression><![CDATA[positiveDelta(VirtualFilestats.IOWaitMS)/(positiveDelta(VirtualFileStats.NumberReads) + positiveDelta(VirtualFileStats.NumberWrites))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Instance">
+                        <expression><![CDATA[createMEDisplayNameColumn(VirtualFileStats.DBFileName)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Interval">
+                        <expression><![CDATA[createIntervalColumn(VirtualFileStats.DBFileName)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(instance)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="LogicalFileName">
+                        <expression><![CDATA[LogicalFileName]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="DBName" dataType="STRING"/>
+                     <columnDataType columnName="FileName" dataType="STRING"/>
+                     <columnDataType columnName="TypeDesc" dataType="STRING"/>
+                     <columnDataType columnName="NumberReads" dataType="LONG"/>
+                     <columnDataType columnName="NumberWrites" dataType="LONG"/>
+                     <columnDataType columnName="BytesRead" dataType="LONG"/>
+                     <columnDataType columnName="BytesWritten" dataType="LONG"/>
+                     <columnDataType columnName="BytesOnDisk" dataType="LONG"/>
+                     <columnDataType columnName="IoStallMS" dataType="LONG"/>
+                     <columnDataType columnName="IOStallReadMS" dataType="LONG"/>
+                     <columnDataType columnName="IOStallWriteMS" dataType="LONG"/>
+                     <columnDataType columnName="FGName" dataType="STRING"/>
+                     <columnDataType columnName="DBAndFGName" dataType="STRING"/>
+                     <columnDataType columnName="DBFileName" dataType="STRING"/>
+                     <columnDataType columnName="LogicalFileName" dataType="STRING"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="3">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,178 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Mirroring" name="Mirroring">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">mirroring</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_Mirroring" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="database_name" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList">
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+            <fragment type="RULE">mirroringstate</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+            <fragment type="RULE">mirroringunrestoredlog</fragment>
+          </path>
+          <path>
+            <fragment type="AGENT" />
+            <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+            <fragment type="RULE">mirroringunsentlog</fragment>
+          </path>
+        </dependentRulePaths>
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="database_name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="role" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="role_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="mirroring_state" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="mirroring_state_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="witness_status" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="witness_status_desc" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="log_generation_rate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="unsent_log" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="send_rate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="unrestored_log" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="recovery_rate" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="transaction_delay" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="transaction_per_sec" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="average_delay" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="time_recorded" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="time_behind" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="local_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="unsent_log_mb" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="unrestored_log_mb" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="mirroring_partner_instance" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="mirroring_witness_name" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_Mirroring.sql}}]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2005</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="database_name">
+                <expression><![CDATA[database_name]]></expression>
+              </columnExpression>
+              <columnExpression columnName="role">
+                <expression><![CDATA[role]]></expression>
+              </columnExpression>
+              <columnExpression columnName="role_desc">
+                <expression><![CDATA[role_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="mirroring_state">
+                <expression><![CDATA[mirroring_state]]></expression>
+              </columnExpression>
+              <columnExpression columnName="mirroring_state_desc">
+                <expression><![CDATA[mirroring_state_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="witness_status">
+                <expression><![CDATA[witness_status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="witness_status_desc">
+                <expression><![CDATA[witness_status_desc]]></expression>
+              </columnExpression>
+              <columnExpression columnName="log_generation_rate">
+                <expression><![CDATA[log_generation_rate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="unsent_log">
+                <expression><![CDATA[unsent_log]]></expression>
+              </columnExpression>
+              <columnExpression columnName="send_rate">
+                <expression><![CDATA[send_rate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="unrestored_log">
+                <expression><![CDATA[unrestored_log]]></expression>
+              </columnExpression>
+              <columnExpression columnName="recovery_rate">
+                <expression><![CDATA[recovery_rate]]></expression>
+              </columnExpression>
+              <columnExpression columnName="transaction_delay">
+                <expression><![CDATA[transaction_delay]]></expression>
+              </columnExpression>
+              <columnExpression columnName="transaction_per_sec">
+                <expression><![CDATA[transaction_per_sec]]></expression>
+              </columnExpression>
+              <columnExpression columnName="average_delay">
+                <expression><![CDATA[average_delay]]></expression>
+              </columnExpression>
+              <columnExpression columnName="time_recorded">
+                <expression><![CDATA[time_recorded]]></expression>
+              </columnExpression>
+              <columnExpression columnName="time_behind">
+                <expression><![CDATA[time_behind]]></expression>
+              </columnExpression>
+              <columnExpression columnName="local_time">
+                <expression><![CDATA[local_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="unsent_log_mb">
+                <expression><![CDATA[unsent_log / 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="unrestored_log_mb">
+                <expression><![CDATA[unrestored_log / 1024]]></expression>
+              </columnExpression>
+              <columnExpression columnName="mirroring_partner_instance">
+                <expression><![CDATA[mirroring_partner_instance]]></expression>
+              </columnExpression>
+              <columnExpression columnName="mirroring_witness_name">
+                <expression><![CDATA[mirroring_witness_name]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="database_name" dataType="STRING" />
+              <columnDataType columnName="role" dataType="LONG" />
+              <columnDataType columnName="role_desc" dataType="STRING" />
+              <columnDataType columnName="mirroring_state" dataType="LONG" />
+              <columnDataType columnName="mirroring_state_desc" dataType="STRING" />
+              <columnDataType columnName="witness_status" dataType="LONG" />
+              <columnDataType columnName="witness_status_desc" dataType="STRING" />
+              <columnDataType columnName="log_generation_rate" dataType="LONG" />
+              <columnDataType columnName="unsent_log" dataType="LONG" />
+              <columnDataType columnName="send_rate" dataType="LONG" />
+              <columnDataType columnName="unrestored_log" dataType="LONG" />
+              <columnDataType columnName="recovery_rate" dataType="LONG" />
+              <columnDataType columnName="transaction_delay" dataType="LONG" />
+              <columnDataType columnName="transaction_per_sec" dataType="LONG" />
+              <columnDataType columnName="average_delay" dataType="LONG" />
+              <columnDataType columnName="time_recorded" dataType="DATE" />
+              <columnDataType columnName="time_behind" dataType="DATE" />
+              <columnDataType columnName="local_time" dataType="DATE" />
+              <columnDataType columnName="mirroring_partner_instance" dataType="STRING" />
+              <columnDataType columnName="mirroring_witness_name" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

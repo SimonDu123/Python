@@ -1,0 +1,133 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Reverse Indexes" name="SQLReverseIndexes">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlreverseindexes</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="RID" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="RID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="DatabaseName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="Schema" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TableID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="TableName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Rows" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="OwnerName" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="IndexType" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ReverseIndex" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="ReverseIndexID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="ReverseIndexCols" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SuperiorIndex" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="SuperiorIndexID" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="SuperiorIndexCols" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_AllReverseIndexes.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="DatabaseName">
+                <expression><![CDATA[DatabaseName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Rows">
+                <expression><![CDATA[Rows]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Schema">
+                <expression><![CDATA[Schema]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableID">
+                <expression><![CDATA[TableID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TableName">
+                <expression><![CDATA[TableName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="OwnerName">
+                <expression><![CDATA[OwnerName]]></expression>
+              </columnExpression>
+              <columnExpression columnName="IndexType">
+                <expression><![CDATA[IndexType]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReverseIndex">
+                <expression><![CDATA[ReverseIndex]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReverseIndexCols">
+                <expression><![CDATA[ReverseIndexCols]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SuperiorIndex">
+                <expression><![CDATA[SuperiorIndex]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SuperiorIndexCols">
+                <expression><![CDATA[SuperiorIndexCols]]></expression>
+              </columnExpression>
+              <columnExpression columnName="RID">
+                <expression><![CDATA[uniqueId(tableID)]]></expression>
+              </columnExpression>
+              <columnExpression columnName="ReverseIndexID">
+                <expression><![CDATA[ReverseIndexID]]></expression>
+              </columnExpression>
+              <columnExpression columnName="SuperiorIndexID">
+                <expression><![CDATA[SuperiorIndexID]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="DatabaseName" dataType="STRING" />
+              <columnDataType columnName="TableID" dataType="LONG" />
+              <columnDataType columnName="TableName" dataType="STRING" />
+              <columnDataType columnName="Schema" dataType="STRING" />
+              <columnDataType columnName="Rows" dataType="LONG" />
+              <columnDataType columnName="OwnerName" dataType="STRING" />
+              <columnDataType columnName="IndexType" dataType="STRING" />
+              <columnDataType columnName="ReverseIndex" dataType="STRING" />
+              <columnDataType columnName="SuperiorIndex" dataType="STRING" />
+              <columnDataType columnName="ReverseIndexID" dataType="LONG" />
+              <columnDataType columnName="SuperiorIndexID" dataType="LONG" />
+              <columnDataType columnName="ReverseIndexCols" dataType="STRING" />
+              <columnDataType columnName="SuperiorIndexCols" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="3">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="86400000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROPERTIES</componentType>
+      <component class="com.quest.adk.configuration.component.PropertiesComponent">
+        <properties>
+          <entry>
+            <string>timeout</string>
+            <property dataType="STRING" description="timeout" displayName="timeout" encryptStyle="NONE" hidden="false" name="timeout">600000</property>
+          </entry>
+        </properties>
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

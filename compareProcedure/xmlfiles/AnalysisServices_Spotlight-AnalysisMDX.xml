@@ -1,0 +1,314 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="SSAS - MDX" name="AnalysisMDX">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">analysisservices_spotlight</fragment>
+    <fragment type="PROCEDURE">analysismdx</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="LONG" name="Currentnumberofcachedevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Currentnumberofevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofbulkmodeevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofcachedbulkmodeevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofcachedotherevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="NumberofcachedStorageEngineevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofcalculationcovers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofcellbycellevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofcellbycellhitsinthecacheofevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofcellbycellmissesinthecacheofevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofevaluationnodesthatcoveredasinglecell" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofevaluationnodeswithcalculationsatthesamegranularity" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofevictionsofevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofhashindexhitsinthecacheofevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="NumberofStorageEngineevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofsubcubehitsinthecacheofevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Numberofsubcubemissesinthecacheofevaluationnodes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalAutoexist" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalcalculationcacheregistered" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalcalculationcovers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalcellscalculated" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalEXISTING" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalflatcacheinserts" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalNONEMPTY" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalNONEMPTYforcalculatedmembers" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalNONEMPTYunoptimized" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="Totalrecomputes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="TotalSonarsubcubes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT TotalAutoexist, Totalcellscalculated, TotalEXISTING, Totalflatcacheinserts, TotalNONEMPTY, 
+TotalNONEMPTYforcalculatedmembers, TotalNONEMPTYunoptimized, Totalrecomputes, TotalSonarsubcubes 
+FROM {{WMIClassName.Name}}MDX]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Currentnumberofcachedevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentnumberofevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofbulkmodeevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcachedbulkmodeevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcachedotherevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NumberofcachedStorageEngineevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcalculationcovers">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcellbycellevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcellbycellhitsinthecacheofevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcellbycellmissesinthecacheofevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofevaluationnodesthatcoveredasinglecell">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofevaluationnodeswithcalculationsatthesamegranularity">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofevictionsofevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofhashindexhitsinthecacheofevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NumberofStorageEngineevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofsubcubehitsinthecacheofevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofsubcubemissesinthecacheofevaluationnodes">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalAutoexist">
+                <expression><![CDATA[TotalAutoexist]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalcalculationcacheregistered">
+                <expression><![CDATA[Totalcalculationcacheregistered]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalcalculationcovers">
+                <expression><![CDATA[Totalcalculationcovers]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalcellscalculated">
+                <expression><![CDATA[Totalcellscalculated]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalEXISTING">
+                <expression><![CDATA[TotalEXISTING]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalflatcacheinserts">
+                <expression><![CDATA[Totalflatcacheinserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalNONEMPTY">
+                <expression><![CDATA[TotalNONEMPTY]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalNONEMPTYforcalculatedmembers">
+                <expression><![CDATA[TotalNONEMPTYforcalculatedmembers]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalNONEMPTYunoptimized">
+                <expression><![CDATA[TotalNONEMPTYunoptimized]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalrecomputes">
+                <expression><![CDATA[Totalrecomputes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalSonarsubcubes">
+                <expression><![CDATA[TotalSonarsubcubes]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="TotalAutoexist" dataType="LONG" />
+              <columnDataType columnName="Totalcellscalculated" dataType="LONG" />
+              <columnDataType columnName="TotalEXISTING" dataType="LONG" />
+              <columnDataType columnName="Totalflatcacheinserts" dataType="LONG" />
+              <columnDataType columnName="TotalNONEMPTY" dataType="LONG" />
+              <columnDataType columnName="TotalNONEMPTYforcalculatedmembers" dataType="LONG" />
+              <columnDataType columnName="TotalNONEMPTYunoptimized" dataType="LONG" />
+              <columnDataType columnName="Totalrecomputes" dataType="LONG" />
+              <columnDataType columnName="TotalSonarsubcubes" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="WindowsWMIWQL" isScript="false" minimumRefreshInterval="10000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[SELECT Currentnumberofcachedevaluationnodes, Currentnumberofevaluationnodes, Numberofbulkmodeevaluationnodes, 
+Numberofcachedbulkmodeevaluationnodes, Numberofcachedotherevaluationnodes, NumberofcachedStorageEngineevaluationnodes, 
+Numberofcalculationcovers, Numberofcellbycellevaluationnodes, Numberofcellbycellhitsinthecacheofevaluationnodes, 
+Numberofcellbycellmissesinthecacheofevaluationnodes, Numberofevaluationnodesthatcoveredasinglecell, 
+Numberofevaluationnodeswithcalculationsatthesamegranularity, Numberofevictionsofevaluationnodes, 
+Numberofhashindexhitsinthecacheofevaluationnodes, NumberofStorageEngineevaluationnodes, 
+Numberofsubcubehitsinthecacheofevaluationnodes, Numberofsubcubemissesinthecacheofevaluationnodes, TotalAutoexist, 
+Totalcellscalculated, TotalEXISTING, Totalflatcacheinserts, TotalNONEMPTY, TotalNONEMPTYforcalculatedmembers, 
+TotalNONEMPTYunoptimized, Totalrecomputes, TotalSonarsubcubes   
+FROM {{WMIClassName.Name}}MDX]]></commandText>
+            <technology extendedVersion="true">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">analysisservices</fragment>
+                <fragment type="TECHNOLOGY">2008</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="Currentnumberofcachedevaluationnodes">
+                <expression><![CDATA[Currentnumberofcachedevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Currentnumberofevaluationnodes">
+                <expression><![CDATA[Currentnumberofevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofbulkmodeevaluationnodes">
+                <expression><![CDATA[Numberofbulkmodeevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcachedbulkmodeevaluationnodes">
+                <expression><![CDATA[Numberofcachedbulkmodeevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcachedotherevaluationnodes">
+                <expression><![CDATA[Numberofcachedotherevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NumberofcachedStorageEngineevaluationnodes">
+                <expression><![CDATA[NumberofcachedStorageEngineevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcalculationcovers">
+                <expression><![CDATA[Numberofcalculationcovers]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcellbycellevaluationnodes">
+                <expression><![CDATA[Numberofcellbycellevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcellbycellhitsinthecacheofevaluationnodes">
+                <expression><![CDATA[Numberofcellbycellhitsinthecacheofevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofcellbycellmissesinthecacheofevaluationnodes">
+                <expression><![CDATA[Numberofcellbycellmissesinthecacheofevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofevaluationnodesthatcoveredasinglecell">
+                <expression><![CDATA[Numberofevaluationnodesthatcoveredasinglecell]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofevaluationnodeswithcalculationsatthesamegranularity">
+                <expression><![CDATA[Numberofevaluationnodeswithcalculationsatthesamegranularity]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofevictionsofevaluationnodes">
+                <expression><![CDATA[Numberofevictionsofevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofhashindexhitsinthecacheofevaluationnodes">
+                <expression><![CDATA[Numberofhashindexhitsinthecacheofevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="NumberofStorageEngineevaluationnodes">
+                <expression><![CDATA[NumberofStorageEngineevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofsubcubehitsinthecacheofevaluationnodes">
+                <expression><![CDATA[Numberofsubcubehitsinthecacheofevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Numberofsubcubemissesinthecacheofevaluationnodes">
+                <expression><![CDATA[Numberofsubcubemissesinthecacheofevaluationnodes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalAutoexist">
+                <expression><![CDATA[TotalAutoexist]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalcalculationcacheregistered">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalcalculationcovers">
+                <expression><![CDATA[0]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalcellscalculated">
+                <expression><![CDATA[Totalcellscalculated]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalEXISTING">
+                <expression><![CDATA[TotalEXISTING]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalflatcacheinserts">
+                <expression><![CDATA[Totalflatcacheinserts]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalNONEMPTY">
+                <expression><![CDATA[TotalNONEMPTY]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalNONEMPTYforcalculatedmembers">
+                <expression><![CDATA[TotalNONEMPTYforcalculatedmembers]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalNONEMPTYunoptimized">
+                <expression><![CDATA[TotalNONEMPTYunoptimized]]></expression>
+              </columnExpression>
+              <columnExpression columnName="Totalrecomputes">
+                <expression><![CDATA[Totalrecomputes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="TotalSonarsubcubes">
+                <expression><![CDATA[TotalSonarsubcubes]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="Currentnumberofcachedevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Currentnumberofevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofbulkmodeevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofcachedbulkmodeevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofcachedotherevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="NumberofcachedStorageEngineevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofcalculationcovers" dataType="LONG" />
+              <columnDataType columnName="Numberofcellbycellevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofcellbycellhitsinthecacheofevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofcellbycellmissesinthecacheofevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofevaluationnodesthatcoveredasinglecell" dataType="LONG" />
+              <columnDataType columnName="Numberofevaluationnodeswithcalculationsatthesamegranularity" dataType="LONG" />
+              <columnDataType columnName="Numberofevictionsofevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofhashindexhitsinthecacheofevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="NumberofStorageEngineevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofsubcubehitsinthecacheofevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="Numberofsubcubemissesinthecacheofevaluationnodes" dataType="LONG" />
+              <columnDataType columnName="TotalAutoexist" dataType="LONG" />
+              <columnDataType columnName="Totalcellscalculated" dataType="LONG" />
+              <columnDataType columnName="TotalEXISTING" dataType="LONG" />
+              <columnDataType columnName="Totalflatcacheinserts" dataType="LONG" />
+              <columnDataType columnName="TotalNONEMPTY" dataType="LONG" />
+              <columnDataType columnName="TotalNONEMPTYforcalculatedmembers" dataType="LONG" />
+              <columnDataType columnName="TotalNONEMPTYunoptimized" dataType="LONG" />
+              <columnDataType columnName="Totalrecomputes" dataType="LONG" />
+              <columnDataType columnName="TotalSonarsubcubes" dataType="LONG" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

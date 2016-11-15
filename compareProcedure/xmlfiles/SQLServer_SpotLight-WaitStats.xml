@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Wait Statistics Details" name="WaitStats">
+   <description>Collects wait statistics for most waits types. 
+
+The waits ignored are listed in the file Agent\conf\PACKAGE\sqlserver_spotlight\IdleWaits.txt. To ignore additional waits modify that file and then restart the DS.</description>
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">waitstats</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_WaitStats" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="WaitType" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList">
+               <procedureDependency recencyOfExecutionSeconds="9999999">
+                  <procedurePath>
+                     <fragment type="AGENT"/>
+                     <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                     <fragment type="PROCEDURE">waittypesignored</fragment>
+                  </procedurePath>
+               </procedureDependency>
+            </dependentOnProcedures>
+            <dependentRulePaths class="java.util.ArrayList"/>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="STRING" name="WaitType" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="WaitTypeCategory" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="WaitingTasksCount" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="WaitTimeMs" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="MaxWaitTimeMs" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SignalWaitTimeMs" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WaitingTasksCountRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WaitTimeMsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SignalWaitTimeMsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WaitingTasksCountPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WaitTimeMsPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SignalWaitTimePct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="WaitingTasksCountTotal" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="WaitTimeMsTotal" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SignalWaitTimeMsTotal" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="WaitTimeMsTotalPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SignalWaitTimeTotalPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ResourceWaitTimeMs" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="ResourceWaitTimeMsTotal" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ResourceWaitTimeMsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ResourceWaitTimeMsPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="ResourceWaitTimeMsTotalPct" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="Instance" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="Interval" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="diagnostic_server" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="false" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="IsIdleWait" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+               <procedureColumn dataType="BOOLEAN" name="IncludeForPerfHealth" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="true" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_WaitStats.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="WaitingTasksCountTotal">
+                        <expression><![CDATA[waiting_tasks_count]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTimeMsTotal">
+                        <expression><![CDATA[wait_time_ms]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitType">
+                        <expression><![CDATA[waittype]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTypeCategory">
+                        <expression><![CDATA[wait_type_category]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SignalWaitTimeMsTotal">
+                        <expression><![CDATA[signal_wait_time_ms]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitingTasksCount">
+                        <expression><![CDATA[positiveDelta(WaitStats.WaitingTasksCountTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTimeMs">
+                        <expression><![CDATA[positiveDelta(WaitStats.WaitTimeMsTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="MaxWaitTimeMs">
+                        <expression><![CDATA[max_wait_time_ms]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SignalWaitTimeMs">
+                        <expression><![CDATA[positiveDelta(WaitStats.SignalWaitTimeMsTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitingTasksCountRate">
+                        <expression><![CDATA[positiveRate(WaitStats.WaitingTasksCountTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTimeMsRate">
+                        <expression><![CDATA[positiveRate(WaitStats.WaitTimeMsTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SignalWaitTimeMsRate">
+                        <expression><![CDATA[positiveRate(WaitStats.SignalWaitTimeMsTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitingTasksCountPct">
+                        <expression><![CDATA[WaitStats.WaitingTasksCount *100 / lookupkey(WaitStats.WaitingTasksCount,"Total")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTimeMsPct">
+                        <expression><![CDATA[WaitStats.WaitTimeMs * 100 / lookupkey(WaitStats.WaitTimeMs, "Total")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SignalWaitTimePct">
+                        <expression><![CDATA[WaitStats.SignalWaitTimeMs * 100 / lookupkey(WaitStats.SignalWaitTimeMs, "Total")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="WaitTimeMsTotalPct">
+                        <expression><![CDATA[WaitStats.WaitTimeMsTotal * 100 / lookupkey(WaitStats.WaitTimeMsTotal, "Total")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SignalWaitTimeTotalPct">
+                        <expression><![CDATA[WaitStats.SignalWaitTimeMsTotal * 100 / lookupkey(WaitStats.SignalWaitTimeMsTotal, "Total")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ResourceWaitTimeMsTotal">
+                        <expression><![CDATA[WaitStats.WaitTimeMsTotal - WaitStats.SignalWaitTimeMsTotal]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ResourceWaitTimeMs">
+                        <expression><![CDATA[positiveDelta(WaitStats.ResourceWaitTimeMsTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ResourceWaitTimeMsRate">
+                        <expression><![CDATA[positiveRate(WaitStats.ResourceWaitTimeMsTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ResourceWaitTimeMsPct">
+                        <expression><![CDATA[WaitStats.ResourceWaitTimeMs * 100 / lookupkey(WaitStats.ResourceWaitTimeMs, "Total")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="ResourceWaitTimeMsTotalPct">
+                        <expression><![CDATA[WaitStats.ResourceWaitTimeMsTotal * 100 / lookupkey(WaitStats.ResourceWaitTimeMsTotal, "Total")]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Instance">
+                        <expression><![CDATA[createMEDisplayNameColumn(WaitStats.WaitType)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="Interval">
+                        <expression><![CDATA[createIntervalColumn(WaitStats.WaitTimeMsTotal)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="diagnostic_server">
+                        <expression><![CDATA[createDSDomainIDColumn(instance)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IsIdleWait">
+                        <expression><![CDATA[iff((WaitStats.WaitTypeCategory == "Idle") | (WaitStats.WaitType == "Total"), 1, 0)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="IncludeForPerfHealth">
+                        <expression><![CDATA[iff(WaitStats.IsIdleWait == 0, 1, 0)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="waittype" dataType="STRING"/>
+                     <columnDataType columnName="wait_type_category" dataType="STRING"/>
+                     <columnDataType columnName="waiting_tasks_count" dataType="LONG"/>
+                     <columnDataType columnName="wait_time_ms" dataType="LONG"/>
+                     <columnDataType columnName="max_wait_time_ms" dataType="LONG"/>
+                     <columnDataType columnName="signal_wait_time_ms" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>LUCY_PROCEDURE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyProcedureComponent" collectionName="WaitStats" collectorWritingUploadData="false" editable="false" onlyCollectedIfSSRNotCollected="false"/>
+      </entry>
+      <entry>
+         <componentType>LUCY_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.LucyScheduleComponent" enabled="true">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="3600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="true" retentionDays="7">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

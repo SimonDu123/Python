@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Tempdb Contention" name="SQLTempDBContention">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqltempdbcontention</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLTempDBContention" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="key" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="true" prettyKeyColumnName="" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfDependencyEmpty="false" skippedIfNoMatchingQuery="true" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">tempdbcontention</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="PageID" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="blocking_session_id" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="host_name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="login_name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="plan_handle" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="program_name" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="resource_description" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="resourcetype" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="session_id" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="sql_handle" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="text" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="wait_duration_ms" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="wait_type" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="key" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="wait_duration_ms_total" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="wait_duration_ms_total_avg" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="10000">
+                  <properties/>
+                  <guardExpressionText></guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_TempDBContention.sql}}]]></commandText>
+                  <technology extendedVersion="true">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                        <fragment type="TECHNOLOGY">2005</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="PageID">
+                        <expression><![CDATA[PageID]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="blocking_session_id">
+                        <expression><![CDATA[blocking_session_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="host_name">
+                        <expression><![CDATA[host_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="login_name">
+                        <expression><![CDATA[login_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="plan_handle">
+                        <expression><![CDATA[plan_handle]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="program_name">
+                        <expression><![CDATA[program_name]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="resource_description">
+                        <expression><![CDATA[resource_description]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="resourcetype">
+                        <expression><![CDATA[resourcetype]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="session_id">
+                        <expression><![CDATA[session_id]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="sql_handle">
+                        <expression><![CDATA[sql_handle]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="text">
+                        <expression><![CDATA[text]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_duration_ms">
+                        <expression><![CDATA[wait_duration_ms]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_type">
+                        <expression><![CDATA[wait_type]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="key">
+                        <expression><![CDATA[createPseudoKeyColumn(session_id)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_duration_ms_total">
+                        <expression><![CDATA[sum(wait_duration_ms)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="wait_duration_ms_total_avg">
+                        <expression><![CDATA[first(movingtimeaverage(SQLTempDBContention.wait_duration_ms_total, 300))]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="PageID" dataType="LONG"/>
+                     <columnDataType columnName="blocking_session_id" dataType="STRING"/>
+                     <columnDataType columnName="host_name" dataType="STRING"/>
+                     <columnDataType columnName="login_name" dataType="STRING"/>
+                     <columnDataType columnName="plan_handle" dataType="STRING"/>
+                     <columnDataType columnName="program_name" dataType="STRING"/>
+                     <columnDataType columnName="resource_description" dataType="STRING"/>
+                     <columnDataType columnName="resourcetype" dataType="STRING"/>
+                     <columnDataType columnName="session_id" dataType="LONG"/>
+                     <columnDataType columnName="sql_handle" dataType="STRING"/>
+                     <columnDataType columnName="text" dataType="STRING"/>
+                     <columnDataType columnName="wait_duration_ms" dataType="LONG"/>
+                     <columnDataType columnName="wait_type" dataType="STRING"/>
+                     <columnDataType columnName="key" dataType="LONG"/>
+                     <columnDataType columnName="wait_duration_ms_total" dataType="LONG"/>
+                     <columnDataType columnName="wait_duration_ms_total_avg" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="true" retentionDays="365">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="false" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistentDefinition definitionType="PROCEDURE" displayName="Database Info" name="SQLDatabaseInfo">
+   <definitionPath>
+      <fragment type="AGENT"/>
+      <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+      <fragment type="PROCEDURE">sqldatabaseinfo</fragment>
+   </definitionPath>
+   <components>
+      <entry>
+         <componentType>PROCEDURE_CONTENT</componentType>
+         <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="true" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_SQLDatabaseInfo" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="dbid" lthEditable="true" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" notExecutableInteractively="false" prettyKeyColumnName="DBName" racAggregation="false" reExecutionPriority="0" readOnly="false" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false" subscriptionIgnoredByScheduling="false" usingAuxiliaryConnection="false">
+            <dependentOnProcedures class="java.util.ArrayList"/>
+            <dependentRulePaths class="java.util.ArrayList">
+               <path>
+                  <fragment type="AGENT"/>
+                  <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+                  <fragment type="RULE">logflushwaittime</fragment>
+               </path>
+            </dependentRulePaths>
+            <columns class="java.util.ArrayList">
+               <procedureColumn dataType="LONG" name="dbid" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="STRING" name="DBName" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLDBCCScans" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLBackupThroughput" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogFlushWaitTimeRaw" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogFlushWaitTimeRate" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogFlushWaitTimeUsed" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogFlushWaitTime" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogFlushWaitTimeCounterType" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLPercentLogUsed" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLTranCount" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLLogCacheHitRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLBackupThroughputRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLBCPThroughputRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLDBCCScanBytesRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLLogFlushesRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLLogGrowthsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLLogShrinksRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLLogTruncationsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLTransactions" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLTransactionsRate" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLDataFilesSizeMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLLogFilesSizeMB" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLMaxLogFlushWaitTime" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLTotalDBCCScanRate" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLTotalBackupThroughputRate" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="DOUBLE" name="SQLTotalLogFlushesRate" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogFlushes" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogCachePhysicalReads" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogCacheLogicalReads" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="PerfStats" normalised="false" persistedToLongTermHistory="false" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogGrowths" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogTruncations" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLBCPThroughput" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+               <procedureColumn dataType="LONG" name="SQLLogShrinks" normalised="false" persistedToLongTermHistory="true" persistedToShortTermHistory="true" putInLucyHeader="false" sentToProjectLucy="false" wideStringInSSR="false"/>
+            </columns>
+            <arguments/>
+            <triggerAlarms class="java.util.ArrayList"/>
+            <queries class="java.util.ArrayList">
+               <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+                  <properties/>
+                  <guardExpressionText>SQLCheckPerformanceData.Result == 1</guardExpressionText>
+                  <commandText><![CDATA[{{versioned_file:QS_DatabaseInfo.sql}}]]></commandText>
+                  <technology extendedVersion="false">
+                     <path>
+                        <fragment type="AGENT"/>
+                        <fragment type="TECHNOLOGY">database</fragment>
+                        <fragment type="TECHNOLOGY">sqlserver</fragment>
+                     </path>
+                  </technology>
+                  <dependencyList class="java.util.ArrayList"/>
+                  <errorActions class="java.util.TreeMap"/>
+                  <procedureColumnExpressionList class="java.util.ArrayList">
+                     <columnExpression columnName="DBName">
+                        <expression><![CDATA[DBName]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="dbid">
+                        <expression><![CDATA[dbid]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLDBCCScans">
+                        <expression><![CDATA[SQLDBCCScans]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLBackupThroughput">
+                        <expression><![CDATA[SQLBackupThroughput]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLBCPThroughput">
+                        <expression><![CDATA[SQLBCPThroughput]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLPercentLogUsed">
+                        <expression><![CDATA[SQLPercentLogUsed]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLTranCount">
+                        <expression><![CDATA[SQLTranCount]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogCachePhysicalReads">
+                        <expression><![CDATA[SQLLogCachePhysicalReads]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogCacheLogicalReads">
+                        <expression><![CDATA[SQLLogCacheLogicalReads]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFlushes">
+                        <expression><![CDATA[SQLLogFlushes]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogGrowths">
+                        <expression><![CDATA[SQLLogGrowths]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogTruncations">
+                        <expression><![CDATA[SQLLogTruncations]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogShrinks">
+                        <expression><![CDATA[SQLLogShrinks]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLTransactions">
+                        <expression><![CDATA[SQLTransactions]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogCacheHitRate">
+                        <expression><![CDATA[min(100, 100 * positiveDelta(SQLDatabaseInfo.SQLLogCachePhysicalReads) / positiveDelta(SQLDatabaseInfo.SQLLogCacheLogicalReads))]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLBackupThroughputRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLBackupThroughput)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLBCPThroughputRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLBCPThroughput)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLDBCCScanBytesRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLDBCCScans)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFlushesRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLLogFlushes)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogGrowthsRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLLogGrowths)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogShrinksRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLLogShrinks)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogTruncationsRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLLogTruncations)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLTransactionsRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLTransactions)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLDataFilesSizeMB">
+                        <expression><![CDATA[SQLDataFilesSizeKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFilesSizeMB">
+                        <expression><![CDATA[SQLLogFilesSizeKB / 1024]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLTotalDBCCScanRate">
+                        <expression><![CDATA[sum(SQLDBCCScanBytesRate)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLTotalBackupThroughputRate">
+                        <expression><![CDATA[sum(SQLBackupThroughputRate)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLTotalLogFlushesRate">
+                        <expression><![CDATA[sum(SQLLogFlushesRate)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="PerfStats">
+                        <expression><![CDATA[PerfStats]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFlushWaitTimeRaw">
+                        <expression><![CDATA[SQLLogFlushWaitTimeRaw]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFlushWaitTimeRate">
+                        <expression><![CDATA[positiveRate(SQLDatabaseInfo.SQLLogFlushWaitTimeRaw)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFlushWaitTimeCounterType">
+                        <expression><![CDATA[SQLLogFlushWaitTimeCounterType]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFlushWaitTimeUsed">
+                        <expression><![CDATA[iff(SQLDatabaseInfo.SQLLogFlushWaitTimeCounterType == 272696576,  SQLDatabaseInfo.SQLLogFlushWaitTimeRate, SQLDatabaseInfo.SQLLogFlushWaitTimeRaw)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLLogFlushWaitTime">
+                        <expression><![CDATA[iff(SQLDatabaseInfo.SQLLogFlushesRate == 0, 0, SQLLogFlushWaitTimeUsed)]]></expression>
+                     </columnExpression>
+                     <columnExpression columnName="SQLMaxLogFlushWaitTime">
+                        <expression><![CDATA[max(SQLDatabaseInfo.SQLLogFlushWaitTime)]]></expression>
+                     </columnExpression>
+                  </procedureColumnExpressionList>
+                  <outputColumnDataTypeList class="java.util.ArrayList">
+                     <columnDataType columnName="dbid" dataType="LONG"/>
+                     <columnDataType columnName="DBName" dataType="STRING"/>
+                     <columnDataType columnName="SQLBackupThroughput" dataType="LONG"/>
+                     <columnDataType columnName="SQLBCPThroughput" dataType="LONG"/>
+                     <columnDataType columnName="SQLDataFilesSizeKB" dataType="LONG"/>
+                     <columnDataType columnName="SQLDBCCScans" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogCachePhysicalReads" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogCacheLogicalReads" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogFilesSizeKB" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogFlushWaitTime" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogFlushes" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogGrowths" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogShrinks" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogTruncations" dataType="LONG"/>
+                     <columnDataType columnName="SQLPercentLogUsed" dataType="LONG"/>
+                     <columnDataType columnName="SQLTransactions" dataType="LONG"/>
+                     <columnDataType columnName="SQLTranCount" dataType="LONG"/>
+                     <columnDataType columnName="PerfStats" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogFlushWaitTimeRaw" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogCacheHitRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLBackupThroughputRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLBCPThroughputRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLDBCCScanBytesRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLLogFlushesRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLLogGrowthsRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLLogShrinksRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLLogTruncationsRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLTransactionsRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLDataFilesSizeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLLogFilesSizeMB" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLMaxLogFlushWaitTime" dataType="LONG"/>
+                     <columnDataType columnName="SQLTotalDBCCScanRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLTotalBackupThroughputRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLTotalLogFlushesRate" dataType="DOUBLE"/>
+                     <columnDataType columnName="SQLLogFlushWaitTimeUsed" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogFlushWaitTimeRate" dataType="LONG"/>
+                     <columnDataType columnName="SQLLogFlushWaitTimeCounterType" dataType="LONG"/>
+                  </outputColumnDataTypeList>
+               </queryConfiguration>
+            </queries>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SCHEDULE</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="true" enabled="true" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_SSR</componentType>
+         <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="true" enabled="true" retentionDays="7">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="7200000"/>
+         </component>
+      </entry>
+      <entry>
+         <componentType>PROCEDURE_MOBILE_MONITORING</componentType>
+         <component class="com.quest.adk.configuration.component.ProcedureMobileMonitoringComponent" copyBackgroundToMobileMonitoring="true" enabled="false">
+            <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000"/>
+         </component>
+      </entry>
+   </components>
+   <childrenList/>
+</persistentDefinition>

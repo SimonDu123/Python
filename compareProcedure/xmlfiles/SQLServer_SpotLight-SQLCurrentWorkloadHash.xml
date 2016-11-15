@@ -1,0 +1,373 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Current Workload using HASH Operator" name="SQLCurrentWorkloadHash">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">sqlcurrentworkloadhash</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" dataRetentionMode="UNLOAD_STRING_COLUMNS" keyColumnName="key_column" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="1000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="true" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList" />
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList">
+          <procedureColumn dataType="STRING" name="key_column" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="session_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="request_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="DATE" name="start_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="status" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="command" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="sql_handle" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="statement_start_offset" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="statement_end_offset" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="plan_handle" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="database_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="user_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="connection_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="blocking_session_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="wait_type" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="wait_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="last_wait_type" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="wait_resource" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="transaction_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="cpu_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="writes" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="logical_reads" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="total_elapsed_time" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="granted_query_memory" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="BOOLEAN" name="executing_managed_code" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="open_transaction_count" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="open_resultset_count" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="LONG" name="scheduler_id" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="task_address" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="query_plan" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+          <procedureColumn dataType="STRING" name="query_text" persistedToLongTermHistory="true" persistedToShortTermHistory="true" sentToProjectLucy="false" wideStringInSSR="false" />
+        </columns>
+        <arguments>
+          <entry>
+            <string>orderby</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="cpu_time" isRequired="false" name="orderby" />
+          </entry>
+          <entry>
+            <string>showmevalue</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="STRING" defaultValue="hash" isRequired="false" name="showmevalue" />
+          </entry>
+          <entry>
+            <string>topvalue</string>
+            <argument checkedForSQLInjection="false" class="com.quest.adk.configuration.component.ProcedureArgument" dataType="LONG" defaultValue="10" isRequired="false" name="topvalue" />
+          </entry>
+        </arguments>
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="60000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[# not supported in SQL Server 2000]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+                <fragment type="TECHNOLOGY">2000</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="key_column">
+                <expression><![CDATA[key_column]]></expression>
+              </columnExpression>
+              <columnExpression columnName="session_id">
+                <expression><![CDATA[session_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="request_id">
+                <expression><![CDATA[request_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="start_time">
+                <expression><![CDATA[start_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="status">
+                <expression><![CDATA[status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="command">
+                <expression><![CDATA[command]]></expression>
+              </columnExpression>
+              <columnExpression columnName="sql_handle">
+                <expression><![CDATA[sql_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_start_offset">
+                <expression><![CDATA[statement_start_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_end_offset">
+                <expression><![CDATA[statement_end_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="plan_handle">
+                <expression><![CDATA[plan_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="database_id">
+                <expression><![CDATA[database_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="user_id">
+                <expression><![CDATA[user_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="connection_id">
+                <expression><![CDATA[connection_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="blocking_session_id">
+                <expression><![CDATA[blocking_session_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="wait_type">
+                <expression><![CDATA[wait_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="wait_time">
+                <expression><![CDATA[wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_wait_type">
+                <expression><![CDATA[last_wait_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="wait_resource">
+                <expression><![CDATA[wait_resource]]></expression>
+              </columnExpression>
+              <columnExpression columnName="transaction_id">
+                <expression><![CDATA[transaction_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="cpu_time">
+                <expression><![CDATA[cpu_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="reads">
+                <expression><![CDATA[reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="writes">
+                <expression><![CDATA[writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="logical_reads">
+                <expression><![CDATA[logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_elapsed_time">
+                <expression><![CDATA[total_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="granted_query_memory">
+                <expression><![CDATA[granted_query_memory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="executing_managed_code">
+                <expression><![CDATA[executing_managed_code]]></expression>
+              </columnExpression>
+              <columnExpression columnName="open_transaction_count">
+                <expression><![CDATA[open_transaction_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="open_resultset_count">
+                <expression><![CDATA[open_resultset_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="scheduler_id">
+                <expression><![CDATA[scheduler_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="task_address">
+                <expression><![CDATA[task_address]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_plan">
+                <expression><![CDATA[query_plan]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_text">
+                <expression><![CDATA[query_text]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="key_column" dataType="STRING" />
+              <columnDataType columnName="session_id" dataType="LONG" />
+              <columnDataType columnName="request_id" dataType="LONG" />
+              <columnDataType columnName="start_time" dataType="DATE" />
+              <columnDataType columnName="status" dataType="STRING" />
+              <columnDataType columnName="command" dataType="STRING" />
+              <columnDataType columnName="sql_handle" dataType="STRING" />
+              <columnDataType columnName="statement_start_offset" dataType="LONG" />
+              <columnDataType columnName="statement_end_offset" dataType="LONG" />
+              <columnDataType columnName="plan_handle" dataType="STRING" />
+              <columnDataType columnName="database_id" dataType="LONG" />
+              <columnDataType columnName="user_id" dataType="LONG" />
+              <columnDataType columnName="connection_id" dataType="STRING" />
+              <columnDataType columnName="blocking_session_id" dataType="LONG" />
+              <columnDataType columnName="wait_type" dataType="STRING" />
+              <columnDataType columnName="wait_time" dataType="LONG" />
+              <columnDataType columnName="last_wait_type" dataType="STRING" />
+              <columnDataType columnName="wait_resource" dataType="STRING" />
+              <columnDataType columnName="transaction_id" dataType="LONG" />
+              <columnDataType columnName="cpu_time" dataType="LONG" />
+              <columnDataType columnName="reads" dataType="LONG" />
+              <columnDataType columnName="writes" dataType="LONG" />
+              <columnDataType columnName="logical_reads" dataType="LONG" />
+              <columnDataType columnName="total_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="granted_query_memory" dataType="LONG" />
+              <columnDataType columnName="executing_managed_code" dataType="BOOLEAN" />
+              <columnDataType columnName="open_transaction_count" dataType="LONG" />
+              <columnDataType columnName="open_resultset_count" dataType="LONG" />
+              <columnDataType columnName="scheduler_id" dataType="LONG" />
+              <columnDataType columnName="task_address" dataType="STRING" />
+              <columnDataType columnName="query_plan" dataType="STRING" />
+              <columnDataType columnName="query_text" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+          <queryConfiguration callableName="" connectionName="SQLServerConnection" isScript="false" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[{{versioned_file:QS_CurrentWorkload.sql}}]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList">
+              <columnExpression columnName="key_column">
+                <expression><![CDATA[key_column]]></expression>
+              </columnExpression>
+              <columnExpression columnName="session_id">
+                <expression><![CDATA[session_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="request_id">
+                <expression><![CDATA[request_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="start_time">
+                <expression><![CDATA[start_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="status">
+                <expression><![CDATA[status]]></expression>
+              </columnExpression>
+              <columnExpression columnName="command">
+                <expression><![CDATA[command]]></expression>
+              </columnExpression>
+              <columnExpression columnName="sql_handle">
+                <expression><![CDATA[sql_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_start_offset">
+                <expression><![CDATA[statement_start_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="statement_end_offset">
+                <expression><![CDATA[statement_end_offset]]></expression>
+              </columnExpression>
+              <columnExpression columnName="plan_handle">
+                <expression><![CDATA[plan_handle]]></expression>
+              </columnExpression>
+              <columnExpression columnName="database_id">
+                <expression><![CDATA[database_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="user_id">
+                <expression><![CDATA[user_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="connection_id">
+                <expression><![CDATA[connection_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="blocking_session_id">
+                <expression><![CDATA[blocking_session_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="wait_type">
+                <expression><![CDATA[wait_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="wait_time">
+                <expression><![CDATA[wait_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="last_wait_type">
+                <expression><![CDATA[last_wait_type]]></expression>
+              </columnExpression>
+              <columnExpression columnName="wait_resource">
+                <expression><![CDATA[wait_resource]]></expression>
+              </columnExpression>
+              <columnExpression columnName="transaction_id">
+                <expression><![CDATA[transaction_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="cpu_time">
+                <expression><![CDATA[cpu_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="reads">
+                <expression><![CDATA[reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="writes">
+                <expression><![CDATA[writes]]></expression>
+              </columnExpression>
+              <columnExpression columnName="logical_reads">
+                <expression><![CDATA[logical_reads]]></expression>
+              </columnExpression>
+              <columnExpression columnName="total_elapsed_time">
+                <expression><![CDATA[total_elapsed_time]]></expression>
+              </columnExpression>
+              <columnExpression columnName="granted_query_memory">
+                <expression><![CDATA[granted_query_memory]]></expression>
+              </columnExpression>
+              <columnExpression columnName="executing_managed_code">
+                <expression><![CDATA[executing_managed_code]]></expression>
+              </columnExpression>
+              <columnExpression columnName="open_transaction_count">
+                <expression><![CDATA[open_transaction_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="open_resultset_count">
+                <expression><![CDATA[open_resultset_count]]></expression>
+              </columnExpression>
+              <columnExpression columnName="scheduler_id">
+                <expression><![CDATA[scheduler_id]]></expression>
+              </columnExpression>
+              <columnExpression columnName="task_address">
+                <expression><![CDATA[task_address]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_plan">
+                <expression><![CDATA[query_plan]]></expression>
+              </columnExpression>
+              <columnExpression columnName="query_text">
+                <expression><![CDATA[query_text]]></expression>
+              </columnExpression>
+            </procedureColumnExpressionList>
+            <outputColumnDataTypeList class="java.util.ArrayList">
+              <columnDataType columnName="key_column" dataType="STRING" />
+              <columnDataType columnName="session_id" dataType="LONG" />
+              <columnDataType columnName="request_id" dataType="LONG" />
+              <columnDataType columnName="start_time" dataType="DATE" />
+              <columnDataType columnName="status" dataType="STRING" />
+              <columnDataType columnName="command" dataType="STRING" />
+              <columnDataType columnName="sql_handle" dataType="STRING" />
+              <columnDataType columnName="statement_start_offset" dataType="LONG" />
+              <columnDataType columnName="statement_end_offset" dataType="LONG" />
+              <columnDataType columnName="plan_handle" dataType="STRING" />
+              <columnDataType columnName="database_id" dataType="LONG" />
+              <columnDataType columnName="user_id" dataType="LONG" />
+              <columnDataType columnName="connection_id" dataType="STRING" />
+              <columnDataType columnName="blocking_session_id" dataType="LONG" />
+              <columnDataType columnName="wait_type" dataType="STRING" />
+              <columnDataType columnName="wait_time" dataType="LONG" />
+              <columnDataType columnName="last_wait_type" dataType="STRING" />
+              <columnDataType columnName="wait_resource" dataType="STRING" />
+              <columnDataType columnName="transaction_id" dataType="LONG" />
+              <columnDataType columnName="cpu_time" dataType="LONG" />
+              <columnDataType columnName="reads" dataType="LONG" />
+              <columnDataType columnName="writes" dataType="LONG" />
+              <columnDataType columnName="logical_reads" dataType="LONG" />
+              <columnDataType columnName="total_elapsed_time" dataType="LONG" />
+              <columnDataType columnName="granted_query_memory" dataType="LONG" />
+              <columnDataType columnName="executing_managed_code" dataType="BOOLEAN" />
+              <columnDataType columnName="open_transaction_count" dataType="LONG" />
+              <columnDataType columnName="open_resultset_count" dataType="LONG" />
+              <columnDataType columnName="scheduler_id" dataType="LONG" />
+              <columnDataType columnName="task_address" dataType="STRING" />
+              <columnDataType columnName="query_plan" dataType="STRING" />
+              <columnDataType columnName="query_text" dataType="STRING" />
+            </outputColumnDataTypeList>
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>

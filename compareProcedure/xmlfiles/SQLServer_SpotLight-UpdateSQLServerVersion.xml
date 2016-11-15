@@ -1,0 +1,94 @@
+<persistable class="com.quest.adk.configuration.definition.PersistentDefinition" definitionType="PROCEDURE" displayName="Update SQL Server Version" name="UpdateSQLServerVersion">
+  <definitionPath>
+    <fragment type="AGENT" />
+    <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+    <fragment type="PROCEDURE">updatesqlserverversion</fragment>
+  </definitionPath>
+  <components>
+    <entry>
+      <componentType>PROCEDURE_CONTENT</componentType>
+      <component alwaysSaveToLucy="false" alwaysSaveToSSR="false" backgroundEditable="false" class="com.quest.adk.configuration.component.ProcedureContentComponent" contextHelpKeyword="sosse:proc_UpdateSQLServerVersion" dataRetentionMode="UNLOAD_STRING_COLUMNS" lthEditable="false" lthTextLimit="0" lucyEditable="false" minimumPersistencePeriod="60000" prettyKeyColumnName="" reExecutionPriority="0" readOnly="true" role="NONE" savedToPlayback="false" skippedIfNoMatchingQuery="false" ssrDataSavedToLucy="false">
+        <dependentOnProcedures class="java.util.ArrayList">
+          <procedureDependency recencyOfExecutionSeconds="30">
+            <procedurePath>
+              <fragment type="AGENT" />
+              <fragment type="PACKAGE">sqlserver_spotlight</fragment>
+              <fragment type="PROCEDURE">firstconnectionversion</fragment>
+            </procedurePath>
+          </procedureDependency>
+        </dependentOnProcedures>
+        <dependentRulePaths class="java.util.ArrayList" />
+        <columns class="java.util.ArrayList" />
+        <arguments />
+        <triggerAlarms class="java.util.ArrayList" />
+        <queries class="java.util.ArrayList">
+          <queryConfiguration callableName="" connectionName="" isScript="true" minimumRefreshInterval="5000">
+            <properties />
+            <guardExpressionText />
+            <commandText><![CDATA[try:
+	VersionTable = GetOrExecute(FirstConnectionVersion, {"persistent" : "true"}, 30);
+	if length( VersionTable.SQLVersion ) == 1:
+		sqlVersion = VersionTable.SQLVersion[0];
+		minorVersion = VersionTable.MinorVersion[0];
+		sqlBuild = int(VersionTable.SQLBuild[0]);
+		if sqlVersion == "8":
+			if sqlBuild >= 760: 
+				setVersion( "2000", VersionTable.ProductVersion[0] );
+			else:
+				setError( 1, "Only service pack 3 and greater is supported for SQL Server 2000" );
+		elif sqlVersion == "9":
+			setVersion( "2005", VersionTable.ProductVersion[0] );
+		elif sqlVersion == "10":
+			if minorVersion == "50":
+				if sqlBuild >= 2500:
+					setVersion( "2008 R2 SP1", VersionTable.ProductVersion[0] );
+				else:
+					setVersion( "2008", VersionTable.ProductVersion[0] );
+			else:
+				setVersion( "2008", VersionTable.ProductVersion[0] );
+		elif sqlVersion == "11":
+			if sqlBuild >= 9120:
+				setVersion("2014", VersionTable.ProductVersion[0] );
+			else:
+				if sqlBuild >= 5059:
+					setVersion("2012 SP2", VersionTable.ProductVersion[0] );
+				else:
+					setVersion( "2012", VersionTable.ProductVersion[0] );
+		elif sqlVersion == "12":
+				setVersion("2014", VersionTable.ProductVersion[0] );
+		elif sqlVersion == "13":
+				setVersion("2016", VersionTable.ProductVersion[0] );
+		else:
+			setError( 1, "SQL Server version {0} is not supported", sqlVersion);
+except RuntimeError, ex:
+	setError( 1, "{0}", ex.args );]]></commandText>
+            <technology extendedVersion="false">
+              <path>
+                <fragment type="AGENT" />
+                <fragment type="TECHNOLOGY">database</fragment>
+                <fragment type="TECHNOLOGY">sqlserver</fragment>
+              </path>
+            </technology>
+            <dependencyList class="java.util.ArrayList" />
+            <errorActions class="java.util.TreeMap" />
+            <procedureColumnExpressionList class="java.util.ArrayList" />
+            <outputColumnDataTypeList class="java.util.ArrayList" />
+          </queryConfiguration>
+        </queries>
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SCHEDULE</componentType>
+      <component class="com.quest.adk.configuration.component.ProcedureScheduleComponent" editable="false" enabled="false" executionInterval="-1" subscriptionIgnoredByScheduling="false">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="300000" />
+      </component>
+    </entry>
+    <entry>
+      <componentType>PROCEDURE_SSR</componentType>
+      <component aggregationPeriod="-1" class="com.quest.adk.configuration.component.ProcedureLTHComponent" editable="false" enabled="false" retentionDays="365">
+        <schedule class="com.quest.adk.configuration.component.schedule.IntervalScheduleConfiguration" interval="21600000" />
+      </component>
+    </entry>
+  </components>
+  <childrenList />
+</persistable>
